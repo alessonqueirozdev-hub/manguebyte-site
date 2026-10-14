@@ -37,15 +37,28 @@
     }
 
     var copy = target.closest('[data-copy]');
-    if (copy && navigator.clipboard) {
+    if (copy) {
       var code = copy.closest('.code-frame').querySelector('code');
+      // Where the browser will not let the page write to the clipboard,
+      // the code is selected instead, ready to copy by hand.
+      var select = function () {
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        var selection = getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      };
+      if (!navigator.clipboard) {
+        select();
+        return;
+      }
       navigator.clipboard.writeText(code.innerText).then(function () {
         var label = copy.textContent;
         copy.textContent = copy.dataset.done;
         setTimeout(function () {
           copy.textContent = label;
         }, 1600);
-      });
+      }, select);
     }
   });
 })();

@@ -747,7 +747,8 @@ pre code {
 .hero h1 {
   margin-bottom: 1.6rem;
   font-size: clamp(3.5rem, 11.4vw, 8.6rem);
-  line-height: 0.86;
+  /* Tight, but with room for the tilde of "NÃO". */
+  line-height: 0.92;
 }
 
 .hero h1 span {

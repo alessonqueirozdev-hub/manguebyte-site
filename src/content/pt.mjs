@@ -213,7 +213,7 @@ export default {
     rulesHeading: 'Três regras mantêm esta página honesta',
     rules: [
       '**Toda afirmação aponta para um teste.** Se não dá para verificar rodando algo do repositório, não entra na lista.',
-      '**Toda frase sobre o JUCE tem fonte**, e descreve o branch `master` do JUCE na versão {juce} (outubro de 2026). O JUCE continua andando; a equipe anunciou um "AudioProcessor v2" que mira vários destes pontos, então alguns deles podem mudar em versões futuras.',
+      '**Toda frase sobre o JUCE tem fonte**, e descreve o branch `master` do JUCE na versão {juce} (outubro de 2026). O JUCE continua andando; a equipe anunciou um “AudioProcessor v2” que mira vários destes pontos, então alguns deles podem mudar em versões futuras.',
       '**Os limites vêm ao lado da afirmação**, em vez de ficarem para o leitor descobrir.',
     ],
     summaryHeading: 'Resumo',
@@ -353,16 +353,16 @@ export default {
   },
 
   name: {
-    title: 'Por que "Manguebyte"?',
+    title: 'Por que “Manguebyte”?',
     description:
       'O nome vem do Recife e do mangue bit, o movimento que o mundo conheceu como manguebeat: raízes locais ligadas à tecnologia global.',
     kicker: 'O nome',
-    heading: 'Por que "Manguebyte"?',
+    heading: 'Por que “Manguebyte”?',
     lede: 'O nome vem do Recife, a cidade do Nordeste do Brasil onde este projeto nasceu.',
     story: [
       'O Recife foi construído sobre manguezais: florestas de maré onde os rios encontram o mar, um dos ecossistemas mais férteis da Terra.',
       'No começo dos anos 1990 a cidade vivia uma crise econômica profunda, e um grupo de músicos locais respondeu com um manifesto chamado *Caranguejos com Cérebro*. A proposta era ligar as raízes ricas e lamacentas da cultura da região à rede global de ideias. A imagem que escolheram foi uma antena parabólica fincada na lama do mangue.',
-      'O movimento se chamou **mangue bit**: *mangue* de manguezal, *bit* da unidade de informação digital. A imprensa ouviu "beat", e o mundo passou a conhecê-lo como **manguebeat**. Bandas como Chico Science & Nação Zumbi e Mundo Livre S/A misturaram maracatu, coco e ciranda com rock, funk, hip-hop e música eletrônica, e mudaram a música brasileira de vez.',
+      'O movimento se chamou **mangue bit**: *mangue* de manguezal, *bit* da unidade de informação digital. A imprensa ouviu “beat”, e o mundo passou a conhecê-lo como **manguebeat**. Bandas como Chico Science & Nação Zumbi e Mundo Livre S/A misturaram maracatu, coco e ciranda com rock, funk, hip-hop e música eletrônica, e mudaram a música brasileira de vez.',
     ],
     fitsHeading: 'O nome serve de mais de um jeito',
     fits: [

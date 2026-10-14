@@ -136,8 +136,8 @@ export const areas = [
       items: [
         'The `Plugin` trait that every format wraps, and plugin state',
         '`Harness`: plays notes and automation into a plugin inside a unit test',
-        'CLAP: notes, expression, automation and modulation arrive on their exact frame. Passes the CLAP project\'s validator',
-        'VST 3: every automation point lands on its frame; notes carry ids, tuning and per-note expression; MIDI controllers arrive as MIDI again. Passes Steinberg\'s validator on Windows, Linux and macOS',
+        'CLAP: notes, expression, automation and modulation arrive on their exact frame. Passes the CLAP project’s validator',
+        'VST 3: every automation point lands on its frame; notes carry ids, tuning and per-note expression; MIDI controllers arrive as MIDI again. Passes Steinberg’s validator on Windows, Linux and macOS',
         'Standalone: runs a plugin as an application, with the sound card out, MIDI keyboards in, and the microphone in for effects',
         'Scripts that build a `.clap` file and a `.vst3` bundle on Windows, Linux and macOS',
       ],
@@ -190,7 +190,7 @@ export const areas = [
       items: [
         'WAV and AIFF reading and writing',
         'FLAC decoding, written from the specification and checked bit for bit against files from FFmpeg',
-        'The format is recognised from a file\'s contents',
+        'The format is recognised from a file’s contents',
       ],
     },
     pt: {
@@ -212,7 +212,7 @@ export const areas = [
       items: [
         'Device listing and selection',
         'Playback, recording and full-duplex streams, in any hardware sample format',
-        'MIDI input and output ports, with arrival times mapped to frames so a player\'s timing survives the audio buffer',
+        'MIDI input and output ports, with arrival times mapped to frames so a player’s timing survives the audio buffer',
       ],
     },
     pt: {

@@ -52,7 +52,7 @@ export default {
       'Manguebyte is young. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and there is no GUI toolkit or plugin editor yet.',
     sourceTitle: 'Where this site gets its facts',
     source:
-      'Every statement, proof link and code sample here was read from the framework\'s repository at commit [{commit}]({commitUrl}) ({date}), where [all eleven CI jobs passed]({ciUrl}). The repository is the authority; if the two disagree, the site is out of date.',
+      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all eleven CI jobs passed]({ciUrl}). The repository is the authority; if the two disagree, the site is out of date.',
     legalTitle: 'Names and marks',
     legal:
       'Manguebyte is an independent project. It is not affiliated with, sponsored by or endorsed by the makers of JUCE, by Steinberg or by the CLAP project. JUCE is a trademark of its respective owner and CLAP is the name of its own project; both are mentioned only to describe what this framework aims to be and what it works with. VST is a trademark of Steinberg Media Technologies GmbH.',
@@ -61,7 +61,7 @@ export default {
     licence: 'The framework is licensed under [MIT](proof:licence-mit) or [Apache-2.0](proof:licence-apache), at your option.',
     contactTitle: 'Contact',
     contact: 'Questions and bugs go to the [issue tracker]({issuesUrl}). To reach the author directly, write to [{email}](mailto:{email}).',
-    privacy: 'No cookies, no trackers, no requests to anyone else\'s servers.',
+    privacy: 'No cookies, no trackers, no requests to anyone else’s servers.',
     colophon:
       'Headings are set in Londrina Solid, drawn by Marcelo Magalhães from the hand-painted signs of Brazilian streets. Text and code are in Atkinson Hyperlegible Next and Mono, from the Braille Institute. All three are under the SIL Open Font License.',
     madeIn: 'Made in Recife, Brazil.',
@@ -122,7 +122,7 @@ export default {
           title: 'The same sound at any block size',
           body:
             'One song rendered with six block patterns, from a steady 64 frames to an irregular `1, 511, 7, 300, 64, 2, 129`, must match bit for bit. The first time this test ran, it failed, and exposed a real bug.',
-          juce: 'Whether the sound depends on the host\'s buffer size is up to each plugin.',
+          juce: 'Whether the sound depends on the host’s buffer size is up to each plugin.',
           limit: 'It covers what follows events. A value read once per block changes at block boundaries by definition.',
           proofs: ['block-size'],
         },
@@ -139,7 +139,7 @@ export default {
           claim: 'clap',
           title: 'CLAP and VST 3 from one line each, checked by their own validators',
           body:
-            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project\'s validator and Steinberg\'s on an instrument and an effect; all 537 VST 3 tests pass on Windows, Linux and macOS.',
+            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project’s validator and Steinberg’s on an instrument and an effect; all 537 VST 3 tests pass on Windows, Linux and macOS.',
           juce: 'CLAP export is not available natively.',
           limit: 'No plugin editor in either format yet, and no AU, AAX or LV2.',
           proofs: ['ci-clap', 'ci-vst3'],
@@ -162,7 +162,7 @@ export default {
         },
         {
           title: 'Two formats, two lines',
-          body: 'The macros are the whole integration. The repository\'s scripts then build a `.clap` file and a `.vst3` bundle on Windows, Linux and macOS.',
+          body: 'The macros are the whole integration. The repository’s scripts then build a `.clap` file and a `.vst3` bundle on Windows, Linux and macOS.',
         },
       ],
       testHeading: 'And a test of it, with no host',
@@ -187,7 +187,7 @@ export default {
       heading: 'Crabs with brains',
       body: [
         'The name comes from Recife, the city in the north-east of Brazil where this project was born. Recife is built on mangroves, [[pt:mangue]] in Portuguese.',
-        'In the early 1990s a group of local musicians answered the city\'s troubles with a manifesto, [[pt:Caranguejos com Cérebro]], "Crabs with Brains": plug the rich, muddy roots of the region\'s culture into the global network of ideas. The image they chose was a satellite dish stuck in the mangrove mud.',
+        'In the early 1990s a group of local musicians answered the city’s troubles with a manifesto, [[pt:Caranguejos com Cérebro]], “Crabs with Brains”: plug the rich, muddy roots of the region’s culture into the global network of ideas. The image they chose was a satellite dish stuck in the mangrove mud.',
       ],
       more: 'The story of the name',
     },
@@ -207,13 +207,13 @@ export default {
     kicker: 'Beyond JUCE',
     heading: 'Where it already goes beyond JUCE',
     intro: [
-      'JUCE is the reference for what a complete audio framework contains, and Manguebyte\'s first goal is to match it. This page is about the second goal: the places where Manguebyte already does something JUCE does not, and how each claim can be checked.',
+      'JUCE is the reference for what a complete audio framework contains, and Manguebyte’s first goal is to match it. This page is about the second goal: the places where Manguebyte already does something JUCE does not, and how each claim can be checked.',
       'JUCE is far ahead in breadth, and [the last section](#ahead) says where. Nothing in Manguebyte contains JUCE code: see [ADR 0004](repo:docs/adr/0004-juce-as-reference.md).',
     ],
     rulesHeading: 'Three rules keep this page honest',
     rules: [
       '**Every claim points at a test.** If it cannot be verified by running something in the repository, it is not listed.',
-      '**Every statement about JUCE has a source**, and describes JUCE\'s `master` branch at version {juce} (October 2026). JUCE keeps moving; the JUCE team has announced an "AudioProcessor v2" that targets several of these points, so some of them may change in later releases.',
+      '**Every statement about JUCE has a source**, and describes JUCE’s `master` branch at version {juce} (October 2026). JUCE keeps moving; the JUCE team has announced an “AudioProcessor v2” that targets several of these points, so some of them may change in later releases.',
       '**Limits are stated next to the claim**, not left for the reader to find.',
     ],
     summaryHeading: 'Summary',
@@ -261,7 +261,7 @@ export default {
     kicker: 'Get started',
     heading: 'From nothing to a plugin',
     intro: [
-      'Everything on this page comes from the repository\'s README and its two example plugins, as they are at commit `{commit}`.',
+      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`.',
       'Before you build on it: Manguebyte is young, it is not on crates.io yet, and **the API will change before 1.0**. There is no plugin editor yet: a plugin has parameters, and no window of its own.',
     ],
     steps: {
@@ -297,7 +297,7 @@ export default {
           'Build either one into something a host can load. The scripts are shell scripts; on Windows, run them from Git Bash.',
         ],
         after:
-          'The results are written to `target/bundled`. Copy them to the folder your host scans for CLAP or VST 3 plugins. Both examples go through the CLAP project\'s validator and Steinberg\'s on every commit.',
+          'The results are written to `target/bundled`. Copy them to the folder your host scans for CLAP or VST 3 plugins. Both examples go through the CLAP project’s validator and Steinberg’s on every commit.',
       },
       standalone: {
         heading: 'Play it without a host',
@@ -332,7 +332,7 @@ export default {
   roadmap: {
     title: 'Roadmap and status',
     description:
-      'What exists in Manguebyte and what is planned, phase by phase, and where it stands against each of JUCE\'s 24 modules.',
+      'What exists in Manguebyte and what is planned, phase by phase, and where it stands against each of JUCE’s 24 modules.',
     kicker: 'Roadmap',
     heading: 'What exists and what is planned',
     intro: [
@@ -353,16 +353,16 @@ export default {
   },
 
   name: {
-    title: 'Why "Manguebyte"?',
+    title: 'Why “Manguebyte”?',
     description:
       'The name comes from Recife and from mangue bit, the movement the world came to know as manguebeat: local roots plugged into global technology.',
     kicker: 'The name',
-    heading: 'Why "Manguebyte"?',
+    heading: 'Why “Manguebyte”?',
     lede: 'The name comes from Recife, the city in the north-east of Brazil where this project was born.',
     story: [
       'Recife is built on mangroves, [[pt:mangue]] in Portuguese: tidal forests where rivers meet the sea, and one of the most fertile ecosystems on Earth.',
-      'In the early 1990s the city was in deep economic trouble, and a group of local musicians answered with a manifesto called [[pt:Caranguejos com Cérebro]], "Crabs with Brains". Its proposal was to plug the rich, muddy roots of the region\'s culture into the global network of ideas. The image they chose was a satellite dish stuck in the mangrove mud.',
-      'The movement was called **mangue bit**: [[pt:mangue]] for the mangrove, *bit* for the unit of digital information. The press heard "beat", and the world came to know it as **manguebeat**. Bands such as Chico Science & Nação Zumbi and Mundo Livre S/A mixed maracatu, coco and ciranda with rock, funk, hip-hop and electronic music, and changed Brazilian music for good.',
+      'In the early 1990s the city was in deep economic trouble, and a group of local musicians answered with a manifesto called [[pt:Caranguejos com Cérebro]], “Crabs with Brains”. Its proposal was to plug the rich, muddy roots of the region’s culture into the global network of ideas. The image they chose was a satellite dish stuck in the mangrove mud.',
+      'The movement was called **mangue bit**: [[pt:mangue]] for the mangrove, *bit* for the unit of digital information. The press heard “beat”, and the world came to know it as **manguebeat**. Bands such as Chico Science & Nação Zumbi and Mundo Livre S/A mixed maracatu, coco and ciranda with rock, funk, hip-hop and electronic music, and changed Brazilian music for good.',
     ],
     fitsHeading: 'The name fits in more ways than one',
     fits: [
@@ -404,8 +404,8 @@ export default {
     ],
     cleanHeading: 'One rule above the others: clean room',
     clean: [
-      'Manguebyte is inspired by what JUCE makes possible, but it contains no JUCE code and must never contain any. JUCE is licensed under the AGPL or a commercial licence, both incompatible with this project\'s.',
-      '**Do** use JUCE\'s module list, public documentation, changelog, issue tracker and forum to decide what to build and which designs to avoid.',
+      'Manguebyte is inspired by what JUCE makes possible, but it contains no JUCE code and must never contain any. JUCE is licensed under the AGPL or a commercial licence, both incompatible with this project’s.',
+      '**Do** use JUCE’s module list, public documentation, changelog, issue tracker and forum to decide what to build and which designs to avoid.',
       '**Never** copy, translate or paraphrase JUCE source code, and do not write an implementation with the corresponding JUCE implementation open. The same goes for any other project whose licence is not compatible with MIT or Apache-2.0.',
       'Work from specifications, standards, papers, textbooks and your own knowledge. The reasoning is in [ADR 0004](repo:docs/adr/0004-juce-as-reference.md).',
     ],

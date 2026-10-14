@@ -20,14 +20,14 @@ export const claims = [
       juceShort: 'Per block in `AudioProcessor`',
       mangueShort: 'On the exact sample',
       problem:
-        'A host records automation with sample positions. If a plugin only learns the value once per block, a change that should happen on frame 300 of a 512-frame block is applied on frame 0 or frame 512 instead. Fast automation turns into steps, and the size of the steps depends on the host\'s buffer setting.',
+        'A host records automation with sample positions. If a plugin only learns the value once per block, a change that should happen on frame 300 of a 512-frame block is applied on frame 0 or frame 512 instead. Fast automation turns into steps, and the size of the steps depends on the host’s buffer setting.',
       juce:
-        '`AudioProcessor::processBlock` receives audio and a MIDI buffer. Parameter changes are not part of the call; a processor reads each parameter\'s current value, which the host updates between blocks. In May 2026 a member of the JUCE team said sample-accurate automation would not be ready for the first release of JUCE 9 ([forum thread](https://forum.juce.com/t/sample-accurate-parameter-automation/68800)).',
+        '`AudioProcessor::processBlock` receives audio and a MIDI buffer. Parameter changes are not part of the call; a processor reads each parameter’s current value, which the host updates between blocks. In May 2026 a member of the JUCE team said sample-accurate automation would not be ready for the first release of JUCE 9 ([forum thread](https://forum.juce.com/t/sample-accurate-parameter-automation/68800)).',
       mangue:
         'The process call carries an `EventBuffer` in which every parameter change has the frame it falls on. `split_at_events` renders up to each event, applies it, and continues, using `AudioBuffer::windowed` to narrow the buffer in place. Nothing is copied or allocated.',
       check: [
-        '[automation_lands_on_its_exact_frame_and_updates_the_parameter](proof:automation-harness) schedules changes on frames 100, 101 and 250 and asserts the output sample by sample. [automation_lands_on_its_frame_when_processing_in_place](proof:automation-clap) does the same through the CLAP C interface, and [a test of the same name](proof:automation-vst3) does it through VST 3, where a host sends a queue of points per parameter and every point is delivered. (JUCE\'s VST3 wrapper applies the last point of each queue: `processParameterChanges` in `juce_audio_plugin_client_VST3.cpp`.)',
-        'VST 3 adds a trap of its own. A host reports each change twice: to the processor with a frame number, and to the controller on the main thread so that an editor can follow. If the controller\'s copy is stored into the parameter, the plugin jumps to a value that is slightly early or late until the next point corrects it. While blocks are running, Manguebyte\'s wrapper keeps the controller\'s copy for display only; [what_the_controller_is_told_does_not_disturb_running_automation](proof:automation-vst3-controller) checks it.',
+        '[automation_lands_on_its_exact_frame_and_updates_the_parameter](proof:automation-harness) schedules changes on frames 100, 101 and 250 and asserts the output sample by sample. [automation_lands_on_its_frame_when_processing_in_place](proof:automation-clap) does the same through the CLAP C interface, and [a test of the same name](proof:automation-vst3) does it through VST 3, where a host sends a queue of points per parameter and every point is delivered. (JUCE’s VST3 wrapper applies the last point of each queue: `processParameterChanges` in `juce_audio_plugin_client_VST3.cpp`.)',
+        'VST 3 adds a trap of its own. A host reports each change twice: to the processor with a frame number, and to the controller on the main thread so that an editor can follow. If the controller’s copy is stored into the parameter, the plugin jumps to a value that is slightly early or late until the next point corrects it. While blocks are running, Manguebyte’s wrapper keeps the controller’s copy for display only; [what_the_controller_is_told_does_not_disturb_running_automation](proof:automation-vst3-controller) checks it.',
       ],
       limit:
         'The framework delivers the timing; a processor chooses whether to use it. Reading a parameter once per block remains valid and is cheaper. The example instrument follows events for its voices and reads its reverb mix and output level once per block, with smoothing.',
@@ -57,7 +57,7 @@ export const claims = [
     proofs: ['block-size', 'block-size-pluck', 'block-size-duck'],
     sample: 'test-block-size',
     en: {
-      title: 'The sound does not depend on the host\'s block size',
+      title: 'The sound does not depend on the host’s block size',
       row: 'Block size and sound',
       juceShort: 'Left to each plugin',
       mangueShort: 'Bit-identical across block sizes, tested',
@@ -68,7 +68,7 @@ export const claims = [
       mangue:
         'Because events carry their frame and the synth resets a voice before every fresh note, the output is a function of the timeline and not of how it was cut up. This is tested rather than assumed.',
       check: [
-        '[the_song_is_the_same_whatever_the_block_size](proof:block-size) renders a polyphonic song with effects and automation six ways: 64, 256, 997 and 1024 frames, an irregular pattern of `1, 511, 7, 300, 64, 2, 129`, and blocks larger than the instrument\'s own maximum. The results must be equal bit for bit. Both example plugins have the same test: [the instrument](proof:block-size-pluck) and [the effect](proof:block-size-duck).',
+        '[the_song_is_the_same_whatever_the_block_size](proof:block-size) renders a polyphonic song with effects and automation six ways: 64, 256, 997 and 1024 frames, an irregular pattern of `1, 511, 7, 300, 64, 2, 129`, and blocks larger than the instrument’s own maximum. The results must be equal bit for bit. Both example plugins have the same test: [the instrument](proof:block-size-pluck) and [the effect](proof:block-size-duck).',
         'The first time this test ran, it failed. A voice that had finished in the middle of a block kept advancing until the end of it, so the next note started from a state that depended on the block length. The test exists to find exactly that, and the fix is part of the `Voice` contract.',
       ],
       limit:
@@ -103,11 +103,11 @@ export const claims = [
       juceShort: 'Seen by polling, or by listeners that may run on the audio thread',
       mangueShort: 'Delivered as events in the same stream as automation',
       problem:
-        'Host automation is not the only thing that changes a parameter. A user turns a knob in the plugin\'s own window, or the host restores a saved state. Those writes do not arrive through the host\'s event list, so a plugin that tracks a value from events alone never hears about them.',
+        'Host automation is not the only thing that changes a parameter. A user turns a knob in the plugin’s own window, or the host restores a saved state. Those writes do not arrive through the host’s event list, so a plugin that tracks a value from events alone never hears about them.',
       juce:
-        'A processor finds out by polling the parameter, or through a listener. Parameter listeners are called synchronously on whichever thread made the change, which during host automation is the audio thread, and the framework\'s attachment classes respond by posting to the operating system\'s message queue, which takes a lock ([forum thread](https://forum.juce.com/t/apvts-updates-thread-realtime-safety/36928), [bug report](https://forum.juce.com/t/bug-report-asyncupdater-for-real-time-use-in-parameterattachment/50645)).',
+        'A processor finds out by polling the parameter, or through a listener. Parameter listeners are called synchronously on whichever thread made the change, which during host automation is the audio thread, and the framework’s attachment classes respond by posting to the operating system’s message queue, which takes a lock ([forum thread](https://forum.juce.com/t/apvts-updates-thread-realtime-safety/36928), [bug report](https://forum.juce.com/t/bug-report-asyncupdater-for-real-time-use-in-parameterattachment/50645)).',
       mangue:
-        'There are no listeners. Before each block, `ParamWatcher` compares every parameter with the value the plugin last saw and adds an event on frame 0 for each one that differs, ahead of the host\'s own events. The event stream is therefore complete: a plugin that follows it never needs to poll, and no user code runs as a side effect of a write.',
+        'There are no listeners. Before each block, `ParamWatcher` compares every parameter with the value the plugin last saw and adds an event on frame 0 for each one that differs, ahead of the host’s own events. The event stream is therefore complete: a plugin that follows it never needs to poll, and no user code runs as a side effect of a write.',
       check: [
         '[changes_made_outside_the_host_reach_the_plugin_as_events](proof:outside-changes) uses a test plugin that never reads its parameter, only events. It passes for a direct write, for a restored state, and for host automation on the same frame, which takes precedence.',
       ],
@@ -147,7 +147,7 @@ export const claims = [
       juce:
         'Real-time safety is a rule in the documentation. The framework does not check user code against it, and its own parameter attachments break it, as described in the previous section.',
       mangue:
-        'The test suite replaces the global allocator with one that counts. Any allocation, reallocation or free made while a processor is processing fails the test, and so fails CI. The same guard wraps the CLAP wrapper\'s `process` call, measured from the host\'s side of the C interface.',
+        'The test suite replaces the global allocator with one that counts. Any allocation, reallocation or free made while a processor is processing fails the test, and so fails CI. The same guard wraps the CLAP wrapper’s `process` call, measured from the host’s side of the C interface.',
       check: [
         '[processors_do_not_use_the_heap](proof:no-heap) and its neighbours cover every processor, the FFT, [a synth handling more notes than it has voices](proof:no-heap-synth), and parameter changes made while running. [A test of the guard itself](proof:no-heap-guard) makes sure it would notice. Through the CLAP interface, [`heap_calls` must be zero](proof:no-heap-clap) for automation, notes, changes reported to the host and the block after a state restore.',
         'The guard has already earned its place. On macOS it reported one heap call inside `process`: a test plugin was recording a value through a standard mutex, which on that platform allocates the first time it is locked.',
@@ -184,9 +184,9 @@ export const claims = [
       juceShort: 'Through MPE channels',
       mangueShort: 'Per-note expression and modulation events',
       problem:
-        'Bending, swelling or filtering one note of a chord needs a way to address that note. So does a host\'s modulation system that wants to move a parameter for one voice without overwriting the value the user set.',
+        'Bending, swelling or filtering one note of a chord needs a way to address that note. So does a host’s modulation system that wants to move a parameter for one voice without overwriting the value the user set.',
       juce:
-        'Per-note control is available through MPE, which gives each note its own MIDI channel. The processor model has no note expression events and no modulation distinct from changing a parameter\'s value, which is why the third-party CLAP wrapper adds its own extension interfaces for them ([clap-juce-extensions](https://github.com/free-audio/clap-juce-extensions)).',
+        'Per-note control is available through MPE, which gives each note its own MIDI channel. The processor model has no note expression events and no modulation distinct from changing a parameter’s value, which is why the third-party CLAP wrapper adds its own extension interfaces for them ([clap-juce-extensions](https://github.com/free-audio/clap-juce-extensions)).',
       mangue:
         'Notes have an identity (`NoteRef`: channel, key and an optional id), so two notes on the same key can overlap. `NoteExpression` shapes one note. `ParamModulation` adds an offset on top of a parameter, optionally for a single note, and never changes the stored value, so it cannot fight automation or end up in a saved preset. `Synth` routes each to the voice that is playing the note.',
       check: [
@@ -225,12 +225,12 @@ export const claims = [
       juce:
         'Building CLAP plugins is not supported natively. The plugin client module covers VST, VST3, AU, AUv3, LV2 and AAX. CLAP was listed for JUCE 9 in the 2024 roadmap and is not in the 9.0.x releases; the route today is the unofficial `clap-juce-extensions`.',
       mangue:
-        '`export_clap!(MyPlugin)` is the whole integration. CLAP\'s event model is the one this framework is built on, so nothing is approximated on the way in.',
+        '`export_clap!(MyPlugin)` is the whole integration. CLAP’s event model is the one this framework is built on, so nothing is approximated on the way in.',
       check: [
-        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project\'s own [clap-validator](https://github.com/free-audio/clap-validator) on them. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped ones concern features not implemented yet or another platform.',
+        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project’s own [clap-validator](https://github.com/free-audio/clap-validator) on them. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped ones concern features not implemented yet or another platform.',
       ],
       limit:
-        'No plugin GUI extension yet, no 64-bit audio, no presets. VST 3 is the only other format so far, also without an editor: JUCE\'s AU, AAX and LV2 support has no counterpart here yet.',
+        'No plugin GUI extension yet, no 64-bit audio, no presets. VST 3 is the only other format so far, also without an editor: JUCE’s AU, AAX and LV2 support has no counterpart here yet.',
     },
     pt: {
       title: 'CLAP nativo',
@@ -259,11 +259,11 @@ export const claims = [
       juceShort: 'Needs a host or a hand-built rig',
       mangueShort: 'In a unit test, with `Harness`',
       juce:
-        'Exercising a plugin\'s audio path needs a host, or a test rig the author builds around `AudioProcessor`.',
+        'Exercising a plugin’s audio path needs a host, or a test rig the author builds around `AudioProcessor`.',
       mangue:
-        '`Harness` is that rig. It prepares the plugin, schedules notes and automation on a timeline, cuts time into any pattern of block sizes, keeps a transport moving and saves and restores state. The plugin\'s sound becomes something an ordinary unit test can assert, on a CI machine with no sound card.',
+        '`Harness` is that rig. It prepares the plugin, schedules notes and automation on a timeline, cuts time into any pattern of block sizes, keeps a transport moving and saves and restores state. The plugin’s sound becomes something an ordinary unit test can assert, on a CI machine with no sound card.',
       check: [
-        'The example instrument\'s tests check that it is silent until played, that it [plays the pitch it is asked for](proof:harness-pitch) (by FFT), that automation and per-note modulation change the sound, that state round-trips, and that the output is [independent of block size](proof:block-size-pluck). The example effect\'s tests [feed its sidechain](proof:harness-duck) the same way.',
+        'The example instrument’s tests check that it is silent until played, that it [plays the pitch it is asked for](proof:harness-pitch) (by FFT), that automation and per-note modulation change the sound, that state round-trips, and that the output is [independent of block size](proof:block-size-pluck). The example effect’s tests [feed its sidechain](proof:harness-duck) the same way.',
       ],
     },
     pt: {
@@ -354,9 +354,9 @@ export const claims = [
       juce:
         'The setting is available as [ScopedNoDenormals](https://docs.juce.com/master/classScopedNoDenormals.html), a guard that the author of each plugin places at the top of `processBlock`. The plugin template includes it. Code that did not start from the template, or a callback written later, is unprotected until someone notices.',
       mangue:
-        'The framework holds the guard itself: the CLAP and VST 3 wrappers and the standalone engine around `Plugin::process`, and the device streams around every callback. There is nothing for a plugin author to remember. The setting is put back on the way out, so the host\'s own code runs as it expects.',
+        'The framework holds the guard itself: the CLAP and VST 3 wrappers and the standalone engine around `Plugin::process`, and the device streams around every callback. There is nothing for a plugin author to remember. The setting is put back on the way out, so the host’s own code runs as it expects.',
       check: [
-        'A test in both wrappers ([CLAP](proof:subnormal-clap), [VST 3](proof:subnormal-vst3)) has a plugin report what the processor does with a subnormal number from inside `process`, then checks that the host\'s thread is back to its own setting afterwards, including after the plugin panics. Measured on the example effect, 4,000 blocks of subnormal input took 442 ms without the guard and 31 ms with it.',
+        'A test in both wrappers ([CLAP](proof:subnormal-clap), [VST 3](proof:subnormal-vst3)) has a plugin report what the processor does with a subnormal number from inside `process`, then checks that the host’s thread is back to its own setting afterwards, including after the plugin panics. Measured on the example effect, 4,000 blocks of subnormal input took 442 ms without the guard and 31 ms with it.',
       ],
       limit:
         '`x86_64` and `aarch64` only; elsewhere the guard does nothing. Rust does not define floating-point behaviour under a changed setting, and [ADR 0006](repo:docs/adr/0006-subnormal-numbers-are-flushed.md) says what that means in practice and why the trade is taken. A program that calls a processor in its own loop, outside the wrappers, streams and test harness, creates the guard itself.',

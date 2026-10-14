@@ -85,7 +85,7 @@ export const phases = [
           { s: 'todo', en: 'Streaming readers and writers that do not load whole files', pt: 'Leitores e escritores em fluxo, que não carregam o arquivo inteiro' },
           { s: 'done', en: 'AIFF and AIFF-C reading and writing', pt: 'Leitura e escrita de AIFF e AIFF-C' },
           { s: 'done', en: 'FLAC decoding', pt: 'Decodificação de FLAC' },
-          { s: 'done', en: 'Recognising a file\'s format from its contents', pt: 'Reconhecimento do formato pelo conteúdo do arquivo' },
+          { s: 'done', en: 'Recognising a file’s format from its contents', pt: 'Reconhecimento do formato pelo conteúdo do arquivo' },
           { s: 'todo', en: 'Ogg Vorbis, Opus and MP3 decoding', pt: 'Decodificação de Ogg Vorbis, Opus e MP3' },
           { s: 'todo', en: 'FLAC and Ogg Vorbis encoding', pt: 'Codificação de FLAC e Ogg Vorbis' },
           { s: 'todo', en: 'Metadata, cue points and loop markers', pt: 'Metadados, cue points e marcadores de loop' },
@@ -115,9 +115,9 @@ export const phases = [
       {
         items: [
           { s: 'done', en: '`manguebyte-plugin`: the format-independent plugin API, plugin state, and a harness that runs a plugin in a unit test with no host', pt: '`manguebyte-plugin`: a API de plugin independente de formato, o estado do plugin e um harness que roda o plugin num teste unitário, sem host' },
-          { s: 'done', en: 'CLAP: audio and note ports, sample-accurate events in, parameters, state, latency, reporting of parameter changes to the host. Checked in CI by the CLAP project\'s validator', pt: 'CLAP: portas de áudio e de notas, entrada de eventos com precisão de amostra, parâmetros, estado, latência, aviso de mudanças de parâmetro ao host. Conferido no CI pelo validador do projeto CLAP' },
+          { s: 'done', en: 'CLAP: audio and note ports, sample-accurate events in, parameters, state, latency, reporting of parameter changes to the host. Checked in CI by the CLAP project’s validator', pt: 'CLAP: portas de áudio e de notas, entrada de eventos com precisão de amostra, parâmetros, estado, latência, aviso de mudanças de parâmetro ao host. Conferido no CI pelo validador do projeto CLAP' },
           { s: 'todo', en: 'CLAP extensions still to come: GUI, per-note automation, note-end and voice info, 64-bit audio, tail, presets, remote controls', pt: 'Extensões CLAP que ainda faltam: interface gráfica, automação por nota, fim de nota e informação de vozes, áudio em 64 bits, cauda, presets, controles remotos' },
-          { s: 'done', en: 'VST 3: audio and event buses, every automation point on its frame, notes with ids, tuning and note expression, MIDI controllers through hidden parameters, parameters, units, state, latency. Checked in CI by Steinberg\'s validator on Windows, Linux and macOS', pt: 'VST 3: barramentos de áudio e de eventos, cada ponto de automação no seu frame, notas com ids, afinação e expressão de nota, controladores MIDI por parâmetros ocultos, parâmetros, unidades, estado, latência. Conferido no CI pelo validador da Steinberg em Windows, Linux e macOS' },
+          { s: 'done', en: 'VST 3: audio and event buses, every automation point on its frame, notes with ids, tuning and note expression, MIDI controllers through hidden parameters, parameters, units, state, latency. Checked in CI by Steinberg’s validator on Windows, Linux and macOS', pt: 'VST 3: barramentos de áudio e de eventos, cada ponto de automação no seu frame, notas com ids, afinação e expressão de nota, controladores MIDI por parâmetros ocultos, parâmetros, unidades, estado, latência. Conferido no CI pelo validador da Steinberg em Windows, Linux e macOS' },
           { s: 'todo', en: 'VST 3 still to come: editor, 64-bit audio, changing the bus layout, program lists, parameter changes sent back to the host', pt: 'O que ainda falta no VST 3: editor, áudio em 64 bits, mudança do layout de barramentos, listas de programas, mudanças de parâmetro devolvidas ao host' },
           { s: 'todo', en: 'Audio Unit (AUv2 and AUv3)', pt: 'Audio Unit (AUv2 e AUv3)' },
           { s: 'todo', en: 'LV2', pt: 'LV2' },

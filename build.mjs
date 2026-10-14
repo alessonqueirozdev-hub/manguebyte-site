@@ -142,6 +142,10 @@ for (const language of config.languages) {
     written.add(address);
     bytes += Buffer.byteLength(output);
 
+    const ids = [...output.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+    for (const id of new Set(ids.filter((id, index) => ids.indexOf(id) !== index))) {
+      problems.push(`${address}: the id "${id}" is used more than once`);
+    }
     for (const anchor of output.matchAll(/href="#([^"]+)"/g)) {
       if (!output.includes(`id="${anchor[1]}"`)) problems.push(`${address}: nothing has the id "${anchor[1]}"`);
     }
