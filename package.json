@@ -1,0 +1,14 @@
+{
+  "name": "manguebyte-site",
+  "private": true,
+  "type": "module",
+  "description": "The website of Manguebyte, an open-source audio framework for Rust.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "sync": "node tools/sync.mjs"
+  }
+}

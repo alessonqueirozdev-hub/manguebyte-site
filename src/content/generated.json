@@ -1,0 +1,889 @@
+{
+  "commit": "19e6906d34bea1e53632a42b31b8fe8b649cd9eb",
+  "proofs": {
+    "automation-harness": {
+      "file": "crates/manguebyte-plugin/src/harness.rs",
+      "line": 397,
+      "name": "automation_lands_on_its_exact_frame_and_updates_the_parameter",
+      "test": true
+    },
+    "automation-clap": {
+      "file": "crates/manguebyte-clap/tests/abi.rs",
+      "line": 859,
+      "name": "automation_lands_on_its_frame_when_processing_in_place",
+      "test": true
+    },
+    "automation-vst3": {
+      "file": "crates/manguebyte-vst3/tests/abi.rs",
+      "line": 887,
+      "name": "automation_lands_on_its_frame_when_processing_in_place",
+      "test": true
+    },
+    "automation-vst3-controller": {
+      "file": "crates/manguebyte-vst3/tests/abi.rs",
+      "line": 906,
+      "name": "what_the_controller_is_told_does_not_disturb_running_automation",
+      "test": true
+    },
+    "block-size": {
+      "file": "crates/manguebyte/tests/offline.rs",
+      "line": 37,
+      "name": "the_song_is_the_same_whatever_the_block_size",
+      "test": true
+    },
+    "block-size-pluck": {
+      "file": "plugins/pluck/src/lib.rs",
+      "line": 338,
+      "name": "sounds_the_same_whatever_the_block_size",
+      "test": true
+    },
+    "block-size-duck": {
+      "file": "plugins/duck/src/lib.rs",
+      "line": 394,
+      "name": "sounds_the_same_whatever_the_block_size",
+      "test": true
+    },
+    "outside-changes": {
+      "file": "crates/manguebyte-plugin/src/harness.rs",
+      "line": 441,
+      "name": "changes_made_outside_the_host_reach_the_plugin_as_events",
+      "test": true
+    },
+    "no-heap": {
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 115,
+      "name": "processors_do_not_use_the_heap",
+      "test": true
+    },
+    "no-heap-guard": {
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 106,
+      "name": "the_guard_itself_catches_an_allocation",
+      "test": true
+    },
+    "no-heap-synth": {
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 258,
+      "name": "a_synth_handles_a_flood_of_events_without_using_the_heap",
+      "test": true
+    },
+    "no-heap-clap": {
+      "file": "crates/manguebyte-clap/tests/abi.rs",
+      "line": 866,
+      "name": "heap_calls == 0 through the CLAP interface",
+      "test": false
+    },
+    "ci-miri": {
+      "file": ".github/workflows/ci.yml",
+      "line": 53,
+      "name": "CI job: Miri",
+      "test": false
+    },
+    "per-note": {
+      "file": "crates/manguebyte-dsp/src/synth.rs",
+      "line": 754,
+      "name": "expression_and_modulation_reach_one_note_and_parameters_reach_all",
+      "test": true
+    },
+    "per-note-overlap": {
+      "file": "crates/manguebyte-dsp/src/synth.rs",
+      "line": 705,
+      "name": "notes_with_identifiers_overlap_on_one_key_and_end_separately",
+      "test": true
+    },
+    "per-note-clap": {
+      "file": "crates/manguebyte-clap/tests/abi.rs",
+      "line": 1009,
+      "name": "an_instrument_takes_notes_expression_modulation_and_a_sidechain",
+      "test": true
+    },
+    "ci-clap": {
+      "file": ".github/workflows/ci.yml",
+      "line": 77,
+      "name": "CI job: CLAP validation",
+      "test": false
+    },
+    "ci-vst3": {
+      "file": ".github/workflows/ci.yml",
+      "line": 111,
+      "name": "CI job: VST 3 validation",
+      "test": false
+    },
+    "export-duck": {
+      "file": "plugins/duck/src/lib.rs",
+      "line": 272,
+      "name": "plugins/duck/src/lib.rs",
+      "test": false
+    },
+    "harness-pitch": {
+      "file": "plugins/pluck/src/lib.rs",
+      "line": 317,
+      "name": "plays_the_pitch_it_is_asked_for",
+      "test": true
+    },
+    "harness-duck": {
+      "file": "plugins/duck/src/lib.rs",
+      "line": 346,
+      "name": "automation_lands_on_its_frame_with_audio_running_through",
+      "test": true
+    },
+    "state-versions": {
+      "file": "crates/manguebyte-params/src/set.rs",
+      "line": 506,
+      "name": "state_from_another_version_loads_as_far_as_it_can",
+      "test": true
+    },
+    "params-threads": {
+      "file": "crates/manguebyte-params/src/param.rs",
+      "line": 901,
+      "name": "params_are_shareable_across_threads",
+      "test": true
+    },
+    "subnormal-clap": {
+      "file": "crates/manguebyte-clap/tests/abi.rs",
+      "line": 966,
+      "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
+      "test": true
+    },
+    "subnormal-vst3": {
+      "file": "crates/manguebyte-vst3/tests/abi.rs",
+      "line": 1070,
+      "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
+      "test": true
+    },
+    "subnormal-guard": {
+      "file": "crates/manguebyte-core/src/denormal.rs",
+      "line": null,
+      "name": "crates/manguebyte-core/src/denormal.rs",
+      "test": false
+    },
+    "licence-mit": {
+      "file": "LICENSE-MIT",
+      "line": null,
+      "name": "LICENSE-MIT",
+      "test": false
+    },
+    "licence-apache": {
+      "file": "LICENSE-APACHE",
+      "line": null,
+      "name": "LICENSE-APACHE",
+      "test": false
+    }
+  },
+  "snippets": {
+    "duck-plugin": {
+      "file": "plugins/duck/src/lib.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          208,
+          222
+        ],
+        [
+          257,
+          263
+        ],
+        [
+          270,
+          273
+        ]
+      ],
+      "lines": [
+        {
+          "text": "impl Plugin for Duck {"
+        },
+        {
+          "text": "    const INFO: PluginInfo = PluginInfo {"
+        },
+        {
+          "text": "        id: \"org.manguebyte.duck\","
+        },
+        {
+          "text": "        name: \"Mangue Duck\","
+        },
+        {
+          "text": "        vendor: \"Manguebyte\","
+        },
+        {
+          "text": "        version: env!(\"CARGO_PKG_VERSION\"),"
+        },
+        {
+          "text": "        description: \"A sidechain ducker, as an example of the Manguebyte framework\","
+        },
+        {
+          "text": "        kind: PluginKind::Effect,"
+        },
+        {
+          "text": "    };"
+        },
+        {
+          "text": "    const LAYOUT: AudioLayout = AudioLayout {"
+        },
+        {
+          "text": "        inputs: 2,"
+        },
+        {
+          "text": "        outputs: 2,"
+        },
+        {
+          "text": "        sidechain: 2,"
+        },
+        {
+          "text": "    };"
+        },
+        {
+          "text": "    type Params = DuckParams;"
+        },
+        {
+          "gap": "    // ... new, params and prepare are left out here"
+        },
+        {
+          "text": "    fn process(&mut self, buffer: &mut AudioBuffer<f32>, context: &ProcessContext<'_, f32>) {"
+        },
+        {
+          "text": "        self.cursor = 0;"
+        },
+        {
+          "text": "        let sidechain = context.sidechain;"
+        },
+        {
+          "text": "        split_at_events(self, buffer, context.events, Self::handle, |duck, piece| {"
+        },
+        {
+          "text": "            duck.render(piece, sidechain)"
+        },
+        {
+          "text": "        });"
+        },
+        {
+          "text": "    }"
+        },
+        {
+          "gap": "    // ... reset"
+        },
+        {
+          "text": "}"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "manguebyte::clap::export_clap!(Duck);"
+        },
+        {
+          "text": "manguebyte::vst3::export_vst3!(Duck);"
+        }
+      ]
+    },
+    "duck-test": {
+      "file": "plugins/duck/src/lib.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          345,
+          360
+        ]
+      ],
+      "lines": [
+        {
+          "text": "#[test]"
+        },
+        {
+          "text": "fn automation_lands_on_its_frame_with_audio_running_through() {"
+        },
+        {
+          "text": "    let mut harness = Harness::<Duck>::new(RATE, 256);"
+        },
+        {
+          "text": "    let input = steady(1.0, 24_000);"
+        },
+        {
+          "text": "    let loud = steady(1.0, 24_000);"
+        },
+        {
+          "text": "    // Let the follower settle, then ask for a different depth on one"
+        },
+        {
+          "text": "    // particular frame in the middle of a block."
+        },
+        {
+          "text": "    harness.process_with_sidechain(&input, &loud);"
+        },
+        {
+          "text": "    harness.automate(24_000 + 1_000, \"depth\", 24.0);"
+        },
+        {
+          "text": "    let output = harness.process_with_sidechain(&input, &loud);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let before = db_to_gain(-12.0) as f32;"
+        },
+        {
+          "text": "    let after = db_to_gain(-24.0) as f32;"
+        },
+        {
+          "text": "    assert!((output.channel(0)[999] - before).abs() < 1e-4);"
+        },
+        {
+          "text": "    assert!((output.channel(0)[1_000] - after).abs() < 1e-4);"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "test-automation": {
+      "file": "crates/manguebyte-plugin/src/harness.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          396,
+          414
+        ]
+      ],
+      "lines": [
+        {
+          "text": "#[test]"
+        },
+        {
+          "text": "fn automation_lands_on_its_exact_frame_and_updates_the_parameter() {"
+        },
+        {
+          "text": "    let mut harness = Harness::<Level>::new(48_000.0, 64);"
+        },
+        {
+          "text": "    harness.automate(100, \"level\", 2.0);"
+        },
+        {
+          "text": "    harness.automate(101, \"level\", 3.0);"
+        },
+        {
+          "text": "    harness.automate(250, \"level\", 0.5);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let output = harness.process(&ones(2, 300));"
+        },
+        {
+          "text": "    let left = output.channel(0);"
+        },
+        {
+          "text": "    assert_eq!(&left[..100], &[1.0; 100]);"
+        },
+        {
+          "text": "    assert_eq!(left[100], 2.0);"
+        },
+        {
+          "text": "    assert_eq!(&left[101..250], &[3.0; 149]);"
+        },
+        {
+          "text": "    assert_eq!(&left[250..], &[0.5; 50]);"
+        },
+        {
+          "text": "    assert_eq!(output.channel(1), left);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    // Anything polling the parameter sees where automation left it."
+        },
+        {
+          "text": "    assert_eq!(harness.params().level.value(), 0.5);"
+        },
+        {
+          "text": "    assert_eq!(harness.position(), 300);"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "test-block-size": {
+      "file": "crates/manguebyte/tests/offline.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          36,
+          57
+        ]
+      ],
+      "lines": [
+        {
+          "text": "#[test]"
+        },
+        {
+          "text": "fn the_song_is_the_same_whatever_the_block_size() {"
+        },
+        {
+          "text": "    let reference = render(256, &[256]);"
+        },
+        {
+          "text": "    assert!(reference.peak() > 0.1, \"the reference render is silent\");"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    for (max_block_size, pattern) in ["
+        },
+        {
+          "text": "        (64, &[64][..]),"
+        },
+        {
+          "text": "        (1024, &[1024]),"
+        },
+        {
+          "text": "        // Odd lengths that never line up with a note boundary."
+        },
+        {
+          "text": "        (997, &[997]),"
+        },
+        {
+          "text": "        // A host that changes its mind on every call."
+        },
+        {
+          "text": "        (512, &[1, 511, 7, 300, 64, 2, 129]),"
+        },
+        {
+          "text": "        // Blocks larger than the player's own, which it must split itself."
+        },
+        {
+          "text": "        (48, &[5_000]),"
+        },
+        {
+          "text": "    ] {"
+        },
+        {
+          "text": "        let other = render(max_block_size, pattern);"
+        },
+        {
+          "text": "        assert!("
+        },
+        {
+          "text": "            other == reference,"
+        },
+        {
+          "text": "            \"blocks of {pattern:?} (max {max_block_size}) changed the output\""
+        },
+        {
+          "text": "        );"
+        },
+        {
+          "text": "    }"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "test-no-heap": {
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          67,
+          78
+        ],
+        [
+          86,
+          103
+        ]
+      ],
+      "lines": [
+        {
+          "text": "/// Runs `work` and panics if it used the heap in any way."
+        },
+        {
+          "text": "fn assert_no_heap_use(what: &str, work: impl FnOnce()) {"
+        },
+        {
+          "text": "    HEAP_CALLS.with(|calls| calls.set(0));"
+        },
+        {
+          "text": "    WATCHING.with(|watching| watching.set(true));"
+        },
+        {
+          "text": "    work();"
+        },
+        {
+          "text": "    WATCHING.with(|watching| watching.set(false));"
+        },
+        {
+          "text": "    let calls = HEAP_CALLS.with(Cell::get);"
+        },
+        {
+          "text": "    assert_eq!("
+        },
+        {
+          "text": "        calls, 0,"
+        },
+        {
+          "text": "        \"{what} used the heap {calls} time(s) while processing\""
+        },
+        {
+          "text": "    );"
+        },
+        {
+          "text": "}"
+        },
+        {
+          "gap": ""
+        },
+        {
+          "text": "/// Prepares a processor, then runs it over blocks of several sizes with the"
+        },
+        {
+          "text": "/// allocator watched."
+        },
+        {
+          "text": "fn check<P: Processor<f32>>(what: &str, mut processor: P) {"
+        },
+        {
+          "text": "    processor.prepare(&SPEC);"
+        },
+        {
+          "text": "    let mut buffer = AudioBuffer::<f32>::new(SPEC.num_channels, SPEC.max_block_size);"
+        },
+        {
+          "text": "    assert_no_heap_use(what, || {"
+        },
+        {
+          "text": "        for frames in [256, 1, 64, 255, 256] {"
+        },
+        {
+          "text": "            buffer.set_num_frames(frames);"
+        },
+        {
+          "text": "            for channel in buffer.iter_channels_mut() {"
+        },
+        {
+          "text": "                channel.fill(0.25);"
+        },
+        {
+          "text": "            }"
+        },
+        {
+          "text": "            processor.process(&mut buffer);"
+        },
+        {
+          "text": "        }"
+        },
+        {
+          "text": "        processor.reset();"
+        },
+        {
+          "text": "        buffer.set_num_frames(256);"
+        },
+        {
+          "text": "        processor.process(&mut buffer);"
+        },
+        {
+          "text": "    });"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "test-pitch": {
+      "file": "plugins/pluck/src/lib.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          316,
+          335
+        ]
+      ],
+      "lines": [
+        {
+          "text": "#[test]"
+        },
+        {
+          "text": "fn plays_the_pitch_it_is_asked_for() {"
+        },
+        {
+          "text": "    use manguebyte::dsp::fft::{Complex, RealFft};"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let mut harness = Harness::<Pluck>::new(RATE, 512);"
+        },
+        {
+          "text": "    harness.params().reverb.set(0.0);"
+        },
+        {
+          "text": "    // No resonant peak, so the fundamental is the loudest partial."
+        },
+        {
+          "text": "    harness.params().resonance.set(0.7);"
+        },
+        {
+          "text": "    harness.note(0, 40_000, 69, 1.0); // A4, 440 Hz"
+        },
+        {
+          "text": "    let sound = harness.render(32_768);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let mut fft = RealFft::<f32>::new(32_768);"
+        },
+        {
+          "text": "    let mut spectrum = vec![Complex::ZERO; fft.spectrum_len()];"
+        },
+        {
+          "text": "    fft.forward(sound.channel(0), &mut spectrum);"
+        },
+        {
+          "text": "    let loudest = (1..spectrum.len())"
+        },
+        {
+          "text": "        .max_by(|&a, &b| spectrum[a].norm_sqr().total_cmp(&spectrum[b].norm_sqr()))"
+        },
+        {
+          "text": "        .unwrap();"
+        },
+        {
+          "text": "    let hertz = loudest as f64 * RATE / 32_768.0;"
+        },
+        {
+          "text": "    assert!((hertz - 440.0).abs() < 2.0, \"loudest partial at {hertz} Hz\");"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "readme-dependency": {
+      "file": "README.md",
+      "lang": "toml",
+      "ranges": [
+        [
+          115,
+          116
+        ]
+      ],
+      "lines": [
+        {
+          "text": "[dependencies]"
+        },
+        {
+          "text": "manguebyte = { git = \"https://github.com/alessonqueirozdev-hub/manguebyte\" }"
+        }
+      ]
+    },
+    "readme-render": {
+      "file": "README.md",
+      "lang": "rust",
+      "ranges": [
+        [
+          123,
+          140
+        ]
+      ],
+      "lines": [
+        {
+          "text": "use manguebyte::prelude::*;"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "fn main() -> Result<(), wav::WavError> {"
+        },
+        {
+          "text": "    let spec = ProcessSpec { sample_rate: 48_000.0, max_block_size: 48_000, num_channels: 2 };"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    // A tuple of processors is itself a processor."
+        },
+        {
+          "text": "    let mut voice = ("
+        },
+        {
+          "text": "        Oscillator::new(Waveform::Saw, note_to_hz(45.0)),"
+        },
+        {
+          "text": "        Filter::new(FilterShape::Lowpass, 1_200.0, 1.5),"
+        },
+        {
+          "text": "        Gain::from_db(-12.0),"
+        },
+        {
+          "text": "    );"
+        },
+        {
+          "text": "    voice.prepare(&spec);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let mut second = AudioBuffer::<f32>::new(2, 48_000);"
+        },
+        {
+          "text": "    voice.process(&mut second);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    wav::write_file(\"saw.wav\", &second, 48_000, WavFormat::Int16)"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "readme-play": {
+      "file": "README.md",
+      "lang": "rust",
+      "ranges": [
+        [
+          146,
+          163
+        ]
+      ],
+      "lines": [
+        {
+          "text": "use manguebyte::prelude::*;"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "fn main() -> Result<(), DeviceError> {"
+        },
+        {
+          "text": "    let device = OutputDevice::open_default()?;"
+        },
+        {
+          "text": "    let spec = ProcessSpec {"
+        },
+        {
+          "text": "        sample_rate: device.sample_rate(),"
+        },
+        {
+          "text": "        max_block_size: 512,"
+        },
+        {
+          "text": "        num_channels: device.num_channels(),"
+        },
+        {
+          "text": "    };"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    let mut voice = (Oscillator::new(Waveform::Sine, 440.0), Gain::<f32>::from_db(-18.0));"
+        },
+        {
+          "text": "    voice.prepare(&spec);"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "    // The closure runs on the audio thread."
+        },
+        {
+          "text": "    let _stream = device.start(512, move |buffer| voice.process(buffer))?;"
+        },
+        {
+          "text": "    std::thread::sleep(std::time::Duration::from_secs(2));"
+        },
+        {
+          "text": "    Ok(())"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    "duck-params": {
+      "file": "plugins/duck/src/lib.rs",
+      "lang": "rust",
+      "ranges": [
+        [
+          24,
+          43
+        ]
+      ],
+      "lines": [
+        {
+          "text": "/// The plugin's parameters."
+        },
+        {
+          "text": "pub struct DuckParams {"
+        },
+        {
+          "text": "    /// Sidechain level, in decibels, at which the input starts to go down."
+        },
+        {
+          "text": "    pub threshold: FloatParam,"
+        },
+        {
+          "text": "    /// The most the input is turned down, in decibels."
+        },
+        {
+          "text": "    pub depth: FloatParam,"
+        },
+        {
+          "text": "    /// How fast the input goes down, in milliseconds."
+        },
+        {
+          "text": "    pub attack: FloatParam,"
+        },
+        {
+          "text": "    /// How fast it comes back, in milliseconds."
+        },
+        {
+          "text": "    pub release: FloatParam,"
+        },
+        {
+          "text": "    /// Lets the input through untouched."
+        },
+        {
+          "text": "    pub bypass: BoolParam,"
+        },
+        {
+          "text": "}"
+        },
+        {
+          "text": "param_set!(DuckParams {"
+        },
+        {
+          "text": "    threshold,"
+        },
+        {
+          "text": "    depth,"
+        },
+        {
+          "text": "    attack,"
+        },
+        {
+          "text": "    release,"
+        },
+        {
+          "text": "    bypass"
+        },
+        {
+          "text": "});"
+        }
+      ]
+    }
+  }
+}

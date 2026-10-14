@@ -1,0 +1,112 @@
+// Reads the proofs and code samples the site needs from the framework's
+// repository, at the commit pinned in site.config.mjs, and writes them to
+// src/content/generated.json.
+//
+//   node tools/sync.mjs
+//
+// It only reads from GitHub. It fails, and writes nothing, if a proof or a
+// sample cannot be found: the site must not link to a test that is not there.
+
+import { writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import config from '../site.config.mjs';
+import { proofs, snippets } from '../src/content/sources.mjs';
+
+const { repo, source } = config;
+const files = new Map();
+
+async function read(path) {
+  if (!files.has(path)) {
+    const url = `https://raw.githubusercontent.com/${repo}/${source.commit}/${path}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`${path}: ${response.status} from ${url}`);
+    files.set(path, (await response.text()).replace(/\r\n/g, '\n').split('\n'));
+  }
+  return files.get(path);
+}
+
+const matches = (line, pattern) =>
+  pattern instanceof RegExp ? pattern.test(line) : line.includes(pattern);
+
+function indexOf(lines, pattern, start, what) {
+  for (let index = start; index < lines.length; index += 1) {
+    if (matches(lines[index], pattern)) return index;
+  }
+  throw new Error(`${what}: no line matching ${pattern}`);
+}
+
+// A whole function: the line with `fn name(`, the attributes (and, when
+// asked, the doc comment) above it, down to the closing brace at the same
+// indentation.
+function functionRange(lines, part, what) {
+  const pattern = new RegExp(`^\\s*(?:pub(?:\\([a-z]+\\))? )?fn ${part.fn}\\b`);
+  const start = indexOf(lines, pattern, 0, what);
+  const indent = lines[start].match(/^\s*/)[0];
+  if (part.indent !== undefined && indent.length !== part.indent) {
+    throw new Error(`${what}: fn ${part.fn} is indented by ${indent.length}, not ${part.indent}`);
+  }
+  let first = start;
+  const above = part.doc ? /^\s*(#\[|\/\/\/)/ : /^\s*#\[/;
+  while (first > 0 && above.test(lines[first - 1])) first -= 1;
+  const end = indexOf(lines, new RegExp(`^${indent}\\}$`), start, what);
+  return [first, end, part.keepIndent ? 0 : indent.length];
+}
+
+function extract(lines, id, definition) {
+  const out = [];
+  const ranges = [];
+  for (const part of definition.parts) {
+    if ('gap' in part) {
+      out.push({ gap: part.gap });
+      continue;
+    }
+    const what = `sample ${id}`;
+    let first;
+    let last;
+    let dedent = 0;
+    if (part.fn) {
+      [first, last, dedent] = functionRange(lines, part, what);
+    } else {
+      const from = part.after ? indexOf(lines, part.after, 0, what) : 0;
+      first = indexOf(lines, part.from, from, what);
+      last = indexOf(lines, part.to, first, what);
+    }
+    ranges.push([first + 1, last + 1]);
+    for (const line of lines.slice(first, last + 1)) out.push({ text: line.slice(dedent) });
+  }
+  return {
+    file: definition.file,
+    lang: definition.lang,
+    ranges,
+    lines: out,
+  };
+}
+
+const result = { commit: source.commit, proofs: {}, snippets: {} };
+
+for (const [id, proof] of Object.entries(proofs)) {
+  const lines = await read(proof.file);
+  let line = null;
+  let name = proof.name ?? proof.file;
+  if (proof.find) {
+    const found = lines.flatMap((text, index) => (text.includes(proof.find) ? [index] : []));
+    if (found.length !== 1) {
+      throw new Error(`proof ${id}: "${proof.find}" appears ${found.length} times in ${proof.file}`);
+    }
+    line = found[0] + 1;
+    const fn = proof.find.match(/fn (\w+)\(/);
+    if (!proof.name && fn) name = fn[1];
+  }
+  result.proofs[id] = { file: proof.file, line, name, test: /fn \w+\($/.test(proof.find ?? '') };
+}
+
+for (const [id, definition] of Object.entries(snippets)) {
+  result.snippets[id] = extract(await read(definition.file), id, definition);
+}
+
+const target = fileURLToPath(new URL('../src/content/generated.json', import.meta.url));
+await writeFile(target, `${JSON.stringify(result, null, 2)}\n`);
+console.log(
+  `Read ${files.size} files at ${source.commit.slice(0, 7)}: ` +
+    `${Object.keys(result.proofs).length} proofs, ${Object.keys(result.snippets).length} samples.`,
+);
