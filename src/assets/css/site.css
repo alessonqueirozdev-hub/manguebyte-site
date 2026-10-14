@@ -1005,6 +1005,42 @@ pre code {
   text-align: right;
 }
 
+/* A validator's result is too long to share a line with its name. */
+.terminal-validators a {
+  grid-template-columns: 5.6rem minmax(0, 1fr);
+  row-gap: 0;
+}
+
+.terminal-validators .terminal-ok {
+  grid-column: 2;
+  text-align: left;
+}
+
+@media (max-width: 39.99rem) {
+  .terminal a,
+  .terminal-validators a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0;
+  }
+
+  .terminal-kind {
+    grid-column: 1 / -1;
+  }
+
+  .terminal-validators .terminal-ok {
+    grid-column: 1 / -1;
+  }
+
+  .proof {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.1rem;
+  }
+
+  .proof-kind {
+    grid-column: 1 / -1;
+  }
+}
+
 .terminal .terminal-validators {
   border-top: 1px dashed var(--block-rule);
 }
@@ -1491,6 +1527,8 @@ tbody th {
 .claim a:not(.proof) {
   color: var(--crab-text);
   text-decoration-color: currentColor;
+  /* Test names are one long word. */
+  overflow-wrap: anywhere;
 }
 
 details.show-test {
@@ -1519,7 +1557,7 @@ details.show-test .code {
 
 @media (max-width: 47.99rem) {
   .claim {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .claim-number {
