@@ -49,6 +49,10 @@ createServer(async (request, response) => {
     response.writeHead(status, {
       'Content-Type': TYPES[path.extname(file)] ?? 'application/octet-stream',
       'Cache-Control': 'no-store',
+      // The same policy as deploy/nginx.conf, so that anything it would
+      // block shows up here first.
+      'Content-Security-Policy':
+        "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
     });
     response.end(body);
   } catch {
