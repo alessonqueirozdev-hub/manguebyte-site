@@ -227,7 +227,7 @@ export const claims = [
       mangue:
         '`export_clap!(MyPlugin)` is the whole integration. CLAP’s event model is the one this framework is built on, so nothing is approximated on the way in.',
       check: [
-        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project’s own [clap-validator](https://github.com/free-audio/clap-validator) on them. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped ones concern features not implemented yet or another platform.',
+        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project’s own [clap-validator](https://github.com/free-audio/clap-validator) on them. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped tests are for things the plugins do not have yet: preset discovery (3 tests), 64-bit audio (2) and the extensions that let a host reconfigure the audio ports (3). The instrument also skips a test that feeds it audio, because it has no audio input, and the effect skips the three note tests, because it takes no notes.',
       ],
       limit:
         'No plugin GUI extension yet, no 64-bit audio, no presets. VST 3 is the only other format so far, also without an editor: JUCE’s AU, AAX and LV2 support has no counterpart here yet.',
@@ -242,7 +242,7 @@ export const claims = [
       mangue:
         '`export_clap!(MyPlugin)` é a integração inteira. O modelo de eventos do CLAP é o mesmo sobre o qual este framework foi construído, então nada é aproximado na entrada.',
       check: [
-        '[O job de CI](proof:ci-clap) compila os dois plugins de exemplo e roda neles o [clap-validator](https://github.com/free-audio/clap-validator), do próprio projeto CLAP. No commit em que este site foi escrito, o validador rodou 44 testes em cada um: o instrumento passou em 35 e pulou 9, o efeito passou em 33 e pulou 11, e nenhum dos dois falhou em algum. Os pulados tratam de recursos ainda não implementados ou de outra plataforma.',
+        '[O job de CI](proof:ci-clap) compila os dois plugins de exemplo e roda neles o [clap-validator](https://github.com/free-audio/clap-validator), do próprio projeto CLAP. No commit em que este site foi escrito, o validador rodou 44 testes em cada um: o instrumento passou em 35 e pulou 9, o efeito passou em 33 e pulou 11, e nenhum dos dois falhou em algum. Os testes pulados são de coisas que os plugins ainda não têm: descoberta de presets (3 testes), áudio em 64 bits (2) e as extensões que deixam o host reconfigurar as portas de áudio (3). O instrumento também pula um teste que lhe envia áudio, porque não tem entrada de áudio, e o efeito pula os três testes de notas, porque não recebe notas.',
       ],
       limit:
         'Ainda sem a extensão de interface gráfica, sem áudio em 64 bits e sem presets. O VST 3 é o único outro formato por enquanto, também sem editor: o suporte do JUCE a AU, AAX e LV2 ainda não tem equivalente aqui.',
