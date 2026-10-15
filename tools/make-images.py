@@ -1,9 +1,10 @@
 """Makes the site's images from the framework's logo.
 
-    python tools/make-images.py path/to/logo.png
+    python tools/make-images.py path/to/logo.png [path/to/aratu-mascot.png]
 
 The logo is `assets/logo.png` in the framework's repository: the crab on a
-black background, 1040 pixels square. The results are committed to
+black background, 1040 pixels square. The Aratu mascot, also on black, is
+`docs/images/aratu-mascot.png` in the Aratu repository. The results are committed to
 `src/assets/img`, so building the site needs neither Python nor Pillow; run
 this again only when the logo changes.
 
@@ -57,6 +58,14 @@ def main() -> None:
     draw.text((70, 340), "An audio framework for Rust.", font=text, fill=PAPER)
     draw.text((70, 392), "Tested, not promised.", font=text, fill=CRAB)
     card.save(OUT / "card.jpg", "JPEG", quality=86, optimize=True, progressive=True)
+
+    # Aratu's mascot, for its page and the ecosystem section.
+    if len(sys.argv) > 2:
+        mascot = Image.open(sys.argv[2]).convert("RGB")
+        for size in (720, 360):
+            mascot.resize((size, size), Image.LANCZOS).save(
+                OUT / f"aratu-{size}.webp", "WEBP", quality=82, method=6
+            )
 
     for path in sorted(OUT.iterdir()):
         print(f"{path.name:24} {path.stat().st_size / 1024:7.1f} KB")

@@ -9,13 +9,18 @@ import { highlight } from './highlight.mjs';
 export const shortCommit = config.source.commit.slice(0, 7);
 export const repoUrl = `https://github.com/${config.repo}`;
 
-// A file or a folder of the repository, as it was at the pinned commit.
-export function repoFile(path, line) {
+// A file or a folder of the framework's repository, or of another one of
+// the ecosystem (`which`, a key of `related`), as it was at the pinned
+// commit.
+export function repoFile(path, line, which) {
+  const { repo, commit } = which ? config.related[which] : { repo: config.repo, commit: config.source.commit };
   const folder = path.endsWith('/');
   const clean = folder ? path.slice(0, -1) : path;
   const anchor = line ? `#L${line}` : '';
-  return `${repoUrl}/${folder ? 'tree' : 'blob'}/${config.source.commit}/${clean}${anchor}`;
+  return `https://github.com/${repo}/${folder ? 'tree' : 'blob'}/${commit}/${clean}${anchor}`;
 }
+
+export const aratuUrl = `https://github.com/${config.related.aratu.repo}`;
 
 const ICONS = {
   done: '<path d="M3.5 8.5l3 3 6-7"/>',
@@ -49,6 +54,8 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
     juce: juceVersion,
     commitUrl: `${repoUrl}/commit/${config.source.commit}`,
     ciUrl: `${repoUrl}/actions/runs/${config.source.ciRun}`,
+    ciJobs: String(config.source.ciJobs),
+    aratuUrl,
     issuesUrl: `${repoUrl}/issues`,
     email: config.contact,
     date: DATES[language.code](config.source.date),
@@ -59,12 +66,13 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
   function proof(id) {
     const found = generated.proofs[id];
     if (!found) throw new Error(`${page.id}: no proof called "${id}" in sources.mjs`);
-    return { ...found, href: repoFile(found.file, found.line) };
+    return { ...found, href: repoFile(found.file, found.line, found.repo) };
   }
 
   function resolve(target) {
     if (target.startsWith('proof:')) return { href: proof(target.slice(6)).href };
     if (target.startsWith('repo:')) return { href: repoFile(target.slice(5)) };
+    if (target.startsWith('aratu:')) return { href: repoFile(target.slice(6), null, 'aratu') };
     if (target.startsWith('/')) {
       links.push({ from: `${prefix}${page.path}`, to: url(target) });
       return { href: url(target) };
@@ -98,7 +106,7 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
   // A block of code with its language, a way to copy it, and, for a sample
   // taken from the repository, where exactly it came from.
   function codeBlock(source, lang, caption = '') {
-    const label = { rust: 'Rust', toml: 'TOML', bash: 'Shell' }[lang] ?? lang;
+    const label = { rust: 'Rust', toml: 'TOML', bash: 'Shell', aratu: 'Aratu' }[lang] ?? lang;
     return html`<figure class="code">
       <div class="code-frame">
         <div class="code-bar"><span class="code-lang">${label}</span><button class="copy" type="button" data-copy data-done="${escape(strings.code.copied)}">${escape(strings.code.copy)}</button></div>
@@ -114,7 +122,13 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
     const gaps = found.lines.some((line) => 'gap' in line && line.gap.trim() !== '');
     const partial = gaps || found.ranges.length > 1;
     const first = found.ranges[0];
-    const where = { file: found.file, url: `${repoFile(found.file)}#L${first[0]}-L${found.ranges.at(-1)[1]}` };
+    // A sample from another repository of the ecosystem names that
+    // repository and its own pinned commit.
+    const where = {
+      file: found.repo ? `${found.repo}/${found.file}` : found.file,
+      commit: found.repo ? config.related[found.repo].commit.slice(0, 7) : shortCommit,
+      url: `${repoFile(found.file, null, found.repo)}#L${first[0]}-L${found.ranges.at(-1)[1]}`,
+    };
     const caption = text(partial ? strings.code.excerpt : strings.code.whole, where) + (gaps ? ` ${text(strings.code.gaps)}` : '');
     return codeBlock(found.lines, found.lang, caption);
   }

@@ -56,8 +56,10 @@ repository by a tool, not typed in, and any line the site adds to a sample
 
 When the framework moves on:
 
-1. Put the new commit, its date and the id of its GitHub Actions run in
-   `site.config.mjs`. Check that the run passed.
+1. Put the new commit, its date, the id of its GitHub Actions run and the
+   number of jobs in that run in `site.config.mjs`. Check that every job
+   passed. Other repositories the site quotes (today, Aratu's) are pinned
+   under `related` in the same file.
 2. Run `node tools/sync.mjs`. It reads the proofs and samples listed in
    `src/content/sources.mjs` from GitHub at that commit, and fails if a test
    was renamed or a sample no longer matches.
@@ -69,10 +71,10 @@ When the framework moves on:
 ## Images
 
 The images in `src/assets/img` are made from the framework's
-`assets/logo.png`:
+`assets/logo.png` and Aratu's `docs/images/aratu-mascot.png`:
 
 ```bash
-python tools/make-images.py path/to/logo.png
+python tools/make-images.py path/to/logo.png path/to/aratu-mascot.png
 ```
 
 This needs Pillow. The results are committed, so building the site does
@@ -85,5 +87,6 @@ See [deploy/README.md](deploy/README.md).
 ## Licences
 
 The fonts are under the SIL Open Font License; the licence texts are next
-to them in `src/assets/fonts`. The logo belongs to the Manguebyte project.
+to them in `src/assets/fonts`. The logo belongs to the Manguebyte project,
+and Aratu's mascot to the Aratu project.
 The licence of the site's own code and text has not been chosen yet.

@@ -38,6 +38,7 @@ export function html(strings, ...values) {
 //   /features/        a page of the site, in the reader's language
 //   proof:block-size  a proof from sources.mjs, at its line in the repository
 //   repo:docs/X.md    a file in the repository, at the pinned commit
+//   aratu:docs/X.md   a file in Aratu's repository, at its pinned commit
 //   https://...       anywhere else
 export function makeInline(resolve) {
   return function inline(text) {

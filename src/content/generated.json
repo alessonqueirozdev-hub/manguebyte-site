@@ -1,177 +1,391 @@
 {
-  "commit": "19e6906d34bea1e53632a42b31b8fe8b649cd9eb",
+  "commit": "7e21fe52e9696c937da0411209575e3dcd1a447c",
+  "related": {
+    "aratu": "652569948ea92d39f0afa76fb33381f8fb66dbfb"
+  },
   "proofs": {
     "automation-harness": {
+      "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 397,
+      "line": 412,
       "name": "automation_lands_on_its_exact_frame_and_updates_the_parameter",
       "test": true
     },
     "automation-clap": {
+      "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 859,
+      "line": 863,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
     "automation-vst3": {
+      "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
       "line": 887,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
     "automation-vst3-controller": {
+      "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
       "line": 906,
       "name": "what_the_controller_is_told_does_not_disturb_running_automation",
       "test": true
     },
     "block-size": {
+      "repo": null,
       "file": "crates/manguebyte/tests/offline.rs",
       "line": 37,
       "name": "the_song_is_the_same_whatever_the_block_size",
       "test": true
     },
     "block-size-pluck": {
+      "repo": null,
       "file": "plugins/pluck/src/lib.rs",
       "line": 338,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
     "block-size-duck": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "line": 394,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
     "outside-changes": {
+      "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 441,
+      "line": 456,
       "name": "changes_made_outside_the_host_reach_the_plugin_as_events",
       "test": true
     },
     "no-heap": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 115,
+      "line": 124,
       "name": "processors_do_not_use_the_heap",
       "test": true
     },
     "no-heap-guard": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 106,
+      "line": 115,
       "name": "the_guard_itself_catches_an_allocation",
       "test": true
     },
     "no-heap-synth": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 258,
+      "line": 267,
       "name": "a_synth_handles_a_flood_of_events_without_using_the_heap",
       "test": true
     },
     "no-heap-clap": {
+      "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 866,
+      "line": 870,
       "name": "heap_calls == 0 through the CLAP interface",
       "test": false
     },
     "ci-miri": {
+      "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 53,
+      "line": 65,
       "name": "CI job: Miri",
       "test": false
     },
     "per-note": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
       "line": 754,
       "name": "expression_and_modulation_reach_one_note_and_parameters_reach_all",
       "test": true
     },
     "per-note-overlap": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
       "line": 705,
       "name": "notes_with_identifiers_overlap_on_one_key_and_end_separately",
       "test": true
     },
     "per-note-clap": {
+      "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 1009,
+      "line": 1066,
       "name": "an_instrument_takes_notes_expression_modulation_and_a_sidechain",
       "test": true
     },
     "ci-clap": {
+      "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 77,
+      "line": 116,
       "name": "CI job: CLAP validation",
       "test": false
     },
     "ci-vst3": {
+      "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 111,
+      "line": 150,
       "name": "CI job: VST 3 validation",
       "test": false
     },
     "export-duck": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "line": 272,
       "name": "plugins/duck/src/lib.rs",
       "test": false
     },
     "harness-pitch": {
+      "repo": null,
       "file": "plugins/pluck/src/lib.rs",
       "line": 317,
       "name": "plays_the_pitch_it_is_asked_for",
       "test": true
     },
     "harness-duck": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "line": 346,
       "name": "automation_lands_on_its_frame_with_audio_running_through",
       "test": true
     },
     "state-versions": {
+      "repo": null,
       "file": "crates/manguebyte-params/src/set.rs",
       "line": 506,
       "name": "state_from_another_version_loads_as_far_as_it_can",
       "test": true
     },
     "params-threads": {
+      "repo": null,
       "file": "crates/manguebyte-params/src/param.rs",
-      "line": 901,
+      "line": 1077,
       "name": "params_are_shareable_across_threads",
       "test": true
     },
     "subnormal-clap": {
+      "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 966,
+      "line": 990,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
     "subnormal-vst3": {
+      "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 1070,
+      "line": 1164,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
     "subnormal-guard": {
+      "repo": null,
       "file": "crates/manguebyte-core/src/denormal.rs",
       "line": null,
       "name": "crates/manguebyte-core/src/denormal.rs",
       "test": false
     },
     "licence-mit": {
+      "repo": null,
       "file": "LICENSE-MIT",
       "line": null,
       "name": "LICENSE-MIT",
       "test": false
     },
     "licence-apache": {
+      "repo": null,
       "file": "LICENSE-APACHE",
       "line": null,
       "name": "LICENSE-APACHE",
+      "test": false
+    },
+    "hosting-clap": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/clap_pluck.rs",
+      "line": 317,
+      "name": "the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone",
+      "test": true
+    },
+    "hosting-vst3": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/vst3_pluck.rs",
+      "line": 396,
+      "name": "the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone",
+      "test": true
+    },
+    "hosting-automation": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/vst3_pluck.rs",
+      "line": 495,
+      "name": "automation_lands_on_its_frame_through_the_host",
+      "test": true
+    },
+    "hosting-heap": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/clap_pluck.rs",
+      "line": 452,
+      "name": "processing_never_uses_the_heap",
+      "test": true
+    },
+    "ci-miri-host": {
+      "repo": null,
+      "file": ".github/workflows/ci.yml",
+      "line": 98,
+      "name": "CI job: Miri (plugin host)",
+      "test": false
+    },
+    "ebu-3341": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/ebu_tech_3341.rs",
+      "line": 56,
+      "name": "cases_1_and_2_a_steady_tone_reads_its_level_on_all_three_scales",
+      "test": true
+    },
+    "ebu-3341-true-peak": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/ebu_tech_3341.rs",
+      "line": 341,
+      "name": "cases_15_to_19_a_sine_is_read_at_its_crest_wherever_the_samples_fall",
+      "test": true
+    },
+    "ebu-3342": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/ebu_tech_3342.rs",
+      "line": 53,
+      "name": "case_1_two_tones_ten_decibels_apart",
+      "test": true
+    },
+    "osc-time-tag": {
+      "repo": null,
+      "file": "crates/manguebyte-osc/tests/bridge.rs",
+      "line": 97,
+      "name": "a_time_tag_lands_on_its_exact_frame",
+      "test": true
+    },
+    "osc-every-frame": {
+      "repo": null,
+      "file": "crates/manguebyte-osc/tests/bridge.rs",
+      "line": 125,
+      "name": "every_frame_of_a_block_can_be_hit",
+      "test": true
+    },
+    "osc-block-size": {
+      "repo": null,
+      "file": "crates/manguebyte-osc/tests/bridge.rs",
+      "line": 163,
+      "name": "where_an_event_lands_does_not_depend_on_the_block_size",
+      "test": true
+    },
+    "osc-codec": {
+      "repo": null,
+      "file": "crates/manguebyte-osc/tests/codec.rs",
+      "line": 88,
+      "name": "the_examples_in_the_specification_encode_byte_for_byte",
+      "test": true
+    },
+    "pitch": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/pitch.rs",
+      "line": 110,
+      "name": "every_test_tone_is_found_within_a_cent",
+      "test": true
+    },
+    "spectrum-band": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/spectrum.rs",
+      "line": 326,
+      "name": "a_full_scale_sine_reads_0_db_in_its_band",
+      "test": true
+    },
+    "spectrum-noise": {
+      "repo": null,
+      "file": "crates/manguebyte-analysis/tests/spectrum.rs",
+      "line": 440,
+      "name": "bands_of_white_and_pink_noise_read_the_power_that_lies_in_them",
+      "test": true
+    },
+    "keyboard-heap": {
+      "repo": null,
+      "file": "crates/manguebyte-midi/tests/realtime.rs",
+      "line": 326,
+      "name": "the_keyboard_state_does_not_use_the_heap",
+      "test": true
+    },
+    "keyboard-sounding": {
+      "repo": null,
+      "file": "crates/manguebyte-midi/src/keyboard.rs",
+      "line": 864,
+      "name": "a_key_that_goes_on_sounding_is_never_read_as_silent",
+      "test": true
+    },
+    "keyboard-threads": {
+      "repo": null,
+      "file": "crates/manguebyte-midi/src/keyboard.rs",
+      "line": 766,
+      "name": "an_interface_can_read_while_another_thread_writes",
+      "test": true
+    },
+    "ci-cli": {
+      "repo": null,
+      "file": ".github/workflows/ci.yml",
+      "line": 212,
+      "name": "CI job: command-line tool end to end",
+      "test": false
+    },
+    "reaper-render": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 58,
+      "name": "TECH_DEBT item 42",
+      "test": false
+    },
+    "reaper-findings": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 57,
+      "name": "TECH_DEBT items 41 to 43",
+      "test": false
+    },
+    "adr-0007": {
+      "repo": null,
+      "file": "docs/adr/0007-user-interface-layer.md",
+      "line": null,
+      "name": "ADR 0007",
+      "test": false
+    },
+    "host-tests": {
+      "repo": null,
+      "file": "docs/HOST_TESTS.md",
+      "line": 8,
+      "name": "HOST_TESTS.md: REAPER 7.82",
+      "test": false
+    },
+    "aratu-readme": {
+      "repo": "aratu",
+      "file": "README.md",
+      "line": null,
+      "name": "aratu/README.md",
+      "test": false
+    },
+    "aratu-manual": {
+      "repo": "aratu",
+      "file": "docs/MANUAL.md",
+      "line": null,
+      "name": "aratu/docs/MANUAL.md",
+      "test": false
+    },
+    "aratu-vision": {
+      "repo": "aratu",
+      "file": "docs/VISION.md",
+      "line": null,
+      "name": "aratu/docs/VISION.md",
       "test": false
     }
   },
   "snippets": {
     "duck-plugin": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "lang": "rust",
       "ranges": [
@@ -276,6 +490,7 @@
       ]
     },
     "duck-test": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "lang": "rust",
       "ranges": [
@@ -336,12 +551,13 @@
       ]
     },
     "test-automation": {
+      "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
       "lang": "rust",
       "ranges": [
         [
-          396,
-          414
+          411,
+          429
         ]
       ],
       "lines": [
@@ -405,6 +621,7 @@
       ]
     },
     "test-block-size": {
+      "repo": null,
       "file": "crates/manguebyte/tests/offline.rs",
       "lang": "rust",
       "ranges": [
@@ -483,16 +700,17 @@
       ]
     },
     "test-no-heap": {
+      "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
       "lang": "rust",
       "ranges": [
         [
-          67,
-          78
+          76,
+          87
         ],
         [
-          86,
-          103
+          95,
+          112
         ]
       ],
       "lines": [
@@ -592,6 +810,7 @@
       ]
     },
     "test-pitch": {
+      "repo": null,
       "file": "plugins/pluck/src/lib.rs",
       "lang": "rust",
       "ranges": [
@@ -664,12 +883,13 @@
       ]
     },
     "readme-dependency": {
+      "repo": null,
       "file": "README.md",
       "lang": "toml",
       "ranges": [
         [
-          115,
-          116
+          126,
+          127
         ]
       ],
       "lines": [
@@ -682,12 +902,13 @@
       ]
     },
     "readme-render": {
+      "repo": null,
       "file": "README.md",
       "lang": "rust",
       "ranges": [
         [
-          123,
-          140
+          134,
+          151
         ]
       ],
       "lines": [
@@ -748,12 +969,13 @@
       ]
     },
     "readme-play": {
+      "repo": null,
       "file": "README.md",
       "lang": "rust",
       "ranges": [
         [
-          146,
-          163
+          157,
+          174
         ]
       ],
       "lines": [
@@ -813,7 +1035,36 @@
         }
       ]
     },
+    "aratu-taste": {
+      "repo": "aratu",
+      "file": "README.md",
+      "lang": "aratu",
+      "ranges": [
+        [
+          31,
+          35
+        ]
+      ],
+      "lines": [
+        {
+          "text": "measure 4/4, tempo 96"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "piano: | C4 q   E4 q   G4 h   | A3 q.  B3 e  C4 h |"
+        },
+        {
+          "text": "bass:  | C2 w                 | A1 w              |"
+        },
+        {
+          "text": "drums: every bar  \"kick . snare . kick kick snare .\""
+        }
+      ]
+    },
     "duck-params": {
+      "repo": null,
       "file": "plugins/duck/src/lib.rs",
       "lang": "rust",
       "ranges": [

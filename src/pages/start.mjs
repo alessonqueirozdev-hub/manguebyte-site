@@ -13,8 +13,7 @@ cargo run --example render_wav -- riff.wav
 
 # Play the same riff on your speakers. The optional argument is a level in dB.
 cargo run --example play_riff -- -12`,
-  bundle: `./scripts/bundle-clap.sh mangue-pluck "Mangue Pluck"
-./scripts/bundle-vst3.sh mangue-pluck "Mangue Pluck"`,
+  bundle: 'cargo run -p cargo-mangue -- bundle -p mangue-pluck --release',
   standalone: 'cargo run -p mangue-pluck --features standalone --example play -- -12 hold',
 };
 

@@ -27,6 +27,7 @@ import * as start from './src/pages/start.mjs';
 import * as roadmap from './src/pages/roadmap.mjs';
 import * as name from './src/pages/name.mjs';
 import * as contribute from './src/pages/contribute.mjs';
+import * as aratu from './src/pages/aratu.mjs';
 import * as notFound from './src/pages/not-found.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -41,6 +42,7 @@ const pages = [
   { id: 'roadmap', path: '/roadmap/', module: roadmap, nav: true },
   { id: 'name', path: '/name/', module: name, nav: true },
   { id: 'contribute', path: '/contribute/', module: contribute, nav: true },
+  { id: 'aratu', path: '/aratu/', module: aratu, nav: true },
   { id: 'notFound', path: '/404.html', module: notFound, noindex: true },
 ];
 
@@ -125,6 +127,11 @@ function assetUrl(key) {
 const generated = JSON.parse(await readFile(path.join(root, 'src/content/generated.json'), 'utf8'));
 if (generated.commit !== config.source.commit) {
   problems.push('src/content/generated.json was made for another commit: run `node tools/sync.mjs`');
+}
+for (const [name, { commit }] of Object.entries(config.related ?? {})) {
+  if (generated.related?.[name] !== commit) {
+    problems.push(`src/content/generated.json was made for another commit of ${name}: run \`node tools/sync.mjs\``);
+  }
 }
 
 const written = new Set();

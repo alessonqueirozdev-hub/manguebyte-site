@@ -1,4 +1,5 @@
 import { areas } from '../content/features.mjs';
+import { projectCards } from '../lib/ecosystem.mjs';
 import { juceAhead } from '../content/claims.mjs';
 import { mangrove, signal } from '../lib/art.mjs';
 import { escape, html } from '../lib/html.mjs';
@@ -13,6 +14,8 @@ const HERO_PROOFS = [
   'per-note',
   'state-versions',
   'subnormal-clap',
+  'hosting-clap',
+  'ebu-3341',
 ];
 
 export function render(ctx) {
@@ -147,10 +150,19 @@ export function render(ctx) {
     </div>
   </section>`;
 
+  const ecosystem = html`<section class="section section-tint" aria-labelledby="ecosystem">
+    <div class="wrap">
+      ${sectionHead({ number: '05', heading: home.ecosystem.heading, id: 'ecosystem' })}
+      <p class="section-intro">${text(home.ecosystem.intro)}</p>
+      ${projectCards(ctx, 'manguebyte')}
+      <p class="more"><a class="button" href="${url('/aratu/')}">${escape(home.ecosystem.more)}${icon('arrow')}</a></p>
+    </div>
+  </section>`;
+
   const name = html`<section class="section" aria-labelledby="name">
     <div class="wrap split split-name">
       <div>
-        ${sectionHead({ number: '05', heading: home.name.heading, id: 'name' })}
+        ${sectionHead({ number: '06', heading: home.name.heading, id: 'name' })}
         ${home.name.body.map((paragraph) => `<p>${inline(paragraph)}</p>`)}
         <p class="more"><a class="button" href="${url('/name/')}">${escape(home.name.more)}${icon('arrow')}</a></p>
       </div>
@@ -170,6 +182,6 @@ export function render(ctx) {
     title: home.title,
     description: t.site.description,
     wide: true,
-    body: hero + proofs + proven + code + today + missing + name,
+    body: hero + proofs + proven + code + today + missing + ecosystem + name,
   };
 }

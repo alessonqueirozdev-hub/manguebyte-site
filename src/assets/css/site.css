@@ -415,7 +415,9 @@ svg {
   display: none;
 }
 
-@media (max-width: 63.99rem) {
+/* Below this width the links do not fit beside the name and the tools, so
+   they move to a row of their own. */
+@media (max-width: 74.99rem) {
   .masthead {
     position: static;
   }
@@ -2017,6 +2019,130 @@ details.show-test .code {
 
 .prose .button-primary {
   color: #170d06;
+}
+
+/* --- The ecosystem -------------------------------------------------------- */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 2rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  margin: 0;
+  padding: 1.4rem;
+  border: 2px solid var(--rule);
+  background: var(--paper-3);
+  box-shadow: var(--lift) var(--lift) 0 var(--shadow);
+}
+
+.project.is-current {
+  box-shadow: var(--lift) var(--lift) 0 var(--crab);
+}
+
+.project-mark {
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  aspect-ratio: 1;
+  border: 2px solid var(--rule);
+  border-radius: 50%;
+  background: #010206;
+  overflow: hidden;
+}
+
+.project-mark img {
+  width: 92%;
+  height: auto;
+}
+
+.project-mark .dish {
+  width: 78%;
+  color: #f3ead7;
+}
+
+.project-status {
+  margin: 0 0 0.3rem;
+  font: 650 0.72rem/1.4 var(--mono);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project-parabolic .project-status {
+  color: var(--ink-2);
+}
+
+.project h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.project h3 a {
+  text-decoration-color: transparent;
+}
+
+.project h3 a:hover {
+  text-decoration-color: var(--crab);
+}
+
+.project-text p:last-child {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.aratu-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 2rem clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.aratu-head h1 {
+  font-size: clamp(3.5rem, 11vw, 8rem);
+  line-height: 0.9;
+}
+
+.aratu-mascot {
+  position: relative;
+  inset: auto;
+  width: min(100%, 22rem);
+  aspect-ratio: 1;
+  justify-self: center;
+}
+
+.aratu-mascot img {
+  width: 90%;
+  height: auto;
+}
+
+.small-heading {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+.small-heading ~ .small-heading {
+  margin-top: 2.4rem;
+}
+
+@media (max-width: 55.99rem) {
+  .aratu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aratu-mascot {
+    order: -1;
+    justify-self: start;
+    width: min(64vw, 16rem);
+  }
 }
 
 /* --- Not found ------------------------------------------------------------ */

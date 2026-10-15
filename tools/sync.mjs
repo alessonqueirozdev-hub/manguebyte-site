@@ -12,17 +12,27 @@ import { fileURLToPath } from 'node:url';
 import config from '../site.config.mjs';
 import { proofs, snippets } from '../src/content/sources.mjs';
 
-const { repo, source } = config;
+const { source } = config;
 const files = new Map();
 
-async function read(path) {
-  if (!files.has(path)) {
-    const url = `https://raw.githubusercontent.com/${repo}/${source.commit}/${path}`;
+// The framework, or another repository of the ecosystem named in `related`.
+function origin(which) {
+  if (!which) return { repo: config.repo, commit: source.commit };
+  const found = config.related?.[which];
+  if (!found) throw new Error(`no repository called "${which}" in site.config.mjs`);
+  return found;
+}
+
+async function read(path, which) {
+  const { repo, commit } = origin(which);
+  const key = `${repo}@${commit}:${path}`;
+  if (!files.has(key)) {
+    const url = `https://raw.githubusercontent.com/${repo}/${commit}/${path}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error(`${path}: ${response.status} from ${url}`);
-    files.set(path, (await response.text()).replace(/\r\n/g, '\n').split('\n'));
+    files.set(key, (await response.text()).replace(/\r\n/g, '\n').split('\n'));
   }
-  return files.get(path);
+  return files.get(key);
 }
 
 const matches = (line, pattern) =>
@@ -75,6 +85,7 @@ function extract(lines, id, definition) {
     for (const line of lines.slice(first, last + 1)) out.push({ text: line.slice(dedent) });
   }
   return {
+    repo: definition.repo ?? null,
     file: definition.file,
     lang: definition.lang,
     ranges,
@@ -82,10 +93,13 @@ function extract(lines, id, definition) {
   };
 }
 
-const result = { commit: source.commit, proofs: {}, snippets: {} };
+const related = Object.fromEntries(
+  Object.entries(config.related ?? {}).map(([name, { commit }]) => [name, commit]),
+);
+const result = { commit: source.commit, related, proofs: {}, snippets: {} };
 
 for (const [id, proof] of Object.entries(proofs)) {
-  const lines = await read(proof.file);
+  const lines = await read(proof.file, proof.repo);
   let line = null;
   let name = proof.name ?? proof.file;
   if (proof.find) {
@@ -97,11 +111,17 @@ for (const [id, proof] of Object.entries(proofs)) {
     const fn = proof.find.match(/fn (\w+)\(/);
     if (!proof.name && fn) name = fn[1];
   }
-  result.proofs[id] = { file: proof.file, line, name, test: /fn \w+\($/.test(proof.find ?? '') };
+  result.proofs[id] = {
+    repo: proof.repo ?? null,
+    file: proof.file,
+    line,
+    name,
+    test: /fn \w+\($/.test(proof.find ?? ''),
+  };
 }
 
 for (const [id, definition] of Object.entries(snippets)) {
-  result.snippets[id] = extract(await read(definition.file), id, definition);
+  result.snippets[id] = extract(await read(definition.file, definition.repo), id, definition);
 }
 
 const target = fileURLToPath(new URL('../src/content/generated.json', import.meta.url));

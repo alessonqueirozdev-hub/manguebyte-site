@@ -3,11 +3,6 @@
 // This follows ROADMAP.md in the framework's repository, phase by phase and
 // item by item. `s` is the status: 'done', 'wip' (in progress) or 'todo'
 // (not started). When ROADMAP.md changes, change this file to match.
-//
-// One item differs from ROADMAP.md at the pinned commit, on purpose: the
-// roadmap still lists "denormal protection" as not started, while the same
-// commit adds it, tests it and describes it in the README and the changelog.
-// The item is split here so that the site says what the repository proves.
 
 export const phases = [
   {
@@ -53,7 +48,9 @@ export const phases = [
           { s: 'done', en: 'System common, system real-time and SysEx messages', pt: 'Mensagens de sistema comuns, de tempo real e SysEx' },
           { s: 'done', en: 'Running status and a byte-stream parser', pt: 'Running status e um parser de fluxo de bytes' },
           { s: 'done', en: 'Standard MIDI File reading and writing, with tempo-aware timing', pt: 'Leitura e escrita de arquivos MIDI padrão, com tempo que respeita o andamento' },
-          { s: 'todo', en: 'MPE and MIDI 2.0 / UMP', pt: 'MPE e MIDI 2.0 / UMP' },
+          { s: 'done', en: 'MIDI 2.0: Universal MIDI Packets with every message type, and MIDI 1.0 to 2.0 translation as the specification prescribes', pt: 'MIDI 2.0: Universal MIDI Packets com todos os tipos de mensagem, e tradução do MIDI 1.0 para o 2.0 como a especificação manda' },
+          { s: 'done', en: 'RPN and NRPN, MPE zones, channel allocation and per-note tracking, and a keyboard state an interface can read while the audio thread writes', pt: 'RPN e NRPN, zonas MPE, alocação de canais e acompanhamento por nota, e um estado de teclado que a interface lê enquanto a thread de áudio escreve' },
+          { s: 'todo', en: 'MIDI 2.0 and MPE delivered to processors as per-note events, and through the device and plugin layers', pt: 'MIDI 2.0 e MPE entregues aos processadores como eventos por nota, e pelas camadas de dispositivos e de plugins' },
         ],
       },
       {
@@ -61,19 +58,27 @@ export const phases = [
         pt: 'DSP',
         items: [
           { s: 'done', en: 'FFT of any length, real FFT and window functions', pt: 'FFT de qualquer tamanho, FFT real e funções de janela' },
-          { s: 'todo', en: 'Short-time Fourier transform with overlap-add; spectrum analysis helpers', pt: 'Transformada de Fourier de tempo curto com overlap-add; auxiliares de análise de espectro' },
+          { s: 'done', en: 'Spectrum analysis: short-time Fourier transform with any size, hop and window, ballistics, peak hold, fractional-octave bands, A and C weighting', pt: 'Análise de espectro: transformada de Fourier de tempo curto com qualquer tamanho, salto e janela, balística, retenção de pico, bandas em frações de oitava, ponderação A e C' },
+          { s: 'todo', en: 'Overlap-add resynthesis for spectral processing', pt: 'Ressíntese por overlap-add para processamento espectral' },
           { s: 'done', en: 'Resampling at any ratio, and oversampling by 2, 4, 8 or 16', pt: 'Reamostragem em qualquer razão, e oversampling de 2, 4, 8 ou 16 vezes' },
           { s: 'done', en: 'State-variable filter, stable under audio-rate modulation', pt: 'Filtro de variável de estado, estável com modulação em taxa de áudio' },
           { s: 'done', en: 'FIR low-pass design (Kaiser-windowed sinc)', pt: 'Projeto de passa-baixas FIR (sinc com janela de Kaiser)' },
-          { s: 'todo', en: 'Ladder filter; FIR filter processor; higher-order IIR design', pt: 'Filtro ladder; processador de filtro FIR; projeto de IIR de ordem mais alta' },
+          { s: 'done', en: 'One-pole and ladder filters, stable under audio-rate modulation', pt: 'Filtros de um polo e ladder, estáveis com modulação em taxa de áudio' },
+          { s: 'done', en: 'High-order IIR design: Butterworth, Chebyshev I and II, elliptic, order 1 to 16, gliding between designs without blowing up', pt: 'Projeto de IIR de ordem alta: Butterworth, Chebyshev I e II, elíptico, ordem 1 a 16, deslizando entre projetos sem explodir' },
+          { s: 'done', en: 'Linkwitz-Riley crossovers, 2 to 5 bands that sum flat', pt: 'Crossovers Linkwitz-Riley, de 2 a 5 bandas que somam plano' },
+          { s: 'todo', en: 'FIR filter processor', pt: 'Processador de filtro FIR' },
           { s: 'done', en: 'Dynamics: compressor with soft knee, noise gate', pt: 'Dinâmica: compressor com soft knee, noise gate' },
           { s: 'done', en: 'Look-ahead limiter whose ceiling holds for every sample', pt: 'Limitador look-ahead cujo teto vale para todas as amostras' },
           { s: 'todo', en: 'Expander, sidechain input', pt: 'Expansor, entrada de sidechain' },
           { s: 'done', en: 'Reverb (feedback delay network)', pt: 'Reverb (rede de atrasos realimentados)' },
-          { s: 'todo', en: 'Chorus, phaser, convolution', pt: 'Chorus, phaser, convolução' },
+          { s: 'done', en: 'Chorus and flanger, phaser, dry/wet mixing with latency compensation, panner, envelope follower, interpolated delay lines', pt: 'Chorus e flanger, phaser, mistura dry/wet com compensação de latência, panner, seguidor de envelope, linhas de atraso interpoladas' },
+          { s: 'todo', en: 'Convolution', pt: 'Convolução' },
           { s: 'done', en: 'Noise (white, pink, brown), LFO with tempo sync, waveshaper, DC blocker', pt: 'Ruído (branco, rosa, marrom), LFO sincronizado ao andamento, waveshaper, bloqueador de DC' },
           { s: 'todo', en: 'Wavetable oscillator', pt: 'Oscilador de wavetable' },
+          { s: 'todo', en: 'Sampler: an SFZ player (multisamples, velocity layers, round robin, loop points, release samples), streamed from disk, open so that any program can play the instruments Parabolic exports', pt: 'Sampler: um player de SFZ (multisamples, camadas de velocidade, round robin, pontos de loop, samples de release), lido do disco em fluxo, aberto para que qualquer programa toque os instrumentos que o Parabolic exportar' },
           { s: 'done', en: 'Polyphonic voice allocation with per-note expression and modulation', pt: 'Alocação de vozes polifônica com expressão e modulação por nota' },
+          { s: 'done', en: 'Metering: loudness to ITU-R BS.1770 and EBU R 128 (checked against the EBU’s test signals), true peak, peak, RMS, VU, PPM, stereo correlation', pt: 'Medição: loudness segundo a ITU-R BS.1770 e a EBU R 128 (conferido com os sinais de teste da EBU), true peak, pico, RMS, VU, PPM, correlação estéreo' },
+          { s: 'done', en: 'Pitch detection (YIN and the McLeod method) with note naming', pt: 'Detecção de altura (YIN e o método de McLeod) com o nome da nota' },
           { s: 'done', en: 'Sample-accurate events, transport and sidechain in the process call', pt: 'Eventos com precisão de amostra, transporte e sidechain na chamada de processamento' },
           { s: 'todo', en: 'SIMD-accelerated buffer operations', pt: 'Operações de buffer aceleradas por SIMD' },
         ],
@@ -82,13 +87,21 @@ export const phases = [
         en: 'Formats',
         pt: 'Formatos',
         items: [
-          { s: 'todo', en: 'Streaming readers and writers that do not load whole files', pt: 'Leitores e escritores em fluxo, que não carregam o arquivo inteiro' },
+          { s: 'done', en: 'Streaming readers and writers that do not load whole files, with sample-exact seeking, RF64, and wait-free bridges for playing and recording from an audio callback', pt: 'Leitores e escritores em fluxo, que não carregam o arquivo inteiro, com busca exata até a amostra, RF64 e pontes wait-free para tocar e gravar a partir de um callback de áudio' },
           { s: 'done', en: 'AIFF and AIFF-C reading and writing', pt: 'Leitura e escrita de AIFF e AIFF-C' },
           { s: 'done', en: 'FLAC decoding', pt: 'Decodificação de FLAC' },
           { s: 'done', en: 'Recognising a file’s format from its contents', pt: 'Reconhecimento do formato pelo conteúdo do arquivo' },
           { s: 'todo', en: 'Ogg Vorbis, Opus and MP3 decoding', pt: 'Decodificação de Ogg Vorbis, Opus e MP3' },
-          { s: 'todo', en: 'FLAC and Ogg Vorbis encoding', pt: 'Codificação de FLAC e Ogg Vorbis' },
+          { s: 'done', en: 'FLAC encoding, checked against FFmpeg', pt: 'Codificação de FLAC, conferida com o FFmpeg' },
+          { s: 'todo', en: 'Ogg Vorbis encoding', pt: 'Codificação de Ogg Vorbis' },
           { s: 'todo', en: 'Metadata, cue points and loop markers', pt: 'Metadados, cue points e marcadores de loop' },
+        ],
+      },
+      {
+        en: 'Networking',
+        pt: 'Rede',
+        items: [
+          { s: 'done', en: 'Open Sound Control: codec, address patterns, UDP and TCP, and a real-time bridge that puts time-tagged bundles on their exact frame', pt: 'Open Sound Control: codec, padrões de endereço, UDP e TCP, e uma ponte de tempo real que põe os bundles com time tag no seu frame exato' },
         ],
       },
       {
@@ -97,10 +110,10 @@ export const phases = [
         items: [
           { s: 'done', en: 'Parameter system: ranges, skew, text conversion, smoothing', pt: 'Sistema de parâmetros: faixas, enviesamento, conversão em texto, suavização' },
           { s: 'done', en: 'Sample-accurate parameter automation events', pt: 'Eventos de automação de parâmetro com precisão de amostra' },
-          { s: 'todo', en: 'Change gestures (begin and end of a user edit)', pt: 'Gestos de mudança (começo e fim de uma edição do usuário)' },
+          { s: 'done', en: 'Change gestures (begin and end of a user edit): a `Gesture` guard in the editor contract, sent to CLAP hosts as gesture events and to VST 3 hosts as `beginEdit`, `performEdit` and `endEdit`', pt: 'Gestos de mudança (começo e fim de uma edição do usuário): uma guarda `Gesture` no contrato de editor, enviada aos hosts CLAP como eventos de gesto e aos hosts VST 3 como `beginEdit`, `performEdit` e `endEdit`' },
           { s: 'done', en: 'Parameter state save and restore, tolerant of version changes', pt: 'Salvar e restaurar o estado dos parâmetros, com tolerância a mudanças de versão' },
-          { s: 'done', en: 'Audio thread helpers: protection against subnormal (denormal) numbers', pt: 'Auxiliares da thread de áudio: proteção contra números subnormais (denormais)' },
-          { s: 'todo', en: 'Audio thread helpers: allocation checking in debug builds', pt: 'Auxiliares da thread de áudio: verificação de alocação em builds de depuração' },
+          { s: 'done', en: 'Denormal protection: `NoDenormals`, held by the wrappers, the standalone engine, the device streams and the test harness', pt: 'Proteção contra denormais: `NoDenormals`, mantida pelos wrappers, pelo motor standalone, pelos streams de dispositivo e pelo harness de testes' },
+          { s: 'todo', en: 'Allocation checking in debug builds (today it is a test-only allocator)', pt: 'Verificação de alocação em builds de depuração (hoje é um alocador só dos testes)' },
           { s: 'todo', en: '`no_std` support for `manguebyte-core` and `manguebyte-dsp`', pt: 'Suporte a `no_std` em `manguebyte-core` e `manguebyte-dsp`' },
         ],
       },
@@ -116,14 +129,15 @@ export const phases = [
         items: [
           { s: 'done', en: '`manguebyte-plugin`: the format-independent plugin API, plugin state, and a harness that runs a plugin in a unit test with no host', pt: '`manguebyte-plugin`: a API de plugin independente de formato, o estado do plugin e um harness que roda o plugin num teste unitário, sem host' },
           { s: 'done', en: 'CLAP: audio and note ports, sample-accurate events in, parameters, state, latency, reporting of parameter changes to the host. Checked in CI by the CLAP project’s validator', pt: 'CLAP: portas de áudio e de notas, entrada de eventos com precisão de amostra, parâmetros, estado, latência, aviso de mudanças de parâmetro ao host. Conferido no CI pelo validador do projeto CLAP' },
-          { s: 'todo', en: 'CLAP extensions still to come: GUI, per-note automation, note-end and voice info, 64-bit audio, tail, presets, remote controls', pt: 'Extensões CLAP que ainda faltam: interface gráfica, automação por nota, fim de nota e informação de vozes, áudio em 64 bits, cauda, presets, controles remotos' },
+          { s: 'wip', en: 'CLAP `gui`, `timer-support` and `posix-fd-support` for plugins with an editor, tested through the C interface against a fake editor and host; no window backend yet', pt: 'CLAP `gui`, `timer-support` e `posix-fd-support` para plugins com editor, testados pela interface C contra um editor e um host falsos; ainda sem backend de janelas' },
+          { s: 'todo', en: 'CLAP extensions still to come: per-note automation, note-end and voice info, 64-bit audio, tail, presets, remote controls', pt: 'Extensões CLAP que ainda faltam: automação por nota, fim de nota e informação de vozes, áudio em 64 bits, cauda, presets, controles remotos' },
           { s: 'done', en: 'VST 3: audio and event buses, every automation point on its frame, notes with ids, tuning and note expression, MIDI controllers through hidden parameters, parameters, units, state, latency. Checked in CI by Steinberg’s validator on Windows, Linux and macOS', pt: 'VST 3: barramentos de áudio e de eventos, cada ponto de automação no seu frame, notas com ids, afinação e expressão de nota, controladores MIDI por parâmetros ocultos, parâmetros, unidades, estado, latência. Conferido no CI pelo validador da Steinberg em Windows, Linux e macOS' },
-          { s: 'todo', en: 'VST 3 still to come: editor, 64-bit audio, changing the bus layout, program lists, parameter changes sent back to the host', pt: 'O que ainda falta no VST 3: editor, áudio em 64 bits, mudança do layout de barramentos, listas de programas, mudanças de parâmetro devolvidas ao host' },
+          { s: 'wip', en: 'VST 3 editor interfaces: the component handler kept and used for edits, `IPlugView` with content scale, `IPlugFrame` and `IRunLoop`, tested against fake host objects; no window backend yet', pt: 'Interfaces de editor do VST 3: o component handler guardado e usado nas edições, `IPlugView` com escala de conteúdo, `IPlugFrame` e `IRunLoop`, testados contra objetos de host falsos; ainda sem backend de janelas' },
+          { s: 'todo', en: 'VST 3 still to come: 64-bit audio, changing the bus layout, program lists', pt: 'O que ainda falta no VST 3: áudio em 64 bits, mudança do layout de barramentos, listas de programas' },
           { s: 'todo', en: 'Audio Unit (AUv2 and AUv3)', pt: 'Audio Unit (AUv2 e AUv3)' },
           { s: 'todo', en: 'LV2', pt: 'LV2' },
           { s: 'done', en: 'Standalone application wrapper: sound card, MIDI ports, input for effects', pt: 'Wrapper de aplicativo standalone: placa de som, portas MIDI, entrada para efeitos' },
-          { s: 'wip', en: 'Tooling to bundle, sign and validate plugins: `scripts/bundle-clap.sh` and `scripts/bundle-vst3.sh` build a `.clap` and a `.vst3` on Windows, Linux and macOS; signing is not started', pt: 'Ferramentas para empacotar, assinar e validar plugins: `scripts/bundle-clap.sh` e `scripts/bundle-vst3.sh` geram um `.clap` e um `.vst3` em Windows, Linux e macOS; a assinatura não foi começada' },
-          { s: 'wip', en: 'Project templates: `plugins/pluck` (an instrument) and `plugins/duck` (an effect with a sidechain) are complete one-file examples to start from; a generator is not started', pt: 'Modelos de projeto: `plugins/pluck` (um instrumento) e `plugins/duck` (um efeito com sidechain) são exemplos completos, de um arquivo só, para servir de ponto de partida; um gerador não foi começado' },
+          { s: 'wip', en: 'Tooling: `cargo mangue` bundles, installs and validates plugins and creates new plugin crates from templates; macOS bundles get an ad-hoc signature and universal binaries. Signing with a real identity and notarisation are not started', pt: 'Ferramentas: `cargo mangue` empacota, instala e valida plugins e cria crates de plugin a partir de modelos; os pacotes de macOS ganham assinatura ad hoc e binários universais. Assinatura com identidade real e notarização não foram começadas' },
         ],
       },
     ],
@@ -132,18 +146,19 @@ export const phases = [
   },
   {
     id: 'phase-3',
-    s: 'todo',
-    en: { name: 'Phase 3: user interface', lead: 'Not started.' },
-    pt: { name: 'Fase 3: interface com o usuário', lead: 'Não começada.' },
+    s: 'wip',
+    en: { name: 'Phase 3: user interface', lead: 'An editor contract in the plugin API, rendering on the CPU first, a thin window layer of the framework’s own, and nothing claimed before its test exists.' },
+    pt: { name: 'Fase 3: interface com o usuário', lead: 'Um contrato de editor na API de plugin, renderização na CPU primeiro, uma camada fina de janelas própria do framework, e nada anunciado antes de existir o teste.' },
     groups: [
       {
         items: [
-          { s: 'todo', en: 'GPU-accelerated 2D renderer', pt: 'Renderizador 2D acelerado por GPU' },
-          { s: 'todo', en: 'Windowing, including embedding inside a plugin host', pt: 'Janelas, inclusive embutidas dentro de um host de plugins' },
-          { s: 'todo', en: 'Layout, styling and a widget set: sliders, knobs, buttons, meters, text', pt: 'Layout, estilo e um conjunto de widgets: sliders, knobs, botões, medidores, texto' },
+          { s: 'done', en: 'Editor contract and parameter gestures in the plugin API and both wrappers, each tested through the format’s real interface against fake hosts', pt: 'Contrato de editor e gestos de parâmetro na API de plugin e nos dois wrappers, cada um testado pela interface real do formato contra hosts falsos' },
+          { s: 'done', en: '2D renderer on the CPU (`manguebyte-gfx`): paths, gradients, images, clips, layers, a columns primitive for meters and spectra, damage-limited repaint that matches a full repaint bit for bit, and text with an embedded Inter subset. GPU rendering later, never the default while CI cannot test its pixels', pt: 'Renderizador 2D na CPU (`manguebyte-gfx`): caminhos, gradientes, imagens, recortes, camadas, uma primitiva de colunas para medidores e espectros, redesenho limitado ao que mudou que bate bit a bit com um redesenho completo, e texto com um subconjunto embutido da Inter. Renderização em GPU depois, nunca como padrão enquanto o CI não puder testar os seus pixels' },
+          { s: 'todo', en: 'Windowing, including embedding inside a plugin host (Windows first, then macOS and Linux as CI proves each)', pt: 'Janelas, inclusive embutidas dentro de um host de plugins (Windows primeiro, depois macOS e Linux, conforme o CI comprovar cada um)' },
+          { s: 'wip', en: 'Layout, styling and a widget set (`manguebyte-ui`): row, column and stack layout, theme tokens, label, knob, slider, toggle, meter and canvas done; text entry, menus and popups not started', pt: 'Layout, estilo e um conjunto de widgets (`manguebyte-ui`): layout em linha, coluna e pilha, tokens de tema, rótulo, knob, slider, chave, medidor e canvas prontos; entrada de texto, menus e popups não começados' },
           { s: 'todo', en: 'Audio widgets: waveform, spectrum, keyboard, envelope and EQ editors', pt: 'Widgets de áudio: forma de onda, espectro, teclado, editores de envelope e de EQ' },
-          { s: 'todo', en: 'Accessibility', pt: 'Acessibilidade' },
-          { s: 'todo', en: 'High-DPI and multi-monitor support', pt: 'Suporte a alta densidade de pixels e a vários monitores' },
+          { s: 'wip', en: 'Accessibility: every widget describes itself (the method has no default) and the test harness finds widgets only that way; platform adapters not started', pt: 'Acessibilidade: cada widget se descreve (o método não tem implementação padrão) e o harness de testes só encontra widgets desse jeito; adaptadores de plataforma não começados' },
+          { s: 'wip', en: 'High-DPI: scale flows from the host through the contract to the renderer; multi-monitor not started', pt: 'Alta densidade de pixels: a escala vem do host, passa pelo contrato e chega ao renderizador; vários monitores não começado' },
         ],
       },
     ],
@@ -151,14 +166,15 @@ export const phases = [
   {
     id: 'phase-4',
     s: 'wip',
-    en: { name: 'Phase 4: hosting and graphs', lead: 'The graph is done. Hosting is not started.' },
-    pt: { name: 'Fase 4: hospedagem e grafos', lead: 'O grafo está pronto. A hospedagem não foi começada.' },
+    en: { name: 'Phase 4: hosting and graphs', lead: 'The graph and the hosting of CLAP and VST 3 plugins are done. Scanning and hosted plugins’ editors are not started.' },
+    pt: { name: 'Fase 4: hospedagem e grafos', lead: 'O grafo e a hospedagem de plugins CLAP e VST 3 estão prontos. A varredura e os editores dos plugins hospedados não foram começados.' },
     groups: [
       {
         items: [
           { s: 'done', en: 'Audio processing graph, rewired while it plays, with automatic latency compensation', pt: 'Grafo de processamento de áudio, religado enquanto toca, com compensação automática de latência' },
           { s: 'todo', en: 'Graph extras: sidechain and per-node event routing, feedback through an explicit delay, crossfaded swaps, buffer reuse', pt: 'Extras do grafo: sidechain e roteamento de eventos por nó, realimentação por um atraso explícito, trocas com crossfade, reaproveitamento de buffers' },
-          { s: 'todo', en: 'Plugin scanning and hosting: CLAP, VST3, AU, LV2', pt: 'Varredura e hospedagem de plugins: CLAP, VST3, AU, LV2' },
+          { s: 'done', en: 'Hosting CLAP and VST 3 plugins as processors, through one interface for both formats, with every event on its frame', pt: 'Hospedagem de plugins CLAP e VST 3 como processadores, por uma única interface para os dois formatos, com cada evento no seu frame' },
+          { s: 'todo', en: 'Plugin scanning (out of process), hosted plugins’ editors, AU and LV2', pt: 'Varredura de plugins (fora do processo), editores dos plugins hospedados, AU e LV2' },
           { s: 'todo', en: 'Transport, tempo map and timeline primitives', pt: 'Transporte, mapa de andamento e primitivas de linha do tempo' },
         ],
       },
@@ -173,7 +189,7 @@ export const phases = [
       {
         items: [
           { s: 'todo', en: 'iOS and Android', pt: 'iOS e Android' },
-          { s: 'todo', en: 'WebAssembly and Web Audio', pt: 'WebAssembly e Web Audio' },
+          { s: 'todo', en: 'WebAssembly and Web Audio: the engine running in a browser’s AudioWorklet, fed timestamped events; its first user will be [Aratu](/aratu/)', pt: 'WebAssembly e Web Audio: o motor rodando no AudioWorklet de um navegador, alimentado por eventos com marca de tempo; o primeiro a usá-lo será o [Aratu](/aratu/)' },
           { s: 'todo', en: 'Embedded targets', pt: 'Alvos embarcados' },
         ],
       },
@@ -206,15 +222,15 @@ export const parity = [
   { module: 'juce_audio_basics', s: 'wip', crate: 'core, midi, dsp' },
   { module: 'juce_audio_devices', s: 'wip', crate: 'devices' },
   { module: 'juce_audio_formats', s: 'wip', crate: 'formats' },
-  { module: 'juce_audio_processors', s: 'wip', crate: 'params, plugin, graph' },
-  { module: 'juce_audio_processors_headless', s: 'done', crate: 'params, plugin, graph' },
+  { module: 'juce_audio_processors', s: 'wip', crate: 'params, plugin, host, graph' },
+  { module: 'juce_audio_processors_headless', s: 'done', crate: 'params, plugin, host, graph' },
   { module: 'juce_audio_plugin_client', s: 'wip', crate: 'clap, vst3, standalone' },
   { module: 'juce_audio_utils', s: 'todo', crate: '' },
   { module: 'juce_dsp', s: 'wip', crate: 'dsp' },
   { module: 'juce_midi_ci', s: 'todo', crate: '' },
-  { module: 'juce_osc', s: 'todo', crate: '' },
-  { module: 'juce_graphics', s: 'todo', crate: '' },
-  { module: 'juce_gui_basics', s: 'todo', crate: '' },
+  { module: 'juce_osc', s: 'done', crate: 'osc' },
+  { module: 'juce_graphics', s: 'wip', crate: 'gfx' },
+  { module: 'juce_gui_basics', s: 'wip', crate: 'ui' },
   { module: 'juce_gui_extra', s: 'todo', crate: '' },
   { module: 'juce_animation', s: 'todo', crate: '' },
   { module: 'juce_opengl', s: 'todo', crate: '' },

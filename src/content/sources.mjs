@@ -126,6 +126,97 @@ export const proofs = {
   // Licence
   'licence-mit': { file: 'LICENSE-MIT' },
   'licence-apache': { file: 'LICENSE-APACHE' },
+
+  // Hosting plugins
+  'hosting-clap': {
+    file: 'crates/manguebyte-host/tests/clap_pluck.rs',
+    find: 'fn the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone(',
+  },
+  'hosting-vst3': {
+    file: 'crates/manguebyte-host/tests/vst3_pluck.rs',
+    find: 'fn the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone(',
+  },
+  'hosting-automation': {
+    file: 'crates/manguebyte-host/tests/vst3_pluck.rs',
+    find: 'fn automation_lands_on_its_frame_through_the_host(',
+  },
+  'hosting-heap': {
+    file: 'crates/manguebyte-host/tests/clap_pluck.rs',
+    find: 'fn processing_never_uses_the_heap(',
+  },
+  'ci-miri-host': { file: '.github/workflows/ci.yml', find: '  miri-host:', name: 'CI job: Miri (plugin host)' },
+
+  // Loudness and meters
+  'ebu-3341': {
+    file: 'crates/manguebyte-analysis/tests/ebu_tech_3341.rs',
+    find: 'fn cases_1_and_2_a_steady_tone_reads_its_level_on_all_three_scales(',
+  },
+  'ebu-3341-true-peak': {
+    file: 'crates/manguebyte-analysis/tests/ebu_tech_3341.rs',
+    find: 'fn cases_15_to_19_a_sine_is_read_at_its_crest_wherever_the_samples_fall(',
+  },
+  'ebu-3342': {
+    file: 'crates/manguebyte-analysis/tests/ebu_tech_3342.rs',
+    find: 'fn case_1_two_tones_ten_decibels_apart(',
+  },
+
+  // Open Sound Control
+  'osc-time-tag': {
+    file: 'crates/manguebyte-osc/tests/bridge.rs',
+    find: 'fn a_time_tag_lands_on_its_exact_frame(',
+  },
+  'osc-every-frame': {
+    file: 'crates/manguebyte-osc/tests/bridge.rs',
+    find: 'fn every_frame_of_a_block_can_be_hit(',
+  },
+  'osc-block-size': {
+    file: 'crates/manguebyte-osc/tests/bridge.rs',
+    find: 'fn where_an_event_lands_does_not_depend_on_the_block_size(',
+  },
+  'osc-codec': {
+    file: 'crates/manguebyte-osc/tests/codec.rs',
+    find: 'fn the_examples_in_the_specification_encode_byte_for_byte(',
+  },
+
+  // Pitch and bands
+  'pitch': {
+    file: 'crates/manguebyte-analysis/tests/pitch.rs',
+    find: 'fn every_test_tone_is_found_within_a_cent(',
+  },
+  'spectrum-band': {
+    file: 'crates/manguebyte-analysis/tests/spectrum.rs',
+    find: 'fn a_full_scale_sine_reads_0_db_in_its_band(',
+  },
+  'spectrum-noise': {
+    file: 'crates/manguebyte-analysis/tests/spectrum.rs',
+    find: 'fn bands_of_white_and_pink_noise_read_the_power_that_lies_in_them(',
+  },
+
+  // Keyboard state
+  'keyboard-heap': {
+    file: 'crates/manguebyte-midi/tests/realtime.rs',
+    find: 'fn the_keyboard_state_does_not_use_the_heap(',
+  },
+  'keyboard-sounding': {
+    file: 'crates/manguebyte-midi/src/keyboard.rs',
+    find: 'fn a_key_that_goes_on_sounding_is_never_read_as_silent(',
+  },
+  'keyboard-threads': {
+    file: 'crates/manguebyte-midi/src/keyboard.rs',
+    find: 'fn an_interface_can_read_while_another_thread_writes(',
+  },
+
+  // The command-line tool, and what testing in a real host found
+  'ci-cli': { file: '.github/workflows/ci.yml', find: '  cli:', name: 'CI job: command-line tool end to end' },
+  'reaper-render': { file: 'docs/TECH_DEBT.md', find: '| 42 | Found in REAPER 7.82', name: 'TECH_DEBT item 42' },
+  'reaper-findings': { file: 'docs/TECH_DEBT.md', find: '| 41 | Found in REAPER 7.82', name: 'TECH_DEBT items 41 to 43' },
+  'adr-0007': { file: 'docs/adr/0007-user-interface-layer.md', name: 'ADR 0007' },
+  'host-tests': { file: 'docs/HOST_TESTS.md', find: '## REAPER 7.82, Windows 11', name: 'HOST_TESTS.md: REAPER 7.82' },
+
+  // Aratu, in its own repository
+  'aratu-readme': { repo: 'aratu', file: 'README.md', name: 'aratu/README.md' },
+  'aratu-manual': { repo: 'aratu', file: 'docs/MANUAL.md', name: 'aratu/docs/MANUAL.md' },
+  'aratu-vision': { repo: 'aratu', file: 'docs/VISION.md', name: 'aratu/docs/VISION.md' },
 };
 
 // A code sample is one or more stretches of a file, shown as they are.
@@ -190,6 +281,14 @@ export const snippets = {
     file: 'README.md',
     lang: 'rust',
     parts: [{ after: 'Play it live instead', from: 'use manguebyte::prelude::*;', to: /^\}$/ }],
+  },
+  // Aratu: the sketch of its syntax from its README. A sketch, not a
+  // decision, as the README says.
+  'aratu-taste': {
+    repo: 'aratu',
+    file: 'README.md',
+    lang: 'aratu',
+    parts: [{ after: '## A taste', from: 'measure 4/4', to: 'drums:' }],
   },
   'duck-params': {
     file: 'plugins/duck/src/lib.rs',

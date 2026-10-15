@@ -72,7 +72,7 @@ export const claims = [
         'The first time this test ran, it failed. A voice that had finished in the middle of a block kept advancing until the end of it, so the next note started from a state that depended on the block length. The test exists to find exactly that, and the fix is part of the `Voice` contract.',
       ],
       limit:
-        'The guarantee covers what follows events. A value that a processor reads once per block changes at block boundaries by definition.',
+        'The guarantee covers what follows events. A value that a processor reads once per block changes at block boundaries by definition. And a real host found a gap the tests had not: in REAPER 7.82, two offline renders of the example instrument with many voices overlapping differed by one unit in the last place of a 32-bit float, about 134 dB below the signal. It is an open item, [TECH_DEBT 42](proof:reaper-render), to be reproduced and fixed.',
     },
     pt: {
       title: 'O som não depende do tamanho de bloco do host',
@@ -90,7 +90,7 @@ export const claims = [
         'Na primeira vez em que rodou, o teste falhou. Uma voz que terminava no meio de um bloco continuava avançando até o fim dele, de modo que a nota seguinte partia de um estado que dependia do tamanho do bloco. O teste existe para achar exatamente isso, e a correção faz parte do contrato de `Voice`.',
       ],
       limit:
-        'A garantia cobre o que segue os eventos. Um valor que o processador lê uma vez por bloco muda nas bordas do bloco, por definição.',
+        'A garantia cobre o que segue os eventos. Um valor que o processador lê uma vez por bloco muda nas bordas do bloco, por definição. E um host de verdade achou uma brecha que os testes não tinham achado: no REAPER 7.82, dois renders offline do instrumento de exemplo, com muitas vozes sobrepostas, diferiram em uma unidade na última casa de um float de 32 bits, cerca de 134 dB abaixo do sinal. É uma pendência aberta, o [TECH_DEBT 42](proof:reaper-render), a ser reproduzida e corrigida.',
     },
   },
 
@@ -216,7 +216,7 @@ export const claims = [
 
   {
     id: 'clap',
-    proofs: ['ci-clap', 'export-duck'],
+    proofs: ['ci-clap', 'export-duck', 'ci-cli'],
     en: {
       title: 'Native CLAP',
       row: 'CLAP',
@@ -227,10 +227,11 @@ export const claims = [
       mangue:
         '`export_clap!(MyPlugin)` is the whole integration. CLAP’s event model is the one this framework is built on, so nothing is approximated on the way in.',
       check: [
-        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project’s own [clap-validator](https://github.com/free-audio/clap-validator) on them. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped tests are for things the plugins do not have yet: preset discovery (3 tests), 64-bit audio (2) and the extensions that let a host reconfigure the audio ports (3). The instrument also skips a test that feeds it audio, because it has no audio input, and the effect skips the three note tests, because it takes no notes.',
+        '[The CI job](proof:ci-clap) builds both example plugins and runs the CLAP project’s own [clap-validator](https://github.com/free-audio/clap-validator) on them, failing on any failed test. At the commit this site was written against, the validator ran 44 tests on each: the instrument passed 35 and skipped 9, the effect passed 33 and skipped 11, and neither failed any. The skipped tests are for things the plugins do not have yet: preset discovery (3 tests), 64-bit audio (2) and the extensions that let a host reconfigure the audio ports (3). The instrument also skips a test that feeds it audio, because it has no audio input, and the effect skips the three note tests, because it takes no notes.',
+        '`cargo mangue bundle` writes the `.clap` beside the `.vst3` in each system’s layout, and `cargo mangue validate` runs the CLAP project’s validator on it as well as Steinberg’s on the `.vst3`; [a CI job](proof:ci-cli) runs the tool end to end on Windows, Linux and macOS. JUCE’s [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) accepts no CLAP format.',
       ],
       limit:
-        'No plugin GUI extension yet, no 64-bit audio, no presets. VST 3 is the only other format so far, also without an editor: JUCE’s AU, AAX and LV2 support has no counterpart here yet.',
+        'The `gui` extension exists and is tested through the C interface against a fake editor and a fake host, but there are no native windows yet, so no editor opens inside a real host. No 64-bit audio, no presets. VST 3 is the only other format so far: JUCE’s AU, AAX and LV2 support has no counterpart here yet. Both example plugins were also loaded and tested by hand in REAPER; see [HOST_TESTS.md](proof:host-tests).',
     },
     pt: {
       title: 'CLAP nativo',
@@ -242,10 +243,11 @@ export const claims = [
       mangue:
         '`export_clap!(MyPlugin)` é a integração inteira. O modelo de eventos do CLAP é o mesmo sobre o qual este framework foi construído, então nada é aproximado na entrada.',
       check: [
-        '[O job de CI](proof:ci-clap) compila os dois plugins de exemplo e roda neles o [clap-validator](https://github.com/free-audio/clap-validator), do próprio projeto CLAP. No commit em que este site foi escrito, o validador rodou 44 testes em cada um: o instrumento passou em 35 e pulou 9, o efeito passou em 33 e pulou 11, e nenhum dos dois falhou em algum. Os testes pulados são de coisas que os plugins ainda não têm: descoberta de presets (3 testes), áudio em 64 bits (2) e as extensões que deixam o host reconfigurar as portas de áudio (3). O instrumento também pula um teste que lhe envia áudio, porque não tem entrada de áudio, e o efeito pula os três testes de notas, porque não recebe notas.',
+        '[O job de CI](proof:ci-clap) compila os dois plugins de exemplo e roda neles o [clap-validator](https://github.com/free-audio/clap-validator), do próprio projeto CLAP, e falha diante de qualquer teste reprovado. No commit em que este site foi escrito, o validador rodou 44 testes em cada um: o instrumento passou em 35 e pulou 9, o efeito passou em 33 e pulou 11, e nenhum dos dois falhou em algum. Os testes pulados são de coisas que os plugins ainda não têm: descoberta de presets (3 testes), áudio em 64 bits (2) e as extensões que deixam o host reconfigurar as portas de áudio (3). O instrumento também pula um teste que lhe envia áudio, porque não tem entrada de áudio, e o efeito pula os três testes de notas, porque não recebe notas.',
+        '`cargo mangue bundle` grava o `.clap` ao lado do `.vst3`, no layout de cada sistema, e `cargo mangue validate` roda nele o validador do projeto CLAP e, no `.vst3`, o da Steinberg; [um job de CI](proof:ci-cli) roda a ferramenta de ponta a ponta em Windows, Linux e macOS. O [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) do JUCE não aceita o formato CLAP.',
       ],
       limit:
-        'Ainda sem a extensão de interface gráfica, sem áudio em 64 bits e sem presets. O VST 3 é o único outro formato por enquanto, também sem editor: o suporte do JUCE a AU, AAX e LV2 ainda não tem equivalente aqui.',
+        'A extensão `gui` existe e é testada pela interface C contra um editor e um host falsos, mas ainda não há janelas nativas, então nenhum editor abre dentro de um host de verdade. Sem áudio em 64 bits e sem presets. O VST 3 é o único outro formato por enquanto: o suporte do JUCE a AU, AAX e LV2 ainda não tem equivalente aqui. Os dois plugins de exemplo também foram carregados e testados à mão no REAPER; veja o [HOST_TESTS.md](proof:host-tests).',
     },
   },
 
@@ -379,6 +381,193 @@ export const claims = [
         'Só em `x86_64` e `aarch64`; nas outras arquiteturas a guarda não faz nada. O Rust não define o comportamento de ponto flutuante com a configuração alterada, e o [ADR 0006](repo:docs/adr/0006-subnormal-numbers-are-flushed.md) explica o que isso significa na prática e por que a troca vale a pena. Um programa que chama um processador num laço próprio, fora dos wrappers, dos streams e do harness de testes, cria a guarda por conta própria.',
     },
   },
+
+  {
+    id: 'hosting',
+    proofs: ['hosting-clap', 'hosting-vst3', 'hosting-automation', 'hosting-heap', 'ci-miri-host'],
+    en: {
+      title: 'Hosting a plugin: thread rules in the types, every event on its frame',
+      row: 'Hosting',
+      juceShort: 'No CLAP hosting; one object called from every thread; parameter changes carry no frame',
+      mangueShort: 'CLAP and VST 3; thread rules in the types; every event on its frame',
+      problem:
+        'A host calls a plugin from two kinds of thread, and the formats say which calls belong where. Getting it wrong crashes plugins in the field, and nothing stops a host from getting it wrong. A host that wants to pass automation to a plugin precisely also needs a way to say on which frame each change happens.',
+      juce:
+        'JUCE 9.0.4 does not host CLAP plugins. For the formats it hosts, a plugin is one [AudioPluginInstance](https://docs.juce.com/master/classAudioPluginInstance.html), an [AudioProcessor](https://docs.juce.com/master/classAudioProcessor.html) that the host calls from the message thread and the audio thread; which method may run where is set out in the documentation, and the compiler checks none of it. The hosting interface is `processBlock(AudioBuffer, MidiBuffer)`: MIDI events carry a sample position, but a parameter change, made through [AudioProcessorParameter::setValue](https://docs.juce.com/master/classAudioProcessorParameter.html), carries none, so a host can place a change on an exact frame only by cutting the block there. JUCE has announced sample-accurate automation for a later JUCE 9 update.',
+      mangue:
+        '`manguebyte-host` loads CLAP and VST 3 plugins in two halves. The main-thread half (parameters, state, activation) is not `Send`, so code that would load state from the audio thread does not compile; the audio half is `Send`, is the only thing that can process, and processes through `&mut self`. Every event of the framework’s event buffer reaches the plugin on its frame: CLAP events with their offsets, and for VST 3 one queue per parameter with every point on its frame, notes with ids, per-note pressure and note expression.',
+      check: [
+        'Compile-fail doc-tests on `ClapPlugin` and `Vst3Plugin` show that the main-thread half cannot be sent to another thread. `the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone`, for [CLAP](proof:hosting-clap) and for [VST 3](proof:hosting-vst3), loads the example instrument through its real entry point and requires its output to be identical bit for bit to the same plugin run in process by `Harness`, for four block layouts, with automation of five parameters, notes with ids, expression and pitch bend; removing any one kind of event changes the output, so the identity is not two deaf paths agreeing. [automation_lands_on_its_frame_through_the_host](proof:hosting-automation) sends 59 VST 3 points 61 frames apart.',
+      ],
+      limit:
+        'A second audio half, and deactivating while one exists, are refused at run time, not at compile time. “Main thread” means the thread that created the plugin; the types do not check that it is the program’s main thread. At most 4,096 events per call; the rest are counted. No modulation is sent to VST 3 plugins. Tested with the framework’s own plugins and deliberately misbehaving test plugins, not yet with plugins from other vendors; no editors of hosted plugins; no scanning yet.',
+    },
+    pt: {
+      title: 'Hospedar um plugin: as regras de thread nos tipos, cada evento no seu frame',
+      row: 'Hospedagem',
+      juceShort: 'Não hospeda CLAP; um objeto chamado de todas as threads; mudanças de parâmetro sem frame',
+      mangueShort: 'CLAP e VST 3; regras de thread nos tipos; cada evento no seu frame',
+      problem:
+        'O host chama o plugin a partir de dois tipos de thread, e os formatos dizem qual chamada pertence a qual. Errar nisso derruba plugins no uso real, e nada impede um host de errar. Um host que queira passar automação a um plugin com precisão também precisa de um jeito de dizer em que frame cai cada mudança.',
+      juce:
+        'O JUCE 9.0.4 não hospeda plugins CLAP. Nos formatos que ele hospeda, o plugin é um único [AudioPluginInstance](https://docs.juce.com/master/classAudioPluginInstance.html), um [AudioProcessor](https://docs.juce.com/master/classAudioProcessor.html) que o host chama tanto da thread de mensagens quanto da thread de áudio; qual método pode rodar onde está na documentação, e o compilador não confere nada disso. A interface de hospedagem é `processBlock(AudioBuffer, MidiBuffer)`: os eventos MIDI trazem a posição da amostra, mas uma mudança de parâmetro, feita por [AudioProcessorParameter::setValue](https://docs.juce.com/master/classAudioProcessorParameter.html), não traz nenhuma, então o host só consegue pôr uma mudança num frame exato cortando o bloco ali. O JUCE anunciou automação com precisão de amostra para uma atualização futura do JUCE 9.',
+      mangue:
+        'O `manguebyte-host` carrega plugins CLAP e VST 3 em duas metades. A metade da thread principal (parâmetros, estado, ativação) não é `Send`, então o código que carregaria estado a partir da thread de áudio não compila; a metade de áudio é `Send`, é a única que pode processar, e processa por `&mut self`. Cada evento do buffer de eventos do framework chega ao plugin no seu frame: os eventos CLAP com os seus deslocamentos e, no VST 3, uma fila por parâmetro com cada ponto no seu frame, notas com ids, pressão por nota e expressão de nota.',
+      check: [
+        'Doc-tests que precisam falhar na compilação, em `ClapPlugin` e `Vst3Plugin`, mostram que a metade da thread principal não pode ser enviada a outra thread. `the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone`, para [CLAP](proof:hosting-clap) e para [VST 3](proof:hosting-vst3), carrega o instrumento de exemplo pelo seu ponto de entrada real e exige que a saída seja idêntica bit a bit à do mesmo plugin rodando dentro do processo pelo `Harness`, em quatro arranjos de blocos, com automação de cinco parâmetros, notas com ids, expressão e pitch bend; tirar qualquer um dos tipos de evento muda a saída, então a identidade não é a de dois caminhos surdos concordando. [automation_lands_on_its_frame_through_the_host](proof:hosting-automation) envia 59 pontos de VST 3 espaçados de 61 frames.',
+      ],
+      limit:
+        'Uma segunda metade de áudio, e desativar enquanto existe uma, são recusadas em tempo de execução, não na compilação. “Thread principal” quer dizer a thread que criou o plugin; os tipos não conferem se ela é a thread principal do programa. No máximo 4.096 eventos por chamada; o restante é contado. Nenhuma modulação é enviada a plugins VST 3. Testado com os plugins do próprio framework e com plugins de teste que se comportam mal de propósito, ainda não com plugins de outros fabricantes; sem os editores dos plugins hospedados; ainda sem varredura de plugins.',
+    },
+  },
+
+  {
+    id: 'loudness',
+    proofs: ['ebu-3341', 'ebu-3341-true-peak', 'ebu-3342'],
+    en: {
+      title: 'Loudness, true peak and broadcast meters, ready to use',
+      row: 'Loudness and broadcast meters',
+      juceShort: 'None documented',
+      mangueShort: 'BS.1770 / R 128 loudness, true peak, VU, PPM, correlation, checked against the EBU’s test signals',
+      problem:
+        'Anything that delivers audio for broadcast or streaming has to measure loudness to ITU-R BS.1770 and EBU R 128, and true peak. Getting the gating, the windows and the K-weighting right at every sample rate is easy to get subtly wrong.',
+      juce:
+        'JUCE 9.0.4’s documented API has no loudness, LUFS, K-weighting or true-peak class or function, and no VU, PPM, correlation or balance meter ([class list](https://docs.juce.com/master/annotated.html)). Its level tools are `AudioBuffer::getRMSLevel` and `getMagnitude`, [AudioDeviceManager::LevelMeter](https://docs.juce.com/master/structjuce_1_1AudioDeviceManager_1_1LevelMeter.html) and [dsp::BallisticsFilter](https://docs.juce.com/master/classjuce_1_1dsp_1_1BallisticsFilter.html). Users on the forum write their own ([loudness](https://forum.juce.com/t/does-juce-have-any-loudness-related-functions-or-classes/57424), [true peak](https://forum.juce.com/t/does-juce-have-a-function-to-read-true-peak/43454)).',
+      mangue:
+        '`manguebyte-analysis` has a `LoudnessMeter` (momentary, short-term, integrated, loudness range, maxima), a `TruePeakMeter` (BS.1770-4 Annex 2, 4x by default), a VU meter, a PPM with IEC 60268-10 Type I timing, and a correlation and balance meter. They run on the audio thread in memory fixed when they are built, and any thread reads them through atomics without waiting.',
+      check: [
+        '[ebu_tech_3341.rs](proof:ebu-3341) synthesises the EBU Tech 3341 test signals and requires cases 1 to 6 and 9 to 14 within 0.1 LU, and [the true-peak cases](proof:ebu-3341-true-peak) 15 to 23 within +0.2/−0.4 dB; [ebu_tech_3342.rs](proof:ebu-3342) does the same for loudness range, cases 1 to 4. The VU needle reaches 99% in 300 ms ±3 ms with 1.0 to 1.5% overshoot at 44.1 to 192 kHz. Readings are identical to the bit whatever the block size, and measuring makes no heap call.',
+      ],
+      limit:
+        'The signals are synthesised from the documents’ tables; the EBU’s own files and recorded items were not run. Written to BS.1770-4, which the ITU has since superseded with BS.1770-5. The loudness range is kept in 0.01 LU histograms and can differ from Tech 3342’s function when short-term values straddle the relative gate within one bin; this is documented and tested. The PPM matches Type I at its 5 ms integration point and its return time; other burst readings miss the nominal values by up to 0.6 dB, and it reads samples, not the waveform. JUCE ships the pieces to build such meters; the claim is that it ships none ready.',
+    },
+    pt: {
+      title: 'Loudness, true peak e medidores de broadcast, prontos para usar',
+      row: 'Loudness e medidores de broadcast',
+      juceShort: 'Nenhum na documentação',
+      mangueShort: 'Loudness BS.1770 / R 128, true peak, VU, PPM, correlação, conferidos com os sinais de teste da EBU',
+      problem:
+        'Tudo o que entrega áudio para broadcast ou streaming tem de medir loudness segundo a ITU-R BS.1770 e a EBU R 128, e o true peak. É fácil errar sutilmente o gating, as janelas e a ponderação K em alguma taxa de amostragem.',
+      juce:
+        'A API documentada do JUCE 9.0.4 não tem classe nem função de loudness, LUFS, ponderação K ou true peak, nem medidor VU, PPM, de correlação ou de balanço ([lista de classes](https://docs.juce.com/master/annotated.html)). As ferramentas de nível são `AudioBuffer::getRMSLevel` e `getMagnitude`, [AudioDeviceManager::LevelMeter](https://docs.juce.com/master/structjuce_1_1AudioDeviceManager_1_1LevelMeter.html) e [dsp::BallisticsFilter](https://docs.juce.com/master/classjuce_1_1dsp_1_1BallisticsFilter.html). No fórum, os usuários escrevem os seus ([loudness](https://forum.juce.com/t/does-juce-have-any-loudness-related-functions-or-classes/57424), [true peak](https://forum.juce.com/t/does-juce-have-a-function-to-read-true-peak/43454)).',
+      mangue:
+        'O `manguebyte-analysis` tem um `LoudnessMeter` (momentâneo, de curto prazo, integrado, faixa de loudness, máximos), um `TruePeakMeter` (BS.1770-4, Anexo 2, 4x por padrão), um medidor VU, um PPM com a temporização Tipo I da IEC 60268-10 e um medidor de correlação e balanço. Eles rodam na thread de áudio, numa memória fixada quando são criados, e qualquer thread os lê por atômicos, sem esperar.',
+      check: [
+        '[ebu_tech_3341.rs](proof:ebu-3341) sintetiza os sinais de teste da EBU Tech 3341 e exige os casos 1 a 6 e 9 a 14 dentro de 0,1 LU, e [os casos de true peak](proof:ebu-3341-true-peak) 15 a 23 dentro de +0,2/−0,4 dB; [ebu_tech_3342.rs](proof:ebu-3342) faz o mesmo para a faixa de loudness, casos 1 a 4. O ponteiro do VU chega a 99% em 300 ms ±3 ms, com 1,0 a 1,5% de sobressinal, de 44,1 a 192 kHz. As leituras são idênticas até o bit em qualquer tamanho de bloco, e medir não faz nenhuma chamada ao heap.',
+      ],
+      limit:
+        'Os sinais são sintetizados a partir das tabelas dos documentos; os arquivos e as gravações da própria EBU não foram usados. Escrito segundo a BS.1770-4, que a ITU já substituiu pela BS.1770-5. A faixa de loudness é guardada em histogramas de 0,01 LU e pode diferir da função da Tech 3342 quando valores de curto prazo ficam dos dois lados do gate relativo dentro de uma mesma faixa; isso está documentado e testado. O PPM bate com o Tipo I no ponto de integração de 5 ms e no tempo de retorno; outras leituras de rajada ficam até 0,6 dB longe dos valores nominais, e ele lê amostras, não a forma de onda. O JUCE traz as peças para construir esses medidores; a afirmação é que ele não traz nenhum pronto.',
+    },
+  },
+
+  {
+    id: 'osc',
+    proofs: ['osc-time-tag', 'osc-every-frame', 'osc-block-size', 'osc-codec'],
+    en: {
+      title: 'Open Sound Control that lands on the sample',
+      row: 'OSC timing',
+      juceShort: 'Listeners on the message or network thread',
+      mangueShort: 'Time-tagged bundles land on their frame; every OSC 1.0 type; TCP',
+      problem:
+        'OSC bundles carry a time tag so that a controller or a live-coding program can say when something should happen. An audio engine that applies messages when they arrive, or once per block, throws that timing away.',
+      juce:
+        '[OSCReceiver](https://docs.juce.com/master/classOSCReceiver.html) calls its listeners on the message thread or directly on the network thread; its documentation describes no delivery into the audio callback and no scheduling by time tag. [OSCArgument](https://docs.juce.com/master/classOSCArgument.html) documents five argument types (int32, float32, string, blob, colour). [OSCAddressPattern](https://docs.juce.com/master/classOSCAddressPattern.html) documents the OSC 1.0 wildcards, and [OSCSender](https://docs.juce.com/master/classOSCSender.html) and `OSCReceiver` document UDP only.',
+      mangue:
+        '`manguebyte-osc` decodes on a network thread and hands fixed events to the audio thread through wait-free queues, and a message in a time-tagged bundle lands on the frame nearest its time tag. Every argument type the OSC 1.0 specification lists is supported, nested arrays included; the `//` wildcard proposed for OSC 1.1 ([Freed and Schmeder, 2009](https://ccrma.stanford.edu/groups/osc/spec-1_1.html)) is matched; and TCP with the OSC 1.1 SLIP framing sits beside UDP.',
+      check: [
+        '[a_time_tag_lands_on_its_exact_frame](proof:osc-time-tag), [every_frame_of_a_block_can_be_hit](proof:osc-every-frame) and [where_an_event_lands_does_not_depend_on_the_block_size](proof:osc-block-size) (400 events, seven block patterns, identical frames); reading on the audio thread makes no heap call. [codec.rs](proof:osc-codec) encodes the specification’s examples byte for byte and round-trips every type.',
+      ],
+      limit:
+        'Exact relative to the block start the caller passes; the variant that reads the system clock inherits the callback’s jitter and any offset between the sender’s clock and this one. Fixed capacities (1,024 events, a pool for messages over 64 bytes); what does not fit is dropped whole and counted. OSC 1.1 is a conference paper, not a ratified specification, and `//` is read as XPath’s descendant step. OSC 1.0’s size-prefixed stream framing is not implemented. A JUCE user can build the same path by hand; JUCE ships none.',
+    },
+    pt: {
+      title: 'Open Sound Control que cai na amostra',
+      row: 'Tempo do OSC',
+      juceShort: 'Listeners na thread de mensagens ou de rede',
+      mangueShort: 'Bundles com time tag caem no seu frame; todos os tipos do OSC 1.0; TCP',
+      problem:
+        'Os bundles OSC trazem um time tag para que um controlador ou um programa de live coding diga quando algo deve acontecer. Um motor de áudio que aplica as mensagens quando chegam, ou uma vez por bloco, joga esse tempo fora.',
+      juce:
+        'O [OSCReceiver](https://docs.juce.com/master/classOSCReceiver.html) chama os seus listeners na thread de mensagens ou direto na thread de rede; a documentação dele não descreve entrega dentro do callback de áudio nem agendamento por time tag. O [OSCArgument](https://docs.juce.com/master/classOSCArgument.html) documenta cinco tipos de argumento (int32, float32, string, blob, cor). O [OSCAddressPattern](https://docs.juce.com/master/classOSCAddressPattern.html) documenta os curingas do OSC 1.0, e o [OSCSender](https://docs.juce.com/master/classOSCSender.html) e o `OSCReceiver` documentam só UDP.',
+      mangue:
+        'O `manguebyte-osc` decodifica numa thread de rede e entrega eventos fixos à thread de áudio por filas wait-free, e uma mensagem num bundle com time tag cai no frame mais próximo do seu time tag. Todos os tipos de argumento listados na especificação do OSC 1.0 são aceitos, inclusive arrays aninhados; o curinga `//` proposto para o OSC 1.1 ([Freed e Schmeder, 2009](https://ccrma.stanford.edu/groups/osc/spec-1_1.html)) é reconhecido; e TCP com o enquadramento SLIP do OSC 1.1 fica ao lado do UDP.',
+      check: [
+        '[a_time_tag_lands_on_its_exact_frame](proof:osc-time-tag), [every_frame_of_a_block_can_be_hit](proof:osc-every-frame) e [where_an_event_lands_does_not_depend_on_the_block_size](proof:osc-block-size) (400 eventos, sete padrões de bloco, frames idênticos); ler na thread de áudio não faz nenhuma chamada ao heap. [codec.rs](proof:osc-codec) codifica os exemplos da especificação byte a byte e faz ida e volta com todos os tipos.',
+      ],
+      limit:
+        'Exato em relação ao começo de bloco que quem chama informa; a variante que lê o relógio do sistema herda o jitter do callback e qualquer diferença entre o relógio de quem envia e o deste lado. Capacidades fixas (1.024 eventos, um reservatório para mensagens acima de 64 bytes); o que não cabe é descartado inteiro e contado. O OSC 1.1 é um artigo de conferência, não uma especificação ratificada, e `//` é lido como o passo de descendente do XPath. O enquadramento de fluxo com prefixo de tamanho do OSC 1.0 não está implementado. Um usuário do JUCE pode montar o mesmo caminho à mão; o JUCE não traz nenhum pronto.',
+    },
+  },
+
+  {
+    id: 'pitch',
+    proofs: ['pitch', 'spectrum-band', 'spectrum-noise'],
+    en: {
+      title: 'Pitch detection and fractional-octave analysis',
+      row: 'Pitch and band analysis',
+      juceShort: 'None documented',
+      mangueShort: 'YIN and McLeod pitch; IEC octave bands and weighting',
+      juce:
+        'JUCE 9.0.4’s documented class list has no pitch detection and no fractional-octave band analyser or A- and C-weighting class ([classes](https://docs.juce.com/master/classes.html)); it provides `dsp::FFT` and `dsp::WindowingFunction` as building blocks, and spectrum display appears in its tutorials as code the reader writes.',
+      mangue:
+        '`PitchDetector` offers YIN and the McLeod pitch method with a confidence value and the nearest note named, refined between samples by band-limited interpolation. `SpectrumAnalyzer` gives octave to twenty-fourth-octave bands on the exact frequencies of IEC 61260-1 and A and C weighting from IEC 61672-1, with ballistics and peak hold, handing whole frames to an interface through a wait-free triple buffer.',
+      check: [
+        '[pitch.rs](proof:pitch): sines, sawtooths, square waves, tones without their fundamental and tones with a strong second harmonic from 55 Hz to 2 kHz read within 2 cents at 44.1 and 48 kHz, with no octave errors. [spectrum.rs](proof:spectrum-band): a full-scale sine reads 0 dB in its band within 0.01 dB, and [the third-octave bands of white and pink noise](proof:spectrum-noise) add up within 0.05 dB.',
+      ],
+      limit:
+        'Synthetic, steady, single tones. At 8 to 22 kHz sample rates the error grows to 13 cents; a second harmonic more than about four times the fundamental makes the detector read an octave high; low-frequency noise can read a confidence near 0.7. The bands are formed from FFT bins, not an IEC 61260-1 filter bank, and bands narrower than about four bins are not resolved. Third-party pitch modules for JUCE exist.',
+    },
+    pt: {
+      title: 'Detecção de altura e análise em frações de oitava',
+      row: 'Altura e análise por bandas',
+      juceShort: 'Nenhuma na documentação',
+      mangueShort: 'Altura por YIN e McLeod; bandas de oitava IEC e ponderação',
+      juce:
+        'A lista de classes documentada do JUCE 9.0.4 não tem detecção de altura nem analisador de bandas em frações de oitava ou classe de ponderação A e C ([classes](https://docs.juce.com/master/classes.html)); ela oferece `dsp::FFT` e `dsp::WindowingFunction` como peças, e a exibição de espectro aparece nos tutoriais como código que o leitor escreve.',
+      mangue:
+        'O `PitchDetector` oferece o YIN e o método de McLeod, com um valor de confiança e o nome da nota mais próxima, refinado entre amostras por interpolação de banda limitada. O `SpectrumAnalyzer` dá bandas de oitava a 1/24 de oitava nas frequências exatas da IEC 61260-1 e as ponderações A e C da IEC 61672-1, com balística e retenção de pico, entregando quadros inteiros a uma interface por um buffer triplo wait-free.',
+      check: [
+        '[pitch.rs](proof:pitch): senoides, dentes de serra, ondas quadradas, tons sem a fundamental e tons com um segundo harmônico forte, de 55 Hz a 2 kHz, são lidos dentro de 2 cents a 44,1 e 48 kHz, sem erros de oitava. [spectrum.rs](proof:spectrum-band): uma senoide em escala cheia lê 0 dB na sua banda, com margem de 0,01 dB, e [as bandas de terço de oitava de ruído branco e rosa](proof:spectrum-noise) somam certo dentro de 0,05 dB.',
+      ],
+      limit:
+        'Tons sintéticos, estáveis e isolados. Em taxas de 8 a 22 kHz o erro sobe a 13 cents; um segundo harmônico mais de cerca de quatro vezes mais forte que a fundamental faz o detector ler uma oitava acima; ruído grave pode ler confiança perto de 0,7. As bandas são formadas a partir dos bins da FFT, não por um banco de filtros IEC 61260-1, e bandas mais estreitas que uns quatro bins não são resolvidas. Existem módulos de altura de terceiros para o JUCE.',
+    },
+  },
+
+  {
+    id: 'keyboard',
+    proofs: ['keyboard-heap', 'keyboard-sounding', 'keyboard-threads'],
+    en: {
+      title: 'A keyboard an interface can read without listening',
+      row: 'Keyboard state',
+      juceShort: 'Listeners that may run on the audio thread',
+      mangueShort: 'Atomics an interface polls; no listener, no lock',
+      juce:
+        '[MidiKeyboardState](https://docs.juce.com/master/classMidiKeyboardState.html) reports key changes to its listeners synchronously, on whichever thread updates it, and its documentation warns that the callback could happen from an audio callback thread ([listener](https://docs.juce.com/master/classMidiKeyboardState_1_1Listener.html)). An interface can poll `isNoteOn()` instead, but the documentation gives no guarantee that updates or reads are free of locks or allocation, and the class tracks keys, not pedals.',
+      mangue:
+        '`midi::keyboard::KeyboardState` keeps keys, velocities and the sustain pedal in atomics. The audio thread updates it with no listener code, no lock and no heap call; an interface polls it. A reader never sees a key that was not struck, and never sees a sustained key go silent while it passes from the hand to the pedal.',
+      check: [
+        '[the_keyboard_state_does_not_use_the_heap](proof:keyboard-heap) (20,000 random messages, reads interleaved), and [a_key_that_goes_on_sounding_is_never_read_as_silent](proof:keyboard-sounding) and [an_interface_can_read_while_another_thread_writes](proof:keyboard-threads).',
+      ],
+      limit:
+        'One writing thread. A read is consistent within each group of 16 keys, not across the whole keyboard, and a velocity can briefly lead or lag its key. Only the sustain pedal is tracked. “No lock” and “no listener” follow from the code (atomic operations only, no callback interface), not from a test.',
+    },
+    pt: {
+      title: 'Um teclado que a interface lê sem ficar ouvindo',
+      row: 'Estado do teclado',
+      juceShort: 'Listeners que podem rodar na thread de áudio',
+      mangueShort: 'Atômicos que a interface consulta; sem listener, sem lock',
+      juce:
+        'O [MidiKeyboardState](https://docs.juce.com/master/classMidiKeyboardState.html) informa as mudanças de tecla aos seus listeners de forma síncrona, na thread que o atualiza, e a documentação avisa que o callback pode acontecer a partir de uma thread de callback de áudio ([listener](https://docs.juce.com/master/classMidiKeyboardState_1_1Listener.html)). A interface pode consultar `isNoteOn()` em vez disso, mas a documentação não garante que atualizações ou leituras sejam livres de locks ou de alocação, e a classe acompanha teclas, não pedais.',
+      mangue:
+        'O `midi::keyboard::KeyboardState` guarda teclas, velocidades e o pedal de sustain em atômicos. A thread de áudio o atualiza sem código de listener, sem lock e sem chamada ao heap; a interface o consulta. Quem lê nunca vê uma tecla que não foi tocada, e nunca vê uma tecla sustentada ficar muda enquanto passa da mão para o pedal.',
+      check: [
+        '[the_keyboard_state_does_not_use_the_heap](proof:keyboard-heap) (20.000 mensagens aleatórias, com leituras intercaladas), e [a_key_that_goes_on_sounding_is_never_read_as_silent](proof:keyboard-sounding) e [an_interface_can_read_while_another_thread_writes](proof:keyboard-threads).',
+      ],
+      limit:
+        'Uma única thread escrevendo. Uma leitura é consistente dentro de cada grupo de 16 teclas, não no teclado inteiro, e uma velocidade pode chegar um pouco antes ou depois da sua tecla. Só o pedal de sustain é acompanhado. “Sem lock” e “sem listener” decorrem do código (só operações atômicas, nenhuma interface de callback), não de um teste.',
+    },
+  },
 ];
 
 // What JUCE has today and Manguebyte does not: the last section of
@@ -387,16 +576,16 @@ export const juceAhead = {
   en: [
     'a complete GUI toolkit, with plugin editor windows in every format;',
     'Audio Unit, AAX and LV2 plugin formats;',
-    'plugin hosting;',
-    'many more DSP building blocks, and readers for compressed audio formats;',
+    'hosting of AU and LV2 plugins, plugin scanning, and the editors of hosted plugins (Manguebyte hosts CLAP and VST 3 plugins, without their editors);',
+    'more DSP building blocks (convolution among them), and readers for compressed audio formats;',
     'iOS and Android;',
     'documentation, tutorials and a large community.',
   ],
   pt: [
     'um toolkit de interface gráfica completo, com janelas de editor de plugin em todos os formatos;',
     'os formatos de plugin Audio Unit, AAX e LV2;',
-    'hospedagem de plugins;',
-    'muito mais blocos de DSP, e leitores de formatos de áudio comprimidos;',
+    'hospedagem de plugins AU e LV2, varredura de plugins e os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP e VST 3, sem os editores);',
+    'mais blocos de DSP (convolução entre eles), e leitores de formatos de áudio comprimidos;',
     'iOS e Android;',
     'documentação, tutoriais e uma comunidade grande.',
   ],

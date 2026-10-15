@@ -100,7 +100,11 @@ export function signal({ seed = 3, width = 1440, height = 64 } = {}) {
 }
 
 // The image of the manifesto: a satellite dish stuck in the mangrove mud.
-export function dish() {
+// With a title it is an image with that name; without one it is decoration.
+export function dish(title) {
   const random = sequence(21);
-  return `<svg class="dish" viewBox="0 0 420 300" role="img" aria-labelledby="dish-title" focusable="false"><title id="dish-title">{title}</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g class="dish-roots" opacity=".55">${roots(random, 70, 250, 0.8)}${roots(random, 372, 250, 0.62)}</g><path d="M4,250 Q60,243 120,250 T240,250 T360,250 T416,250" stroke-width="6"/><path d="M206,250 L226,150" stroke-width="10"/><path d="M196,250 L236,250" stroke-width="10"/><g class="dish-bowl"><path d="M142,84 Q150,196 302,158" stroke-width="9"/><path d="M142,84 Q236,78 302,158" stroke-width="5"/><path d="M196,146 L262,70" stroke-width="5"/><path d="M228,132 L262,70" stroke-width="3"/><circle cx="264" cy="67" r="9" fill="currentColor" stroke="none"/></g><g class="dish-waves" stroke-width="5"><path d="M292,44 Q306,58 300,78"/><path d="M314,26 Q340,56 326,92"/><path d="M338,10 Q376,54 352,106"/></g></g></svg>`;
+  const label = title
+    ? `role="img" aria-labelledby="dish-title" focusable="false"><title id="dish-title">${title}</title>`
+    : 'aria-hidden="true" focusable="false">';
+  return `<svg class="dish" viewBox="0 0 420 300" ${label}<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g class="dish-roots" opacity=".55">${roots(random, 70, 250, 0.8)}${roots(random, 372, 250, 0.62)}</g><path d="M4,250 Q60,243 120,250 T240,250 T360,250 T416,250" stroke-width="6"/><path d="M206,250 L226,150" stroke-width="10"/><path d="M196,250 L236,250" stroke-width="10"/><g class="dish-bowl"><path d="M142,84 Q150,196 302,158" stroke-width="9"/><path d="M142,84 Q236,78 302,158" stroke-width="5"/><path d="M196,146 L262,70" stroke-width="5"/><path d="M228,132 L262,70" stroke-width="3"/><circle cx="264" cy="67" r="9" fill="currentColor" stroke="none"/></g><g class="dish-waves" stroke-width="5"><path d="M292,44 Q306,58 300,78"/><path d="M314,26 Q340,56 326,92"/><path d="M338,10 Q376,54 352,106"/></g></g></svg>`;
 }

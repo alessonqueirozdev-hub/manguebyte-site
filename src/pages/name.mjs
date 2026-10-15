@@ -19,7 +19,7 @@ export function render(ctx) {
         <p>${inline(page.lede)}</p>
         ${page.story.map((paragraph) => `<p>${inline(paragraph)}</p>`)}
       </div>
-      <div class="story-art">${dish().replace('{title}', escape(page.quote))}</div>
+      <div class="story-art">${dish(escape(page.quote))}</div>
     </div>
   </section>`;
 
