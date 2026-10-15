@@ -79,7 +79,10 @@ function extract(lines, id, definition) {
     } else {
       const from = part.after ? indexOf(lines, part.after, 0, what) : 0;
       first = indexOf(lines, part.from, from, what);
-      last = indexOf(lines, part.to, first, what);
+      // `toAfter` skips ahead before looking for the end, for a sample
+      // whose last line also appears earlier in it.
+      const end = part.toAfter ? indexOf(lines, part.toAfter, first, what) : first;
+      last = indexOf(lines, part.to, end, what);
     }
     ranges.push([first + 1, last + 1]);
     for (const line of lines.slice(first, last + 1)) out.push({ text: line.slice(dedent) });

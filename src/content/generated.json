@@ -1,7 +1,7 @@
 {
-  "commit": "7e21fe52e9696c937da0411209575e3dcd1a447c",
+  "commit": "5b074daf465d5cf310582160429e45e927c9eff7",
   "related": {
-    "aratu": "652569948ea92d39f0afa76fb33381f8fb66dbfb"
+    "aratu": "d6165198c68b408fff402900362695181fdb5ac9"
   },
   "proofs": {
     "automation-harness": {
@@ -380,6 +380,41 @@
       "file": "docs/VISION.md",
       "line": null,
       "name": "aratu/docs/VISION.md",
+      "test": false
+    },
+    "aratu-manual-parses": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/manual.rs",
+      "line": 30,
+      "name": "every_example_in_the_manual_parses",
+      "test": true
+    },
+    "aratu-manual-checks": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/manual.rs",
+      "line": 59,
+      "name": "every_example_in_the_manual_checks",
+      "test": true
+    },
+    "aratu-examples-play": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/examples.rs",
+      "line": 10,
+      "name": "every_example_compiles_cleanly_and_plays",
+      "test": true
+    },
+    "aratu-schedule": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/schedule.rs",
+      "line": 46,
+      "name": "the_rhythm_rules_place_parts_exactly",
+      "test": true
+    },
+    "aratu-ci": {
+      "repo": "aratu",
+      "file": ".github/workflows/ci.yml",
+      "line": 24,
+      "name": "CI job: the web editor",
       "test": false
     }
   },
@@ -1041,25 +1076,58 @@
       "lang": "aratu",
       "ranges": [
         [
-          31,
-          35
+          49,
+          64
         ]
       ],
       "lines": [
         {
-          "text": "measure 4/4, tempo 96"
+          "text": "meter: 4/4"
+        },
+        {
+          "text": "tempo: 96"
+        },
+        {
+          "text": "key: A minor"
         },
         {
           "text": ""
         },
         {
-          "text": "piano: | C4 q   E4 q   G4 h   | A3 q.  B3 e  C4 h |"
+          "text": "drums {"
         },
         {
-          "text": "bass:  | C2 w                 | A1 w              |"
+          "text": "  hh = cc cc co cc"
         },
         {
-          "text": "drums: every bar  \"kick . snare . kick kick snare .\""
+          "text": "  bd = b - b -"
+        },
+        {
+          "text": "  sd = - s - s"
+        },
+        {
+          "text": "}"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "bass = | a2 _ e2 _ | f2 _ c3 _ |"
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": "guitar {"
+        },
+        {
+          "text": "  chords = | Am | F | C G | G |"
+        },
+        {
+          "text": "  strum  = D du -u du"
+        },
+        {
+          "text": "}"
         }
       ]
     },

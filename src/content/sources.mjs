@@ -217,6 +217,27 @@ export const proofs = {
   'aratu-readme': { repo: 'aratu', file: 'README.md', name: 'aratu/README.md' },
   'aratu-manual': { repo: 'aratu', file: 'docs/MANUAL.md', name: 'aratu/docs/MANUAL.md' },
   'aratu-vision': { repo: 'aratu', file: 'docs/VISION.md', name: 'aratu/docs/VISION.md' },
+  'aratu-manual-parses': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/manual.rs',
+    find: 'fn every_example_in_the_manual_parses(',
+  },
+  'aratu-manual-checks': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/manual.rs',
+    find: 'fn every_example_in_the_manual_checks(',
+  },
+  'aratu-examples-play': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/examples.rs',
+    find: 'fn every_example_compiles_cleanly_and_plays(',
+  },
+  'aratu-schedule': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/schedule.rs',
+    find: 'fn the_rhythm_rules_place_parts_exactly(',
+  },
+  'aratu-ci': { repo: 'aratu', file: '.github/workflows/ci.yml', find: '  web:', name: 'CI job: the web editor' },
 };
 
 // A code sample is one or more stretches of a file, shown as they are.
@@ -282,13 +303,12 @@ export const snippets = {
     lang: 'rust',
     parts: [{ after: 'Play it live instead', from: 'use manguebyte::prelude::*;', to: /^\}$/ }],
   },
-  // Aratu: the sketch of its syntax from its README. A sketch, not a
-  // decision, as the README says.
+  // Aratu: the taste of its syntax from its README.
   'aratu-taste': {
     repo: 'aratu',
     file: 'README.md',
     lang: 'aratu',
-    parts: [{ after: '## A taste', from: 'measure 4/4', to: 'drums:' }],
+    parts: [{ after: '## A taste', from: 'meter: 4/4', toAfter: 'guitar {', to: /^\}$/ }],
   },
   'duck-params': {
     file: 'plugins/duck/src/lib.rs',

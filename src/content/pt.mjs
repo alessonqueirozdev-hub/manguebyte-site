@@ -195,7 +195,7 @@ export default {
 
     ecosystem: {
       heading: 'O ecossistema Manguebyte',
-      intro: 'O Manguebyte é o motor de som de dois projetos construídos sobre ele, ambos do Recife.',
+      intro: 'Mais dois projetos do Recife crescem do mesmo mangue, feitos para rodar sobre o Manguebyte.',
       more: 'Mais sobre o Aratu',
     },
 
@@ -398,13 +398,13 @@ export default {
       id: 'manguebyte',
       name: 'Manguebyte',
       status: 'Este framework',
-      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0: o motor de som dos outros dois.',
+      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0, e o motor de som para o qual os outros dois estão sendo construídos.',
     },
     {
       id: 'aratu',
       name: 'Aratu',
       status: 'Em desenvolvimento',
-      body: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português e inglês, no navegador e dentro da DAW.',
+      body: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português e inglês, no navegador e dentro da DAW. O editor já roda no navegador.',
     },
     {
       id: 'parabolic',
@@ -417,25 +417,28 @@ export default {
   aratu: {
     title: 'Aratu: uma linguagem de live coding que se lê como música',
     description:
-      'O Aratu é uma linguagem de live coding para músicos: compassos, tempos e figuras em primeiro lugar, em português e inglês, no navegador. Em desenvolvimento; o seu motor de som é o Manguebyte.',
+      'O Aratu é uma linguagem de live coding para músicos: compassos, tempos e figuras em primeiro lugar, em português e inglês. O editor já roda no navegador; o Manguebyte será o seu motor de som.',
     kicker: 'O ecossistema Manguebyte',
     heading: 'Aratu',
-    lede: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português e inglês, no navegador. Em desenvolvimento; o seu motor de som é o Manguebyte.',
+    lede: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português e inglês, no navegador. Em desenvolvimento; o Manguebyte será o seu motor de som.',
     status:
-      '**Em desenvolvimento.** O manual, as notas de design e a visão estão escritos, no [repositório público]({aratuUrl}); a linguagem e o seu editor web estão sendo construídos agora. Ainda nada roda, então, diferente do resto deste site, esta página não leva a nenhum teste.',
+      '**Em desenvolvimento.** A linguagem lê e confere todos os exemplos do manual, e o editor web roda no navegador sem instalar nada, tocando com sons provisórios embutidos que o motor do Manguebyte vai substituir.',
     mascotAlt: 'Aratu, um caranguejo-do-mangue laranja de fones de ouvido programando música num notebook',
+    tryIt: 'Experimente no navegador',
     whatHeading: 'O tempo do jeito que o músico conta',
     what: [
       'O Aratu é uma linguagem e um ambiente de live coding para quem sabe música. Compassos, fórmulas de compasso, figuras e andamento vêm primeiro, para que o que você digita fique disposto no tempo do jeito que um músico já pensa.',
-      'Os nomes das notas funcionam em português (dó ré mi) tanto quanto em letras. A ideia é que ele rode no navegador e dentro da DAW, acompanhando o transporte do host.',
+      'Os nomes das notas funcionam em solfejo (dó4 ré4 mi4) tanto quanto em letras. Quando um compasso não fecha, o Aratu avisa com palavras de músico, em português ou inglês. Hoje ele roda no navegador, e a ideia é que rode também dentro da DAW, acompanhando o transporte do host.',
     ],
     tasteHeading: 'Uma amostra',
-    tasteIntro: 'O README do Aratu mostra este esboço e o chama de “um esboço, não uma decisão”: a sintaxe ainda está sendo desenhada.',
+    tasteIntro: 'Do README do Aratu. Um espaço separa os tempos, símbolos escritos juntos dividem o mesmo tempo (`cc` são duas colcheias), `_` sustenta e `-` é pausa; os acordes se escrevem como numa cifra, e as batidas com `d` e `u`.',
     engineHeading: 'Construído sobre o Manguebyte',
     engine:
-      'O Manguebyte é o motor de som do Aratu. Rodar no navegador depende do motor em WebAssembly do framework, que está no [roadmap](/roadmap/#phase-5) com o Aratu como primeiro usuário, e ainda não foi começado.',
+      'Hoje o editor toca com sons simples embutidos. O Manguebyte vai substituí-los quando o seu motor rodar no navegador: é o motor em WebAssembly do [roadmap](/roadmap/#phase-5), com o Aratu como primeiro usuário, e ainda não foi começado.',
     nameHeading: 'Por que “Aratu”?',
     name: 'O aratu é um caranguejo do mangue, o mangue do Recife que deu nome ao manguebeat e ao Manguebyte.',
+    proofsHeading: 'O que os testes conferem',
+    proofsIntro: 'O Aratu tem o seu próprio [repositório]({aratuUrl}) e CI, no commit `{aratuCommit}`. Estes testes rodam lá a cada commit:',
     readHeading: 'Leia mais',
     links: {
       repo: 'O Aratu no GitHub',

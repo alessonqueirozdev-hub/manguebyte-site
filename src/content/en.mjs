@@ -195,7 +195,7 @@ export default {
 
     ecosystem: {
       heading: 'The Manguebyte ecosystem',
-      intro: 'Manguebyte is the sound engine of two projects built on it, both from Recife.',
+      intro: 'Two more projects from Recife grow from the same mangue, built to run on Manguebyte.',
       more: 'More about Aratu',
     },
 
@@ -398,13 +398,13 @@ export default {
       id: 'manguebyte',
       name: 'Manguebyte',
       status: 'This framework',
-      body: 'The open-source audio framework for Rust, under MIT or Apache-2.0: the sound engine of the other two.',
+      body: 'The open-source audio framework for Rust, under MIT or Apache-2.0, and the sound engine the other two are being built for.',
     },
     {
       id: 'aratu',
       name: 'Aratu',
       status: 'In development',
-      body: 'A live-coding language that reads like music: measures, beats and note values first, in Portuguese and English, in the browser and inside a DAW.',
+      body: 'A live-coding language that reads like music: measures, beats and note values first, in Portuguese and English, in the browser and inside a DAW. Its editor already runs in the browser.',
     },
     {
       id: 'parabolic',
@@ -417,25 +417,28 @@ export default {
   aratu: {
     title: 'Aratu: a live-coding language that reads like music',
     description:
-      'Aratu is a live-coding language for musicians: measures, beats and note values first, in Portuguese and English, in the browser. In development; its sound engine is Manguebyte.',
+      'Aratu is a live-coding language for musicians: measures, beats and note values first, in Portuguese and English. Its editor runs in the browser today; Manguebyte will be its sound engine.',
     kicker: 'The Manguebyte ecosystem',
     heading: 'Aratu',
-    lede: 'A live-coding language that reads like music: measures, beats and note values first, Portuguese and English, in the browser. In development; its sound engine is Manguebyte.',
+    lede: 'A live-coding language that reads like music: measures, beats and note values first, Portuguese and English, in the browser. In development; Manguebyte will be its sound engine.',
     status:
-      '**In development.** Its manual, its design notes and its vision are written, in its [public repository]({aratuUrl}); the language and its web editor are being built now. Nothing runs yet, so unlike the rest of this site, this page links to no test.',
+      '**In development.** The language reads and checks every example in its manual, and its web editor runs in the browser with nothing to install, playing with temporary built-in sounds that Manguebyte’s engine will replace.',
     mascotAlt: 'Aratu, an orange mangrove crab wearing headphones, coding music on a laptop',
+    tryIt: 'Try it in the browser',
     whatHeading: 'Time the way a musician counts it',
     what: [
       'Aratu is a live-coding language and environment for people who know music. Measures, time signatures, note values and tempo come first, so that what you type is laid out in time the way a musician already thinks about it.',
-      'Note names work in Portuguese ([[pt:dó ré mi]]) as well as in letters. It is meant to run in the browser and inside a DAW, in step with the host’s transport.',
+      'Note names work in solfège ([[pt:dó4 ré4 mi4]]) as well as in letters. When a bar does not add up, Aratu says so in a musician’s words, in Portuguese or English. It runs in the browser today, and is meant to run inside a DAW too, in step with the host’s transport.',
     ],
     tasteHeading: 'A taste',
-    tasteIntro: 'Aratu’s README shows this sketch and calls it “a sketch, not a decision”: the syntax is still being designed.',
+    tasteIntro: 'From Aratu’s README. A space separates beats, symbols written together share their beat (`cc` is two eighths), `_` holds and `-` rests; chords are written as a lead sheet, and strums with `d` and `u`.',
     engineHeading: 'Built on Manguebyte',
     engine:
-      'Manguebyte is Aratu’s sound engine. Running it in a browser needs the framework’s WebAssembly engine, which is on the [roadmap](/roadmap/#phase-5) with Aratu as its first user, and is not started yet.',
+      'Today the editor plays with simple built-in sounds. Manguebyte will replace them once its engine runs in the browser: that is the WebAssembly engine on the [roadmap](/roadmap/#phase-5), with Aratu as its first user, and it is not started yet.',
     nameHeading: 'Why “Aratu”?',
     name: 'The aratu is a crab of the mangrove, the [[pt:mangue]] of Recife that gave manguebeat, and Manguebyte, their names.',
+    proofsHeading: 'What its tests check',
+    proofsIntro: 'Aratu has its own [repository]({aratuUrl}) and CI, at commit `{aratuCommit}`. These tests run there on every commit:',
     readHeading: 'Read more',
     links: {
       repo: 'Aratu on GitHub',

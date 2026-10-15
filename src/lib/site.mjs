@@ -56,6 +56,8 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
     ciUrl: `${repoUrl}/actions/runs/${config.source.ciRun}`,
     ciJobs: String(config.source.ciJobs),
     aratuUrl,
+    aratuCommit: config.related.aratu.commit.slice(0, 7),
+    aratuEditor: config.related.aratu.editor,
     issuesUrl: `${repoUrl}/issues`,
     email: config.contact,
     date: DATES[language.code](config.source.date),
@@ -88,6 +90,7 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
 
   // Where a proof lives, in a word: the crate, the example plugin, or CI.
   function origin(found) {
+    if (found.repo) return found.repo;
     const crate = found.file.match(/^crates\/manguebyte-?([a-z0-9]*)\//);
     if (crate) return crate[1] || 'manguebyte';
     const plugin = found.file.match(/^plugins\/(\w+)\//);

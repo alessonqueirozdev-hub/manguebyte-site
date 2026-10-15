@@ -12,10 +12,10 @@ export default {
   // site was read at. To update: change `commit`, `date` and `ciRun`, run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: '7e21fe52e9696c937da0411209575e3dcd1a447c',
+    commit: '5b074daf465d5cf310582160429e45e927c9eff7',
     date: '2026-10-15',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '38802299847',
+    ciRun: '38813619845',
     // How many jobs that run has, all of which passed.
     ciJobs: 15,
   },
@@ -25,7 +25,9 @@ export default {
   related: {
     aratu: {
       repo: 'alessonqueirozdev-hub/aratu',
-      commit: '652569948ea92d39f0afa76fb33381f8fb66dbfb',
+      commit: 'd6165198c68b408fff402900362695181fdb5ac9',
+      // The web editor, published from that repository with GitHub Pages.
+      editor: 'https://alessonqueirozdev-hub.github.io/aratu/',
     },
   },
 

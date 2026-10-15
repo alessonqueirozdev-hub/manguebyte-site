@@ -4,7 +4,7 @@ import { escape, html } from '../lib/html.mjs';
 import { aratuUrl, icon, repoFile } from '../lib/site.mjs';
 
 export function render(ctx) {
-  const { t, text, inline, asset, sample, sectionHead } = ctx;
+  const { t, text, inline, asset, sample, sectionHead, proofList } = ctx;
   const page = t.aratu;
 
   const head = html`<section class="page-head aratu-head">
@@ -13,6 +13,7 @@ export function render(ctx) {
         <p class="kicker">${escape(page.kicker)}</p>
         <h1>${escape(page.heading)}</h1>
         <p class="lede">${text(page.lede)}</p>
+        <p class="actions"><a class="button button-primary" href="${escape(ctx.config.related.aratu.editor)}">${escape(page.tryIt)}${icon('out')}</a></p>
         <p class="young">${text(page.status)}</p>
       </div>
       <div class="disc-face aratu-mascot">
@@ -36,6 +37,9 @@ export function render(ctx) {
         <h2 class="small-heading" id="taste">${escape(page.tasteHeading)}</h2>
         <p>${text(page.tasteIntro)}</p>
         ${sample('aratu-taste')}
+        <h2 class="small-heading" id="tests">${escape(page.proofsHeading)}</h2>
+        <p>${text(page.proofsIntro)}</p>
+        ${proofList(['aratu-manual-parses', 'aratu-manual-checks', 'aratu-examples-play', 'aratu-schedule', 'aratu-ci'])}
         <h2 class="small-heading" id="read">${escape(page.readHeading)}</h2>
         <p class="link-row">
           <a class="button button-primary" href="${aratuUrl}">${escape(page.links.repo)}${icon('out')}</a>
