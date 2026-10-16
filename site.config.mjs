@@ -12,10 +12,10 @@ export default {
   // site was read at. To update: change `commit`, `date` and `ciRun`, run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: '5b074daf465d5cf310582160429e45e927c9eff7',
+    commit: '34fef11f574bfe0107354564bc0f471393b98add',
     date: '2026-10-15',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '38813619845',
+    ciRun: '38826457238',
     // How many jobs that run has, all of which passed.
     ciJobs: 15,
   },
