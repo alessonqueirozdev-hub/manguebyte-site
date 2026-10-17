@@ -51,7 +51,9 @@ export function makeInline(resolve) {
     );
     out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, target) => {
       const link = resolve(target.replace(/&amp;/g, '&'));
-      return `<a href="${escape(link.href)}"${link.attrs ?? ''}>${label}</a>`;
+      // A test's name: let it break after an underscore, not mid-word.
+      const words = /^[a-z0-9_]+$/.test(label) ? label.replaceAll('_', '_<wbr>') : label;
+      return `<a href="${escape(link.href)}"${link.attrs ?? ''}>${words}</a>`;
     });
     out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     out = out.replace(/\*([^*]+)\*/g, '<em>$1</em>');

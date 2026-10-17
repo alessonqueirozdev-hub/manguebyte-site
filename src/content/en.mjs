@@ -104,11 +104,11 @@ export default {
     proven: {
       heading: 'Four things it proves on every commit',
       intro:
-        'Matching JUCE is the baseline. These are places where Manguebyte already does something JUCE {juce} does not, each one backed by a test that runs in CI. [The full list has fifteen](/beyond-juce/), with a source for everything said about JUCE and the limit of every claim.',
+        'Matching JUCE is the baseline. These are places where Manguebyte already does something JUCE {juce} does not, each one backed by a test that runs in CI. [The full list has sixteen](/beyond-juce/), with a source for everything said about JUCE and the limit of every claim.',
       juceLabel: 'In JUCE {juce}',
       proofLabel: 'Proof',
       limitLabel: 'Limit',
-      more: 'All fifteen claims, with proofs and limits',
+      more: 'All sixteen claims, with proofs and limits',
       cards: [
         {
           claim: 'automation',
@@ -211,7 +211,7 @@ export default {
   beyond: {
     title: 'Where Manguebyte goes beyond JUCE',
     description:
-      'Fifteen places where Manguebyte already does something JUCE does not, each with the problem, what JUCE does, what Manguebyte does, the test that proves it and the limit of the claim.',
+      'Sixteen places where Manguebyte already does something JUCE does not, each with the problem, what JUCE does, what Manguebyte does, the test that proves it and the limit of the claim.',
     kicker: 'Beyond JUCE',
     heading: 'Where it already goes beyond JUCE',
     intro: [
@@ -225,7 +225,7 @@ export default {
       '**Limits are stated next to the claim**, not left for the reader to find.',
     ],
     summaryHeading: 'Summary',
-    summaryCaption: 'The fifteen claims. Each row links to its section below.',
+    summaryCaption: 'The sixteen claims. Each row links to its section below.',
     table: { claim: 'Claim', juce: 'JUCE {juce}', mangue: 'Manguebyte', checked: 'Checked by' },
     labels: {
       problem: 'The problem',
@@ -242,7 +242,7 @@ export default {
     aheadOutro:
       '[JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) tracks that gap module by module, and the [roadmap](/roadmap/) says in what order it is being closed.',
     sourceNote:
-      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Where the README is newer, the page follows the README: the limit of section 6, on editors and LV2, and the list of where JUCE is ahead. The limit of section 2 also cites what testing in REAPER found.',
+      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Two limits say a little more, from the repository’s other documents: that of section 2 cites what testing in REAPER found, and that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI.',
   },
 
   features: {
@@ -357,7 +357,7 @@ export default {
       'JUCE {juce} has 24 modules. Parity means the same capability, not the same classes: where Rust or its ecosystem already solves something well, the plan is to not rebuild it. [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) explains every row.',
     parityTable: { module: 'JUCE module', crates: 'Manguebyte crates', status: 'Status' },
     sourceNote:
-      'This page follows [ROADMAP.md](repo:ROADMAP.md) and [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) at commit `{commit}`. One item follows the README instead, which is newer: ROADMAP.md still lists Ogg Vorbis and MP3 decoding as not started, while the README and the changelog say both are read.',
+      'This page follows [ROADMAP.md](repo:ROADMAP.md) and [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) at commit `{commit}`.',
   },
 
   name: {

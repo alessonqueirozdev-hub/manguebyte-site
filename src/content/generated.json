@@ -1,5 +1,5 @@
 {
-  "commit": "c5835bfa656b2a746eebdff8c033ba855b54ae6b",
+  "commit": "d656ef6decede7772145dcdf89d9960936a5edab",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -326,6 +326,104 @@
       "name": "an_interface_can_read_while_another_thread_writes",
       "test": true
     },
+    "instruments-poly-tuning": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/poly/tests.rs",
+      "line": 177,
+      "name": "every_note_is_in_tune_across_the_keyboard",
+      "test": true
+    },
+    "instruments-snare": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/kit.rs",
+      "line": 1627,
+      "name": "the_snare_measures_as_the_one_recorded",
+      "test": true
+    },
+    "instruments-crash": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/kit.rs",
+      "line": 1703,
+      "name": "the_crash_measures_as_the_one_recorded",
+      "test": true
+    },
+    "instruments-string": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/string.rs",
+      "line": 1067,
+      "name": "every_note_is_within_a_cent_across_the_keyboard",
+      "test": true
+    },
+    "instruments-bowed": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/bowed.rs",
+      "line": 1559,
+      "name": "every_bowed_note_is_in_tune_across_its_range",
+      "test": true
+    },
+    "instruments-wind": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/wind.rs",
+      "line": 1318,
+      "name": "every_note_is_in_tune_across_its_range",
+      "test": true
+    },
+    "instruments-mallet": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/mallet.rs",
+      "line": 1403,
+      "name": "every_mode_rings_within_half_a_percent_of_its_model",
+      "test": true
+    },
+    "instruments-choir": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/choir.rs",
+      "line": 1030,
+      "name": "the_formants_peak_at_the_vowels_targets",
+      "test": true
+    },
+    "instruments-poly-aliasing": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/poly/tests.rs",
+      "line": 220,
+      "name": "high_notes_are_kept_free_of_aliasing",
+      "test": true
+    },
+    "instruments-heap": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 976,
+      "name": "the_modelled_acoustic_instruments_do_not_use_the_heap",
+      "test": true
+    },
+    "instruments-voices-heap": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 1064,
+      "name": "the_instruments_do_not_use_the_heap",
+      "test": true
+    },
+    "instruments-poly-heap": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/tests/realtime.rs",
+      "line": 1199,
+      "name": "the_poly_synth_does_not_use_the_heap",
+      "test": true
+    },
+    "instruments-block-size": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/src/instruments/poly/tests.rs",
+      "line": 1026,
+      "name": "the_output_does_not_depend_on_the_block_size",
+      "test": true
+    },
+    "instruments-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 77,
+      "name": "TECH_DEBT items 66 to 71",
+      "test": false
+    },
     "ci-cli": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
@@ -336,7 +434,7 @@
     "reaper-render": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 87,
+      "line": 90,
       "name": "TECH_DEBT: the REAPER renders, paid back",
       "test": false
     },
@@ -963,8 +1061,8 @@
       "lang": "toml",
       "ranges": [
         [
-          139,
-          140
+          141,
+          142
         ]
       ],
       "lines": [
@@ -982,8 +1080,8 @@
       "lang": "rust",
       "ranges": [
         [
-          147,
-          164
+          149,
+          166
         ]
       ],
       "lines": [
@@ -1049,8 +1147,8 @@
       "lang": "rust",
       "ranges": [
         [
-          170,
-          187
+          172,
+          189
         ]
       ],
       "lines": [

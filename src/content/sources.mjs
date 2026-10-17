@@ -206,6 +206,65 @@ export const proofs = {
     find: 'fn an_interface_can_read_while_another_thread_writes(',
   },
 
+  // Instruments ready to play
+  'instruments-poly-tuning': {
+    file: 'crates/manguebyte-dsp/src/instruments/poly/tests.rs',
+    find: 'fn every_note_is_in_tune_across_the_keyboard(',
+  },
+  'instruments-snare': {
+    file: 'crates/manguebyte-dsp/src/instruments/kit.rs',
+    find: 'fn the_snare_measures_as_the_one_recorded(',
+  },
+  'instruments-crash': {
+    file: 'crates/manguebyte-dsp/src/instruments/kit.rs',
+    find: 'fn the_crash_measures_as_the_one_recorded(',
+  },
+  'instruments-string': {
+    file: 'crates/manguebyte-dsp/src/instruments/string.rs',
+    find: 'fn every_note_is_within_a_cent_across_the_keyboard(',
+  },
+  'instruments-bowed': {
+    file: 'crates/manguebyte-dsp/src/instruments/bowed.rs',
+    find: 'fn every_bowed_note_is_in_tune_across_its_range(',
+  },
+  'instruments-wind': {
+    file: 'crates/manguebyte-dsp/src/instruments/wind.rs',
+    find: 'fn every_note_is_in_tune_across_its_range(',
+  },
+  'instruments-mallet': {
+    file: 'crates/manguebyte-dsp/src/instruments/mallet.rs',
+    find: 'fn every_mode_rings_within_half_a_percent_of_its_model(',
+  },
+  'instruments-choir': {
+    file: 'crates/manguebyte-dsp/src/instruments/choir.rs',
+    find: 'fn the_formants_peak_at_the_vowels_targets(',
+  },
+  'instruments-poly-aliasing': {
+    file: 'crates/manguebyte-dsp/src/instruments/poly/tests.rs',
+    find: 'fn high_notes_are_kept_free_of_aliasing(',
+  },
+  'instruments-heap': {
+    file: 'crates/manguebyte-dsp/tests/realtime.rs',
+    find: 'fn the_modelled_acoustic_instruments_do_not_use_the_heap(',
+  },
+  'instruments-voices-heap': {
+    file: 'crates/manguebyte-dsp/tests/realtime.rs',
+    find: 'fn the_instruments_do_not_use_the_heap(',
+  },
+  'instruments-poly-heap': {
+    file: 'crates/manguebyte-dsp/tests/realtime.rs',
+    find: 'fn the_poly_synth_does_not_use_the_heap(',
+  },
+  'instruments-block-size': {
+    file: 'crates/manguebyte-dsp/src/instruments/poly/tests.rs',
+    find: 'fn the_output_does_not_depend_on_the_block_size(',
+  },
+  'instruments-debt': {
+    file: 'docs/TECH_DEBT.md',
+    find: '| 66 | ',
+    name: 'TECH_DEBT items 66 to 71',
+  },
+
   // The command-line tool, and what testing in a real host found
   'ci-cli': { file: '.github/workflows/ci.yml', find: '  cli:', name: 'CI job: command-line tool end to end' },
   'reaper-render': {

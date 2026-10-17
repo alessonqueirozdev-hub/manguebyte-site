@@ -104,11 +104,11 @@ export default {
     proven: {
       heading: 'Quatro coisas que ele prova a cada commit',
       intro:
-        'Igualar o JUCE é a linha de base. Estes são pontos em que o Manguebyte já faz algo que o JUCE {juce} não faz, cada um sustentado por um teste que roda no CI. [A lista completa tem quinze](/beyond-juce/), com a fonte de tudo o que se diz sobre o JUCE e o limite de cada afirmação.',
+        'Igualar o JUCE é a linha de base. Estes são pontos em que o Manguebyte já faz algo que o JUCE {juce} não faz, cada um sustentado por um teste que roda no CI. [A lista completa tem dezesseis](/beyond-juce/), com a fonte de tudo o que se diz sobre o JUCE e o limite de cada afirmação.',
       juceLabel: 'No JUCE {juce}',
       proofLabel: 'Prova',
       limitLabel: 'Limite',
-      more: 'As quinze afirmações, com provas e limites',
+      more: 'As dezesseis afirmações, com provas e limites',
       cards: [
         {
           claim: 'automation',
@@ -211,7 +211,7 @@ export default {
   beyond: {
     title: 'Onde o Manguebyte vai além do JUCE',
     description:
-      'Quinze pontos em que o Manguebyte já faz algo que o JUCE não faz, cada um com o problema, o que o JUCE faz, o que o Manguebyte faz, o teste que prova e o limite da afirmação.',
+      'Dezesseis pontos em que o Manguebyte já faz algo que o JUCE não faz, cada um com o problema, o que o JUCE faz, o que o Manguebyte faz, o teste que prova e o limite da afirmação.',
     kicker: 'Além do JUCE',
     heading: 'Onde ele já vai além do JUCE',
     intro: [
@@ -225,7 +225,7 @@ export default {
       '**Os limites vêm ao lado da afirmação**, em vez de ficarem para o leitor descobrir.',
     ],
     summaryHeading: 'Resumo',
-    summaryCaption: 'As quinze afirmações. Cada linha leva à seção correspondente, mais abaixo.',
+    summaryCaption: 'As dezesseis afirmações. Cada linha leva à seção correspondente, mais abaixo.',
     table: { claim: 'Afirmação', juce: 'JUCE {juce}', mangue: 'Manguebyte', checked: 'Conferido por' },
     labels: {
       problem: 'O problema',
@@ -242,7 +242,7 @@ export default {
     aheadOutro:
       'O [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) acompanha essa distância módulo a módulo, e o [roadmap](/roadmap/) diz em que ordem ela está sendo fechada.',
     sourceNote:
-      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Onde o README é mais novo, a página segue o README: o limite da seção 6, sobre editores e LV2, e a lista de onde o JUCE está à frente. O limite da seção 2 também cita o que o teste no REAPER encontrou.',
+      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Dois limites dizem um pouco mais, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou, e o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI.',
   },
 
   features: {
@@ -357,7 +357,7 @@ export default {
       'O JUCE {juce} tem 24 módulos. Paridade significa a mesma capacidade, não as mesmas classes: onde o Rust ou o seu ecossistema já resolve bem alguma coisa, o plano é não refazer. O [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) explica cada linha.',
     parityTable: { module: 'Módulo do JUCE', crates: 'Crates do Manguebyte', status: 'Situação' },
     sourceNote:
-      'Esta página segue o [ROADMAP.md](repo:ROADMAP.md) e o [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) no commit `{commit}`. Um item segue o README, que é mais novo: o ROADMAP.md ainda lista a decodificação de Ogg Vorbis e MP3 como não começada, enquanto o README e o changelog dizem que os dois são lidos.',
+      'Esta página segue o [ROADMAP.md](repo:ROADMAP.md) e o [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) no commit `{commit}`.',
   },
 
   name: {

@@ -568,24 +568,62 @@ export const claims = [
         'Uma única thread escrevendo. Uma leitura é consistente dentro de cada grupo de 16 teclas, não no teclado inteiro, e uma velocidade pode chegar um pouco antes ou depois da sua tecla. Só o pedal de sustain é acompanhado. “Sem lock” e “sem listener” decorrem do código (só operações atômicas, nenhuma interface de callback), não de um teste.',
     },
   },
+  {
+    id: 'instruments',
+    proofs: ['instruments-poly-tuning', 'instruments-snare', 'instruments-crash', 'instruments-bowed', 'instruments-mallet', 'instruments-choir', 'instruments-heap'],
+    en: {
+      title: 'Instruments ready to play, measured in tests',
+      row: 'Instruments ready to play',
+      juceShort: 'Classes to build an instrument from; none ready to play',
+      mangueShort: 'Modelled and synthesised instruments and drum kits, their tuning and spectra measured in tests',
+      juce:
+        'JUCE gives the parts to build an instrument from: [Synthesiser](https://docs.juce.com/master/classSynthesiser.html) and [SynthesiserVoice](https://docs.juce.com/master/classSynthesiserVoice.html), a basic sample player in [SamplerSound](https://docs.juce.com/master/classSamplerSound.html) and [SamplerVoice](https://docs.juce.com/master/classSamplerVoice.html), and building blocks such as [dsp::Oscillator](https://docs.juce.com/master/classdsp_1_1Oscillator.html) and [dsp::LadderFilter](https://docs.juce.com/master/classdsp_1_1LadderFilter.html). Its [class list](https://docs.juce.com/master/annotated.html) has no instrument ready to play: no modelled acoustic instrument, no drum machine, no synthesiser with presets.',
+      mangue:
+        '`manguebyte_dsp::instruments` holds voices for the polyphonic `Synth` that play as they are: plucked guitars and basses, four-operator FM, a tonewheel organ with a rotary speaker, mallets by modal synthesis, bowed strings and winds by digital waveguide, choirs by formant synthesis, an acid bass with accent and slide, drum kits (acoustic drums and cymbals by modal synthesis, and the 808, 909, 606 and CR-78 with kits for each genre), and a deep polyphonic synthesiser with 68 presets. Every one of them takes velocity and accents, stays off the heap while it plays, and renders the same samples whatever the block size.',
+      check: [
+        'Tuning is measured across each instrument’s range: [every_note_is_in_tune_across_the_keyboard](proof:instruments-poly-tuning) for the synthesiser (within 0.012 cent), [every_note_is_within_a_cent_across_the_keyboard](proof:instruments-string) for the plucked strings, [every_bowed_note_is_in_tune_across_its_range](proof:instruments-bowed), [every_note_is_in_tune_across_its_range](proof:instruments-wind) for the winds, and the tuning tests of the mallets, choir, organ, FM and acid voices.',
+        'Spectra are measured too: [every_mode_rings_within_half_a_percent_of_its_model](proof:instruments-mallet), [the_formants_peak_at_the_vowels_targets](proof:instruments-choir), [high_notes_are_kept_free_of_aliasing](proof:instruments-poly-aliasing), and [the_snare_measures_as_the_one_recorded](proof:instruments-snare) and [the_crash_measures_as_the_one_recorded](proof:instruments-crash), which compare the modelled snare and crash with recordings of real ones.',
+        'The heap: [the_instruments_do_not_use_the_heap](proof:instruments-voices-heap), [the_modelled_acoustic_instruments_do_not_use_the_heap](proof:instruments-heap) and [the_poly_synth_does_not_use_the_heap](proof:instruments-poly-heap). The block size: [the_output_does_not_depend_on_the_block_size](proof:instruments-block-size), a test most instrument modules repeat for their own voices.',
+      ],
+      limit:
+        'These numbers are measurements, not opinions: nobody outside the project has judged how the instruments sound yet. Only the snare and the crash are calibrated against recordings, from lossy files. The low notes of the bowed cello and double bass take up to half a second to settle, the saxophone’s bore is cylindrical, the choir sings speech vowels and no consonants, and the instruments’ levels are matched only in the browser engine, not in `manguebyte-dsp` itself; [TECH_DEBT.md, items 66 to 71](proof:instruments-debt), lists the rest.',
+    },
+    pt: {
+      title: 'Instrumentos prontos para tocar, medidos em testes',
+      row: 'Instrumentos prontos para tocar',
+      juceShort: 'Classes para montar um instrumento; nenhum pronto para tocar',
+      mangueShort: 'Instrumentos e kits de bateria modelados e sintetizados, com afinação e espectro medidos em testes',
+      juce:
+        'O JUCE dá as peças para montar um instrumento: [Synthesiser](https://docs.juce.com/master/classSynthesiser.html) e [SynthesiserVoice](https://docs.juce.com/master/classSynthesiserVoice.html), um player de samples simples em [SamplerSound](https://docs.juce.com/master/classSamplerSound.html) e [SamplerVoice](https://docs.juce.com/master/classSamplerVoice.html), e blocos como [dsp::Oscillator](https://docs.juce.com/master/classdsp_1_1Oscillator.html) e [dsp::LadderFilter](https://docs.juce.com/master/classdsp_1_1LadderFilter.html). A [lista de classes](https://docs.juce.com/master/annotated.html) dele não tem nenhum instrumento pronto para tocar: nenhum instrumento acústico modelado, nenhuma bateria eletrônica, nenhum sintetizador com presets.',
+      mangue:
+        'O `manguebyte_dsp::instruments` traz vozes para o `Synth` polifônico que tocam como estão: violões, guitarras e baixos dedilhados, FM de quatro operadores, um órgão de tonewheel com caixa rotativa, percussão de teclas por síntese modal, cordas de arco e sopros por guia de onda digital, coros por síntese de formantes, um baixo acid com acento e slide, kits de bateria (bateria acústica e pratos por síntese modal, e as 808, 909, 606 e CR-78, com kits para cada gênero) e um sintetizador polifônico profundo com 68 presets. Todos respondem à velocidade e a acentos, não usam o heap enquanto tocam e geram as mesmas amostras em qualquer tamanho de bloco.',
+      check: [
+        'A afinação é medida em toda a extensão de cada instrumento: [every_note_is_in_tune_across_the_keyboard](proof:instruments-poly-tuning) para o sintetizador (dentro de 0,012 cent), [every_note_is_within_a_cent_across_the_keyboard](proof:instruments-string) para as cordas dedilhadas, [every_bowed_note_is_in_tune_across_its_range](proof:instruments-bowed), [every_note_is_in_tune_across_its_range](proof:instruments-wind) para os sopros, e os testes de afinação da percussão de teclas, do coro, do órgão, do FM e do acid.',
+        'O espectro também é medido: [every_mode_rings_within_half_a_percent_of_its_model](proof:instruments-mallet), [the_formants_peak_at_the_vowels_targets](proof:instruments-choir), [high_notes_are_kept_free_of_aliasing](proof:instruments-poly-aliasing), e [the_snare_measures_as_the_one_recorded](proof:instruments-snare) e [the_crash_measures_as_the_one_recorded](proof:instruments-crash), que comparam a caixa e o prato modelados com gravações de uma caixa e de um prato de verdade.',
+        'O heap: [the_instruments_do_not_use_the_heap](proof:instruments-voices-heap), [the_modelled_acoustic_instruments_do_not_use_the_heap](proof:instruments-heap) e [the_poly_synth_does_not_use_the_heap](proof:instruments-poly-heap). O tamanho do bloco: [the_output_does_not_depend_on_the_block_size](proof:instruments-block-size), um teste que a maioria dos módulos de instrumento repete para as suas vozes.',
+      ],
+      limit:
+        'Esses números são medições, não opiniões: ninguém de fora do projeto avaliou ainda como os instrumentos soam. Só a caixa e o prato são calibrados com gravações, a partir de arquivos com perda. As notas graves do violoncelo e do contrabaixo de arco levam até meio segundo para se firmar, o tubo do saxofone é cilíndrico, o coro canta vogais da fala e nenhuma consoante, e os níveis dos instrumentos só são igualados no motor do navegador, não no próprio `manguebyte-dsp`; o [TECH_DEBT.md, itens 66 a 71](proof:instruments-debt), lista o resto.',
+    },
+  },
 ];
 
 // What JUCE has today and Manguebyte does not: the last section of
 // BEYOND_JUCE.md.
 export const juceAhead = {
   en: [
-    'a complete GUI toolkit, with plugin editor windows on every system and in every format (Manguebyte’s editors have windows on Win32 only, and none has been opened in a host by hand yet);',
-    'Audio Unit and AAX plugin formats;',
+    'a complete GUI toolkit, with plugin editor windows on macOS and Linux as well as Windows (Manguebyte’s editors open on Windows only so far, and none has been tried by hand in a DAW yet);',
+    'the Audio Unit and AAX plugin formats;',
     'hosting of AU and LV2 plugins, plugin scanning, and the editors of hosted plugins (Manguebyte hosts CLAP and VST 3 plugins, without their editors);',
-    'more DSP building blocks, and more file formats;',
+    'SIMD wrappers and lookup tables among its DSP utilities, and more audio formats (Opus, encoders for compressed formats, metadata);',
     'iOS and Android;',
     'documentation, tutorials and a large community.',
   ],
   pt: [
-    'um toolkit de interface gráfica completo, com janelas de editor de plugin em todos os sistemas e formatos (os editores do Manguebyte só têm janelas no Win32, e nenhum foi aberto num host à mão ainda);',
+    'um toolkit de interface gráfica completo, com janelas de editor de plugin no macOS e no Linux além do Windows (os editores do Manguebyte só abrem no Windows por enquanto, e nenhum foi experimentado à mão numa DAW ainda);',
     'os formatos de plugin Audio Unit e AAX;',
     'hospedagem de plugins AU e LV2, varredura de plugins e os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP e VST 3, sem os editores);',
-    'mais blocos de DSP, e mais formatos de arquivo;',
+    'wrappers de SIMD e tabelas de consulta entre os utilitários de DSP, e mais formatos de áudio (Opus, codificadores de formatos comprimidos, metadados);',
     'iOS e Android;',
     'documentação, tutoriais e uma comunidade grande.',
   ],
