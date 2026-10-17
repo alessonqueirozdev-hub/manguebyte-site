@@ -86,7 +86,10 @@ See [deploy/README.md](deploy/README.md).
 
 ## Licences
 
+The site's code and text are licensed under either of the Apache License,
+Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE)) or the MIT license
+([LICENSE-MIT](LICENSE-MIT)), at your option, like the framework.
+
 The fonts are under the SIL Open Font License; the licence texts are next
 to them in `src/assets/fonts`. The logo belongs to the Manguebyte project,
 and Aratu's mascot to the Aratu project.
-The licence of the site's own code and text has not been chosen yet.
