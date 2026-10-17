@@ -1,7 +1,7 @@
 {
   "commit": "c5835bfa656b2a746eebdff8c033ba855b54ae6b",
   "related": {
-    "aratu": "40e6286726eb2914792b81427d586e36dd644455"
+    "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
   "proofs": {
     "automation-harness": {
@@ -1116,8 +1116,8 @@
       "lang": "aratu",
       "ranges": [
         [
-          66,
-          81
+          72,
+          87
         ]
       ],
       "lines": [

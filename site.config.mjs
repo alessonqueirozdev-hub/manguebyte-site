@@ -25,9 +25,11 @@ export default {
   related: {
     aratu: {
       repo: 'alessonqueirozdev-hub/aratu',
-      commit: '40e6286726eb2914792b81427d586e36dd644455',
-      // The web editor, published from that repository with GitHub Pages.
-      editor: 'https://alessonqueirozdev-hub.github.io/aratu/',
+      commit: '0822eee795128d42af1cde3ef1aa17366aabe8cf',
+      // The web editor, published from that repository with GitHub Pages
+      // on its own domain. The book is there too, as pages to read, at
+      // <language>/manual/ and <language>/learn/.
+      editor: 'https://aratu.live/',
     },
   },
 

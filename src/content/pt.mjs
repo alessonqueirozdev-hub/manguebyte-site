@@ -450,7 +450,7 @@ export default {
     tasteIntro: 'Do README do Aratu. Um espaço separa os tempos, símbolos escritos juntos dividem o mesmo tempo (`cc` são duas colcheias), `_` sustenta e `-` é pausa; os acordes se escrevem como numa cifra, e as batidas com `d` e `u`.',
     engineHeading: 'Construído sobre o Manguebyte',
     engine:
-      'O editor toca pelo `manguebyte-web`, o motor do Manguebyte para o navegador: todas as vozes do painel de Sons, de instrumentos com samples a cordas modeladas, FM, órgão, baixo acid e synth, os efeitos de cada parte e o master com o limitador de true peak. As linhas de percussão brasileira, o golpe do violão e a palma ainda tocam num pequeno substituto em Web Audio, até o Manguebyte ter samples para eles. O motor em si ainda está [em andamento](/roadmap/#phase-5): testado nativamente e no Node.js, ainda não sob carga num navegador.',
+      'O editor toca pelo `manguebyte-web`, o motor do Manguebyte para o navegador: todas as vozes do painel de Sons, de instrumentos com samples a cordas modeladas, FM, órgão, baixo acid e synth, os efeitos de cada parte e o master com o limitador de true peak. As linhas de percussão brasileira, o golpe do violão e a palma (menos na 808) ainda tocam num pequeno substituto em Web Audio, até o Manguebyte ter samples para eles. O motor em si ainda está [em andamento](/roadmap/#phase-5): testado nativamente e no Node.js, ainda não sob carga num navegador.',
     nameHeading: 'Por que “Aratu”?',
     name: 'O aratu é um caranguejo do mangue, o mangue do Recife que deu nome ao manguebeat e ao Manguebyte.',
     proofsHeading: 'O que os testes conferem',
@@ -458,7 +458,7 @@ export default {
     readHeading: 'Leia mais',
     links: {
       repo: 'O Aratu no GitHub',
-      manual: 'O manual (rascunho)',
+      manual: 'Ler o manual',
       vision: 'A visão',
     },
   },

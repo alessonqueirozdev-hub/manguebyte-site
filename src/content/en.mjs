@@ -450,7 +450,7 @@ export default {
     tasteIntro: 'From Aratu’s README. A space separates beats, symbols written together share their beat (`cc` is two eighths), `_` holds and `-` rests; chords are written as a lead sheet, and strums with `d` and `u`.',
     engineHeading: 'Built on Manguebyte',
     engine:
-      'The editor plays through `manguebyte-web`, Manguebyte’s engine for the browser: every voice in its Sounds panel, from sampled instruments to modelled strings, FM, an organ, an acid bass and a synth, each part’s effects, and the master bus with its true-peak limiter. The Brazilian percussion lines, the guitar’s golpe and the clap still play on a small Web Audio stand-in until Manguebyte has samples for them. The engine itself is still [in progress](/roadmap/#phase-5): tested natively and in Node.js, not yet under load in a browser.',
+      'The editor plays through `manguebyte-web`, Manguebyte’s engine for the browser: every voice in its Sounds panel, from sampled instruments to modelled strings, FM, an organ, an acid bass and a synth, each part’s effects, and the master bus with its true-peak limiter. The Brazilian percussion lines, the guitar’s golpe and the clap (except on the 808) still play on a small Web Audio stand-in until Manguebyte has samples for them. The engine itself is still [in progress](/roadmap/#phase-5): tested natively and in Node.js, not yet under load in a browser.',
     nameHeading: 'Why “Aratu”?',
     name: 'The aratu is a crab of the mangrove, the [[pt:mangue]] of Recife that gave manguebeat, and Manguebyte, their names.',
     proofsHeading: 'What its tests check',
@@ -458,7 +458,7 @@ export default {
     readHeading: 'Read more',
     links: {
       repo: 'Aratu on GitHub',
-      manual: 'The manual (a draft)',
+      manual: 'Read the manual',
       vision: 'The vision',
     },
   },

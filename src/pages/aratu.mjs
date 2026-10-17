@@ -47,7 +47,7 @@ export function render(ctx) {
         <h2 class="small-heading" id="read">${escape(page.readHeading)}</h2>
         <p class="link-row">
           <a class="button button-primary" href="${aratuUrl}">${escape(page.links.repo)}${icon('out')}</a>
-          <a class="button" href="${repoFile(`book/${ctx.lang}/manual.md`, null, 'aratu')}">${escape(page.links.manual)}${icon('out')}</a>
+          <a class="button" href="${escape(new URL(`${ctx.lang}/manual/`, ctx.config.related.aratu.editor).href)}">${escape(page.links.manual)}${icon('out')}</a>
           <a class="button" href="${repoFile('docs/VISION.md', null, 'aratu')}">${escape(page.links.vision)}${icon('out')}</a>
         </p>
       </div>
