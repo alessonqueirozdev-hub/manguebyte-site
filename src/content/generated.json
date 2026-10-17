@@ -1,7 +1,7 @@
 {
-  "commit": "34fef11f574bfe0107354564bc0f471393b98add",
+  "commit": "c5835bfa656b2a746eebdff8c033ba855b54ae6b",
   "related": {
-    "aratu": "d6165198c68b408fff402900362695181fdb5ac9"
+    "aratu": "40e6286726eb2914792b81427d586e36dd644455"
   },
   "proofs": {
     "automation-harness": {
@@ -21,35 +21,35 @@
     "automation-vst3": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 887,
+      "line": 891,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
     "automation-vst3-controller": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 906,
+      "line": 910,
       "name": "what_the_controller_is_told_does_not_disturb_running_automation",
       "test": true
     },
     "block-size": {
       "repo": null,
       "file": "crates/manguebyte/tests/offline.rs",
-      "line": 37,
+      "line": 44,
       "name": "the_song_is_the_same_whatever_the_block_size",
       "test": true
     },
     "block-size-pluck": {
       "repo": null,
       "file": "plugins/pluck/src/lib.rs",
-      "line": 338,
+      "line": 772,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
     "block-size-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 394,
+      "line": 532,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
@@ -63,21 +63,21 @@
     "no-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 124,
+      "line": 131,
       "name": "processors_do_not_use_the_heap",
       "test": true
     },
     "no-heap-guard": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 115,
+      "line": 122,
       "name": "the_guard_itself_catches_an_allocation",
       "test": true
     },
     "no-heap-synth": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 267,
+      "line": 274,
       "name": "a_synth_handles_a_flood_of_events_without_using_the_heap",
       "test": true
     },
@@ -91,77 +91,77 @@
     "ci-miri": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 65,
+      "line": 66,
       "name": "CI job: Miri",
       "test": false
     },
     "per-note": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 754,
+      "line": 916,
       "name": "expression_and_modulation_reach_one_note_and_parameters_reach_all",
       "test": true
     },
     "per-note-overlap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 705,
+      "line": 867,
       "name": "notes_with_identifiers_overlap_on_one_key_and_end_separately",
       "test": true
     },
     "per-note-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 1066,
+      "line": 1091,
       "name": "an_instrument_takes_notes_expression_modulation_and_a_sidechain",
       "test": true
     },
     "ci-clap": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 116,
+      "line": 135,
       "name": "CI job: CLAP validation",
       "test": false
     },
     "ci-vst3": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 150,
+      "line": 169,
       "name": "CI job: VST 3 validation",
       "test": false
     },
     "export-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 272,
+      "line": 409,
       "name": "plugins/duck/src/lib.rs",
       "test": false
     },
     "harness-pitch": {
       "repo": null,
       "file": "plugins/pluck/src/lib.rs",
-      "line": 317,
+      "line": 751,
       "name": "plays_the_pitch_it_is_asked_for",
       "test": true
     },
     "harness-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 346,
+      "line": 484,
       "name": "automation_lands_on_its_frame_with_audio_running_through",
       "test": true
     },
     "state-versions": {
       "repo": null,
       "file": "crates/manguebyte-params/src/set.rs",
-      "line": 506,
+      "line": 603,
       "name": "state_from_another_version_loads_as_far_as_it_can",
       "test": true
     },
     "params-threads": {
       "repo": null,
       "file": "crates/manguebyte-params/src/param.rs",
-      "line": 1077,
+      "line": 1432,
       "name": "params_are_shareable_across_threads",
       "test": true
     },
@@ -175,7 +175,7 @@
     "subnormal-vst3": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 1164,
+      "line": 1195,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
@@ -210,14 +210,14 @@
     "hosting-vst3": {
       "repo": null,
       "file": "crates/manguebyte-host/tests/vst3_pluck.rs",
-      "line": 396,
+      "line": 466,
       "name": "the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone",
       "test": true
     },
     "hosting-automation": {
       "repo": null,
       "file": "crates/manguebyte-host/tests/vst3_pluck.rs",
-      "line": 495,
+      "line": 623,
       "name": "automation_lands_on_its_frame_through_the_host",
       "test": true
     },
@@ -231,7 +231,7 @@
     "ci-miri-host": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 98,
+      "line": 117,
       "name": "CI job: Miri (plugin host)",
       "test": false
     },
@@ -315,7 +315,7 @@
     "keyboard-sounding": {
       "repo": null,
       "file": "crates/manguebyte-midi/src/keyboard.rs",
-      "line": 864,
+      "line": 870,
       "name": "a_key_that_goes_on_sounding_is_never_read_as_silent",
       "test": true
     },
@@ -329,22 +329,22 @@
     "ci-cli": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 212,
+      "line": 232,
       "name": "CI job: command-line tool end to end",
       "test": false
     },
     "reaper-render": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 58,
-      "name": "TECH_DEBT item 42",
+      "line": 87,
+      "name": "TECH_DEBT: the REAPER renders, paid back",
       "test": false
     },
-    "reaper-findings": {
+    "reaper-owed": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 57,
-      "name": "TECH_DEBT items 41 to 43",
+      "line": 68,
+      "name": "TECH_DEBT item 56",
       "test": false
     },
     "adr-0007": {
@@ -370,10 +370,31 @@
     },
     "aratu-manual": {
       "repo": "aratu",
-      "file": "docs/MANUAL.md",
+      "file": "book/en/manual.md",
       "line": null,
-      "name": "aratu/docs/MANUAL.md",
+      "name": "aratu/book/en/manual.md",
       "test": false
+    },
+    "aratu-book-works": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/book.rs",
+      "line": 125,
+      "name": "every_block_of_the_book_works",
+      "test": true
+    },
+    "aratu-book-languages": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/book.rs",
+      "line": 170,
+      "name": "every_exercise_sounds_the_same_in_every_language",
+      "test": true
+    },
+    "aratu-book-features": {
+      "repo": "aratu",
+      "file": "crates/aratu/tests/book.rs",
+      "line": 386,
+      "name": "every_feature_is_taught_in_every_language",
+      "test": true
     },
     "aratu-vision": {
       "repo": "aratu",
@@ -385,14 +406,14 @@
     "aratu-manual-parses": {
       "repo": "aratu",
       "file": "crates/aratu/tests/manual.rs",
-      "line": 30,
+      "line": 46,
       "name": "every_example_in_the_manual_parses",
       "test": true
     },
     "aratu-manual-checks": {
       "repo": "aratu",
       "file": "crates/aratu/tests/manual.rs",
-      "line": 59,
+      "line": 75,
       "name": "every_example_in_the_manual_checks",
       "test": true
     },
@@ -406,7 +427,7 @@
     "aratu-schedule": {
       "repo": "aratu",
       "file": "crates/aratu/tests/schedule.rs",
-      "line": 46,
+      "line": 100,
       "name": "the_rhythm_rules_place_parts_exactly",
       "test": true
     },
@@ -425,16 +446,20 @@
       "lang": "rust",
       "ranges": [
         [
-          208,
-          222
+          336,
+          350
         ],
         [
-          257,
-          263
+          387,
+          394
         ],
         [
-          270,
-          273
+          404,
+          406
+        ],
+        [
+          407,
+          411
         ]
       ],
       "lines": [
@@ -505,10 +530,22 @@
           "text": "        });"
         },
         {
+          "text": "        self.publish_reduction();"
+        },
+        {
           "text": "    }"
         },
         {
           "gap": "    // ... reset"
+        },
+        {
+          "text": "    fn editor(&self) -> Option<Box<dyn EditorSpec>> {"
+        },
+        {
+          "text": "        Some(Box::new(self.editor_spec()))"
+        },
+        {
+          "text": "    }"
         },
         {
           "text": "}"
@@ -521,6 +558,9 @@
         },
         {
           "text": "manguebyte::vst3::export_vst3!(Duck);"
+        },
+        {
+          "text": "manguebyte::lv2::export_lv2!(Duck);"
         }
       ]
     },
@@ -530,8 +570,8 @@
       "lang": "rust",
       "ranges": [
         [
-          345,
-          360
+          483,
+          498
         ]
       ],
       "lines": [
@@ -661,8 +701,8 @@
       "lang": "rust",
       "ranges": [
         [
-          36,
-          57
+          43,
+          64
         ]
       ],
       "lines": [
@@ -740,12 +780,12 @@
       "lang": "rust",
       "ranges": [
         [
-          76,
-          87
+          83,
+          94
         ],
         [
-          95,
-          112
+          102,
+          119
         ]
       ],
       "lines": [
@@ -850,8 +890,8 @@
       "lang": "rust",
       "ranges": [
         [
-          316,
-          335
+          750,
+          769
         ]
       ],
       "lines": [
@@ -923,8 +963,8 @@
       "lang": "toml",
       "ranges": [
         [
-          126,
-          127
+          139,
+          140
         ]
       ],
       "lines": [
@@ -942,8 +982,8 @@
       "lang": "rust",
       "ranges": [
         [
-          134,
-          151
+          147,
+          164
         ]
       ],
       "lines": [
@@ -1009,8 +1049,8 @@
       "lang": "rust",
       "ranges": [
         [
-          157,
-          174
+          170,
+          187
         ]
       ],
       "lines": [
@@ -1076,8 +1116,8 @@
       "lang": "aratu",
       "ranges": [
         [
-          49,
-          64
+          66,
+          81
         ]
       ],
       "lines": [
@@ -1137,8 +1177,8 @@
       "lang": "rust",
       "ranges": [
         [
-          24,
-          43
+          34,
+          53
         ]
       ],
       "lines": [

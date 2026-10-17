@@ -171,7 +171,7 @@ export function layout(ctx, { title, description, body, wide = false }) {
   const canonical = (lang) => `${site.baseUrl}${lang.prefix}${page.path}`;
   const other = site.languages.find((candidate) => candidate.code !== language.code);
   const isHome = page.id === 'home';
-  const fullTitle = isHome ? title : `${title} · ${t.site.name}`;
+  const fullTitle = isHome ? title : `${title} · ${t.site.fullName}`;
   const nav = pages.filter((entry) => entry.nav);
 
   return html`<!doctype html>
@@ -182,13 +182,15 @@ export function layout(ctx, { title, description, body, wide = false }) {
 <title>${escape(fullTitle)}</title>
 <meta name="description" content="${escape(description)}">
 <meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#f3ead7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f120e" media="(prefers-color-scheme: dark)">
 ${page.noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${canonical(language)}">
 ${site.languages.map((lang) => `<link rel="alternate" hreflang="${lang.tag}" href="${canonical(lang)}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${canonical(site.languages[0])}">`}
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="${escape(t.site.name)}">
+<meta property="og:site_name" content="${escape(t.site.fullName)}">
 <meta property="og:title" content="${escape(title)}">
 <meta property="og:description" content="${escape(description)}">
 <meta property="og:url" content="${canonical(language)}">

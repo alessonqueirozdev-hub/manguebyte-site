@@ -8,9 +8,10 @@
 export default {
   site: {
     name: 'Manguebyte',
+    fullName: 'Manguebyte Audio Framework',
     tagline: 'An audio framework for Rust',
     description:
-      'Manguebyte is an open-source audio framework for Rust: DSP, metering, MIDI, files, devices, parameters, native CLAP and VST 3 plugins, and hosting of both. Sample-accurate automation, output independent of block size and allocation-free processing, each enforced by a test.',
+      'The Manguebyte Audio Framework is open-source audio for Rust: DSP and instruments, metering, MIDI, files, devices, plugin editors, CLAP, VST 3 and LV2 plugins, and hosting. Sample-accurate automation, output independent of block size and allocation-free processing, each enforced by a test.',
   },
 
   nav: {
@@ -50,7 +51,7 @@ export default {
   footer: {
     statusTitle: 'Where the project stands',
     status:
-      'Manguebyte is young. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and no plugin editor opens inside a host yet.',
+      'Manguebyte is young. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and its plugin editors have been opened in CI, not yet in a host by hand.',
     sourceTitle: 'Where this site gets its facts',
     source:
       'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). The repository is the authority; if the two disagree, the site is out of date.',
@@ -76,15 +77,15 @@ export default {
   },
 
   home: {
-    title: 'Manguebyte: an audio framework for Rust, tested, not promised',
+    title: 'Manguebyte Audio Framework: audio for Rust, tested, not promised',
     kicker: 'Open-source audio framework for Rust',
     heading: ['Tested,', 'not promised.'],
     lede:
-      'Manguebyte builds audio plugins and applications in Rust: DSP, metering, MIDI, files, devices, plugin hosting, and native CLAP and VST 3 export from one line each. Its goal is to be for Rust what JUCE is for C++, and then to go further. Every claim on this site links to the test that proves it.',
+      'Manguebyte builds audio plugins and applications in Rust: DSP and instruments, metering, MIDI, files, devices, plugin editors and hosting, and native CLAP, VST 3 and LV2 export from one line each. Its goal is to be for Rust what JUCE is for C++, and then to go further. Every claim on this site links to the test that proves it.',
     ctaStart: 'Get started',
     ctaSource: 'Read the source',
     young:
-      '**Young project.** The API will change before 1.0, and no plugin editor opens inside a host yet: the windows are still being built. [See what is missing](/features/#missing).',
+      '**Young project.** The API will change before 1.0. Plugin editors open in Win32 windows and are tested in CI, but nobody has opened one in a host by hand yet. [See what is missing](/features/#missing).',
     ring: 'Crabs with brains · Caranguejos com cérebro · ',
 
     proof: {
@@ -140,9 +141,9 @@ export default {
           claim: 'clap',
           title: 'CLAP and VST 3 from one line each, checked by their own validators',
           body:
-            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project’s validator and Steinberg’s on an instrument and an effect; all 537 VST 3 tests pass on Windows, Linux and macOS. Both were also [tested by hand in REAPER](proof:host-tests).',
+            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project’s validator and Steinberg’s on an instrument and an effect; all 537 VST 3 tests pass on Windows, Linux and macOS. Both were also [tested by hand in REAPER](proof:host-tests), and `export_lv2!` adds a third format.',
           juce: 'CLAP export is not available natively.',
-          limit: 'No editor opens inside a real host yet, and there is no AU, AAX or LV2.',
+          limit: 'Editors are tested in CI, not yet opened in a host by hand. LV2 is new: lilv loads it in CI, no host has run it yet. No AU or AAX.',
           proofs: ['ci-clap', 'ci-vst3'],
         },
       ],
@@ -155,15 +156,15 @@ export default {
       notes: [
         {
           title: 'One description',
-          body: '`INFO` and `LAYOUT` are constants. The same description becomes the CLAP descriptor and the VST 3 class, whose id is the same on every platform.',
+          body: '`INFO` and `LAYOUT` are constants. The same description becomes the CLAP descriptor, the VST 3 class, whose id is the same on every platform, and the LV2 plugin’s Turtle files.',
         },
         {
           title: 'Events on their frame',
           body: '`split_at_events` renders up to each event, applies it and carries on, without copying or allocating. That call is all a plugin does to get sample-accurate automation.',
         },
         {
-          title: 'Two formats, two lines',
-          body: 'The macros are the whole integration. The repository’s scripts then build a `.clap` file and a `.vst3` bundle on Windows, Linux and macOS.',
+          title: 'Three formats, three lines',
+          body: 'The macros are the whole integration, and `editor` hands the wrappers the plugin’s editor. `cargo mangue` then builds a `.clap`, a `.vst3` and an `.lv2` bundle in each system’s layout.',
         },
       ],
       testHeading: 'And a test of it, with no host',
@@ -173,7 +174,7 @@ export default {
 
     today: {
       heading: 'What you get today',
-      intro: 'Eighteen crates that work together, each usable on its own, one of them a command-line tool. `manguebyte-core` has no dependencies at all.',
+      intro: 'Twenty-three crates that work together, each usable on its own, one of them a command-line tool. `manguebyte-core` has no dependencies at all.',
       more: 'Every feature, by area',
     },
 
@@ -241,7 +242,7 @@ export default {
     aheadOutro:
       '[JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) tracks that gap module by module, and the [roadmap](/roadmap/) says in what order it is being closed.',
     sourceNote:
-      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`, which is the authority. One thing is added here: the limit of section 2 cites what testing in REAPER found.',
+      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Where the README is newer, the page follows the README: the limit of section 6, on editors and LV2, and the list of where JUCE is ahead. The limit of section 2 also cites what testing in REAPER found.',
   },
 
   features: {
@@ -251,7 +252,7 @@ export default {
     kicker: 'Features',
     heading: 'What exists today',
     intro: [
-      'Eighteen crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. Everything listed here is in the repository and covered by its tests.',
+      'Twenty-three crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. Everything listed here is in the repository and covered by its tests.',
       'This is a small part of the road ahead. [What is missing](#missing) is listed just as plainly.',
     ],
     cratesLabel: 'Crates',
@@ -269,7 +270,7 @@ export default {
     heading: 'From nothing to a plugin',
     intro: [
       'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`.',
-      'Before you build on it: Manguebyte is young, it is not on crates.io yet, and **the API will change before 1.0**. No plugin editor opens inside a host yet: the editor interfaces exist, and the windows are still being built.',
+      'Before you build on it: Manguebyte is young, it is not on crates.io yet, and **the API will change before 1.0**. Plugin editors exist and are tested in CI, but none has been opened in a host by hand yet.',
     ],
     steps: {
       before: {
@@ -300,11 +301,11 @@ export default {
       plugin: {
         heading: 'Build a plugin',
         body: [
-          '[plugins/pluck](repo:plugins/pluck/src/lib.rs) is a complete instrument in one file: a 16-voice plucked synth with per-note expression and modulation, automation on the exact sample, and a reverb. [plugins/duck](repo:plugins/duck/src/lib.rs) is the same for an effect: a sidechain ducker with a bypass switch that does not click. Each becomes a CLAP plugin and a VST 3 plugin with one line per format.',
-          'Build either one into something a host can load with the framework’s command-line tool, `cargo mangue`, which writes a `.clap` and a `.vst3` in each system’s layout:',
+          '[plugins/pluck](repo:plugins/pluck/src/lib.rs) is a complete instrument in one file: a 16-voice plucked synth with per-note expression and modulation, automation on the exact sample, a reverb and a small editor. [plugins/duck](repo:plugins/duck/src/lib.rs) is the same for an effect: a sidechain ducker with a bypass switch that does not click and an editor with a gain-reduction meter. Each becomes a CLAP, a VST 3 and an LV2 plugin with one line per format.',
+          'Build either one into something a host can load with the framework’s command-line tool, `cargo mangue`, which writes a `.clap` and a `.vst3` in each system’s layout (add `--format lv2` for an `.lv2` bundle):',
         ],
         after:
-          '`cargo mangue new my-synth --kind instrument` starts a plugin of your own from a template; `install` copies a plugin into the user’s plugin folders, and `validate` runs both formats’ validators on it. Both examples go through the CLAP project’s validator and Steinberg’s on every commit, and were [tested by hand in REAPER](proof:host-tests) as CLAP and VST 3.',
+          '`cargo mangue new my-synth --kind instrument` starts a plugin of your own from a template; `install` copies a plugin into the user’s plugin folders, and `validate` runs the CLAP and VST 3 validators on it. Both examples go through those validators on every commit, and were [tested by hand in REAPER](proof:host-tests) as CLAP and VST 3, before they had editors.',
       },
       standalone: {
         heading: 'Play it without a host',
@@ -356,7 +357,7 @@ export default {
       'JUCE {juce} has 24 modules. Parity means the same capability, not the same classes: where Rust or its ecosystem already solves something well, the plan is to not rebuild it. [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) explains every row.',
     parityTable: { module: 'JUCE module', crates: 'Manguebyte crates', status: 'Status' },
     sourceNote:
-      'This page follows [ROADMAP.md](repo:ROADMAP.md) and [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) at commit `{commit}`.',
+      'This page follows [ROADMAP.md](repo:ROADMAP.md) and [docs/JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) at commit `{commit}`. One item follows the README instead, which is newer: ROADMAP.md still lists Ogg Vorbis and MP3 decoding as not started, while the README and the changelog say both are read.',
   },
 
   name: {
@@ -398,13 +399,13 @@ export default {
       id: 'manguebyte',
       name: 'Manguebyte',
       status: 'This framework',
-      body: 'The open-source audio framework for Rust, under MIT or Apache-2.0, and the sound engine the other two are being built for.',
+      body: 'The open-source audio framework for Rust, under MIT or Apache-2.0. Aratu already plays on its browser engine; Parabolic is to be built on it.',
     },
     {
       id: 'aratu',
       name: 'Aratu',
       status: 'In development',
-      body: 'A live-coding language that reads like music: measures, beats and note values first, in Portuguese and English, in the browser and inside a DAW. Its editor already runs in the browser.',
+      body: 'A live-coding language that reads like music: measures, beats and note values first, in Portuguese, Spanish and English. Its editor runs in the browser and plays on Manguebyte.',
     },
     {
       id: 'parabolic',
@@ -417,24 +418,39 @@ export default {
   aratu: {
     title: 'Aratu: a live-coding language that reads like music',
     description:
-      'Aratu is a live-coding language for musicians: measures, beats and note values first, in Portuguese and English. Its editor runs in the browser today; Manguebyte will be its sound engine.',
+      'Aratu is a live-coding language for musicians: measures, beats and note values first, in Portuguese, Spanish and English. Its editor runs in the browser, with a course of 24 lessons, and plays on Manguebyte’s browser engine.',
     kicker: 'The Manguebyte ecosystem',
     heading: 'Aratu',
-    lede: 'A live-coding language that reads like music: measures, beats and note values first, Portuguese and English, in the browser. In development; Manguebyte will be its sound engine.',
+    lede: 'A live-coding language that reads like music: measures, beats and note values first, in Portuguese, Spanish and English, in the browser. In development, and playing on Manguebyte.',
     status:
-      '**In development.** The language reads and checks every example in its manual, and its web editor runs in the browser with nothing to install, playing with temporary built-in sounds that Manguebyte’s engine will replace.',
+      '**In development.** The language reads, checks and schedules every example in its book, and the editor runs in the browser with nothing to install. Running inside a DAW is planned.',
     mascotAlt: 'Aratu, an orange mangrove crab wearing headphones, coding music on a laptop',
     tryIt: 'Try it in the browser',
     whatHeading: 'Time the way a musician counts it',
     what: [
       'Aratu is a live-coding language and environment for people who know music. Measures, time signatures, note values and tempo come first, so that what you type is laid out in time the way a musician already thinks about it.',
-      'Note names work in solfège ([[pt:dó4 ré4 mi4]]) as well as in letters. When a bar does not add up, Aratu says so in a musician’s words, in Portuguese or English. It runs in the browser today, and is meant to run inside a DAW too, in step with the host’s transport.',
+      'Note names work in solfège ([[pt:dó4 ré4 mi4]]) as well as in letters, and the keywords themselves can be written in Portuguese, Spanish or English. When a bar does not add up, Aratu says so in a musician’s words, in any of the three. It runs in the browser today; running inside a DAW, in step with the host’s transport, is planned.',
+    ],
+    placesHeading: 'Three places in the editor',
+    places: [
+      {
+        term: 'Learn',
+        body: 'A course of 24 lessons, from the first sound to a whole piece, made for the classroom: rhythm and meters, Brazilian percussion, melody and harmony, dynamics and form, tempo and feel, playing live, sound and mixing. It ends with a maracatu project. Every example plays on the page, and every exercise is checked by what it plays, with what differs told bar by bar.',
+      },
+      {
+        term: 'Manual',
+        body: 'The whole language in 21 chapters, in the same order as the course, with every example playable.',
+      },
+      {
+        term: 'Play',
+        body: 'A free editor with an editable rhythm map, a knob beside every number that sets the tempo or the sound, and a Sounds panel. A change made while it plays comes in at the next bar line, or at the next beat. A stage mode shows only the code, full screen, for playing in front of an audience.',
+      },
     ],
     tasteHeading: 'A taste',
     tasteIntro: 'From Aratu’s README. A space separates beats, symbols written together share their beat (`cc` is two eighths), `_` holds and `-` rests; chords are written as a lead sheet, and strums with `d` and `u`.',
     engineHeading: 'Built on Manguebyte',
     engine:
-      'Today the editor plays with simple built-in sounds. Manguebyte will replace them once its engine runs in the browser: that is the WebAssembly engine on the [roadmap](/roadmap/#phase-5), with Aratu as its first user, and it is not started yet.',
+      'The editor plays through `manguebyte-web`, Manguebyte’s engine for the browser: every voice in its Sounds panel, from sampled instruments to modelled strings, FM, an organ, an acid bass and a synth, each part’s effects, and the master bus with its true-peak limiter. The Brazilian percussion lines, the guitar’s golpe and the clap still play on a small Web Audio stand-in until Manguebyte has samples for them. The engine itself is still [in progress](/roadmap/#phase-5): tested natively and in Node.js, not yet under load in a browser.',
     nameHeading: 'Why “Aratu”?',
     name: 'The aratu is a crab of the mangrove, the [[pt:mangue]] of Recife that gave manguebeat, and Manguebyte, their names.',
     proofsHeading: 'What its tests check',

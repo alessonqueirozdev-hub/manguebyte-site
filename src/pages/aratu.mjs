@@ -28,6 +28,10 @@ export function render(ctx) {
       <div class="prose">
         <h2 id="what">${escape(page.whatHeading)}</h2>
         ${page.what.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="editor">${escape(page.placesHeading)}</h2>
+        <dl class="ways ways-stacked">
+          ${page.places.map((place) => `<div><dt>${escape(place.term)}</dt><dd>${text(place.body)}</dd></div>`).join('')}
+        </dl>
         <h2 id="engine">${escape(page.engineHeading)}</h2>
         <p>${text(page.engine)}</p>
         <h2 id="name">${inline(page.nameHeading)}</h2>
@@ -39,11 +43,11 @@ export function render(ctx) {
         ${sample('aratu-taste')}
         <h2 class="small-heading" id="tests">${escape(page.proofsHeading)}</h2>
         <p>${text(page.proofsIntro)}</p>
-        ${proofList(['aratu-manual-parses', 'aratu-manual-checks', 'aratu-examples-play', 'aratu-schedule', 'aratu-ci'])}
+        ${proofList(['aratu-book-works', 'aratu-book-languages', 'aratu-book-features', 'aratu-manual-checks', 'aratu-schedule', 'aratu-ci'])}
         <h2 class="small-heading" id="read">${escape(page.readHeading)}</h2>
         <p class="link-row">
           <a class="button button-primary" href="${aratuUrl}">${escape(page.links.repo)}${icon('out')}</a>
-          <a class="button" href="${repoFile('docs/MANUAL.md', null, 'aratu')}">${escape(page.links.manual)}${icon('out')}</a>
+          <a class="button" href="${repoFile(`book/${ctx.lang}/manual.md`, null, 'aratu')}">${escape(page.links.manual)}${icon('out')}</a>
           <a class="button" href="${repoFile('docs/VISION.md', null, 'aratu')}">${escape(page.links.vision)}${icon('out')}</a>
         </p>
       </div>

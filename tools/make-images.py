@@ -51,12 +51,16 @@ def main() -> None:
     crab = logo.resize((600, 600), Image.LANCZOS)
     card.paste(crab, (610, 15))
     draw = ImageDraw.Draw(card)
+    # The project's full name, which also keeps it apart from a company of
+    # the same name.
     title = ImageFont.truetype(str(FONTS / "londrina-solid-900.woff2"), 112)
+    subtitle = ImageFont.truetype(str(FONTS / "londrina-solid-900.woff2"), 58)
     text = ImageFont.truetype(str(FONTS / "atkinson-hyperlegible-next.woff2"), 38)
-    draw.text((70, 164), "MANGUEBYTE", font=title, fill=PAPER)
-    draw.rectangle((72, 300, 232, 310), fill=CRAB)
-    draw.text((70, 340), "An audio framework for Rust.", font=text, fill=PAPER)
-    draw.text((70, 392), "Tested, not promised.", font=text, fill=CRAB)
+    draw.text((70, 130), "MANGUEBYTE", font=title, fill=PAPER)
+    draw.text((72, 262), "AUDIO FRAMEWORK", font=subtitle, fill=PAPER)
+    draw.rectangle((72, 350, 232, 360), fill=CRAB)
+    draw.text((70, 390), "Open-source audio for Rust.", font=text, fill=PAPER)
+    draw.text((70, 442), "Tested, not promised.", font=text, fill=CRAB)
     card.save(OUT / "card.jpg", "JPEG", quality=86, optimize=True, progressive=True)
 
     # Aratu's mascot, for its page and the ecosystem section.

@@ -1995,6 +1995,12 @@ details.show-test .code {
   font-size: 0.98rem;
 }
 
+/* One under another, in a narrow column of prose. */
+.ways-stacked {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+}
+
 .rules-list {
   padding: 0;
   list-style: none;

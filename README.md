@@ -2,7 +2,7 @@
 
 The website of [Manguebyte](https://github.com/alessonqueirozdev-hub/manguebyte),
 an open-source audio framework for Rust, in English and Brazilian Portuguese.
-It is meant to live at `manguebyte.org`.
+It lives at `https://manguebyte.org`, published with GitHub Pages.
 
 The framework lives in its own repository. This one holds only the site.
 

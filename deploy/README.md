@@ -1,39 +1,40 @@
 # Deploying the site
 
-The site is a folder of static files: `dist/`, made by `node build.mjs`.
-Any web server can serve it. These files describe one way to do it, on a
-Linux server with nginx; adapt them to what the server already runs.
+The site is a folder of static files, `dist/`, made by `node build.mjs`. It
+is published with GitHub Pages at `https://manguebyte.org`: the workflow in
+[.github/workflows/pages.yml](../.github/workflows/pages.yml) builds it and
+publishes it on every push to `main`. The build needs Node and nothing
+else.
 
-Nothing here has been run yet. Before the first deploy:
+## Once, to set it up
 
-- the domain has to be registered and its DNS pointed at the server;
-- the server's address, user, web server and folder have to be known;
-- the site's content should be brought up to date with the framework
-  (see "The rule" in the main README).
+1. The repository's Pages settings use "GitHub Actions" as the source.
+2. The custom domain is `manguebyte.org`, set in the same settings, with
+   "Enforce HTTPS" on. With a workflow as the source, GitHub ignores a
+   `CNAME` file, so the site has none.
+3. At the registrar, the domain points at GitHub Pages: `A` records for
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and
+   `185.199.111.153`, `AAAA` records for `2606:50c0:8000::153` to
+   `2606:50c0:8003::153`, and `www` as a `CNAME` for
+   `alessonqueirozdev-hub.github.io`.
+4. The domain is verified in the GitHub account's Pages settings, so that
+   no one else can publish a site on it.
+5. For Google, the domain is verified in Search Console with a `TXT`
+   record, and the sitemap, `https://manguebyte.org/sitemap.xml`, is
+   submitted there. `robots.txt` already points at it.
 
-## nginx
+`manguebyte.com` is not this project's domain and must never be used.
 
-[nginx.conf](nginx.conf) is a server block for `manguebyte.org`. It serves
-`dist/`, answers unknown addresses with the right language's 404 page,
-lets browsers keep assets for a year (their addresses change when their
-contents do) and sends a strict content security policy: the site loads
-nothing from anywhere else.
+## Changing the address
 
-Copy it to `/etc/nginx/sites-available/`, link it from `sites-enabled/`,
-then add HTTPS with Certbot:
+The address lives in one place: `baseUrl` in
+[site.config.mjs](../site.config.mjs). Canonical links, alternate-language
+links, the sitemap, `robots.txt` and the share card's address all come
+from it.
 
-```bash
-sudo certbot --nginx -d manguebyte.org -d www.manguebyte.org
-```
+## What GitHub Pages cannot do
 
-## Copying the files
-
-[deploy.sh](deploy.sh) builds the site and copies `dist/` to the server
-over SSH with `tar`, which Git Bash on Windows also has. Each version goes
-into a folder of its own, and the link the web server serves (`current`)
-moves to it in one step, so a reader never sees half a site. The last three
-versions stay on the server to go back to.
-
-```bash
-DEPLOY_HOST=user@server DEPLOY_PATH=/var/www/manguebyte.org ./deploy/deploy.sh
-```
+Pages sends no custom headers, so the content security policy is a `<meta>`
+tag in every page, and assets are cached for the ten minutes Pages chooses
+rather than for a year. A server of our own would do both better;
+[nginx.conf](nginx.conf) and [deploy.sh](deploy.sh) are kept for that day.

@@ -72,7 +72,7 @@ export const claims = [
         'The first time this test ran, it failed. A voice that had finished in the middle of a block kept advancing until the end of it, so the next note started from a state that depended on the block length. The test exists to find exactly that, and the fix is part of the `Voice` contract.',
       ],
       limit:
-        'The guarantee covers what follows events. A value that a processor reads once per block changes at block boundaries by definition. And a real host found a gap the tests had not: in REAPER 7.82, two offline renders of the example instrument with many voices overlapping differed by one unit in the last place of a 32-bit float, about 134 dB below the signal. It is an open item, [TECH_DEBT 42](proof:reaper-render), to be reproduced and fixed.',
+        'The guarantee covers what follows events. A value that a processor reads once per block changes at block boundaries by definition. And a real host found a gap the tests had not: in REAPER 7.82, two offline renders of the example instrument with many voices overlapping differed by one unit in the last place of a 32-bit float, about 134 dB below the signal. The cause was in how `Synth` chose a free voice, and [it is fixed](proof:reaper-render); the renders have not yet been compared again in REAPER with the new build ([TECH_DEBT 56](proof:reaper-owed)).',
     },
     pt: {
       title: 'O som não depende do tamanho de bloco do host',
@@ -90,7 +90,7 @@ export const claims = [
         'Na primeira vez em que rodou, o teste falhou. Uma voz que terminava no meio de um bloco continuava avançando até o fim dele, de modo que a nota seguinte partia de um estado que dependia do tamanho do bloco. O teste existe para achar exatamente isso, e a correção faz parte do contrato de `Voice`.',
       ],
       limit:
-        'A garantia cobre o que segue os eventos. Um valor que o processador lê uma vez por bloco muda nas bordas do bloco, por definição. E um host de verdade achou uma brecha que os testes não tinham achado: no REAPER 7.82, dois renders offline do instrumento de exemplo, com muitas vozes sobrepostas, diferiram em uma unidade na última casa de um float de 32 bits, cerca de 134 dB abaixo do sinal. É uma pendência aberta, o [TECH_DEBT 42](proof:reaper-render), a ser reproduzida e corrigida.',
+        'A garantia cobre o que segue os eventos. Um valor que o processador lê uma vez por bloco muda nas bordas do bloco, por definição. E um host de verdade achou uma brecha que os testes não tinham achado: no REAPER 7.82, dois renders offline do instrumento de exemplo, com muitas vozes sobrepostas, diferiram em uma unidade na última casa de um float de 32 bits, cerca de 134 dB abaixo do sinal. A causa estava em como o `Synth` escolhia uma voz livre, e [foi corrigida](proof:reaper-render); os renders ainda não foram comparados de novo no REAPER com a nova build ([TECH_DEBT 56](proof:reaper-owed)).',
     },
   },
 
@@ -231,7 +231,7 @@ export const claims = [
         '`cargo mangue bundle` writes the `.clap` beside the `.vst3` in each system’s layout, and `cargo mangue validate` runs the CLAP project’s validator on it as well as Steinberg’s on the `.vst3`; [a CI job](proof:ci-cli) runs the tool end to end on Windows, Linux and macOS. JUCE’s [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) accepts no CLAP format.',
       ],
       limit:
-        'The `gui` extension exists and is tested through the C interface against a fake editor and a fake host, but there are no native windows yet, so no editor opens inside a real host. No 64-bit audio, no presets. VST 3 is the only other format so far: JUCE’s AU, AAX and LV2 support has no counterpart here yet. Both example plugins were also loaded and tested by hand in REAPER; see [HOST_TESTS.md](proof:host-tests).',
+        'The `gui` extension is tested through the C interface against fake editors and hosts, and the example plugins’ editors open in Win32 windows in CI, but nobody has opened one in a host by hand yet; windows on macOS and Linux come later. No 64-bit audio, no presets. Besides VST 3 there is now LV2, which lilv loads in CI but no host has run yet; JUCE’s AU and AAX support has no counterpart here. Both example plugins were also loaded and tested by hand in REAPER, before they had editors; see [HOST_TESTS.md](proof:host-tests).',
     },
     pt: {
       title: 'CLAP nativo',
@@ -247,7 +247,7 @@ export const claims = [
         '`cargo mangue bundle` grava o `.clap` ao lado do `.vst3`, no layout de cada sistema, e `cargo mangue validate` roda nele o validador do projeto CLAP e, no `.vst3`, o da Steinberg; [um job de CI](proof:ci-cli) roda a ferramenta de ponta a ponta em Windows, Linux e macOS. O [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) do JUCE não aceita o formato CLAP.',
       ],
       limit:
-        'A extensão `gui` existe e é testada pela interface C contra um editor e um host falsos, mas ainda não há janelas nativas, então nenhum editor abre dentro de um host de verdade. Sem áudio em 64 bits e sem presets. O VST 3 é o único outro formato por enquanto: o suporte do JUCE a AU, AAX e LV2 ainda não tem equivalente aqui. Os dois plugins de exemplo também foram carregados e testados à mão no REAPER; veja o [HOST_TESTS.md](proof:host-tests).',
+        'A extensão `gui` é testada pela interface C contra editores e hosts falsos, e os editores dos plugins de exemplo abrem em janelas Win32 no CI, mas ninguém abriu um num host à mão ainda; janelas em macOS e Linux vêm depois. Sem áudio em 64 bits e sem presets. Além do VST 3 agora há o LV2, que o lilv carrega no CI mas nenhum host rodou ainda; o suporte do JUCE a AU e AAX não tem equivalente aqui. Os dois plugins de exemplo também foram carregados e testados à mão no REAPER, antes de terem editores; veja o [HOST_TESTS.md](proof:host-tests).',
     },
   },
 
@@ -574,18 +574,18 @@ export const claims = [
 // BEYOND_JUCE.md.
 export const juceAhead = {
   en: [
-    'a complete GUI toolkit, with plugin editor windows in every format;',
-    'Audio Unit, AAX and LV2 plugin formats;',
+    'a complete GUI toolkit, with plugin editor windows on every system and in every format (Manguebyte’s editors have windows on Win32 only, and none has been opened in a host by hand yet);',
+    'Audio Unit and AAX plugin formats;',
     'hosting of AU and LV2 plugins, plugin scanning, and the editors of hosted plugins (Manguebyte hosts CLAP and VST 3 plugins, without their editors);',
-    'more DSP building blocks (convolution among them), and readers for compressed audio formats;',
+    'more DSP building blocks, and more file formats;',
     'iOS and Android;',
     'documentation, tutorials and a large community.',
   ],
   pt: [
-    'um toolkit de interface gráfica completo, com janelas de editor de plugin em todos os formatos;',
-    'os formatos de plugin Audio Unit, AAX e LV2;',
+    'um toolkit de interface gráfica completo, com janelas de editor de plugin em todos os sistemas e formatos (os editores do Manguebyte só têm janelas no Win32, e nenhum foi aberto num host à mão ainda);',
+    'os formatos de plugin Audio Unit e AAX;',
     'hospedagem de plugins AU e LV2, varredura de plugins e os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP e VST 3, sem os editores);',
-    'mais blocos de DSP (convolução entre eles), e leitores de formatos de áudio comprimidos;',
+    'mais blocos de DSP, e mais formatos de arquivo;',
     'iOS e Android;',
     'documentação, tutoriais e uma comunidade grande.',
   ],

@@ -28,7 +28,17 @@ async function read(path, which) {
   const key = `${repo}@${commit}:${path}`;
   if (!files.has(key)) {
     const url = `https://raw.githubusercontent.com/${repo}/${commit}/${path}`;
-    const response = await fetch(url);
+    // A dropped connection is retried; a missing file is not.
+    let response;
+    for (let attempt = 1; ; attempt += 1) {
+      try {
+        response = await fetch(url);
+        break;
+      } catch (error) {
+        if (attempt === 6) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      }
+    }
     if (!response.ok) throw new Error(`${path}: ${response.status} from ${url}`);
     files.set(key, (await response.text()).replace(/\r\n/g, '\n').split('\n'));
   }

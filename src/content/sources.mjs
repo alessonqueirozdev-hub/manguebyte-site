@@ -208,14 +208,37 @@ export const proofs = {
 
   // The command-line tool, and what testing in a real host found
   'ci-cli': { file: '.github/workflows/ci.yml', find: '  cli:', name: 'CI job: command-line tool end to end' },
-  'reaper-render': { file: 'docs/TECH_DEBT.md', find: '| 42 | Found in REAPER 7.82', name: 'TECH_DEBT item 42' },
-  'reaper-findings': { file: 'docs/TECH_DEBT.md', find: '| 41 | Found in REAPER 7.82', name: 'TECH_DEBT items 41 to 43' },
+  'reaper-render': {
+    file: 'docs/TECH_DEBT.md',
+    find: '| Two offline renders of the same project in REAPER differed',
+    name: 'TECH_DEBT: the REAPER renders, paid back',
+  },
+  'reaper-owed': {
+    file: 'docs/TECH_DEBT.md',
+    find: '| 56 | Hand tests in REAPER 7.82 are still owed',
+    name: 'TECH_DEBT item 56',
+  },
   'adr-0007': { file: 'docs/adr/0007-user-interface-layer.md', name: 'ADR 0007' },
   'host-tests': { file: 'docs/HOST_TESTS.md', find: '## REAPER 7.82, Windows 11', name: 'HOST_TESTS.md: REAPER 7.82' },
 
   // Aratu, in its own repository
   'aratu-readme': { repo: 'aratu', file: 'README.md', name: 'aratu/README.md' },
-  'aratu-manual': { repo: 'aratu', file: 'docs/MANUAL.md', name: 'aratu/docs/MANUAL.md' },
+  'aratu-manual': { repo: 'aratu', file: 'book/en/manual.md', name: 'aratu/book/en/manual.md' },
+  'aratu-book-works': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/book.rs',
+    find: 'fn every_block_of_the_book_works(',
+  },
+  'aratu-book-languages': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/book.rs',
+    find: 'fn every_exercise_sounds_the_same_in_every_language(',
+  },
+  'aratu-book-features': {
+    repo: 'aratu',
+    file: 'crates/aratu/tests/book.rs',
+    find: 'fn every_feature_is_taught_in_every_language(',
+  },
   'aratu-vision': { repo: 'aratu', file: 'docs/VISION.md', name: 'aratu/docs/VISION.md' },
   'aratu-manual-parses': {
     repo: 'aratu',
@@ -256,7 +279,8 @@ export const snippets = {
       { gap: '    // ... new, params and prepare are left out here' },
       { fn: 'process', indent: 4, keepIndent: true },
       { gap: '    // ... reset' },
-      { after: 'fn reset(&mut self)', from: /^\}$/, to: 'export_vst3!(Duck);' },
+      { fn: 'editor', indent: 4, keepIndent: true },
+      { after: 'fn editor(&self)', from: /^\}$/, to: 'export_lv2!(Duck);' },
     ],
   },
   'duck-test': {
