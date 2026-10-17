@@ -1444,6 +1444,53 @@ tbody th {
   margin-top: 0.3rem;
 }
 
+/* Too narrow for the four columns (48rem, plus the gutters): each claim
+   becomes a block, and every cell says which column it came from. */
+@media (max-width: 52.99rem) {
+  .summary {
+    min-width: 0;
+  }
+
+  .summary thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .summary tr,
+  .summary th,
+  .summary td {
+    display: block;
+  }
+
+  .summary tbody tr {
+    padding: 0.9rem 1rem 1rem;
+    border-top: 2px solid var(--rule);
+  }
+
+  .summary tbody th,
+  .summary td {
+    padding: 0;
+    border: 0;
+  }
+
+  .summary td {
+    margin-top: 0.6rem;
+  }
+
+  .summary td::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--ink-2);
+    font: 650 0.7rem/1.4 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+
 .claims {
   padding-block: clamp(2rem, 6vw, 4rem);
 }

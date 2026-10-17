@@ -5,7 +5,7 @@ import { escape, html } from '../lib/html.mjs';
 const two = (number) => String(number).padStart(2, '0');
 
 export function render(ctx) {
-  const { t, text, inline, proof, origin, breakable, proofList, sample, sectionHead, pick } = ctx;
+  const { t, text, fill, inline, proof, origin, breakable, proofList, sample, sectionHead, pick } = ctx;
   const page = t.beyond;
   const labels = page.labels;
 
@@ -25,28 +25,31 @@ export function render(ctx) {
     </div>
   </section>`;
 
+  // On phones the rows are laid out as blocks, which makes some browsers
+  // forget this is a table; the roles keep it one, and data-label names the
+  // column above each cell.
   const summary = html`<section class="section section-tint" aria-labelledby="summary">
     <div class="wrap">
       ${sectionHead({ heading: page.summaryHeading, id: 'summary' })}
       <div class="table-wrap" role="region" aria-labelledby="summary" tabindex="0">
-        <table class="summary">
+        <table class="summary" role="table">
           <caption>${escape(page.summaryCaption)}</caption>
-          <thead>
-            <tr>
-              <th scope="col">${escape(page.table.claim)}</th>
-              <th scope="col">${text(page.table.juce)}</th>
-              <th scope="col">${escape(page.table.mangue)}</th>
-              <th scope="col">${escape(page.table.checked)}</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">${escape(page.table.claim)}</th>
+              <th scope="col" role="columnheader">${text(page.table.juce)}</th>
+              <th scope="col" role="columnheader">${escape(page.table.mangue)}</th>
+              <th scope="col" role="columnheader">${escape(page.table.checked)}</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             ${claims.map((claim, index) => {
               const content = pick(claim);
-              return html`<tr>
-                <th scope="row"><a href="#${claim.id}">${index + 1}. ${inline(content.row)}</a></th>
-                <td>${inline(content.juceShort)}</td>
-                <td>${inline(content.mangueShort)}</td>
-                <td class="checked">${claim.proofs.slice(0, 2).map((id) => {
+              return html`<tr role="row">
+                <th scope="row" role="rowheader"><a href="#${claim.id}">${index + 1}. ${inline(content.row)}</a></th>
+                <td role="cell" data-label="${escape(fill(page.table.juce))}">${inline(content.juceShort)}</td>
+                <td role="cell" data-label="${escape(page.table.mangue)}">${inline(content.mangueShort)}</td>
+                <td class="checked" role="cell" data-label="${escape(page.table.checked)}">${claim.proofs.slice(0, 2).map((id) => {
                   const found = proof(id);
                   return `<a href="${escape(found.href)}"><span class="where">${origin(found)}</span> ${breakable(found.name)}</a>`;
                 })}</td>

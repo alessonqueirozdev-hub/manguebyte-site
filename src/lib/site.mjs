@@ -85,8 +85,9 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
   const inline = makeInline(resolve);
   const text = (source, more) => inline(fill(source, more));
 
-  // Test names are long. Let them break after an underscore, not mid-word.
-  const breakable = (name) => escape(name).replaceAll('_', '_<wbr>');
+  // Test names and paths are long. Let them break after an underscore or a
+  // slash, not mid-word.
+  const breakable = (name) => escape(name).replaceAll('_', '_<wbr>').replaceAll('/', '/<wbr>');
 
   // Where a proof lives, in a word: the crate, the example plugin, or CI.
   function origin(found) {
