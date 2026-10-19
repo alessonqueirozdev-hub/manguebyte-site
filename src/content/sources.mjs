@@ -280,6 +280,124 @@ export const proofs = {
   'adr-0007': { file: 'docs/adr/0007-user-interface-layer.md', name: 'ADR 0007' },
   'host-tests': { file: 'docs/HOST_TESTS.md', find: '## REAPER 7.82, Windows 11', name: 'HOST_TESTS.md: REAPER 7.82' },
 
+  // Per-note control: MPE and MIDI 2.0 in, and notes and MIDI out
+  'per-note-mpe': {
+    file: 'crates/manguebyte-dsp/tests/note_input.rs',
+    find: 'fn an_mpe_stream_and_the_same_midi_2_stream_give_identical_events(',
+  },
+  'per-note-clap-mpe': {
+    file: 'crates/manguebyte-clap/tests/abi.rs',
+    find: 'fn clap_notes_mpe_and_midi_2_end_in_the_same_events(',
+  },
+  'per-note-debt': { file: 'docs/TECH_DEBT.md', find: '| 76 | ', name: 'TECH_DEBT item 76' },
+  'midi-out-clap': {
+    file: 'crates/manguebyte-clap/tests/note_output.rs',
+    find: 'fn a_host_of_midi_2_gets_the_packets_as_they_are(',
+  },
+  'midi-out-vst3': {
+    file: 'crates/manguebyte-vst3/tests/note_output.rs',
+    find: 'fn notes_expressions_and_midi_reach_the_output_event_bus(',
+  },
+  'midi-out-standalone': {
+    file: 'crates/manguebyte-standalone/src/engine.rs',
+    find: 'fn notes_the_plugin_sends_reach_the_midi_output(',
+  },
+  'midi-out-debt': { file: 'docs/TECH_DEBT.md', find: '| 82 | ', name: 'TECH_DEBT item 82' },
+
+  // Audio Units
+  'ci-au': { file: '.github/workflows/ci.yml', find: '  au:', name: 'CI job: Audio Unit validation (auval)' },
+  'au-effect': {
+    file: 'crates/manguebyte-au/tests/abi.rs',
+    find: 'fn the_effect_sounds_as_it_does_with_no_host(',
+  },
+  'au-instrument': {
+    file: 'crates/manguebyte-au/tests/abi.rs',
+    find: 'fn the_instrument_plays_midi_on_its_frames_and_reads_the_transport(',
+  },
+
+  // Hosting LV2, and scanning
+  'hosting-lv2': {
+    file: 'crates/manguebyte-host/tests/lv2_pluck.rs',
+    find: 'fn the_instrument_plays_as_it_does_with_no_host(',
+  },
+  'scan': {
+    file: 'crates/manguebyte-host/tests/scan.rs',
+    find: 'fn a_scan_lists_what_works_and_survives_what_does_not(',
+  },
+
+  // Changing the audio device in the middle of a song
+  'hotswap': {
+    file: 'crates/manguebyte-devices/tests/hotswap.rs',
+    find: 'fn the_song_goes_on_while_the_device_changes_under_it(',
+  },
+  'hotswap-gap': {
+    file: 'crates/manguebyte-devices/tests/hotswap.rs',
+    find: 'fn devices_that_cannot_overlap_hand_over_after_a_short_faded_gap(',
+  },
+  'hotswap-rate': {
+    file: 'crates/manguebyte-devices/tests/hotswap.rs',
+    find: 'fn a_device_at_another_rate_plays_the_same_whatever_its_blocks(',
+  },
+  'hotswap-lost': {
+    file: 'crates/manguebyte-devices/tests/hotswap.rs',
+    find: 'fn a_lost_device_is_replaced_without_preparing_again(',
+  },
+  'hotswap-asio': {
+    file: 'crates/manguebyte-pro-io/tests/hardware.rs',
+    find: 'fn the_engine_runs_on_while_the_driver_changes(',
+  },
+  'hotswap-debt': { file: 'docs/TECH_DEBT.md', find: '| 85 | ', name: 'TECH_DEBT item 85' },
+
+  // ASIO, in the one crate under the GPLv3
+  'pro-io-readme': { file: 'crates/manguebyte-pro-io/README.md', name: 'crates/manguebyte-pro-io/README.md' },
+  'pro-io-licence': { file: 'crates/manguebyte-pro-io/LICENSE', name: 'crates/manguebyte-pro-io/LICENSE' },
+
+  // The browser engine
+  'web-loudness': {
+    file: 'crates/manguebyte-web/tests/loudness.rs',
+    find: 'fn every_kind_and_preset_plays_its_phrase_at_the_target(',
+  },
+  'web-percussion': {
+    file: 'crates/manguebyte-web/tests/percussion.rs',
+    find: 'fn every_percussion_key_plays_on_every_kit_at_its_level(',
+  },
+  'web-scope': {
+    file: 'crates/manguebyte-web/tests/scope.rs',
+    find: 'fn the_scope_is_what_the_part_puts_into_the_master_bus(',
+  },
+  'web-tube': {
+    file: 'crates/manguebyte-web/tests/effects.rs',
+    find: 'fn the_tube_gives_even_harmonics_and_no_offset(',
+  },
+
+  // The Aratu Bridge
+  'bridge-same-bits': {
+    file: 'plugins/aratu-bridge/tests/same_bits.rs',
+    find: 'fn a_session_sent_over_the_bridge_sounds_as_the_engine_renders_it(',
+  },
+  'bridge-hosted': {
+    file: 'crates/manguebyte-host/tests/clap_aratu_bridge.rs',
+    find: 'fn the_hosted_bridge_plays_a_session_as_the_plugin_does_alone(',
+  },
+  'bridge-heap': {
+    file: 'plugins/aratu-bridge/tests/realtime.rs',
+    find: 'fn processing_never_touches_the_heap_while_a_page_plays(',
+  },
+  'bridge-doc': { file: 'docs/ARATU_BRIDGE.md', name: 'docs/ARATU_BRIDGE.md' },
+  'bridge-js': { file: 'crates/manguebyte-web/js/bridge.js', name: 'crates/manguebyte-web/js/bridge.js' },
+  'bridge-debt': { file: 'docs/TECH_DEBT.md', find: '| 84 | ', name: 'TECH_DEBT item 84' },
+  'host-tests-19': {
+    file: 'docs/HOST_TESTS.md',
+    find: '## REAPER 7.82, Windows, 19 October 2026',
+    name: 'HOST_TESTS.md: REAPER 7.82, 19 October 2026',
+  },
+
+  // Taking part
+  'conduct': { file: 'CODE_OF_CONDUCT.md', name: 'CODE_OF_CONDUCT.md' },
+  'security': { file: 'SECURITY.md', name: 'SECURITY.md' },
+  'issue-bug': { file: '.github/ISSUE_TEMPLATE/bug_report.yml', name: 'the bug report form' },
+  'issue-feature': { file: '.github/ISSUE_TEMPLATE/feature_request.yml', name: 'the feature request form' },
+
   // Aratu, in its own repository
   'aratu-readme': { repo: 'aratu', file: 'README.md', name: 'aratu/README.md' },
   'aratu-manual': { repo: 'aratu', file: 'book/en/manual.md', name: 'aratu/book/en/manual.md' },
@@ -329,7 +447,7 @@ export const proofs = {
 //   gap:   a line the site adds between two stretches to say something was
 //          left out. It is the only text in a sample that is not in the file.
 export const snippets = {
-  // Home: the plugin, the two export lines, and a test of it.
+  // Home: the plugin, the four export lines, and a test of it.
   'duck-plugin': {
     file: 'plugins/duck/src/lib.rs',
     lang: 'rust',
@@ -339,7 +457,7 @@ export const snippets = {
       { fn: 'process', indent: 4, keepIndent: true },
       { gap: '    // ... reset' },
       { fn: 'editor', indent: 4, keepIndent: true },
-      { after: 'fn editor(&self)', from: /^\}$/, to: 'export_lv2!(Duck);' },
+      { after: 'fn editor(&self)', from: /^\}$/, to: 'export_au!(Duck);' },
     ],
   },
   'duck-test': {
@@ -374,7 +492,12 @@ export const snippets = {
   'readme-dependency': {
     file: 'README.md',
     lang: 'toml',
-    parts: [{ from: '[dependencies]', to: 'manguebyte = { git' }],
+    parts: [{ from: '[dependencies]', to: 'manguebyte = "0.1"' }],
+  },
+  'readme-new-plugin': {
+    file: 'README.md',
+    lang: 'bash',
+    parts: [{ after: '## Quick start', from: 'cargo install cargo-mangue', to: 'cargo mangue new my-gain' }],
   },
   'readme-render': {
     file: 'README.md',

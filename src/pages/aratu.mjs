@@ -34,6 +34,10 @@ export function render(ctx) {
         </dl>
         <h2 id="engine">${escape(page.engineHeading)}</h2>
         <p>${text(page.engine)}</p>
+        <h2 id="bridge">${escape(page.bridgeHeading)}</h2>
+        ${page.bridge.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <p>${text(page.bridgeProofsIntro)}</p>
+        ${proofList(['bridge-same-bits', 'bridge-hosted', 'bridge-heap', 'host-tests-19', 'bridge-debt'])}
         <h2 id="name">${inline(page.nameHeading)}</h2>
         <p>${text(page.name)}</p>
       </div>

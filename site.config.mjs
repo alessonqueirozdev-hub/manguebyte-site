@@ -9,15 +9,23 @@ export default {
   repo: 'alessonqueirozdev-hub/manguebyte',
 
   // The framework commit that every fact, proof link and code sample on the
-  // site was read at. To update: change `commit`, `date` and `ciRun`, run
+  // site was read at. To update: change `commit`, `date`, `ciRun`, `ciJobs`
+  // and, at a release, `release`; run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: 'd656ef6decede7772145dcdf89d9960936a5edab',
-    date: '2026-10-17',
+    commit: '9daba9d020872d0fd98f291ddb225f2b505cb6ed',
+    date: '2026-10-19',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '39040819935',
+    ciRun: '39300203761',
     // How many jobs that run has, all of which passed.
-    ciJobs: 20,
+    ciJobs: 26,
+    // The release that commit is tagged as, and where it was published.
+    release: {
+      version: '0.1.0',
+      tag: 'v0.1.0',
+      crate: 'https://crates.io/crates/manguebyte',
+      docs: 'https://docs.rs/manguebyte',
+    },
   },
 
   // Other repositories of the ecosystem that the site quotes, each pinned

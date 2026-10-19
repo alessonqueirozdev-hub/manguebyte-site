@@ -177,40 +177,46 @@ export const claims = [
 
   {
     id: 'per-note',
-    proofs: ['per-note', 'per-note-overlap', 'per-note-clap'],
+    proofs: ['per-note', 'per-note-mpe', 'per-note-overlap', 'per-note-clap', 'per-note-clap-mpe'],
     en: {
       title: 'Per-note expression and modulation',
       row: 'Per-note control',
       juceShort: 'Through MPE channels',
-      mangueShort: 'Per-note expression and modulation events',
+      mangueShort: 'Per-note expression and modulation events, which MPE and MIDI 2.0 arrive as too',
       problem:
         'Bending, swelling or filtering one note of a chord needs a way to address that note. So does a host’s modulation system that wants to move a parameter for one voice without overwriting the value the user set.',
       juce:
         'Per-note control is available through MPE, which gives each note its own MIDI channel. The processor model has no note expression events and no modulation distinct from changing a parameter’s value, which is why the third-party CLAP wrapper adds its own extension interfaces for them ([clap-juce-extensions](https://github.com/free-audio/clap-juce-extensions)).',
-      mangue:
+      mangue: [
         'Notes have an identity (`NoteRef`: channel, key and an optional id), so two notes on the same key can overlap. `NoteExpression` shapes one note. `ParamModulation` adds an offset on top of a parameter, optionally for a single note, and never changes the stored value, so it cannot fight automation or end up in a saved preset. `Synth` routes each to the voice that is playing the note.',
+        'MPE and MIDI 2.0 arrive as the same events. One converter, `dsp::note_input::NoteInput`, reads the MIDI of every device input, the standalone runner, the test harness and the CLAP, VST 3 and LV2 wrappers. A note of an MPE zone gets an identifier and is reported on the zone’s master channel, and its member channel’s pitch bend, pressure and controller 74 become its tuning, pressure and brightness; MIDI 2.0’s per-note pitch bend, pressure, pitch attributes and registered per-note controllers do the same. MIDI 1.0 values are widened with the specification’s own method first, so an MPE stream and the MIDI 2.0 stream that says the same thing give identical events, bit for bit. A plugin says in `Plugin::MPE` whether it expects zones from the start.',
+      ],
       check: [
         '[expression_and_modulation_reach_one_note_and_parameters_reach_all](proof:per-note) and [notes_with_identifiers_overlap_on_one_key_and_end_separately](proof:per-note-overlap) in the synth; [an_instrument_takes_notes_expression_modulation_and_a_sidechain](proof:per-note-clap) does it through CLAP.',
+        '[an_mpe_stream_and_the_same_midi_2_stream_give_identical_events](proof:per-note-mpe) in `note_input.rs`; [clap_notes_mpe_and_midi_2_end_in_the_same_events](proof:per-note-clap-mpe), in the CLAP wrapper’s tests, plays one phrase as CLAP notes, as MPE and as MIDI 2.0 packets and requires the same output from all three, with no heap use.',
       ],
       limit:
-        'MIDI 2.0 packets and MPE zone handling are not converted to these events yet, and per-note *automation* from a CLAP host is not accepted yet.',
+        'Per-note *automation* from a CLAP host is not accepted yet. A `Processor` reads MIDI 2.0 but cannot write it by itself; a plugin can send notes, expressions and MIDI 2.0 out through CLAP, VST 3 and the standalone runner ([CLAP](proof:midi-out-clap), [VST 3](proof:midi-out-vst3), [standalone](proof:midi-out-standalone)), though no MIDI port uses the systems’ own MIDI 2.0 interfaces yet ([TECH_DEBT 82](proof:midi-out-debt)). Per-note controllers with no expression to become (modulation, breath, the assignable ones) are dropped, and channel-wide MIDI 2.0 messages reach the processor at MIDI 1.0 resolution ([TECH_DEBT 76](proof:per-note-debt)).',
     },
     pt: {
       title: 'Expressão e modulação por nota',
       row: 'Controle por nota',
       juceShort: 'Por canais MPE',
-      mangueShort: 'Eventos de expressão e de modulação por nota',
+      mangueShort: 'Eventos de expressão e de modulação por nota, que é como chegam também o MPE e o MIDI 2.0',
       problem:
         'Fazer bend, crescer ou filtrar uma só nota de um acorde exige um jeito de endereçar essa nota. O mesmo vale para o sistema de modulação de um host que queira mover um parâmetro em uma voz sem sobrescrever o valor que o usuário definiu.',
       juce:
         'O controle por nota existe por meio do MPE, que dá a cada nota um canal MIDI próprio. O modelo de processador não tem eventos de expressão de nota nem modulação distinta de mudar o valor de um parâmetro, e é por isso que o wrapper CLAP de terceiros acrescenta interfaces de extensão próprias para isso ([clap-juce-extensions](https://github.com/free-audio/clap-juce-extensions)).',
-      mangue:
+      mangue: [
         'As notas têm identidade (`NoteRef`: canal, tecla e um id opcional), então duas notas na mesma tecla podem se sobrepor. `NoteExpression` molda uma nota. `ParamModulation` soma um deslocamento a um parâmetro, opcionalmente para uma única nota, e nunca muda o valor guardado; por isso não briga com a automação nem vai parar num preset salvo. `Synth` encaminha cada um à voz que está tocando a nota.',
+        'O MPE e o MIDI 2.0 chegam como esses mesmos eventos. Um único conversor, `dsp::note_input::NoteInput`, lê o MIDI de todas as entradas de dispositivo, do executor standalone, do harness de testes e dos wrappers CLAP, VST 3 e LV2. Uma nota de uma zona MPE ganha um identificador e é informada no canal mestre da zona, e o pitch bend, a pressão e o controlador 74 do seu canal membro viram a afinação, a pressão e o brilho dela; o pitch bend por nota, a pressão, os atributos de altura e os controladores por nota registrados do MIDI 2.0 seguem o mesmo caminho. Os valores do MIDI 1.0 são antes ampliados pelo método da própria especificação, de modo que um fluxo MPE e o fluxo MIDI 2.0 que diz a mesma coisa geram eventos idênticos, bit a bit. O plugin diz em `Plugin::MPE` se espera zonas desde o começo.',
+      ],
       check: [
         '[expression_and_modulation_reach_one_note_and_parameters_reach_all](proof:per-note) e [notes_with_identifiers_overlap_on_one_key_and_end_separately](proof:per-note-overlap) no sintetizador; [an_instrument_takes_notes_expression_modulation_and_a_sidechain](proof:per-note-clap) faz o mesmo pelo CLAP.',
+        '[an_mpe_stream_and_the_same_midi_2_stream_give_identical_events](proof:per-note-mpe), em `note_input.rs`; [clap_notes_mpe_and_midi_2_end_in_the_same_events](proof:per-note-clap-mpe), nos testes do wrapper CLAP, toca uma mesma frase como notas CLAP, como MPE e como pacotes MIDI 2.0 e exige a mesma saída das três, sem uso do heap.',
       ],
       limit:
-        'Pacotes MIDI 2.0 e o tratamento de zonas MPE ainda não são convertidos nesses eventos, e a *automação* por nota vinda de um host CLAP ainda não é aceita.',
+        'A *automação* por nota vinda de um host CLAP ainda não é aceita. Um `Processor` lê MIDI 2.0, mas não consegue escrevê-lo sozinho; já um plugin consegue mandar notas, expressões e MIDI 2.0 para fora pelo CLAP, pelo VST 3 e pelo executor standalone ([CLAP](proof:midi-out-clap), [VST 3](proof:midi-out-vst3), [standalone](proof:midi-out-standalone)), embora nenhuma porta MIDI use ainda as interfaces de MIDI 2.0 dos próprios sistemas ([TECH_DEBT 82](proof:midi-out-debt)). Controladores por nota que não têm uma expressão em que se transformar (modulação, sopro, os atribuíveis) são descartados, e as mensagens MIDI 2.0 que valem para o canal inteiro chegam ao processador com a resolução do MIDI 1.0 ([TECH_DEBT 76](proof:per-note-debt)).',
     },
   },
 
@@ -231,7 +237,7 @@ export const claims = [
         '`cargo mangue bundle` writes the `.clap` beside the `.vst3` in each system’s layout, and `cargo mangue validate` runs the CLAP project’s validator on it as well as Steinberg’s on the `.vst3`; [a CI job](proof:ci-cli) runs the tool end to end on Windows, Linux and macOS. JUCE’s [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) accepts no CLAP format.',
       ],
       limit:
-        'The `gui` extension is tested through the C interface against fake editors and hosts, and the example plugins’ editors open in Win32 windows in CI, but nobody has opened one in a host by hand yet; windows on macOS and Linux come later. No 64-bit audio, no presets. Besides VST 3 there is now LV2, which lilv loads in CI but no host has run yet; JUCE’s AU and AAX support has no counterpart here. Both example plugins were also loaded and tested by hand in REAPER, before they had editors; see [HOST_TESTS.md](proof:host-tests).',
+        'The `gui` extension is tested through the C interface against fake editors and hosts, and the example plugins’ editors open in Win32 windows in CI; windows on macOS and Linux come later. By hand, one editor has been opened inside a DAW: Mangue Pluck’s, as a CLAP in REAPER on Windows, where it showed its title and knobs; working its knobs there has not been tested ([HOST_TESTS.md](proof:host-tests-19)). No 64-bit audio, no presets. Besides VST 3 there are LV2, which lilv loads in CI but no host but the framework’s own has run yet, and Audio Units (version 2), whose example plugins pass Apple’s `auval` in [a macOS CI job](proof:ci-au); JUCE’s AUv3 and AAX support has no counterpart here yet. Both example plugins were also loaded and tested by hand in REAPER before they had editors; see [HOST_TESTS.md](proof:host-tests).',
     },
     pt: {
       title: 'CLAP nativo',
@@ -247,7 +253,7 @@ export const claims = [
         '`cargo mangue bundle` grava o `.clap` ao lado do `.vst3`, no layout de cada sistema, e `cargo mangue validate` roda nele o validador do projeto CLAP e, no `.vst3`, o da Steinberg; [um job de CI](proof:ci-cli) roda a ferramenta de ponta a ponta em Windows, Linux e macOS. O [juce_add_plugin](https://raw.githubusercontent.com/juce-framework/JUCE/master/docs/CMake%20API.md) do JUCE não aceita o formato CLAP.',
       ],
       limit:
-        'A extensão `gui` é testada pela interface C contra editores e hosts falsos, e os editores dos plugins de exemplo abrem em janelas Win32 no CI, mas ninguém abriu um num host à mão ainda; janelas em macOS e Linux vêm depois. Sem áudio em 64 bits e sem presets. Além do VST 3 agora há o LV2, que o lilv carrega no CI mas nenhum host rodou ainda; o suporte do JUCE a AU e AAX não tem equivalente aqui. Os dois plugins de exemplo também foram carregados e testados à mão no REAPER, antes de terem editores; veja o [HOST_TESTS.md](proof:host-tests).',
+        'A extensão `gui` é testada pela interface C contra editores e hosts falsos, e os editores dos plugins de exemplo abrem em janelas Win32 no CI; janelas em macOS e Linux vêm depois. À mão, um editor já foi aberto dentro de uma DAW: o do Mangue Pluck, como CLAP, no REAPER para Windows, onde mostrou o título e os knobs; mexer nesses knobs ali ainda não foi testado ([HOST_TESTS.md](proof:host-tests-19)). Sem áudio em 64 bits e sem presets. Além do VST 3 há o LV2, que o lilv carrega no CI mas que nenhum host além do próprio framework rodou ainda, e o Audio Unit (versão 2), cujos plugins de exemplo passam no `auval` da Apple [num job de CI no macOS](proof:ci-au); o suporte do JUCE a AUv3 e AAX ainda não tem equivalente aqui. Os dois plugins de exemplo também foram carregados e testados à mão no REAPER antes de terem editores; veja o [HOST_TESTS.md](proof:host-tests).',
     },
   },
 
@@ -320,7 +326,7 @@ export const claims = [
 
   {
     id: 'licence',
-    proofs: ['licence-mit', 'licence-apache'],
+    proofs: ['licence-mit', 'licence-apache', 'pro-io-licence'],
     en: {
       title: 'Licence',
       row: 'Licence',
@@ -330,6 +336,8 @@ export const claims = [
       mangue:
         'Manguebyte is under MIT or Apache-2.0, at your option: no copyleft, no per-seat fee and no splash screen, for open and closed products alike.',
       check: ['The two licence texts in the repository: [MIT](proof:licence-mit) and [Apache-2.0](proof:licence-apache).'],
+      limit:
+        'One crate is the exception. `manguebyte-pro-io`, which speaks to ASIO drivers itself, is opt-in and under the [GPLv3 alone](proof:pro-io-licence), because its driver interface is declared from Steinberg’s ASIO SDK under the SDK’s GPLv3 option. No other crate depends on it, and a program that uses it is under the GPLv3; closed-source programs reach ASIO through `cpal`’s own `asio` feature instead, with an SDK they license themselves ([its README](proof:pro-io-readme)).',
     },
     pt: {
       title: 'Licença',
@@ -340,6 +348,8 @@ export const claims = [
       mangue:
         'O Manguebyte está sob MIT ou Apache-2.0, à sua escolha: sem copyleft, sem taxa por desenvolvedor e sem tela de abertura, para produtos abertos e fechados.',
       check: ['Os dois textos de licença no repositório: [MIT](proof:licence-mit) e [Apache-2.0](proof:licence-apache).'],
+      limit:
+        'Um crate é a exceção. O `manguebyte-pro-io`, que conversa diretamente com os drivers ASIO, é opcional e está [só sob a GPLv3](proof:pro-io-licence), porque a interface de driver dele é declarada a partir do SDK ASIO da Steinberg, pela opção GPLv3 do próprio SDK. Nenhum outro crate depende dele, e um programa que o use fica sob a GPLv3; programas de código fechado chegam ao ASIO pela feature `asio` do próprio `cpal`, com um SDK que eles mesmos licenciam ([o README dele](proof:pro-io-readme)).',
     },
   },
 
@@ -400,7 +410,7 @@ export const claims = [
         'Compile-fail doc-tests on `ClapPlugin` and `Vst3Plugin` show that the main-thread half cannot be sent to another thread. `the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone`, for [CLAP](proof:hosting-clap) and for [VST 3](proof:hosting-vst3), loads the example instrument through its real entry point and requires its output to be identical bit for bit to the same plugin run in process by `Harness`, for four block layouts, with automation of five parameters, notes with ids, expression and pitch bend; removing any one kind of event changes the output, so the identity is not two deaf paths agreeing. [automation_lands_on_its_frame_through_the_host](proof:hosting-automation) sends 59 VST 3 points 61 frames apart.',
       ],
       limit:
-        'A second audio half, and deactivating while one exists, are refused at run time, not at compile time. “Main thread” means the thread that created the plugin; the types do not check that it is the program’s main thread. At most 4,096 events per call; the rest are counted. No modulation is sent to VST 3 plugins. Tested with the framework’s own plugins and deliberately misbehaving test plugins, not yet with plugins from other vendors; no editors of hosted plugins; no scanning yet.',
+        'A second audio half, and deactivating while one exists, are refused at run time, not at compile time. “Main thread” means the thread that created the plugin; the types do not check that it is the program’s main thread. At most 4,096 events per call; the rest are counted. No modulation is sent to VST 3 plugins. Tested with the framework’s own plugins and deliberately misbehaving test plugins, not yet with plugins from other vendors; no editors of hosted plugins. [Scanning](proof:scan) lists CLAP and VST 3 files out of process and LV2 bundles from their Turtle files, and has not met plugins from other vendors either.',
     },
     pt: {
       title: 'Hospedar um plugin: as regras de thread nos tipos, cada evento no seu frame',
@@ -417,7 +427,7 @@ export const claims = [
         'Doc-tests que precisam falhar na compilação, em `ClapPlugin` e `Vst3Plugin`, mostram que a metade da thread principal não pode ser enviada a outra thread. `the_hosted_plugin_sounds_exactly_as_the_plugin_does_alone`, para [CLAP](proof:hosting-clap) e para [VST 3](proof:hosting-vst3), carrega o instrumento de exemplo pelo seu ponto de entrada real e exige que a saída seja idêntica bit a bit à do mesmo plugin rodando dentro do processo pelo `Harness`, em quatro arranjos de blocos, com automação de cinco parâmetros, notas com ids, expressão e pitch bend; tirar qualquer um dos tipos de evento muda a saída, então a identidade não é a de dois caminhos surdos concordando. [automation_lands_on_its_frame_through_the_host](proof:hosting-automation) envia 59 pontos de VST 3 espaçados de 61 frames.',
       ],
       limit:
-        'Uma segunda metade de áudio, e desativar enquanto existe uma, são recusadas em tempo de execução, não na compilação. “Thread principal” quer dizer a thread que criou o plugin; os tipos não conferem se ela é a thread principal do programa. No máximo 4.096 eventos por chamada; o restante é contado. Nenhuma modulação é enviada a plugins VST 3. Testado com os plugins do próprio framework e com plugins de teste que se comportam mal de propósito, ainda não com plugins de outros fabricantes; sem os editores dos plugins hospedados; ainda sem varredura de plugins.',
+        'Uma segunda metade de áudio, e desativar enquanto existe uma, são recusadas em tempo de execução, não na compilação. “Thread principal” quer dizer a thread que criou o plugin; os tipos não conferem se ela é a thread principal do programa. No máximo 4.096 eventos por chamada; o restante é contado. Nenhuma modulação é enviada a plugins VST 3. Testado com os plugins do próprio framework e com plugins de teste que se comportam mal de propósito, ainda não com plugins de outros fabricantes; sem os editores dos plugins hospedados. A [varredura](proof:scan) lista os arquivos CLAP e VST 3 fora do processo e os pacotes LV2 pelos seus arquivos Turtle, e também ainda não encontrou plugins de outros fabricantes.',
     },
   },
 
@@ -606,25 +616,70 @@ export const claims = [
         'Esses números são medições, não opiniões: ninguém de fora do projeto avaliou ainda como os instrumentos soam. Só a caixa e o prato são calibrados com gravações, a partir de arquivos com perda. As notas graves do violoncelo e do contrabaixo de arco levam até meio segundo para se firmar, o tubo do saxofone é cilíndrico, o coro canta vogais da fala e nenhuma consoante, e os níveis dos instrumentos só são igualados no motor do navegador, não no próprio `manguebyte-dsp`; o [TECH_DEBT.md, itens 66 a 71](proof:instruments-debt), lista o resto.',
     },
   },
+
+  {
+    id: 'hotswap',
+    proofs: ['hotswap', 'hotswap-gap', 'hotswap-rate', 'hotswap-lost', 'hotswap-asio'],
+    en: {
+      title: 'Changing the audio device in the middle of a song',
+      row: 'Changing the audio device',
+      juceShort: 'The device stops, and the callback is prepared again for the next one',
+      mangueShort: 'Prepared once; the output changes under the engine with a crossfade or a short faded gap, the engine’s output the same bit for bit',
+      problem:
+        'Plugging in headphones, moving from the laptop’s speakers to an interface, or a driver that asks to be reset should not stop the music. In most applications it does: the audio stops, everything is prepared again for the new device, and some programs ask to be restarted.',
+      juce:
+        'An [AudioIODeviceCallback](https://docs.juce.com/master/classAudioIODeviceCallback.html) is told `audioDeviceStopped` when its device stops, and `audioDeviceAboutToStart`, with the new device, before it starts again, which its documentation says also happens when the device restarts for a new sample rate or block size. Changing the device through [AudioDeviceManager::setAudioDeviceSetup](https://docs.juce.com/master/classAudioDeviceManager.html) goes through that pair, and `audioDeviceAboutToStart` is where a callback that plays a processor, such as [AudioProcessorPlayer](https://docs.juce.com/master/classAudioProcessorPlayer.html), has to prepare it again for the new rate and block size. Nothing in the documented classes keeps one device playing while the next one starts, or runs the processing at a rate of its own while the device’s rate changes.',
+      mangue: [
+        '`DeviceManager::start_engine` fixes the engine’s rate, largest block and channels once, as an `EngineFormat`, and prepares the callback once. Only the edge between the engine and the device adapts: a device at the engine’s rate gets its output directly, with nothing copied or delayed; one at another rate gets it through a resampler whose output does not depend on the device’s blocks (0.7 ms more); other channel counts are repeated or folded.',
+        'When the backend can run two streams and the output device changes, the new device fades in while the old one fades out, the old device copying what the engine renders into a wait-free ring until it hands the engine itself over; no audio thread allocates, locks or waits. When it cannot (one ASIO driver per process, the same device opened again, a driver’s reset request), the old device fades out and closes, and the new one opens and fades in, the engine waiting so that no frame is lost. A lost device is replaced the same way, without the fade-out.',
+      ],
+      check: [
+        '[the_song_goes_on_while_the_device_changes_under_it](proof:hotswap) plays a song through the manager on four simulated sound cards, each called on its own clock in real time, and changes the output under it four times: to another device at the same rate with a smaller block, to one at 44.1 kHz, through that driver’s reset request, and to one with four channels and blocks of 64 frames. The callback is prepared once and never released; what it renders is the song rendered with no device, bit for bit; each device at the engine’s rate plays one unbroken stretch of the engine’s frames, exactly, scaled only inside its fades; a reference tone never breaks on any device, the level never dips while two devices play, and the reset leaves under 100 ms of silence (9 ms when it was measured); the devices’ thread never touches the heap.',
+        '[devices_that_cannot_overlap_hand_over_after_a_short_faded_gap](proof:hotswap-gap) shows the second device starting on the very frame after the last one the first played, [a_device_at_another_rate_plays_the_same_whatever_its_blocks](proof:hotswap-rate) the resampled edge’s independence from the device’s blocks, and [a_lost_device_is_replaced_without_preparing_again](proof:hotswap-lost) a device unplugged. On real drivers, [the_engine_runs_on_while_the_driver_changes](proof:hotswap-asio) in `manguebyte-pro-io` moves a running engine from FlexASIO to ASIO4ALL and back, playing silence; it runs only on a machine where both drivers are installed, so not in CI.',
+      ],
+      limit:
+        'Two devices crossfade only when the backend can run both and they are different devices; otherwise the gap is as long as the backend takes to close one stream and open the next: 90 ms for the WASAPI device of the machine it was tried on, and 0.37 to 2.6 s between two ASIO drivers, which load slowly. During a gap the engine waits, so the song resumes late by it. The crossfade has been run on the headless backend only, the machine having one output, and its level can rise by up to 3 dB while the fades are a block apart. [TECH_DEBT item 85](proof:hotswap-debt) lists the rest.',
+    },
+    pt: {
+      title: 'Trocar o dispositivo de áudio no meio da música',
+      row: 'Troca do dispositivo de áudio',
+      juceShort: 'O dispositivo para, e o callback é preparado de novo para o seguinte',
+      mangueShort: 'Preparado uma vez só; a saída troca por baixo do motor com um crossfade ou uma pausa curta com fade, e a saída do motor fica idêntica bit a bit',
+      problem:
+        'Plugar um fone, passar dos alto-falantes do notebook para uma interface, ou um driver que pede para ser reiniciado não deveria parar a música. Na maioria dos aplicativos para: o áudio cai, tudo é preparado de novo para o dispositivo novo, e alguns programas pedem para ser reiniciados.',
+      juce:
+        'Um [AudioIODeviceCallback](https://docs.juce.com/master/classAudioIODeviceCallback.html) recebe `audioDeviceStopped` quando o seu dispositivo para, e `audioDeviceAboutToStart`, com o dispositivo novo, antes de ele voltar a tocar, o que, segundo a documentação, também acontece quando o dispositivo reinicia por causa de uma nova taxa de amostragem ou de um novo tamanho de bloco. Trocar o dispositivo por [AudioDeviceManager::setAudioDeviceSetup](https://docs.juce.com/master/classAudioDeviceManager.html) passa por esse par, e é em `audioDeviceAboutToStart` que um callback que toca um processador, como o [AudioProcessorPlayer](https://docs.juce.com/master/classAudioProcessorPlayer.html), tem de prepará-lo de novo para a nova taxa e o novo tamanho de bloco. Nada nas classes documentadas mantém um dispositivo tocando enquanto o seguinte começa, nem roda o processamento numa taxa própria enquanto a do dispositivo muda.',
+      mangue: [
+        '`DeviceManager::start_engine` fixa uma vez só a taxa, o maior bloco e os canais do motor, num `EngineFormat`, e prepara o callback uma vez só. Só a borda entre o motor e o dispositivo se adapta: um dispositivo na taxa do motor recebe a saída dele diretamente, sem nada copiado nem atrasado; um em outra taxa a recebe por um reamostrador cuja saída não depende dos blocos do dispositivo (0,7 ms a mais); outras quantidades de canais são repetidas ou somadas.',
+        'Quando o backend consegue rodar dois streams e o dispositivo de saída muda, o novo entra em fade-in enquanto o antigo sai em fade-out, e o antigo vai copiando o que o motor renderiza num anel wait-free até lhe passar o próprio motor; nenhuma thread de áudio aloca, trava ou espera. Quando não consegue (um driver ASIO por processo, o mesmo dispositivo aberto de novo, um pedido de reinício do driver), o antigo sai em fade-out e fecha, e o novo abre e entra em fade-in, com o motor esperando para que nenhum frame se perca. Um dispositivo perdido é substituído do mesmo jeito, sem o fade-out.',
+      ],
+      check: [
+        '[the_song_goes_on_while_the_device_changes_under_it](proof:hotswap) toca uma música pelo gerenciador em quatro placas de som simuladas, cada uma chamada no seu próprio relógio em tempo real, e troca a saída por baixo dela quatro vezes: para outro dispositivo na mesma taxa com um bloco menor, para um a 44,1 kHz, pelo pedido de reinício desse driver e para um com quatro canais e blocos de 64 frames. O callback é preparado uma vez e nunca liberado; o que ele renderiza é a música renderizada sem dispositivo, bit a bit; cada dispositivo na taxa do motor toca um trecho contínuo dos frames do motor, exatamente, alterado só dentro dos seus fades; um tom de referência nunca se interrompe em nenhum dispositivo, o nível nunca cai enquanto dois dispositivos tocam, e o reinício deixa menos de 100 ms de silêncio (9 ms na medição); a thread dos dispositivos nunca toca no heap.',
+        '[devices_that_cannot_overlap_hand_over_after_a_short_faded_gap](proof:hotswap-gap) mostra o segundo dispositivo começando exatamente no frame seguinte ao último que o primeiro tocou, [a_device_at_another_rate_plays_the_same_whatever_its_blocks](proof:hotswap-rate) mostra que a borda reamostrada não depende dos blocos do dispositivo, e [a_lost_device_is_replaced_without_preparing_again](proof:hotswap-lost) trata de um dispositivo desplugado. Com drivers de verdade, [the_engine_runs_on_while_the_driver_changes](proof:hotswap-asio), no `manguebyte-pro-io`, passa um motor em execução do FlexASIO para o ASIO4ALL e de volta, tocando silêncio; ele só roda numa máquina com os dois drivers instalados, e portanto não no CI.',
+      ],
+      limit:
+        'Dois dispositivos só fazem crossfade quando o backend consegue rodar os dois e eles são dispositivos diferentes; nos outros casos a pausa dura o que o backend leva para fechar um stream e abrir o seguinte: 90 ms no dispositivo WASAPI da máquina em que foi testado, e de 0,37 a 2,6 s entre dois drivers ASIO, que carregam devagar. Durante a pausa o motor espera, então a música volta atrasada por esse tempo. O crossfade só rodou no backend sem hardware, porque a máquina tem uma saída só, e o nível dele pode subir até 3 dB enquanto os fades estão a um bloco de distância. O [TECH_DEBT, item 85](proof:hotswap-debt), lista o resto.',
+    },
+  },
 ];
 
 // What JUCE has today and Manguebyte does not: the last section of
 // BEYOND_JUCE.md.
 export const juceAhead = {
   en: [
-    'a complete GUI toolkit, with plugin editor windows on macOS and Linux as well as Windows (Manguebyte’s editors open on Windows only so far, and none has been tried by hand in a DAW yet);',
-    'the Audio Unit and AAX plugin formats;',
-    'hosting of AU and LV2 plugins, plugin scanning, and the editors of hosted plugins (Manguebyte hosts CLAP and VST 3 plugins, without their editors);',
-    'SIMD wrappers and lookup tables among its DSP utilities, and more audio formats (Opus, encoders for compressed formats, metadata);',
-    'iOS and Android;',
+    'a complete GUI toolkit, with plugin editor windows on macOS and Linux as well as Windows (Manguebyte’s editors open on Windows only so far, and only one has been opened by hand in a DAW);',
+    'the AUv3 and AAX plugin formats, and Audio Units checked in real hosts (Manguebyte’s AUv2 wrapper has only its own tests and `auval` in CI);',
+    'hosting of AU plugins and the editors of hosted plugins (Manguebyte hosts CLAP, VST 3 and LV2 plugins, without their editors, and scans for them);',
+    'SIMD wrappers and lookup tables among its DSP utilities;',
+    'iOS and Android (Manguebyte’s audio and device crates are built for both in CI, but not run on a device);',
     'documentation, tutorials and a large community.',
   ],
   pt: [
-    'um toolkit de interface gráfica completo, com janelas de editor de plugin no macOS e no Linux além do Windows (os editores do Manguebyte só abrem no Windows por enquanto, e nenhum foi experimentado à mão numa DAW ainda);',
-    'os formatos de plugin Audio Unit e AAX;',
-    'hospedagem de plugins AU e LV2, varredura de plugins e os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP e VST 3, sem os editores);',
-    'wrappers de SIMD e tabelas de consulta entre os utilitários de DSP, e mais formatos de áudio (Opus, codificadores de formatos comprimidos, metadados);',
-    'iOS e Android;',
+    'um toolkit de interface gráfica completo, com janelas de editor de plugin no macOS e no Linux além do Windows (os editores do Manguebyte só abrem no Windows por enquanto, e só um foi aberto à mão numa DAW);',
+    'os formatos de plugin AUv3 e AAX, e Audio Units conferidos em hosts de verdade (o wrapper AUv2 do Manguebyte só tem os próprios testes e o `auval` no CI);',
+    'hospedagem de plugins AU e os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP, VST 3 e LV2, sem os editores, e faz a varredura deles);',
+    'wrappers de SIMD e tabelas de consulta entre os utilitários de DSP;',
+    'iOS e Android (os crates de áudio e de dispositivos do Manguebyte são compilados para os dois no CI, mas não rodaram num aparelho);',
     'documentação, tutoriais e uma comunidade grande.',
   ],
 };

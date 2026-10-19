@@ -1,5 +1,5 @@
 {
-  "commit": "d656ef6decede7772145dcdf89d9960936a5edab",
+  "commit": "9daba9d020872d0fd98f291ddb225f2b505cb6ed",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -7,14 +7,14 @@
     "automation-harness": {
       "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 412,
+      "line": 495,
       "name": "automation_lands_on_its_exact_frame_and_updates_the_parameter",
       "test": true
     },
     "automation-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 863,
+      "line": 865,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
@@ -42,21 +42,21 @@
     "block-size-pluck": {
       "repo": null,
       "file": "plugins/pluck/src/lib.rs",
-      "line": 772,
+      "line": 774,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
     "block-size-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 532,
+      "line": 535,
       "name": "sounds_the_same_whatever_the_block_size",
       "test": true
     },
     "outside-changes": {
       "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 456,
+      "line": 539,
       "name": "changes_made_outside_the_host_reach_the_plugin_as_events",
       "test": true
     },
@@ -84,70 +84,70 @@
     "no-heap-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 870,
+      "line": 872,
       "name": "heap_calls == 0 through the CLAP interface",
       "test": false
     },
     "ci-miri": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 66,
+      "line": 94,
       "name": "CI job: Miri",
       "test": false
     },
     "per-note": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 916,
+      "line": 959,
       "name": "expression_and_modulation_reach_one_note_and_parameters_reach_all",
       "test": true
     },
     "per-note-overlap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 867,
+      "line": 910,
       "name": "notes_with_identifiers_overlap_on_one_key_and_end_separately",
       "test": true
     },
     "per-note-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 1091,
+      "line": 1180,
       "name": "an_instrument_takes_notes_expression_modulation_and_a_sidechain",
       "test": true
     },
     "ci-clap": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 135,
+      "line": 163,
       "name": "CI job: CLAP validation",
       "test": false
     },
     "ci-vst3": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 169,
+      "line": 197,
       "name": "CI job: VST 3 validation",
       "test": false
     },
     "export-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 409,
+      "line": 411,
       "name": "plugins/duck/src/lib.rs",
       "test": false
     },
     "harness-pitch": {
       "repo": null,
       "file": "plugins/pluck/src/lib.rs",
-      "line": 751,
+      "line": 753,
       "name": "plays_the_pitch_it_is_asked_for",
       "test": true
     },
     "harness-duck": {
       "repo": null,
       "file": "plugins/duck/src/lib.rs",
-      "line": 484,
+      "line": 487,
       "name": "automation_lands_on_its_frame_with_audio_running_through",
       "test": true
     },
@@ -168,7 +168,7 @@
     "subnormal-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 990,
+      "line": 992,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
@@ -231,7 +231,7 @@
     "ci-miri-host": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 117,
+      "line": 145,
       "name": "CI job: Miri (plugin host)",
       "test": false
     },
@@ -336,14 +336,14 @@
     "instruments-snare": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/instruments/kit.rs",
-      "line": 1627,
+      "line": 1926,
       "name": "the_snare_measures_as_the_one_recorded",
       "test": true
     },
     "instruments-crash": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/instruments/kit.rs",
-      "line": 1703,
+      "line": 2002,
       "name": "the_crash_measures_as_the_one_recorded",
       "test": true
     },
@@ -357,14 +357,14 @@
     "instruments-bowed": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/instruments/bowed.rs",
-      "line": 1559,
+      "line": 1958,
       "name": "every_bowed_note_is_in_tune_across_its_range",
       "test": true
     },
     "instruments-wind": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/instruments/wind.rs",
-      "line": 1318,
+      "line": 1872,
       "name": "every_note_is_in_tune_across_its_range",
       "test": true
     },
@@ -378,7 +378,7 @@
     "instruments-choir": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/instruments/choir.rs",
-      "line": 1030,
+      "line": 1031,
       "name": "the_formants_peak_at_the_vowels_targets",
       "test": true
     },
@@ -406,7 +406,7 @@
     "instruments-poly-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 1199,
+      "line": 1217,
       "name": "the_poly_synth_does_not_use_the_heap",
       "test": true
     },
@@ -420,28 +420,28 @@
     "instruments-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 77,
+      "line": 74,
       "name": "TECH_DEBT items 66 to 71",
       "test": false
     },
     "ci-cli": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 232,
+      "line": 260,
       "name": "CI job: command-line tool end to end",
       "test": false
     },
     "reaper-render": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 90,
+      "line": 104,
       "name": "TECH_DEBT: the REAPER renders, paid back",
       "test": false
     },
     "reaper-owed": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 68,
+      "line": 65,
       "name": "TECH_DEBT item 56",
       "test": false
     },
@@ -455,8 +455,253 @@
     "host-tests": {
       "repo": null,
       "file": "docs/HOST_TESTS.md",
-      "line": 8,
+      "line": 10,
       "name": "HOST_TESTS.md: REAPER 7.82",
+      "test": false
+    },
+    "per-note-mpe": {
+      "repo": null,
+      "file": "crates/manguebyte-dsp/tests/note_input.rs",
+      "line": 226,
+      "name": "an_mpe_stream_and_the_same_midi_2_stream_give_identical_events",
+      "test": true
+    },
+    "per-note-clap-mpe": {
+      "repo": null,
+      "file": "crates/manguebyte-clap/tests/abi.rs",
+      "line": 1103,
+      "name": "clap_notes_mpe_and_midi_2_end_in_the_same_events",
+      "test": true
+    },
+    "per-note-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 84,
+      "name": "TECH_DEBT item 76",
+      "test": false
+    },
+    "midi-out-clap": {
+      "repo": null,
+      "file": "crates/manguebyte-clap/tests/note_output.rs",
+      "line": 559,
+      "name": "a_host_of_midi_2_gets_the_packets_as_they_are",
+      "test": true
+    },
+    "midi-out-vst3": {
+      "repo": null,
+      "file": "crates/manguebyte-vst3/tests/note_output.rs",
+      "line": 391,
+      "name": "notes_expressions_and_midi_reach_the_output_event_bus",
+      "test": true
+    },
+    "midi-out-standalone": {
+      "repo": null,
+      "file": "crates/manguebyte-standalone/src/engine.rs",
+      "line": 427,
+      "name": "notes_the_plugin_sends_reach_the_midi_output",
+      "test": true
+    },
+    "midi-out-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 90,
+      "name": "TECH_DEBT item 82",
+      "test": false
+    },
+    "ci-au": {
+      "repo": null,
+      "file": ".github/workflows/ci.yml",
+      "line": 374,
+      "name": "CI job: Audio Unit validation (auval)",
+      "test": false
+    },
+    "au-effect": {
+      "repo": null,
+      "file": "crates/manguebyte-au/tests/abi.rs",
+      "line": 995,
+      "name": "the_effect_sounds_as_it_does_with_no_host",
+      "test": true
+    },
+    "au-instrument": {
+      "repo": null,
+      "file": "crates/manguebyte-au/tests/abi.rs",
+      "line": 1276,
+      "name": "the_instrument_plays_midi_on_its_frames_and_reads_the_transport",
+      "test": true
+    },
+    "hosting-lv2": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/lv2_pluck.rs",
+      "line": 96,
+      "name": "the_instrument_plays_as_it_does_with_no_host",
+      "test": true
+    },
+    "scan": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/scan.rs",
+      "line": 255,
+      "name": "a_scan_lists_what_works_and_survives_what_does_not",
+      "test": true
+    },
+    "hotswap": {
+      "repo": null,
+      "file": "crates/manguebyte-devices/tests/hotswap.rs",
+      "line": 577,
+      "name": "the_song_goes_on_while_the_device_changes_under_it",
+      "test": true
+    },
+    "hotswap-gap": {
+      "repo": null,
+      "file": "crates/manguebyte-devices/tests/hotswap.rs",
+      "line": 729,
+      "name": "devices_that_cannot_overlap_hand_over_after_a_short_faded_gap",
+      "test": true
+    },
+    "hotswap-rate": {
+      "repo": null,
+      "file": "crates/manguebyte-devices/tests/hotswap.rs",
+      "line": 817,
+      "name": "a_device_at_another_rate_plays_the_same_whatever_its_blocks",
+      "test": true
+    },
+    "hotswap-lost": {
+      "repo": null,
+      "file": "crates/manguebyte-devices/tests/hotswap.rs",
+      "line": 922,
+      "name": "a_lost_device_is_replaced_without_preparing_again",
+      "test": true
+    },
+    "hotswap-asio": {
+      "repo": null,
+      "file": "crates/manguebyte-pro-io/tests/hardware.rs",
+      "line": 135,
+      "name": "the_engine_runs_on_while_the_driver_changes",
+      "test": true
+    },
+    "hotswap-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 93,
+      "name": "TECH_DEBT item 85",
+      "test": false
+    },
+    "pro-io-readme": {
+      "repo": null,
+      "file": "crates/manguebyte-pro-io/README.md",
+      "line": null,
+      "name": "crates/manguebyte-pro-io/README.md",
+      "test": false
+    },
+    "pro-io-licence": {
+      "repo": null,
+      "file": "crates/manguebyte-pro-io/LICENSE",
+      "line": null,
+      "name": "crates/manguebyte-pro-io/LICENSE",
+      "test": false
+    },
+    "web-loudness": {
+      "repo": null,
+      "file": "crates/manguebyte-web/tests/loudness.rs",
+      "line": 305,
+      "name": "every_kind_and_preset_plays_its_phrase_at_the_target",
+      "test": true
+    },
+    "web-percussion": {
+      "repo": null,
+      "file": "crates/manguebyte-web/tests/percussion.rs",
+      "line": 97,
+      "name": "every_percussion_key_plays_on_every_kit_at_its_level",
+      "test": true
+    },
+    "web-scope": {
+      "repo": null,
+      "file": "crates/manguebyte-web/tests/scope.rs",
+      "line": 27,
+      "name": "the_scope_is_what_the_part_puts_into_the_master_bus",
+      "test": true
+    },
+    "web-tube": {
+      "repo": null,
+      "file": "crates/manguebyte-web/tests/effects.rs",
+      "line": 478,
+      "name": "the_tube_gives_even_harmonics_and_no_offset",
+      "test": true
+    },
+    "bridge-same-bits": {
+      "repo": null,
+      "file": "plugins/aratu-bridge/tests/same_bits.rs",
+      "line": 245,
+      "name": "a_session_sent_over_the_bridge_sounds_as_the_engine_renders_it",
+      "test": true
+    },
+    "bridge-hosted": {
+      "repo": null,
+      "file": "crates/manguebyte-host/tests/clap_aratu_bridge.rs",
+      "line": 92,
+      "name": "the_hosted_bridge_plays_a_session_as_the_plugin_does_alone",
+      "test": true
+    },
+    "bridge-heap": {
+      "repo": null,
+      "file": "plugins/aratu-bridge/tests/realtime.rs",
+      "line": 153,
+      "name": "processing_never_touches_the_heap_while_a_page_plays",
+      "test": true
+    },
+    "bridge-doc": {
+      "repo": null,
+      "file": "docs/ARATU_BRIDGE.md",
+      "line": null,
+      "name": "docs/ARATU_BRIDGE.md",
+      "test": false
+    },
+    "bridge-js": {
+      "repo": null,
+      "file": "crates/manguebyte-web/js/bridge.js",
+      "line": null,
+      "name": "crates/manguebyte-web/js/bridge.js",
+      "test": false
+    },
+    "bridge-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 92,
+      "name": "TECH_DEBT item 84",
+      "test": false
+    },
+    "host-tests-19": {
+      "repo": null,
+      "file": "docs/HOST_TESTS.md",
+      "line": 51,
+      "name": "HOST_TESTS.md: REAPER 7.82, 19 October 2026",
+      "test": false
+    },
+    "conduct": {
+      "repo": null,
+      "file": "CODE_OF_CONDUCT.md",
+      "line": null,
+      "name": "CODE_OF_CONDUCT.md",
+      "test": false
+    },
+    "security": {
+      "repo": null,
+      "file": "SECURITY.md",
+      "line": null,
+      "name": "SECURITY.md",
+      "test": false
+    },
+    "issue-bug": {
+      "repo": null,
+      "file": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "line": null,
+      "name": "the bug report form",
+      "test": false
+    },
+    "issue-feature": {
+      "repo": null,
+      "file": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "line": null,
+      "name": "the feature request form",
       "test": false
     },
     "aratu-readme": {
@@ -544,20 +789,20 @@
       "lang": "rust",
       "ranges": [
         [
-          336,
-          350
+          338,
+          352
         ],
         [
-          387,
-          394
+          389,
+          396
         ],
         [
-          404,
-          406
+          406,
+          408
         ],
         [
-          407,
-          411
+          409,
+          414
         ]
       ],
       "lines": [
@@ -659,6 +904,9 @@
         },
         {
           "text": "manguebyte::lv2::export_lv2!(Duck);"
+        },
+        {
+          "text": "manguebyte_au::export_au!(Duck);"
         }
       ]
     },
@@ -668,8 +916,8 @@
       "lang": "rust",
       "ranges": [
         [
-          483,
-          498
+          486,
+          501
         ]
       ],
       "lines": [
@@ -729,8 +977,8 @@
       "lang": "rust",
       "ranges": [
         [
-          411,
-          429
+          494,
+          512
         ]
       ],
       "lines": [
@@ -988,8 +1236,8 @@
       "lang": "rust",
       "ranges": [
         [
-          750,
-          769
+          752,
+          771
         ]
       ],
       "lines": [
@@ -1061,8 +1309,8 @@
       "lang": "toml",
       "ranges": [
         [
-          141,
-          142
+          161,
+          162
         ]
       ],
       "lines": [
@@ -1070,7 +1318,26 @@
           "text": "[dependencies]"
         },
         {
-          "text": "manguebyte = { git = \"https://github.com/alessonqueirozdev-hub/manguebyte\" }"
+          "text": "manguebyte = \"0.1\""
+        }
+      ]
+    },
+    "readme-new-plugin": {
+      "repo": null,
+      "file": "README.md",
+      "lang": "bash",
+      "ranges": [
+        [
+          173,
+          174
+        ]
+      ],
+      "lines": [
+        {
+          "text": "cargo install cargo-mangue"
+        },
+        {
+          "text": "cargo mangue new my-gain"
         }
       ]
     },
@@ -1080,8 +1347,8 @@
       "lang": "rust",
       "ranges": [
         [
-          149,
-          166
+          181,
+          198
         ]
       ],
       "lines": [
@@ -1147,8 +1414,8 @@
       "lang": "rust",
       "ranges": [
         [
-          172,
-          189
+          204,
+          221
         ]
       ],
       "lines": [
@@ -1275,8 +1542,8 @@
       "lang": "rust",
       "ranges": [
         [
-          34,
-          53
+          36,
+          55
         ]
       ],
       "lines": [

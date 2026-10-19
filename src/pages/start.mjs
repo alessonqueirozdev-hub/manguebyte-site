@@ -39,7 +39,8 @@ export function render(ctx) {
     <div class="wrap">
       <ol class="steps">
         ${step('before', steps.before, paragraphs(steps.before), codeBlock(COMMANDS.alsa, 'bash'))}
-        ${step('dependency', steps.dependency, paragraphs(steps.dependency), sample('readme-dependency'))}
+        ${step('dependency', steps.dependency, paragraphs(steps.dependency), sample('readme-dependency'), `<p>${text(steps.dependency.after)}</p>`)}
+        ${step('new-plugin', steps.newPlugin, paragraphs(steps.newPlugin), sample('readme-new-plugin'))}
         ${step('render', steps.render, paragraphs(steps.render), sample('readme-render'))}
         ${step('play', steps.play, paragraphs(steps.play), sample('readme-play'))}
         ${step('examples', steps.examples, paragraphs(steps.examples), codeBlock(COMMANDS.examples, 'bash'))}

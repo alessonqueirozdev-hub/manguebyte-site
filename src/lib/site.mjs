@@ -59,6 +59,12 @@ export function makeContext({ language, strings, page, pages, generated, assetUr
     aratuCommit: config.related.aratu.commit.slice(0, 7),
     aratuEditor: config.related.aratu.editor,
     issuesUrl: `${repoUrl}/issues`,
+    goodFirstUrl: `${repoUrl}/labels/good%20first%20issue`,
+    discussionsUrl: `${repoUrl}/discussions`,
+    version: config.source.release.version,
+    releaseUrl: `${repoUrl}/releases/tag/${config.source.release.tag}`,
+    crateUrl: config.source.release.crate,
+    docsUrl: config.source.release.docs,
     email: config.contact,
     date: DATES[language.code](config.source.date),
   };

@@ -16,6 +16,7 @@ const HERO_PROOFS = [
   'subnormal-clap',
   'hosting-clap',
   'ebu-3341',
+  'hotswap',
 ];
 
 export function render(ctx) {
@@ -170,6 +171,8 @@ export function render(ctx) {
         <h2>${escape(home.start.heading)}</h2>
         <p>${text(home.start.intro)}</p>
         ${sample('readme-dependency')}
+        <p>${text(home.start.tool)}</p>
+        ${sample('readme-new-plugin')}
         <p class="actions">
           <a class="button button-primary" href="${url('/start/')}">${escape(home.start.guide)}${icon('arrow')}</a>
           <a class="button" href="${repoUrl}">${escape(home.start.repo)}${icon('out')}</a>

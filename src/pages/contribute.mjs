@@ -40,6 +40,9 @@ export function render(ctx) {
         <h2 id="licence">${escape(page.licenceHeading)}</h2>
         ${page.licence.map((paragraph) => `<p>${text(paragraph)}</p>`)}
 
+        <h2 id="security">${escape(page.securityHeading)}</h2>
+        <p>${text(page.security)}</p>
+
         <h2 id="conduct">${escape(page.conductHeading)}</h2>
         <p>${inline(page.conduct)}</p>
 
@@ -47,6 +50,8 @@ export function render(ctx) {
         <p class="link-row">
           <a class="button button-primary" href="${repoFile('CONTRIBUTING.md')}">${escape(page.links.guide)}${icon('out')}</a>
           <a class="button" href="${repoUrl}/issues">${escape(page.links.issues)}${icon('out')}</a>
+          <a class="button" href="${repoUrl}/labels/good%20first%20issue">${escape(page.links.goodFirst)}${icon('out')}</a>
+          <a class="button" href="${repoUrl}/discussions">${escape(page.links.discussions)}${icon('out')}</a>
           <a class="button" href="${url('/roadmap/')}">${escape(page.links.roadmap)}${icon('arrow')}</a>
           <a class="button" href="mailto:${config.contact}">${escape(page.links.email)}</a>
         </p>

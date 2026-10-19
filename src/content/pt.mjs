@@ -11,7 +11,7 @@ export default {
     fullName: 'Manguebyte Audio Framework',
     tagline: 'Um framework de áudio para Rust',
     description:
-      'O Manguebyte Audio Framework é áudio de código aberto para Rust: DSP e instrumentos, medição, MIDI, arquivos, dispositivos, editores de plugin, plugins CLAP, VST 3 e LV2, e hospedagem. Automação com precisão de amostra, saída independente do tamanho do bloco e processamento sem alocação, cada um garantido por um teste.',
+      'O Manguebyte Audio Framework é áudio de código aberto para Rust, publicado no crates.io: DSP e instrumentos, medição, MIDI, arquivos, dispositivos, editores de plugin, plugins CLAP, VST 3, LV2 e Audio Unit, e hospedagem. Automação com precisão de amostra, saída independente do tamanho do bloco e processamento sem alocação, cada um garantido por um teste.',
   },
 
   nav: {
@@ -51,16 +51,16 @@ export default {
   footer: {
     statusTitle: 'Em que pé está o projeto',
     status:
-      'O Manguebyte é jovem. O que existe está testado e dá para usar, mas cobre uma parte pequena do caminho, a API vai mudar antes da versão 1.0, e os editores de plugin foram abertos no CI, ainda não num host à mão.',
+      'O Manguebyte é jovem. A versão {version} é a primeira publicada no crates.io. O que existe está testado e dá para usar, mas cobre uma parte pequena do caminho, a API vai mudar antes da versão 1.0, e dos editores de plugin só um foi aberto num host à mão.',
     sourceTitle: 'De onde este site tira os fatos',
     source:
       'Cada afirmação, cada link de prova e cada trecho de código daqui foi lido do repositório do framework no commit [{commit}]({commitUrl}) ({date}), em que [os {ciJobs} jobs de CI passaram]({ciUrl}). O repositório é a autoridade; se os dois divergirem, é o site que está desatualizado.',
     legalTitle: 'Nomes e marcas',
     legal:
-      'O Manguebyte é um projeto independente. Não é afiliado, patrocinado nem endossado pelos criadores do JUCE, pela Steinberg ou pelo projeto CLAP. JUCE é marca do seu respectivo dono e CLAP é o nome do seu próprio projeto; os dois são citados apenas para descrever o que este framework pretende ser e com o que ele trabalha. VST é marca registrada da Steinberg Media Technologies GmbH.',
+      'O Manguebyte é um projeto independente. Não é afiliado, patrocinado nem endossado pelos criadores do JUCE, pela Steinberg ou pelo projeto CLAP. JUCE é marca do seu respectivo dono e CLAP é o nome do seu próprio projeto; os dois são citados apenas para descrever o que este framework pretende ser e com o que ele trabalha. VST é marca registrada da Steinberg Media Technologies GmbH. ASIO é marca da Steinberg Media Technologies GmbH, registrada na Europa e em outros países.',
     unrelated: 'Este projeto também não tem relação com a empresa de nome parecido que opera o manguebyte.com.',
     licenceTitle: 'Licença',
-    licence: 'O framework é licenciado sob [MIT](proof:licence-mit) ou [Apache-2.0](proof:licence-apache), à sua escolha.',
+    licence: 'O framework é licenciado sob [MIT](proof:licence-mit) ou [Apache-2.0](proof:licence-apache), à sua escolha. A única exceção é o crate opcional de ASIO, o `manguebyte-pro-io`, que está sob a [GPLv3](proof:pro-io-licence).',
     contactTitle: 'Contato',
     contact: 'Dúvidas e bugs vão para as [issues]({issuesUrl}). Para falar direto com o autor, escreva para [{email}](mailto:{email}).',
     privacy: 'Sem cookies, sem rastreadores, sem requisições a servidores de terceiros.',
@@ -81,11 +81,11 @@ export default {
     kicker: 'Framework de áudio de código aberto para Rust',
     heading: ['Testado,', 'não prometido.'],
     lede:
-      'O Manguebyte serve para construir plugins e aplicativos de áudio em Rust: DSP e instrumentos, medição, MIDI, arquivos, dispositivos, editores e hospedagem de plugins, e exportação nativa para CLAP, VST 3 e LV2 com uma linha cada. A meta é ser para o Rust o que o JUCE é para o C++, e depois ir além. Cada afirmação deste site leva ao teste que a prova.',
+      'O Manguebyte serve para construir plugins e aplicativos de áudio em Rust: DSP e instrumentos, medição, MIDI, arquivos, dispositivos, editores e hospedagem de plugins, e exportação nativa para CLAP, VST 3, LV2 e Audio Unit com uma linha cada. A meta é ser para o Rust o que o JUCE é para o C++, e depois ir além. Cada afirmação deste site leva ao teste que a prova.',
     ctaStart: 'Como começar',
     ctaSource: 'Ler o código',
     young:
-      '**Projeto jovem.** A API vai mudar antes da versão 1.0. Os editores de plugin abrem em janelas Win32 e são testados no CI, mas ninguém abriu um num host à mão ainda. [Veja o que falta](/features/#missing).',
+      '**Versão {version}, a primeira no [crates.io]({crateUrl}).** O projeto é jovem e a API vai mudar antes da versão 1.0. Os editores de plugin abrem em janelas Win32 e são testados no CI; à mão, até agora só um foi aberto num host: o do Mangue Pluck, no REAPER. [Veja o que falta](/features/#missing).',
     ring: 'Caranguejos com cérebro · Crabs with brains · ',
 
     proof: {
@@ -98,17 +98,18 @@ export default {
         { name: 'clap-validator · Mangue Pluck.clap', result: '35 passed, 0 failed, 9 skipped', proof: 'ci-clap' },
         { name: 'clap-validator · Mangue Duck.clap', result: '33 passed, 0 failed, 11 skipped', proof: 'ci-clap' },
         { name: 'VST 3 validator · Windows, Linux, macOS', result: '537 passed, 0 failed', proof: 'ci-vst3' },
+        { name: 'auval · Mangue Pluck e Mangue Duck, macOS', result: 'AU VALIDATION SUCCEEDED', proof: 'ci-au' },
       ],
     },
 
     proven: {
       heading: 'Quatro coisas que ele prova a cada commit',
       intro:
-        'Igualar o JUCE é a linha de base. Estes são pontos em que o Manguebyte já faz algo que o JUCE {juce} não faz, cada um sustentado por um teste que roda no CI. [A lista completa tem dezesseis](/beyond-juce/), com a fonte de tudo o que se diz sobre o JUCE e o limite de cada afirmação.',
+        'Igualar o JUCE é a linha de base. Estes são pontos em que o Manguebyte já faz algo que o JUCE {juce} não faz, cada um sustentado por um teste que roda no CI. [A lista completa tem dezessete](/beyond-juce/), com a fonte de tudo o que se diz sobre o JUCE e o limite de cada afirmação.',
       juceLabel: 'No JUCE {juce}',
       proofLabel: 'Prova',
       limitLabel: 'Limite',
-      more: 'As dezesseis afirmações, com provas e limites',
+      more: 'As dezessete afirmações, com provas e limites',
       cards: [
         {
           claim: 'automation',
@@ -141,10 +142,10 @@ export default {
           claim: 'clap',
           title: 'CLAP e VST 3 com uma linha cada, conferidos pelos próprios validadores',
           body:
-            '`export_clap!` e `export_vst3!` transformam o mesmo plugin nos dois formatos. O CI roda o validador do projeto CLAP e o da Steinberg num instrumento e num efeito; os 537 testes de VST 3 passam em Windows, Linux e macOS. Os dois também foram [testados à mão no REAPER](proof:host-tests), e `export_lv2!` acrescenta um terceiro formato.',
+            '`export_clap!` e `export_vst3!` transformam o mesmo plugin nos dois formatos. O CI roda o validador do projeto CLAP e o da Steinberg num instrumento e num efeito; os 537 testes de VST 3 passam em Windows, Linux e macOS. Os dois também foram [testados à mão no REAPER](proof:host-tests), e `export_lv2!` e `export_au!` acrescentam o LV2 e o Audio Unit, que passa no `auval` da Apple no CI.',
           juce: 'A exportação para CLAP não existe de forma nativa.',
-          limit: 'Os editores são testados no CI, ainda não foram abertos num host à mão. O LV2 é novo: o lilv o carrega no CI, nenhum host o rodou ainda. Sem AU nem AAX.',
-          proofs: ['ci-clap', 'ci-vst3'],
+          limit: 'Os editores são testados no CI; à mão, só o editor CLAP do Mangue Pluck foi aberto num host. O LV2 só rodou no host do próprio framework, e nenhuma DAW carregou os Audio Units ainda. Sem AUv3 nem AAX.',
+          proofs: ['ci-clap', 'ci-vst3', 'ci-au'],
         },
       ],
     },
@@ -152,19 +153,19 @@ export default {
     code: {
       heading: 'Um plugin inteiro, e depois uma linha por formato',
       intro:
-        'Este é o efeito de exemplo do repositório: um ducker com sidechain. Ele se descreve, divide cada bloco nos seus eventos e é exportado duas vezes. Nada do código abaixo foi escrito para esta página.',
+        'Este é o efeito de exemplo do repositório: um ducker com sidechain. Ele se descreve, divide cada bloco nos seus eventos e é exportado em quatro formatos. Nada do código abaixo foi escrito para esta página.',
       notes: [
         {
           title: 'Uma descrição só',
-          body: '`INFO` e `LAYOUT` são constantes. A mesma descrição vira o descritor CLAP, a classe VST 3, cujo id é igual em todas as plataformas, e os arquivos Turtle do plugin LV2.',
+          body: '`INFO` e `LAYOUT` são constantes. A mesma descrição vira o descritor CLAP, a classe VST 3, cujo id é igual em todas as plataformas, os arquivos Turtle do plugin LV2 e os códigos do Audio Unit, calculados por hash a partir do id do plugin.',
         },
         {
           title: 'Eventos no seu frame',
           body: '`split_at_events` renderiza até cada evento, aplica-o e segue em frente, sem copiar nem alocar. Essa chamada é tudo o que o plugin faz para ter automação com precisão de amostra.',
         },
         {
-          title: 'Três formatos, três linhas',
-          body: 'As macros são a integração inteira, e `editor` entrega aos wrappers o editor do plugin. O `cargo mangue` gera depois um pacote `.clap`, um `.vst3` e um `.lv2` no layout de cada sistema.',
+          title: 'Quatro formatos, quatro linhas',
+          body: 'As macros são a integração inteira, e `editor` entrega aos wrappers o editor do plugin. O `cargo mangue` gera depois um pacote `.clap`, um `.vst3` e um `.lv2` no layout de cada sistema, e, num Mac, um `.component`.',
         },
       ],
       testHeading: 'E um teste dele, sem host',
@@ -174,7 +175,7 @@ export default {
 
     today: {
       heading: 'O que já existe',
-      intro: 'Vinte e três crates que funcionam juntos, cada um utilizável sozinho, um deles uma ferramenta de linha de comando. O `manguebyte-core` não tem nenhuma dependência.',
+      intro: 'Vinte e cinco crates que funcionam juntos, cada um utilizável sozinho, um deles uma ferramenta de linha de comando, todos no crates.io e com a documentação no docs.rs. O `manguebyte-core` não tem nenhuma dependência.',
       more: 'Todos os recursos, por área',
     },
 
@@ -202,7 +203,8 @@ export default {
 
     start: {
       heading: 'Comece com uma dependência',
-      intro: 'O Manguebyte ainda não está no crates.io. Dependa dele direto do Git:',
+      intro: 'O Manguebyte está no [crates.io]({crateUrl}), com a documentação no [docs.rs]({docsUrl}):',
+      tool: 'Ou instale a ferramenta de linha de comando e deixe que ela escreva um crate de plugin para você:',
       guide: 'O guia de primeiros passos',
       repo: 'O repositório no GitHub',
     },
@@ -211,7 +213,7 @@ export default {
   beyond: {
     title: 'Onde o Manguebyte vai além do JUCE',
     description:
-      'Dezesseis pontos em que o Manguebyte já faz algo que o JUCE não faz, cada um com o problema, o que o JUCE faz, o que o Manguebyte faz, o teste que prova e o limite da afirmação.',
+      'Dezessete pontos em que o Manguebyte já faz algo que o JUCE não faz, cada um com o problema, o que o JUCE faz, o que o Manguebyte faz, o teste que prova e o limite da afirmação.',
     kicker: 'Além do JUCE',
     heading: 'Onde ele já vai além do JUCE',
     intro: [
@@ -225,7 +227,7 @@ export default {
       '**Os limites vêm ao lado da afirmação**, em vez de ficarem para o leitor descobrir.',
     ],
     summaryHeading: 'Resumo',
-    summaryCaption: 'As dezesseis afirmações. Cada linha leva à seção correspondente, mais abaixo.',
+    summaryCaption: 'As dezessete afirmações. Cada linha leva à seção correspondente, mais abaixo.',
     table: { claim: 'Afirmação', juce: 'JUCE {juce}', mangue: 'Manguebyte', checked: 'Conferido por' },
     labels: {
       problem: 'O problema',
@@ -242,21 +244,21 @@ export default {
     aheadOutro:
       'O [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) acompanha essa distância módulo a módulo, e o [roadmap](/roadmap/) diz em que ordem ela está sendo fechada.',
     sourceNote:
-      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Dois limites dizem um pouco mais, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou, e o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI.',
+      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Quatro limites dizem um pouco mais, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou; o da seção 5 diz, como o [ROADMAP.md](repo:ROADMAP.md), que um plugin já consegue mandar MIDI 2.0 para fora, embora um processador sozinho não consiga; o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI; e o da seção 9 diz, também como o README, que um crate opcional está sob a GPLv3.',
   },
 
   features: {
     title: 'Recursos',
     description:
-      'O que o Manguebyte contém hoje, área por área: tipos centrais, DSP, um grafo de processamento vivo, parâmetros, plugins CLAP e VST 3, MIDI, arquivos de áudio e dispositivos. E o que ele ainda não contém.',
+      'O que o Manguebyte contém hoje, área por área: tipos centrais, DSP e instrumentos, um grafo de processamento vivo, parâmetros, plugins CLAP, VST 3, LV2 e Audio Unit, hospedagem, MIDI, arquivos de áudio e dispositivos. E o que ele ainda não contém.',
     kicker: 'Recursos',
     heading: 'O que existe hoje',
     intro: [
-      'Vinte e três crates, projetados para funcionar juntos e utilizáveis cada um por si: use o framework inteiro, ou só o tipo de buffer. Tudo o que está listado aqui está no repositório e coberto pelos testes dele.',
+      'Vinte e cinco crates, projetados para funcionar juntos e utilizáveis cada um por si: use o framework inteiro, ou só o tipo de buffer. Todos estão no [crates.io]({crateUrl}) na versão {version}, com a documentação no [docs.rs]({docsUrl}). Tudo o que está listado aqui está no repositório e coberto pelos testes dele.',
       'Isso é uma parte pequena do caminho. [O que falta](#missing) está listado com a mesma clareza.',
     ],
     cratesLabel: 'Crates',
-    facade: 'O crate `manguebyte` reúne todos sob um nome só, com um prelude.',
+    facade: 'O crate `manguebyte` reúne os outros sob um nome só, com um prelude; os formatos de plugin, os editores, a hospedagem e o sampler ficam atrás de features. O `manguebyte-pro-io` é o único crate que ele deixa de fora.',
     missingHeading: 'O que ainda não existe',
     missingIntro: 'Nada disto existe hoje no Manguebyte. Se você precisa de algum destes itens agora, o JUCE tem.',
     missingOutro: 'O [roadmap](/roadmap/) lista cada item planejado e a sua situação, e [onde o JUCE está à frente](/beyond-juce/#ahead) diz o mesmo pelo outro lado.',
@@ -265,24 +267,33 @@ export default {
   start: {
     title: 'Como começar',
     description:
-      'Adicione o Manguebyte a um projeto Rust, faça um som, gere o plugin de exemplo como CLAP e VST 3, toque sem host e teste num teste unitário.',
+      'Adicione o Manguebyte do crates.io a um projeto Rust, comece um plugin com a ferramenta de linha de comando, faça um som, gere o plugin de exemplo como CLAP e VST 3, toque sem host e teste num teste unitário.',
     kicker: 'Como começar',
     heading: 'Do zero a um plugin',
     intro: [
-      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`.',
-      'Antes de construir em cima dele: o Manguebyte é jovem, ainda não está no crates.io, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI, mas nenhum foi aberto num host à mão ainda.',
+      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`, o da [versão {version}]({releaseUrl}).',
+      'Antes de construir em cima dele: o Manguebyte é jovem, a {version} é a primeira versão publicada, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI; à mão, por enquanto só o editor CLAP do Mangue Pluck foi aberto num host.',
     ],
     steps: {
       before: {
         heading: 'Antes de começar',
         body: [
           'Você precisa de um toolchain Rust estável, versão 1.85 ou mais nova.',
-          'No Linux, o backend de dispositivos precisa dos cabeçalhos de desenvolvimento do ALSA:',
+          'No Linux, o backend de dispositivos precisa dos cabeçalhos de desenvolvimento do ALSA, e o host JACK (feature `jack`), dos do JACK (`libjack-jackd2-dev`):',
         ],
       },
       dependency: {
         heading: 'Adicione a dependência',
-        body: ['Dependa direto do repositório:'],
+        body: [
+          'O Manguebyte está no [crates.io]({crateUrl}), e a documentação de cada crate está no [docs.rs]({docsUrl}). Acrescente-o ao seu `Cargo.toml`:',
+        ],
+        after: 'Para acompanhar o trabalho mais recente do `main`, dependa do repositório com uma dependência `git`, como mostra o [README](repo:README.md).',
+      },
+      newPlugin: {
+        heading: 'Comece um plugin',
+        body: [
+          'Instale a ferramenta de linha de comando e deixe que ela escreva um crate de plugin. O crate depende da versão que veio com o `cargo mangue`; com `--manguebyte-git` ele acompanha o repositório, e com `--manguebyte-path`, uma cópia local dele.',
+        ],
       },
       render: {
         heading: 'Faça um som',
@@ -301,11 +312,11 @@ export default {
       plugin: {
         heading: 'Gere um plugin',
         body: [
-          '[plugins/pluck](repo:plugins/pluck/src/lib.rs) é um instrumento completo num arquivo só: um sintetizador dedilhado de 16 vozes, com expressão e modulação por nota, automação na amostra exata, um reverb e um editor pequeno. [plugins/duck](repo:plugins/duck/src/lib.rs) é o mesmo para um efeito: um ducker com sidechain, uma chave de bypass que não estala e um editor com medidor de redução de ganho. Cada um vira plugin CLAP, VST 3 e LV2 com uma linha por formato.',
-          'Transforme qualquer um dos dois em algo que um host consiga carregar com a ferramenta de linha de comando do framework, o `cargo mangue`, que grava um `.clap` e um `.vst3` no layout de cada sistema (com `--format lv2`, um pacote `.lv2`):',
+          '[plugins/pluck](repo:plugins/pluck/src/lib.rs) é um instrumento completo num arquivo só: um sintetizador dedilhado de 16 vozes, com expressão e modulação por nota, automação na amostra exata, um reverb e um editor pequeno. [plugins/duck](repo:plugins/duck/src/lib.rs) é o mesmo para um efeito: um ducker com sidechain, uma chave de bypass que não estala e um editor com medidor de redução de ganho. Cada um vira plugin CLAP, VST 3, LV2 e Audio Unit com uma linha por formato.',
+          'Transforme qualquer um dos dois em algo que um host consiga carregar com a ferramenta de linha de comando do framework, o `cargo mangue`, que grava um `.clap` e um `.vst3` no layout de cada sistema (com `--format lv2`, um pacote `.lv2`, e num Mac, com `--format au`, um `.component`):',
         ],
         after:
-          '`cargo mangue new meu-synth --kind instrument` começa um plugin seu a partir de um modelo; `install` copia um plugin para as pastas de plugins do usuário, e `validate` roda nele os validadores do CLAP e do VST 3. Os dois exemplos passam por esses validadores a cada commit, e foram [testados à mão no REAPER](proof:host-tests) como CLAP e VST 3, antes de terem editores.',
+          '`cargo mangue new meu-synth --kind instrument` começa um plugin seu a partir de um modelo; `install` copia um plugin para as pastas de plugins do usuário, e `validate` roda nele os validadores do CLAP e do VST 3 (`validate --format au` roda o `auval` da Apple num `.component`). Os dois exemplos passam por esses validadores a cada commit, e [foram testados à mão no REAPER](proof:host-tests) como CLAP e VST 3 antes de terem editores; depois disso, [o editor CLAP do Mangue Pluck foi aberto lá](proof:host-tests-19).',
       },
       standalone: {
         heading: 'Toque sem host',
@@ -328,6 +339,7 @@ export default {
       next: {
         heading: 'O que ler depois',
         items: [
+          '[docs.rs]({docsUrl}): a documentação de cada crate da versão publicada.',
           '[ARCHITECTURE.md](repo:docs/ARCHITECTURE.md): como os crates se encaixam, e qual thread roda o quê.',
           '[Os registros de decisão](repo:docs/adr/): por que os parâmetros não têm listeners, por que há um só fluxo de eventos, e o resto.',
           '[Além do JUCE](/beyond-juce/): o que o framework prova, e o limite de cada afirmação.',
@@ -399,7 +411,7 @@ export default {
       id: 'manguebyte',
       name: 'Manguebyte',
       status: 'Este framework',
-      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0. O Aratu já toca sobre o seu motor para o navegador; o Parabolic será construído sobre ele.',
+      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0, publicado no crates.io. O Aratu já toca sobre o seu motor para o navegador, e o plugin Aratu Bridge toca essa mesma música numa DAW; o Parabolic será construído sobre ele.',
     },
     {
       id: 'aratu',
@@ -423,7 +435,7 @@ export default {
     heading: 'Aratu',
     lede: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português, espanhol e inglês, no navegador. Em desenvolvimento, e tocando sobre o Manguebyte.',
     status:
-      '**Em desenvolvimento.** A linguagem lê, confere e agenda todos os exemplos do livro, e o editor roda no navegador sem instalar nada. Rodar dentro de uma DAW está planejado.',
+      '**Em desenvolvimento.** A linguagem lê, confere e agenda todos os exemplos do livro, e o editor roda no navegador sem instalar nada. Rodar dentro de uma DAW está planejado, e o [Aratu Bridge](#bridge) do Manguebyte é o caminho para chegar lá.',
     mascotAlt: 'Aratu, um caranguejo-do-mangue laranja de fones de ouvido programando música num notebook',
     tryIt: 'Experimente no navegador',
     whatHeading: 'O tempo do jeito que o músico conta',
@@ -450,7 +462,13 @@ export default {
     tasteIntro: 'Do README do Aratu. Um espaço separa os tempos, símbolos escritos juntos dividem o mesmo tempo (`cc` são duas colcheias), `_` sustenta e `-` é pausa; os acordes se escrevem como numa cifra, e as batidas com `d` e `u`.',
     engineHeading: 'Construído sobre o Manguebyte',
     engine:
-      'O editor toca pelo `manguebyte-web`, o motor do Manguebyte para o navegador: todas as vozes do painel de Sons, de instrumentos com samples a cordas modeladas, FM, órgão, baixo acid e synth, os efeitos de cada parte e o master com o limitador de true peak. As linhas de percussão brasileira, o golpe do violão e a palma (menos na 808) ainda tocam num pequeno substituto em Web Audio, até o Manguebyte ter samples para eles. O motor em si ainda está [em andamento](/roadmap/#phase-5): testado nativamente e no Node.js, ainda não sob carga num navegador.',
+      'O editor toca pelo `manguebyte-web`, o motor do Manguebyte para o navegador: todas as vozes do painel de Sons, de instrumentos com samples a cordas modeladas, FM, órgão, baixo acid e synth, os efeitos de cada parte e o master com o limitador de true peak. No commit fixado do Aratu, as linhas de percussão brasileira, o golpe do violão e a palma (menos na 808) ainda tocam em sons provisórios do próprio Aratu, em Web Audio; o motor do Manguebyte agora [sintetiza esses sons em todos os kits de bateria](proof:web-percussion), no mesmo nível em cada um. O motor em si ainda está [em andamento](/roadmap/#phase-5): testado nativamente e no Node.js, com a demonstração experimentada uma vez no Chromium, ainda não sob carga num navegador.',
+    bridgeHeading: 'Numa DAW: o Aratu Bridge',
+    bridge: [
+      'O [Aratu Bridge](repo:plugins/aratu-bridge/) do Manguebyte é um instrumento de exemplo, em CLAP, VST 3 e Audio Unit, que roda o motor do navegador dentro de uma DAW. A página manda para ele a música, não o áudio: as chamadas de controle e os registros de eventos que mandaria para o próprio motor, com o tempo contado em batidas, por um WebSocket em 127.0.0.1. O plugin toca tudo com o `manguebyte-web` compilado nativamente, no dispositivo da DAW e acompanhando o transporte dela, e o som cai numa trilha da DAW como o de qualquer outro instrumento. Uma sessão enviada por um socket de verdade sai igual, bit a bit, ao que o motor renderiza sozinho. Do lado da página, o [bridge.js](proof:bridge-js) oferece os mesmos métodos do motor no navegador; [o protocolo](proof:bridge-doc) está documentado, e ligá-lo ao Aratu é a parte que cabe ao próprio Aratu.',
+      'Ele foi experimentado à mão uma vez: em 19 de outubro de 2026, uma página no Chromium servida a partir de `http://127.0.0.1` tocou pela versão CLAP no REAPER 7.82 para Windows, que aplicou os 44 eventos enviados pela página, nenhum atrasado e nenhum perdido, seguindo o andamento do REAPER. Outras DAWs, as versões VST 3 e AU, outros navegadores e páginas `https://` ainda não foram testados, e o plugin não tem editor e tem uma única saída estéreo.',
+    ],
+    bridgeProofsIntro: 'O que comprova isso, no commit `{commit}`: três testes que rodam no CI do Manguebyte, o registro do teste à mão e a lista do que ainda falta:',
     nameHeading: 'Por que “Aratu”?',
     name: 'O aratu é um caranguejo do mangue, o mangue do Recife que deu nome ao manguebeat e ao Manguebyte.',
     proofsHeading: 'O que os testes conferem',
@@ -475,10 +493,11 @@ export default {
     ],
     waysHeading: 'Jeitos de ajudar',
     ways: [
-      { term: 'Relate um bug', body: 'Abra uma issue dizendo o que você fez, o que esperava e o que aconteceu. Um programa pequeno que reproduza o problema vale muito.' },
-      { term: 'Proponha um recurso', body: 'Abra uma issue antes de escrever uma mudança grande, para que o desenho seja discutido primeiro. O [roadmap](/roadmap/) lista o que está planejado.' },
+      { term: 'Relate um bug', body: 'Abra uma issue pelo [formulário de bug](proof:issue-bug), dizendo o que você fez, o que esperava e o que aconteceu. Um programa pequeno que reproduza o problema vale muito.' },
+      { term: 'Tire uma dúvida', body: 'Perguntas, e ideias que ainda não estão prontas para virar issue, vão para as [Discussions]({discussionsUrl}).' },
+      { term: 'Proponha um recurso', body: 'Abra uma issue pelo [formulário de pedido de recurso](proof:issue-feature) antes de escrever uma mudança grande, para que o desenho seja discutido primeiro. O [roadmap](/roadmap/) lista o que está planejado.' },
       { term: 'Melhore a documentação', body: 'Explicações mais claras e exemplos melhores são sempre bem-vindos.' },
-      { term: 'Escreva código', body: 'Escolha um item do roadmap ou uma issue aberta, comente que vai pegá-lo e mande um pull request.' },
+      { term: 'Escreva código', body: 'Escolha um item do roadmap ou uma issue aberta, comente que vai pegá-lo e mande um pull request. As issues com a etiqueta [good first issue]({goodFirstUrl}) são pequenas e um bom lugar para começar.' },
     ],
     cleanHeading: 'Uma regra acima das outras: sala limpa',
     clean: [
@@ -489,7 +508,7 @@ export default {
     ],
     setupHeading: 'Prepare o ambiente e confira',
     setup: [
-      'Você precisa de um toolchain Rust estável, 1.85 ou mais novo, com `rustfmt` e `clippy`. No Linux, também dos cabeçalhos de desenvolvimento do ALSA.',
+      'Você precisa de um toolchain Rust estável, 1.85 ou mais novo, com `rustfmt` e `clippy`. No Linux, também dos cabeçalhos de desenvolvimento do ALSA, e dos do JACK, que o `--all-features` compila.',
       'Antes de abrir um pull request, rode as mesmas verificações que o CI roda. Um script faz todas e para na primeira falha:',
     ],
     setupAfter:
@@ -508,14 +527,19 @@ export default {
     licenceHeading: 'Licença das contribuições',
     licence: [
       'O Manguebyte tem licença dupla, [MIT](proof:licence-mit) e [Apache-2.0](proof:licence-apache). A menos que você declare explicitamente o contrário, qualquer contribuição enviada de propósito para inclusão no projeto, conforme a definição da licença Apache-2.0, fica licenciada da mesma forma dupla, sem termos ou condições adicionais.',
+      'A única exceção é o `crates/manguebyte-pro-io`, que está só sob a [GPLv3](proof:pro-io-licence), pelo motivo que [o README dele](proof:pro-io-readme) explica: uma contribuição para ele fica sob a GPLv3.',
     ],
+    securityHeading: 'Problemas de segurança',
+    security: 'Não abra uma issue pública para um problema de segurança. Relate-o em privado, como o [SECURITY.md](proof:security) descreve.',
     conductHeading: 'Conduta',
     conduct:
-      'Seja gentil, tenha paciência e presuma boa-fé. Critique o código, não as pessoas. Este projeto quer contribuidores de todas as origens e níveis de experiência, e não aceita assédio nem desrespeito de nenhum tipo.',
+      'Seja gentil, tenha paciência e presuma boa-fé. Critique o código, não as pessoas. Este projeto quer contribuidores de todas as origens e níveis de experiência, e não aceita assédio nem desrespeito de nenhum tipo. O [Código de Conduta](proof:conduct) diz isso por inteiro e explica como relatar um problema.',
     contactHeading: 'Para onde ir',
     links: {
       guide: 'O guia completo de contribuição',
       issues: 'Issues no GitHub',
+      goodFirst: 'Boas primeiras issues',
+      discussions: 'Discussions',
       roadmap: 'O roadmap',
       email: 'Escrever para o autor',
     },
