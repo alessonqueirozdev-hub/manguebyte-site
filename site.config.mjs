@@ -13,10 +13,10 @@ export default {
   // and, at a release, `release`; run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: '0bfdf0d36335f5c1a9402515958b1f8177a88dc7',
+    commit: 'd0d731b9664ea57edc535bae861291e896342d0d',
     date: '2026-10-20',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '39423898370',
+    ciRun: '39430708616',
     // How many jobs that run has, all of which passed.
     ciJobs: 26,
     // The latest release, and where it was published. Its tag can be an
