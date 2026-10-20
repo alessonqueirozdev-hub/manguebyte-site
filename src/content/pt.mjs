@@ -54,7 +54,7 @@ export default {
       'O Manguebyte é jovem. A versão {version} é a primeira publicada no crates.io. O que existe está testado e dá para usar, mas cobre uma parte pequena do caminho, a API vai mudar antes da versão 1.0, e dos editores de plugin só um foi aberto num host à mão.',
     sourceTitle: 'De onde este site tira os fatos',
     source:
-      'Cada afirmação, cada link de prova e cada trecho de código daqui foi lido do repositório do framework no commit [{commit}]({commitUrl}) ({date}), em que [os {ciJobs} jobs de CI passaram]({ciUrl}). O repositório é a autoridade; se os dois divergirem, é o site que está desatualizado.',
+      'Cada afirmação, cada link de prova e cada trecho de código daqui foi lido do repositório do framework no commit [{commit}]({commitUrl}) ({date}), em que [os {ciJobs} jobs de CI passaram]({ciUrl}). Da [versão {version}]({releaseUrl}), no commit `{releaseCommit}`, até esse commit só mudou a documentação, então o código é o da versão publicada. O repositório é a autoridade; se os dois divergirem, é o site que está desatualizado.',
     legalTitle: 'Nomes e marcas',
     legal:
       'O Manguebyte é um projeto independente. Não é afiliado, patrocinado nem endossado pelos criadores do JUCE, pela Steinberg, pela Apple, pela Avid, pela Cockos ou pelo projeto CLAP. JUCE é marca do seu respectivo dono e CLAP é o nome do seu próprio projeto; os dois são citados apenas para descrever o que este framework pretende ser e com o que ele trabalha. VST é marca registrada da Steinberg Media Technologies GmbH. ASIO é marca da Steinberg Media Technologies GmbH, registrada na Europa e em outros países. Audio Units, Mac e macOS são marcas da Apple Inc. AAX e Pro Tools são marcas da Avid Technology, Inc. REAPER é marca da Cockos Incorporated.',
@@ -244,7 +244,7 @@ export default {
     aheadOutro:
       'O [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) acompanha essa distância módulo a módulo, e o [roadmap](/roadmap/) diz em que ordem ela está sendo fechada.',
     sourceNote:
-      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Quatro limites dizem um pouco mais, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou; o da seção 5 diz, como o [ROADMAP.md](repo:ROADMAP.md), que um plugin já consegue mandar MIDI 2.0 para fora, embora um processador sozinho não consiga; o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI; e o da seção 9 diz, também como o README, que um crate opcional está sob a GPLv3.',
+      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Três limites dizem um pouco mais, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou; o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI; e o da seção 9 diz, também como o README, que um crate opcional está sob a GPLv3.',
   },
 
   features: {
@@ -258,7 +258,7 @@ export default {
       'Isso é uma parte pequena do caminho. [O que falta](#missing) está listado com a mesma clareza.',
     ],
     cratesLabel: 'Crates',
-    facade: 'O crate `manguebyte` reúne os outros sob um nome só, com um prelude; os formatos de plugin, os editores, a hospedagem e o sampler ficam atrás de features. O `manguebyte-pro-io` é o único crate que ele deixa de fora.',
+    facade: 'O crate `manguebyte` reúne dezenove dos outros sob um nome só, com um prelude; os formatos de plugin, os editores, a hospedagem e o sampler ficam atrás de features. Cinco ficam de fora: o `manguebyte-gfx` e o `manguebyte-window`, sobre os quais os editores são construídos, o motor para o navegador `manguebyte-web`, a ferramenta de linha de comando e o `manguebyte-pro-io`.',
     missingHeading: 'O que ainda não existe',
     missingIntro: 'Nada disto existe hoje no Manguebyte. Se você precisa de algum destes itens agora, o JUCE tem.',
     missingOutro: 'O [roadmap](/roadmap/) lista cada item planejado e a sua situação, e [onde o JUCE está à frente](/beyond-juce/#ahead) diz o mesmo pelo outro lado.',
@@ -271,7 +271,7 @@ export default {
     kicker: 'Como começar',
     heading: 'Do zero a um plugin',
     intro: [
-      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`, o da [versão {version}]({releaseUrl}).',
+      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`. Esse commit vem depois da [versão {version}]({releaseUrl}) e só corrige a documentação, então o código é o da versão publicada.',
       'Antes de construir em cima dele: o Manguebyte é jovem, a {version} é a primeira versão publicada, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI; à mão, por enquanto só o editor CLAP do Mangue Pluck foi aberto num host.',
     ],
     steps: {
@@ -465,7 +465,7 @@ export default {
       'O editor toca pelo `manguebyte-web`, o motor do Manguebyte para o navegador: todas as vozes do painel de Sons, de instrumentos com samples a cordas modeladas, FM, órgão, baixo acid e synth, os efeitos de cada parte e o master com o limitador de true peak. No commit fixado do Aratu, as linhas de percussão brasileira, o golpe do violão e a palma (menos na 808) ainda tocam em sons provisórios do próprio Aratu, em Web Audio; o motor do Manguebyte agora [sintetiza esses sons em todos os kits de bateria](proof:web-percussion), no mesmo nível em cada um. O motor em si ainda está [em andamento](/roadmap/#phase-5): testado nativamente e no Node.js, com a demonstração experimentada uma vez no Chromium, ainda não sob carga num navegador.',
     bridgeHeading: 'Numa DAW: o Aratu Bridge',
     bridge: [
-      'O [Aratu Bridge](repo:plugins/aratu-bridge/) do Manguebyte é um instrumento de exemplo, em CLAP, VST 3 e Audio Unit, que roda o motor do navegador dentro de uma DAW. A página manda para ele a música, não o áudio: as chamadas de controle e os registros de eventos que mandaria para o próprio motor, com o tempo contado em batidas, por um WebSocket em 127.0.0.1. O plugin toca tudo com o `manguebyte-web` compilado nativamente, no dispositivo da DAW e acompanhando o transporte dela, e o som cai numa trilha da DAW como o de qualquer outro instrumento. Uma sessão enviada por um socket de verdade sai igual, bit a bit, ao que o motor renderiza sozinho. Do lado da página, o [bridge.js](proof:bridge-js) oferece os mesmos métodos do motor no navegador; [o protocolo](proof:bridge-doc) está documentado, e ligá-lo ao Aratu é a parte que cabe ao próprio Aratu.',
+      'O [Aratu Bridge](repo:plugins/aratu-bridge/) do Manguebyte é um instrumento de exemplo, em CLAP, VST 3 e Audio Unit, que roda o motor do navegador dentro de uma DAW. A página manda para ele a música, não o áudio: as chamadas de controle e os registros de eventos que mandaria para o próprio motor, com o tempo contado em batidas, por um WebSocket em 127.0.0.1. O plugin toca tudo com o `manguebyte-web` compilado nativamente, no dispositivo da DAW e acompanhando o transporte dela, e o som cai numa trilha da DAW como o de qualquer outro instrumento. Uma sessão enviada por um socket de verdade sai igual, bit a bit, ao que o motor renderiza sozinho. Do lado da página, o [bridge.js](proof:bridge-js) oferece os mesmos métodos do motor no navegador, embora os seis que leem de volta o estado do motor, como `paramValue` e `partLevels`, não sejam respondidos pela rede; [o protocolo](proof:bridge-doc) está documentado, e ligá-lo ao Aratu é a parte que cabe ao próprio Aratu.',
       'Ele foi experimentado à mão uma vez: em 19 de outubro de 2026, uma página no Chromium servida a partir de `http://127.0.0.1` tocou pela versão CLAP no REAPER 7.82 para Windows, que aplicou os 44 eventos enviados pela página, nenhum atrasado e nenhum perdido, seguindo o andamento do REAPER. Outras DAWs, as versões VST 3 e AU, outros navegadores e páginas `https://` ainda não foram testados, e o plugin não tem editor e tem uma única saída estéreo.',
     ],
     bridgeProofsIntro: 'O que comprova isso, no commit `{commit}`: três testes que rodam no CI do Manguebyte, o registro do teste à mão e a lista do que ainda falta:',

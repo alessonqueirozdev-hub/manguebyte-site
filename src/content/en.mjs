@@ -54,7 +54,7 @@ export default {
       'Manguebyte is young. Version {version} is its first release on crates.io. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and of its plugin editors only one has been opened in a host by hand.',
     sourceTitle: 'Where this site gets its facts',
     source:
-      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). The repository is the authority; if the two disagree, the site is out of date.',
+      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). Between the [{version} release]({releaseUrl}), commit `{releaseCommit}`, and this one, only documentation changed, so the code is the release’s. The repository is the authority; if the two disagree, the site is out of date.',
     legalTitle: 'Names and marks',
     legal:
       'Manguebyte is an independent project. It is not affiliated with, sponsored by or endorsed by the makers of JUCE, by Steinberg, by Apple, by Avid, by Cockos or by the CLAP project. JUCE is a trademark of its respective owner and CLAP is the name of its own project; both are mentioned only to describe what this framework aims to be and what it works with. VST is a trademark of Steinberg Media Technologies GmbH. ASIO is a trademark of Steinberg Media Technologies GmbH, registered in Europe and other countries. Audio Units, Mac and macOS are trademarks of Apple Inc. AAX and Pro Tools are trademarks of Avid Technology, Inc. REAPER is a trademark of Cockos Incorporated.',
@@ -244,7 +244,7 @@ export default {
     aheadOutro:
       '[JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) tracks that gap module by module, and the [roadmap](/roadmap/) says in what order it is being closed.',
     sourceNote:
-      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Four limits say a little more, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 5 says, as [ROADMAP.md](repo:ROADMAP.md) does, that a plugin can already send MIDI 2.0 out, though a processor cannot by itself; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
+      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Three limits say a little more, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
   },
 
   features: {
@@ -258,7 +258,7 @@ export default {
       'This is a small part of the road ahead. [What is missing](#missing) is listed just as plainly.',
     ],
     cratesLabel: 'Crates',
-    facade: 'The `manguebyte` crate gathers them under one name, with a prelude; the plugin formats, editors, hosting and the sampler are behind features. `manguebyte-pro-io` is the one crate it leaves out.',
+    facade: 'The `manguebyte` crate gathers nineteen of the others under one name, with a prelude; the plugin formats, editors, hosting and the sampler are behind features. It leaves five out: `manguebyte-gfx` and `manguebyte-window`, which the editors are built on, the browser engine `manguebyte-web`, the command-line tool and `manguebyte-pro-io`.',
     missingHeading: 'Not there yet',
     missingIntro: 'These do not exist in Manguebyte today. If you need one of them now, JUCE has it.',
     missingOutro: 'The [roadmap](/roadmap/) lists every planned item and its status, and [where JUCE is ahead](/beyond-juce/#ahead) says the same from the other side.',
@@ -271,7 +271,7 @@ export default {
     kicker: 'Get started',
     heading: 'From nothing to a plugin',
     intro: [
-      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`, the [{version} release]({releaseUrl}).',
+      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit follows the [{version} release]({releaseUrl}) with documentation fixes only, so the code is the release’s.',
       'Before you build on it: Manguebyte is young, {version} is its first release, and **the API will change before 1.0**. Plugin editors exist and are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host so far.',
     ],
     steps: {
@@ -465,7 +465,7 @@ export default {
       'The editor plays through `manguebyte-web`, Manguebyte’s engine for the browser: every voice in its Sounds panel, from sampled instruments to modelled strings, FM, an organ, an acid bass and a synth, each part’s effects, and the master bus with its true-peak limiter. At Aratu’s pinned commit its Brazilian percussion lines, the guitar’s golpe and the clap (except on the 808) still play on provisional sounds of its own, in Web Audio; Manguebyte’s engine now [synthesises them on every drum kit](proof:web-percussion), at the same level on each. The engine itself is still [in progress](/roadmap/#phase-5): tested natively and in Node.js, its demo tried once in Chromium, not yet under load in a browser.',
     bridgeHeading: 'In a DAW: the Aratu Bridge',
     bridge: [
-      'Manguebyte’s [Aratu Bridge](repo:plugins/aratu-bridge/) is an example CLAP, VST 3 and Audio Unit instrument that runs the browser’s engine inside a DAW. The page sends it the music, not the audio: the control calls and event records it would send its own engine, timed in beats, over a WebSocket on 127.0.0.1. The plugin plays them with `manguebyte-web` built natively, on the DAW’s device and in time with its transport, so the sound lands on a DAW track like any other instrument’s. A session sent over a real socket renders the same, bit for bit, as the engine renders it alone. On the page’s side, [bridge.js](proof:bridge-js) offers the same methods as the engine in the browser; [the protocol](proof:bridge-doc) is written down, and wiring it into Aratu is Aratu’s side to write.',
+      'Manguebyte’s [Aratu Bridge](repo:plugins/aratu-bridge/) is an example CLAP, VST 3 and Audio Unit instrument that runs the browser’s engine inside a DAW. The page sends it the music, not the audio: the control calls and event records it would send its own engine, timed in beats, over a WebSocket on 127.0.0.1. The plugin plays them with `manguebyte-web` built natively, on the DAW’s device and in time with its transport, so the sound lands on a DAW track like any other instrument’s. A session sent over a real socket renders the same, bit for bit, as the engine renders it alone. On the page’s side, [bridge.js](proof:bridge-js) offers the same methods as the engine in the browser, though the six that read the engine’s state back, such as `paramValue` and `partLevels`, are not answered over the network; [the protocol](proof:bridge-doc) is written down, and wiring it into Aratu is Aratu’s side to write.',
       'It has been tried by hand once: on 19 October 2026, a page in Chromium served from `http://127.0.0.1` played through the CLAP build in REAPER 7.82 on Windows, which applied all 44 events the page sent, none late and none dropped, following REAPER’s tempo. Other DAWs, the VST 3 and AU builds, other browsers and `https://` pages are not tried yet, and the plugin has no editor and one stereo output.',
     ],
     bridgeProofsIntro: 'What backs this, at commit `{commit}`: three tests that run in Manguebyte’s CI, the record of the hand test, and the list of what is still owed:',

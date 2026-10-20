@@ -1,9 +1,9 @@
 import { signal } from '../lib/art.mjs';
 import { escape, html } from '../lib/html.mjs';
-import { icon, repoFile, repoUrl } from '../lib/site.mjs';
+import { icon, repoFile } from '../lib/site.mjs';
 
 export function render(ctx) {
-  const { t, text, inline, url, codeBlock, config } = ctx;
+  const { t, text, inline, url, fill, codeBlock, config } = ctx;
   const page = t.contribute;
 
   const head = html`<section class="page-head">
@@ -49,9 +49,9 @@ export function render(ctx) {
         <h2 id="links">${escape(page.contactHeading)}</h2>
         <p class="link-row">
           <a class="button button-primary" href="${repoFile('CONTRIBUTING.md')}">${escape(page.links.guide)}${icon('out')}</a>
-          <a class="button" href="${repoUrl}/issues">${escape(page.links.issues)}${icon('out')}</a>
-          <a class="button" href="${repoUrl}/labels/good%20first%20issue">${escape(page.links.goodFirst)}${icon('out')}</a>
-          <a class="button" href="${repoUrl}/discussions">${escape(page.links.discussions)}${icon('out')}</a>
+          <a class="button" href="${escape(fill('{issuesUrl}'))}">${escape(page.links.issues)}${icon('out')}</a>
+          <a class="button" href="${escape(fill('{goodFirstUrl}'))}">${escape(page.links.goodFirst)}${icon('out')}</a>
+          <a class="button" href="${escape(fill('{discussionsUrl}'))}">${escape(page.links.discussions)}${icon('out')}</a>
           <a class="button" href="${url('/roadmap/')}">${escape(page.links.roadmap)}${icon('arrow')}</a>
           <a class="button" href="mailto:${config.contact}">${escape(page.links.email)}</a>
         </p>

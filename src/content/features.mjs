@@ -85,7 +85,7 @@ export const areas = [
     crates: ['manguebyte-dsp'],
     en: {
       name: 'Instruments',
-      lead: 'Voices ready to play, each with presets, measured for tuning, decay, velocity and accent. They are brought to one loudness in the browser engine.',
+      lead: 'Voices ready to play, each with presets, answering velocity and accents, their tuning or spectra measured in tests. They are brought to one loudness in the browser engine, not in `manguebyte-dsp` itself.',
       items: [
         'Physically modelled plucked strings: guitars and basses',
         'Four-operator FM, with piano, bell and bass presets',
@@ -101,7 +101,7 @@ export const areas = [
     },
     pt: {
       name: 'Instrumentos',
-      lead: 'Vozes prontas para tocar, cada uma com presets, medidas em afinação, decaimento, velocidade e acento. É no motor do navegador que elas chegam todas à mesma loudness.',
+      lead: 'Vozes prontas para tocar, cada uma com presets, respondendo à velocidade e a acentos, com a afinação ou o espectro medidos em testes. É no motor do navegador, e não no próprio `manguebyte-dsp`, que elas chegam todas à mesma loudness.',
       items: [
         'Cordas dedilhadas por modelagem física: violões, guitarras e baixos',
         'FM de quatro operadores, com presets de piano, sino e baixo',
@@ -409,7 +409,7 @@ export const areas = [
       name: 'Devices',
       lead: 'Sound cards and MIDI ports, and an engine that plays on while the device changes under it.',
       items: [
-        'Audio hosts: WASAPI, CoreAudio, ALSA, AAudio, and JACK behind a feature; device listing and selection',
+        'Audio hosts: WASAPI, CoreAudio, ALSA, AAudio, and JACK behind a feature; ASIO through the GPLv3 crate below, or through `cpal`’s own `asio` feature, which a closed-source application turns on with an SDK it licenses itself; device listing and selection',
         'Playback, recording and full-duplex streams that follow the drift between two devices’ clocks, in any hardware sample format, with timing and latency in every callback',
         'A device manager that saves its setup and restores it with fallbacks, and follows devices as they are plugged in and out (by polling)',
         'Devices changed under a running engine without stopping it or preparing it again, crossfading where two devices can play at once',
@@ -421,7 +421,7 @@ export const areas = [
       name: 'Dispositivos',
       lead: 'Placas de som e portas MIDI, e um motor que continua tocando enquanto o dispositivo muda por baixo dele.',
       items: [
-        'Hosts de áudio: WASAPI, CoreAudio, ALSA, AAudio e, atrás de uma feature, JACK; listagem e seleção de dispositivos',
+        'Hosts de áudio: WASAPI, CoreAudio, ALSA, AAudio e, atrás de uma feature, JACK; ASIO pelo crate sob a GPLv3 mais abaixo, ou pela feature `asio` do próprio `cpal`, que um aplicativo de código fechado liga com um SDK que ele mesmo licencia; listagem e seleção de dispositivos',
         'Streams de reprodução, gravação e full-duplex que acompanham o desvio entre os relógios de dois dispositivos, em qualquer formato de amostra do hardware, com tempo e latência em cada callback',
         'Um gerenciador de dispositivos que salva a configuração e a restaura com alternativas, e acompanha os dispositivos conforme são plugados e desplugados (por consulta periódica)',
         'Dispositivos trocados por baixo de um motor em execução sem pará-lo nem prepará-lo de novo, com crossfade quando dois dispositivos podem tocar ao mesmo tempo',
@@ -489,7 +489,7 @@ export const missing = {
     'Editors tried in hosts: by hand, only Mangue Pluck’s CLAP editor has been opened, in REAPER on Windows; working its knobs there, the VST 3 editors and Mangue Duck’s are still to be tried',
     'Editor windows on macOS and Linux',
     'LV2 run by any host but the framework’s own or checked by `lv2lint`; LV2 editors and MIDI output',
-    'Audio Units loaded in a DAW, and an AU editor',
+    'Audio Units loaded in a DAW; AU editors and MIDI output',
     'The Aratu Bridge in other DAWs and browsers',
     'The browser engine and the sampler in a browser’s audio thread under load',
     'The AUv3 and AAX plugin formats',
@@ -503,7 +503,7 @@ export const missing = {
     'Editores experimentados em hosts: à mão, só o editor CLAP do Mangue Pluck foi aberto, no REAPER para Windows; mexer nos knobs dele ali, os editores VST 3 e o do Mangue Duck ainda estão por experimentar',
     'Janelas de editor em macOS e Linux',
     'LV2 rodando num host além do próprio framework, ou conferido pelo `lv2lint`; editores LV2 e saída de MIDI',
-    'Audio Units carregados numa DAW, e um editor AU',
+    'Audio Units carregados numa DAW; editores AU e saída de MIDI',
     'O Aratu Bridge em outras DAWs e outros navegadores',
     'O motor do navegador e o sampler na thread de áudio de um navegador sob carga',
     'Os formatos de plugin AUv3 e AAX',

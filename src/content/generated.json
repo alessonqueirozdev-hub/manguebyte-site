@@ -1,5 +1,5 @@
 {
-  "commit": "9daba9d020872d0fd98f291ddb225f2b505cb6ed",
+  "commit": "0bfdf0d36335f5c1a9402515958b1f8177a88dc7",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -420,7 +420,7 @@
     "instruments-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 74,
+      "line": 73,
       "name": "TECH_DEBT items 66 to 71",
       "test": false
     },
@@ -441,7 +441,7 @@
     "reaper-owed": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 65,
+      "line": 64,
       "name": "TECH_DEBT item 56",
       "test": false
     },
@@ -476,7 +476,7 @@
     "per-note-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 84,
+      "line": 83,
       "name": "TECH_DEBT item 76",
       "test": false
     },
@@ -504,7 +504,7 @@
     "midi-out-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 90,
+      "line": 89,
       "name": "TECH_DEBT item 82",
       "test": false
     },
@@ -581,7 +581,7 @@
     "hotswap-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 93,
+      "line": 92,
       "name": "TECH_DEBT item 85",
       "test": false
     },
@@ -665,7 +665,7 @@
     "bridge-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 92,
+      "line": 91,
       "name": "TECH_DEBT item 84",
       "test": false
     },

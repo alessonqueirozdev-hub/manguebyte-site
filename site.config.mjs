@@ -13,16 +13,19 @@ export default {
   // and, at a release, `release`; run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: '9daba9d020872d0fd98f291ddb225f2b505cb6ed',
-    date: '2026-10-19',
+    commit: '0bfdf0d36335f5c1a9402515958b1f8177a88dc7',
+    date: '2026-10-20',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '39300203761',
+    ciRun: '39423898370',
     // How many jobs that run has, all of which passed.
     ciJobs: 26,
-    // The release that commit is tagged as, and where it was published.
+    // The latest release, and where it was published. Its tag can be an
+    // earlier commit than `commit`: today v0.1.0 is 9daba9d, and the pinned
+    // commit comes after it with documentation fixes only.
     release: {
       version: '0.1.0',
       tag: 'v0.1.0',
+      commit: '9daba9d020872d0fd98f291ddb225f2b505cb6ed',
       crate: 'https://crates.io/crates/manguebyte',
       docs: 'https://docs.rs/manguebyte',
     },
