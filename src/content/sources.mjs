@@ -303,6 +303,9 @@ export const proofs = {
     find: 'fn notes_the_plugin_sends_reach_the_midi_output(',
   },
   'midi-out-debt': { file: 'docs/TECH_DEBT.md', find: '| 82 | ', name: 'TECH_DEBT item 82' },
+  'ci-ump': { file: '.github/workflows/ci.yml', find: '  ump-output:', name: 'CI job: UMP output' },
+  'ump-debt': { file: 'docs/TECH_DEBT.md', find: '| 90 | ', name: 'TECH_DEBT item 90' },
+  'plugin-extras-debt': { file: 'docs/TECH_DEBT.md', find: '| 91 | ', name: 'TECH_DEBT item 91' },
 
   // Audio Units
   'ci-au': { file: '.github/workflows/ci.yml', find: '  au:', name: 'CI job: Audio Unit validation (auval)' },

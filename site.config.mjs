@@ -13,15 +13,18 @@ export default {
   // and, at a release, `release`; run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: 'd0d731b9664ea57edc535bae861291e896342d0d',
-    date: '2026-10-20',
+    commit: 'b59fd3a53ac862598c7b7a3e940bd994d35bce11',
+    date: '2026-10-27',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '39430708616',
+    ciRun: '40535674334',
     // How many jobs that run has, all of which passed.
-    ciJobs: 26,
+    ciJobs: 29,
     // The latest release, and where it was published. Its tag can be an
     // earlier commit than `commit`: today v0.1.0 is 9daba9d, and the pinned
-    // commit comes after it with documentation fixes only.
+    // commit comes well after it, with new features and two new crates
+    // (see the "Unreleased" section of the framework's CHANGELOG.md). What
+    // the site says is true at the pinned commit; some of it is not in the
+    // release on crates.io yet, and the pages that name the release say so.
     release: {
       version: '0.1.0',
       tag: 'v0.1.0',

@@ -54,7 +54,7 @@ export default {
       'Manguebyte is young. Version {version} is its first release on crates.io. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and of its plugin editors only one has been opened in a host by hand.',
     sourceTitle: 'Where this site gets its facts',
     source:
-      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). Between the [{version} release]({releaseUrl}), commit `{releaseCommit}`, and this one, only documentation changed, so the code is the release’s. The repository is the authority; if the two disagree, the site is out of date.',
+      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). That commit comes well after the [{version} release]({releaseUrl}), commit `{releaseCommit}`, so not everything described here is on crates.io yet: hosting Audio Units, MIDI 2.0 through the systems’ own output, Opus encoding, spectral processing, the vector operations, the tempo map, the newer plugin extensions and the crates `manguebyte-state` and `manguebyte-ump-io`, among others, are only in the repository so far, listed under “Unreleased” in its [changelog](repo:CHANGELOG.md). The repository is the authority; if the two disagree, the site is out of date.',
     legalTitle: 'Names and marks',
     legal:
       'Manguebyte is an independent project. It is not affiliated with, sponsored by or endorsed by the makers of JUCE, by Steinberg, by Apple, by Avid, by Cockos or by the CLAP project. JUCE is a trademark of its respective owner and CLAP is the name of its own project; both are mentioned only to describe what this framework aims to be and what it works with. VST is a trademark of Steinberg Media Technologies GmbH. ASIO is a trademark of Steinberg Media Technologies GmbH, registered in Europe and other countries. Audio Units, Mac and macOS are trademarks of Apple Inc. AAX and Pro Tools are trademarks of Avid Technology, Inc. REAPER is a trademark of Cockos Incorporated.',
@@ -95,8 +95,8 @@ export default {
       command: 'cargo test --workspace',
       ok: 'ok',
       validators: [
-        { name: 'clap-validator · Mangue Pluck.clap', result: '35 passed, 0 failed, 9 skipped', proof: 'ci-clap' },
-        { name: 'clap-validator · Mangue Duck.clap', result: '33 passed, 0 failed, 11 skipped', proof: 'ci-clap' },
+        { name: 'clap-validator · Mangue Pluck.clap', result: '37 passed, 0 failed, 7 skipped', proof: 'ci-clap' },
+        { name: 'clap-validator · Mangue Duck.clap', result: '36 passed, 0 failed, 8 skipped', proof: 'ci-clap' },
         { name: 'VST 3 validator · Windows, Linux, macOS', result: '537 passed, 0 failed', proof: 'ci-vst3' },
         { name: 'auval · Mangue Pluck and Mangue Duck, macOS', result: 'AU VALIDATION SUCCEEDED', proof: 'ci-au' },
       ],
@@ -142,7 +142,7 @@ export default {
           claim: 'clap',
           title: 'CLAP and VST 3 from one line each, checked by their own validators',
           body:
-            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project’s validator and Steinberg’s on an instrument and an effect; all 537 VST 3 tests pass on Windows, Linux and macOS. Both were also [tested by hand in REAPER](proof:host-tests), and `export_lv2!` and `export_au!` add LV2 and Audio Units, which pass Apple’s `auval` in CI.',
+            '`export_clap!` and `export_vst3!` turn the same plugin into both formats. CI runs the CLAP project’s validator and Steinberg’s on an instrument and an effect, and neither fails a test; all 537 of Steinberg’s pass on Windows, Linux and macOS, its double-precision tests included. Both were also [tested by hand in REAPER](proof:host-tests), and `export_lv2!` and `export_au!` add LV2 and Audio Units, which pass Apple’s `auval` in CI.',
           juce: 'CLAP export is not available natively.',
           limit: 'Editors are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host. LV2 has run in no host but the framework’s own, and no DAW has loaded the Audio Units yet. No AUv3 or AAX.',
           proofs: ['ci-clap', 'ci-vst3', 'ci-au'],
@@ -175,7 +175,7 @@ export default {
 
     today: {
       heading: 'What you get today',
-      intro: 'Twenty-five crates that work together, each usable on its own, one of them a command-line tool, all on crates.io with their documentation on docs.rs. `manguebyte-core` has no dependencies at all.',
+      intro: 'Twenty-seven crates that work together, each usable on its own, one of them a command-line tool. Twenty-five are on crates.io, with their documentation on docs.rs; `manguebyte-state` and `manguebyte-ump-io` came after the {version} release and are in the repository only. `manguebyte-core` has no dependencies at all.',
       more: 'Every feature, by area',
     },
 
@@ -244,7 +244,7 @@ export default {
     aheadOutro:
       '[JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) tracks that gap module by module, and the [roadmap](/roadmap/) says in what order it is being closed.',
     sourceNote:
-      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Three limits say a little more, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
+      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Four limits say a little more, or something newer, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 5 follows [ROADMAP.md](repo:ROADMAP.md) and the [changelog](repo:CHANGELOG.md), which say that per-note automation from a CLAP host is now accepted, that Audio Units and LV2 plugins send notes as MIDI 1.0, and that MIDI 2.0 reaches the ports that speak it unchanged; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
   },
 
   features: {
@@ -254,11 +254,11 @@ export default {
     kicker: 'Features',
     heading: 'What exists today',
     intro: [
-      'Twenty-five crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. All of them are on [crates.io]({crateUrl}) as version {version}, with their documentation on [docs.rs]({docsUrl}). Everything listed here is in the repository and covered by its tests.',
+      'Twenty-seven crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. Everything listed here is in the repository at commit `{commit}` and covered by its tests, but not all of it is released: twenty-five of the crates are on [crates.io]({crateUrl}) as version {version}, with their documentation on [docs.rs]({docsUrl}), and what came after that release, two crates among it, is listed under “Unreleased” in the [changelog](repo:CHANGELOG.md). To use it now, depend on the repository.',
       'This is a small part of the road ahead. [What is missing](#missing) is listed just as plainly.',
     ],
     cratesLabel: 'Crates',
-    facade: 'The `manguebyte` crate gathers nineteen of the others under one name, with a prelude; the plugin formats, editors, hosting and the sampler are behind features. It leaves five out: `manguebyte-gfx` and `manguebyte-window`, which the editors are built on, the browser engine `manguebyte-web`, the command-line tool and `manguebyte-pro-io`.',
+    facade: 'The `manguebyte` crate gathers nineteen of the others under one name, with a prelude; the plugin formats, editors, hosting and the sampler are behind features. It leaves seven out: `manguebyte-gfx` and `manguebyte-window`, which the editors are built on, `manguebyte-ump-io`, which the device crate’s MIDI output uses, `manguebyte-state`, for application state, the browser engine `manguebyte-web`, the command-line tool and `manguebyte-pro-io`.',
     missingHeading: 'Not there yet',
     missingIntro: 'These do not exist in Manguebyte today. If you need one of them now, JUCE has it.',
     missingOutro: 'The [roadmap](/roadmap/) lists every planned item and its status, and [where JUCE is ahead](/beyond-juce/#ahead) says the same from the other side.',
@@ -271,7 +271,7 @@ export default {
     kicker: 'Get started',
     heading: 'From nothing to a plugin',
     intro: [
-      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit follows the [{version} release]({releaseUrl}) with documentation fixes only, so the code is the release’s.',
+      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit comes well after the [{version} release]({releaseUrl}), but the two plugins and the README’s quick start are the same as in the release.',
       'Before you build on it: Manguebyte is young, {version} is its first release, and **the API will change before 1.0**. Plugin editors exist and are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host so far.',
     ],
     steps: {

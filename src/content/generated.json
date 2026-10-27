@@ -1,5 +1,5 @@
 {
-  "commit": "d0d731b9664ea57edc535bae861291e896342d0d",
+  "commit": "b59fd3a53ac862598c7b7a3e940bd994d35bce11",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -7,28 +7,28 @@
     "automation-harness": {
       "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 495,
+      "line": 640,
       "name": "automation_lands_on_its_exact_frame_and_updates_the_parameter",
       "test": true
     },
     "automation-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 865,
+      "line": 868,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
     "automation-vst3": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 891,
+      "line": 893,
       "name": "automation_lands_on_its_frame_when_processing_in_place",
       "test": true
     },
     "automation-vst3-controller": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 910,
+      "line": 912,
       "name": "what_the_controller_is_told_does_not_disturb_running_automation",
       "test": true
     },
@@ -56,77 +56,77 @@
     "outside-changes": {
       "repo": null,
       "file": "crates/manguebyte-plugin/src/harness.rs",
-      "line": 539,
+      "line": 684,
       "name": "changes_made_outside_the_host_reach_the_plugin_as_events",
       "test": true
     },
     "no-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 131,
+      "line": 135,
       "name": "processors_do_not_use_the_heap",
       "test": true
     },
     "no-heap-guard": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 122,
+      "line": 126,
       "name": "the_guard_itself_catches_an_allocation",
       "test": true
     },
     "no-heap-synth": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 274,
+      "line": 278,
       "name": "a_synth_handles_a_flood_of_events_without_using_the_heap",
       "test": true
     },
     "no-heap-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 872,
+      "line": 875,
       "name": "heap_calls == 0 through the CLAP interface",
       "test": false
     },
     "ci-miri": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 94,
+      "line": 159,
       "name": "CI job: Miri",
       "test": false
     },
     "per-note": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 959,
+      "line": 984,
       "name": "expression_and_modulation_reach_one_note_and_parameters_reach_all",
       "test": true
     },
     "per-note-overlap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/src/synth.rs",
-      "line": 910,
+      "line": 935,
       "name": "notes_with_identifiers_overlap_on_one_key_and_end_separately",
       "test": true
     },
     "per-note-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 1180,
+      "line": 1183,
       "name": "an_instrument_takes_notes_expression_modulation_and_a_sidechain",
       "test": true
     },
     "ci-clap": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 163,
+      "line": 228,
       "name": "CI job: CLAP validation",
       "test": false
     },
     "ci-vst3": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 197,
+      "line": 262,
       "name": "CI job: VST 3 validation",
       "test": false
     },
@@ -154,28 +154,28 @@
     "state-versions": {
       "repo": null,
       "file": "crates/manguebyte-params/src/set.rs",
-      "line": 603,
+      "line": 723,
       "name": "state_from_another_version_loads_as_far_as_it_can",
       "test": true
     },
     "params-threads": {
       "repo": null,
       "file": "crates/manguebyte-params/src/param.rs",
-      "line": 1432,
+      "line": 1451,
       "name": "params_are_shareable_across_threads",
       "test": true
     },
     "subnormal-clap": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 992,
+      "line": 995,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
     "subnormal-vst3": {
       "repo": null,
       "file": "crates/manguebyte-vst3/tests/abi.rs",
-      "line": 1195,
+      "line": 1197,
       "name": "numbers_too_small_to_hear_are_zero_while_the_plugin_runs_and_only_then",
       "test": true
     },
@@ -231,7 +231,7 @@
     "ci-miri-host": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 145,
+      "line": 210,
       "name": "CI job: Miri (plugin host)",
       "test": false
     },
@@ -392,21 +392,21 @@
     "instruments-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 976,
+      "line": 1048,
       "name": "the_modelled_acoustic_instruments_do_not_use_the_heap",
       "test": true
     },
     "instruments-voices-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 1064,
+      "line": 1136,
       "name": "the_instruments_do_not_use_the_heap",
       "test": true
     },
     "instruments-poly-heap": {
       "repo": null,
       "file": "crates/manguebyte-dsp/tests/realtime.rs",
-      "line": 1217,
+      "line": 1289,
       "name": "the_poly_synth_does_not_use_the_heap",
       "test": true
     },
@@ -420,28 +420,28 @@
     "instruments-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 73,
+      "line": 72,
       "name": "TECH_DEBT items 66 to 71",
       "test": false
     },
     "ci-cli": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 260,
+      "line": 325,
       "name": "CI job: command-line tool end to end",
       "test": false
     },
     "reaper-render": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 104,
+      "line": 113,
       "name": "TECH_DEBT: the REAPER renders, paid back",
       "test": false
     },
     "reaper-owed": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 64,
+      "line": 63,
       "name": "TECH_DEBT item 56",
       "test": false
     },
@@ -469,14 +469,14 @@
     "per-note-clap-mpe": {
       "repo": null,
       "file": "crates/manguebyte-clap/tests/abi.rs",
-      "line": 1103,
+      "line": 1106,
       "name": "clap_notes_mpe_and_midi_2_end_in_the_same_events",
       "test": true
     },
     "per-note-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 83,
+      "line": 82,
       "name": "TECH_DEBT item 76",
       "test": false
     },
@@ -497,35 +497,56 @@
     "midi-out-standalone": {
       "repo": null,
       "file": "crates/manguebyte-standalone/src/engine.rs",
-      "line": 427,
+      "line": 462,
       "name": "notes_the_plugin_sends_reach_the_midi_output",
       "test": true
     },
     "midi-out-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 89,
+      "line": 88,
       "name": "TECH_DEBT item 82",
+      "test": false
+    },
+    "ci-ump": {
+      "repo": null,
+      "file": ".github/workflows/ci.yml",
+      "line": 88,
+      "name": "CI job: UMP output",
+      "test": false
+    },
+    "ump-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 96,
+      "name": "TECH_DEBT item 90",
+      "test": false
+    },
+    "plugin-extras-debt": {
+      "repo": null,
+      "file": "docs/TECH_DEBT.md",
+      "line": 97,
+      "name": "TECH_DEBT item 91",
       "test": false
     },
     "ci-au": {
       "repo": null,
       "file": ".github/workflows/ci.yml",
-      "line": 374,
+      "line": 441,
       "name": "CI job: Audio Unit validation (auval)",
       "test": false
     },
     "au-effect": {
       "repo": null,
       "file": "crates/manguebyte-au/tests/abi.rs",
-      "line": 995,
+      "line": 997,
       "name": "the_effect_sounds_as_it_does_with_no_host",
       "test": true
     },
     "au-instrument": {
       "repo": null,
       "file": "crates/manguebyte-au/tests/abi.rs",
-      "line": 1276,
+      "line": 1278,
       "name": "the_instrument_plays_midi_on_its_frames_and_reads_the_transport",
       "test": true
     },
@@ -546,28 +567,28 @@
     "hotswap": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 577,
+      "line": 582,
       "name": "the_song_goes_on_while_the_device_changes_under_it",
       "test": true
     },
     "hotswap-gap": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 729,
+      "line": 755,
       "name": "devices_that_cannot_overlap_hand_over_after_a_short_faded_gap",
       "test": true
     },
     "hotswap-rate": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 817,
+      "line": 843,
       "name": "a_device_at_another_rate_plays_the_same_whatever_its_blocks",
       "test": true
     },
     "hotswap-lost": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 922,
+      "line": 948,
       "name": "a_lost_device_is_replaced_without_preparing_again",
       "test": true
     },
@@ -581,7 +602,7 @@
     "hotswap-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 92,
+      "line": 91,
       "name": "TECH_DEBT item 85",
       "test": false
     },
@@ -665,7 +686,7 @@
     "bridge-debt": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 91,
+      "line": 90,
       "name": "TECH_DEBT item 84",
       "test": false
     },
@@ -977,8 +998,8 @@
       "lang": "rust",
       "ranges": [
         [
-          494,
-          512
+          639,
+          657
         ]
       ],
       "lines": [
@@ -1126,12 +1147,12 @@
       "lang": "rust",
       "ranges": [
         [
-          83,
-          94
+          87,
+          98
         ],
         [
-          102,
-          119
+          106,
+          123
         ]
       ],
       "lines": [
@@ -1309,8 +1330,8 @@
       "lang": "toml",
       "ranges": [
         [
-          161,
-          162
+          165,
+          166
         ]
       ],
       "lines": [
@@ -1328,8 +1349,8 @@
       "lang": "bash",
       "ranges": [
         [
-          173,
-          174
+          177,
+          178
         ]
       ],
       "lines": [
@@ -1347,8 +1368,8 @@
       "lang": "rust",
       "ranges": [
         [
-          181,
-          198
+          185,
+          202
         ]
       ],
       "lines": [
@@ -1414,8 +1435,8 @@
       "lang": "rust",
       "ranges": [
         [
-          204,
-          221
+          208,
+          225
         ]
       ],
       "lines": [
