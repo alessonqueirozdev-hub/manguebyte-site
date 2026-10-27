@@ -244,7 +244,7 @@ export default {
     aheadOutro:
       'O [JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) acompanha essa distância módulo a módulo, e o [roadmap](/roadmap/) diz em que ordem ela está sendo fechada.',
     sourceNote:
-      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Quatro limites dizem um pouco mais, ou algo mais novo, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou; o da seção 5 segue o [ROADMAP.md](repo:ROADMAP.md) e o [changelog](repo:CHANGELOG.md), segundo os quais a automação por nota vinda de um host CLAP agora é aceita, os Audio Units e os plugins LV2 mandam notas como MIDI 1.0, e o MIDI 2.0 chega sem alteração às portas que o falam; o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI; e o da seção 9 diz, também como o README, que um crate opcional está sob a GPLv3.',
+      'Esta página segue o [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) do repositório no commit `{commit}`. Quatro limites dizem um pouco mais, ou algo mais novo, a partir de outros documentos do repositório: o da seção 2 cita o que o teste no REAPER encontrou; o da seção 5 acrescenta, a partir do [TECH_DEBT.md](repo:docs/TECH_DEBT.md), como o CI confere as portas que falam MIDI 2.0, e que nenhum aparelho MIDI 2.0 foi experimentado; o da seção 6 diz, como o README, que o lilv carrega os plugins LV2 no CI; e o da seção 9 diz, também como o README, que um crate opcional está sob a GPLv3.',
   },
 
   features: {

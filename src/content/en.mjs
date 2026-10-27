@@ -244,7 +244,7 @@ export default {
     aheadOutro:
       '[JUCE_PARITY.md](repo:docs/JUCE_PARITY.md) tracks that gap module by module, and the [roadmap](/roadmap/) says in what order it is being closed.',
     sourceNote:
-      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Four limits say a little more, or something newer, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 5 follows [ROADMAP.md](repo:ROADMAP.md) and the [changelog](repo:CHANGELOG.md), which say that per-note automation from a CLAP host is now accepted, that Audio Units and LV2 plugins send notes as MIDI 1.0, and that MIDI 2.0 reaches the ports that speak it unchanged; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
+      'This page follows [docs/BEYOND_JUCE.md](repo:docs/BEYOND_JUCE.md) in the repository at commit `{commit}`. Four limits say a little more, or something newer, from the repository’s other documents: that of section 2 cites what testing in REAPER found; that of section 5 adds, from [TECH_DEBT.md](repo:docs/TECH_DEBT.md), how CI checks the ports that speak MIDI 2.0, and that no MIDI 2.0 device has been tried; that of section 6 says, as the README does, that lilv loads the LV2 plugins in CI; and that of section 9 says, as the README does, that one opt-in crate is under the GPLv3.',
   },
 
   features: {
