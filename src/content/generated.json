@@ -1,5 +1,5 @@
 {
-  "commit": "723a4430749cbaf790b76e03ceda5c41bcc5873e",
+  "commit": "4344f9b04832732d4fcc22a21d4eda808734cdbc",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -434,7 +434,7 @@
     "reaper-render": {
       "repo": null,
       "file": "docs/TECH_DEBT.md",
-      "line": 113,
+      "line": 114,
       "name": "TECH_DEBT: the REAPER renders, paid back",
       "test": false
     },
@@ -1330,8 +1330,8 @@
       "lang": "toml",
       "ranges": [
         [
-          165,
-          166
+          167,
+          168
         ]
       ],
       "lines": [
@@ -1349,8 +1349,8 @@
       "lang": "bash",
       "ranges": [
         [
-          177,
-          178
+          179,
+          180
         ]
       ],
       "lines": [
@@ -1368,8 +1368,8 @@
       "lang": "rust",
       "ranges": [
         [
-          185,
-          202
+          187,
+          204
         ]
       ],
       "lines": [
@@ -1435,8 +1435,8 @@
       "lang": "rust",
       "ranges": [
         [
-          208,
-          225
+          210,
+          227
         ]
       ],
       "lines": [
