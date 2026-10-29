@@ -30,7 +30,7 @@ export default {
     theme: 'Alternar entre o tema claro e o escuro',
     otherLanguage: 'English',
     otherLanguageHint: 'Read this page in English',
-    logoAlt: 'Manguebyte: um caranguejo laranja de fones de ouvido num controlador de pads, debaixo de uma antena parabólica que transmite ondas',
+    logoAlt: 'Manguebyte: um caranguejo de fones de ouvido tocando guitarra',
   },
 
   code: {
@@ -400,7 +400,7 @@ export default {
       },
     ],
     logoHeading: 'Por isso o logo é um caranguejo',
-    logo: 'Um caranguejo de fones nos controles, debaixo da antena parabólica do manifesto: um caranguejo com cérebro, ligado no mundo.',
+    logo: 'Um caranguejo de fones de ouvido e guitarra: um caranguejo com cérebro, fazendo barulho.',
     quote: 'Uma antena parabólica fincada na lama do mangue.',
     quoteSource: 'A imagem do manifesto',
   },

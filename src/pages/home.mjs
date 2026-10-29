@@ -42,7 +42,7 @@ export function render(ctx) {
             <text><textPath href="#ring" textLength="1138" lengthAdjust="spacing">${escape(home.ring.repeat(2).toUpperCase())}</textPath></text>
           </svg>
           <div class="disc-face">
-            <img src="${asset('img/logo-720.webp')}" srcset="${asset('img/logo-360.webp')} 360w, ${asset('img/logo-720.webp')} 720w" sizes="(min-width: 60rem) 330px, 220px" width="720" height="720" alt="${escape(t.nav.logoAlt)}" fetchpriority="high">
+            <img src="${asset('img/crab-720.webp')}" srcset="${asset('img/crab-360.webp')} 360w, ${asset('img/crab-720.webp')} 720w" sizes="(min-width: 60rem) 330px, 220px" width="720" height="720" alt="${escape(t.nav.logoAlt)}" fetchpriority="high">
           </div>
         </div>
       </div>

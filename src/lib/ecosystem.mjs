@@ -8,7 +8,7 @@ export function projectCards(ctx, current) {
   const { t, text, url, asset } = ctx;
   // Parabolic has no page and no public repository yet, so no link.
   const links = { manguebyte: url('/'), aratu: url('/aratu/') };
-  const images = { manguebyte: 'img/logo-360.webp', aratu: 'img/aratu-360.webp' };
+  const images = { manguebyte: 'img/crab-360.webp', aratu: 'img/aratu-360.webp' };
 
   return html`<ul class="projects">
     ${t.projects.map((project) => {
