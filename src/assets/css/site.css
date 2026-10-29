@@ -2129,7 +2129,8 @@ details.show-test .code {
   text-transform: uppercase;
 }
 
-.project-parabolic .project-status {
+.project-parabolic .project-status,
+.project-mare .project-status {
   color: var(--ink-2);
 }
 

@@ -197,7 +197,7 @@ export default {
 
     ecosystem: {
       heading: 'The Manguebyte ecosystem',
-      intro: 'Two more projects from Recife grow from the same mangue, built to run on Manguebyte.',
+      intro: 'Three more projects from Recife grow from the same mangue, built to run on Manguebyte.',
       more: 'More about Aratu',
     },
 
@@ -424,6 +424,12 @@ export default {
       name: 'Parabolic',
       status: 'Planned',
       body: 'A tool for musicians to record their own instruments and turn them into plugins and samplers without writing code.',
+    },
+    {
+      id: 'mare',
+      name: 'MARÉ',
+      status: 'In design',
+      body: 'Multi-device Audio Realtime Exchange: an open protocol for low-latency audio and MIDI, to replace ASIO. Many programs on one device at once, many devices as one, MIDI 2.0 on the same clock.',
     },
   ],
 
