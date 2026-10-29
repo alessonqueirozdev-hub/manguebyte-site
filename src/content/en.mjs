@@ -30,7 +30,7 @@ export default {
     theme: 'Switch between the light and the dark theme',
     otherLanguage: 'Português',
     otherLanguageHint: 'Ler esta página em português',
-    logoAlt: 'Manguebyte: a crab wearing headphones and playing an electric guitar',
+    logoAlt: 'Manguebyte: an orange crab wearing headphones at a pad controller, under a satellite dish sending out waves',
   },
 
   code: {
@@ -400,7 +400,7 @@ export default {
       },
     ],
     logoHeading: 'So the logo is a crab',
-    logo: 'A crab with headphones and a guitar: a crab with brains, making noise.',
+    logo: 'A crab with headphones at the controls, under the manifesto’s satellite dish: a crab with brains, plugged into the world.',
     quote: 'A satellite dish stuck in the mangrove mud.',
     quoteSource: 'The image of the manifesto',
   },

@@ -44,7 +44,7 @@ export function render(ctx) {
   const logo = html`<section class="section section-tint" aria-labelledby="logo">
     <div class="wrap logo-row">
       <div class="disc-face">
-        <img src="${asset('img/crab-720.webp')}" srcset="${asset('img/crab-360.webp')} 360w, ${asset('img/crab-720.webp')} 720w" sizes="280px" width="720" height="720" alt="${escape(t.nav.logoAlt)}" loading="lazy">
+        <img src="${asset('img/logo-720.webp')}" srcset="${asset('img/logo-360.webp')} 360w, ${asset('img/logo-720.webp')} 720w" sizes="280px" width="720" height="720" alt="${escape(t.nav.logoAlt)}" loading="lazy">
       </div>
       <div>
         ${sectionHead({ heading: page.logoHeading, id: 'logo' })}
