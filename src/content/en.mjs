@@ -478,7 +478,7 @@ export default {
     sound: [
       '**No recorded samples.** Every pipe is computed in real time, as a sum of partials: sines that follow the wind, each with its own slow drift. With no recording, there is no loop for the ear to catch repeating.',
       '**The wind is the heart of the model.** A reservoir, like an organ\'s bellows, has its pressure worked out every audio block under the air the sounding pipes draw, and each windchest follows it behind its own regulator. A full chord makes the wind give way, and the pipes answer in pitch, level and brightness. The tremulant shakes the wind\'s pressure, not the output\'s volume.',
-      '**Every rank has its own voice.** Partials do not start together, there is the *chiff* of the attack, mixtures break back an octave as they climb the keyboard, reeds have formants fixed in hertz, and the treble has its own tilt of timbre.',
+      '**Every rank has its own voice.** Partials do not start together, mixtures break back an octave as they climb the keyboard, reeds have formants fixed in hertz, and the treble has its own tilt of timbre.',
       '**From the key to the room.** A key is one event: the engine turns it into one voice for each rank drawn in the division, plus those the couplers lend. Each voice goes to the bus of its rank\'s windchest, enclosed chests pass through their swell box, and everything sums. Then come the reverb (room, chamber, hall, cathedral or plate) and a five-band equaliser, with eight historical temperaments on any key and the pitch of A of your choice.',
       '**What is still to come.** The sound is still being worked on. Next are each pipe\'s place in space, a church\'s first reflections and a more realistic attack.',
     ],
