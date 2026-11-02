@@ -12,6 +12,7 @@ export function render(ctx) {
       paragraph
         .replace('(caecilia-windows)', `(${windows})`)
         .replace('(caecilia-release)', `(${release})`)
+        .replace('(caecilia-v1)', `(https://github.com/${repo}/tree/v1-cpp-final)`)
         .replace('(caecilia-playlist)', `(https://www.youtube.com/playlist?list=${playlist})`),
     );
 
@@ -43,7 +44,7 @@ export function render(ctx) {
           const title = `Caecilia Pipe Organ: ${page.videoTitles[at]}`;
           return html`<li>
             <a class="video-poster" href="https://www.youtube.com/watch?v=${escape(id)}&amp;list=${escape(playlist)}" data-video="${escape(id)}" data-title="${escape(title)}">
-              <img src="${asset(`img/video-${id}.webp`)}" width="960" height="540" alt="" loading="lazy">
+              <img src="${asset(`img/video-${id}.webp`)}" width="1280" height="720" alt="" loading="lazy">
               <span class="video-play" aria-hidden="true"></span>
               <span class="sr-only">${escape(title)}</span>
             </a>
@@ -57,10 +58,33 @@ export function render(ctx) {
   const body = html`<section class="section section-tint">
     <div class="wrap">
       <div class="prose">
-        <h2 id="download">${escape(page.downloadHeading)}</h2>
-        ${page.downloadBody.map((paragraph) => `<p>${linked(paragraph)}</p>`)}
         <h2 id="what">${escape(page.whatHeading)}</h2>
         ${page.what.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="download">${escape(page.downloadHeading)}</h2>
+        ${page.downloadBody.map((paragraph) => `<p>${linked(paragraph)}</p>`)}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
+        <h2 id="sound">${escape(page.soundHeading)}</h2>
+        ${page.sound.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="made">${escape(page.devHeading)}</h2>
+        ${page.dev.map((paragraph) => `<p>${linked(paragraph)}</p>`)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="wrap">
+      <div class="prose">
+        <h2 id="manguebyte">${escape(page.frameworkHeading)}</h2>
+        <p>${text(page.frameworkIntro)}</p>
+        <dl class="ways ways-stacked">
+          ${page.framework.map((part) => `<div><dt>${escape(part.term)}</dt><dd>${text(part.body)}</dd></div>`).join('')}
+        </dl>
+        <p>${text(page.frameworkOutro)}</p>
+        <p>${text(page.contact)}</p>
       </div>
     </div>
   </section>`;

@@ -463,9 +463,36 @@ export default {
     videoTitles: ['Demonstração I', 'Demonstração II', 'Demonstração III', 'Demonstração IV'],
     whatHeading: 'O que é',
     what: [
-      'A Caecilia funciona como programa próprio, com o console do órgão na janela, e como plugin VST3 e CLAP dentro de uma DAW. Ela é construída sobre o Manguebyte, do som à interface.',
-      'É desenvolvida por Alesson Queiroz, sob a licença Apache-2.0. Para falar sobre ela, escreva para [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
+      'A Caecilia é um órgão de tubos que você toca no computador, como programa próprio ou como plugin VST3 e CLAP dentro de uma DAW. O código é aberto, sob a licença Apache-2.0, e ela é desenvolvida por Alesson Queiroz.',
+      'Ela vem com um órgão de demonstração no estilo francês, de três divisões (Grand-Orgue, Récit e Pédale) e 32 registros. Um órgão é um arquivo JSON que descreve someiros, fileiras, divisões, registros e acoplamentos, então outros órgãos podem ser carregados, e a troca acontece ao vivo, sem estalo.',
+      'O console é desenhado como um console de órgão: puxadores de registro, manuais com pistões, pedais de expressão e de crescendo, pedaleira e medidores de vento em milímetros de coluna d\'água. Ela também toca sozinha, com peças que puxam os próprios registros, para você ouvir o órgão sem ter um teclado. E há seleção de registros por natureza (por exemplo, todas as cordas do Récit), desfazer e refazer com histórico, combinações nos pistões e MIDI learn: aperte um registro ou pistão e mova uma tecla, pedal ou controle.',
     ],
+    soundHeading: 'Como funciona o som',
+    sound: [
+      '**Nenhuma amostra gravada.** Cada tubo é calculado em tempo real, como uma soma de parciais: senos que seguem o vento, cada um com a sua deriva lenta. Sem gravação, não há loop para o ouvido perceber repetindo.',
+      '**O vento é o centro do modelo.** Um reservatório, como o fole de um órgão, tem a pressão calculada a cada bloco de áudio conforme o ar que os tubos soando consomem, e cada someiro acompanha essa pressão atrás do próprio regulador. Um acorde cheio faz o vento ceder, e os tubos respondem em afinação, volume e brilho. O tremolo sacode a pressão do vento, não o volume de saída.',
+      '**Cada fileira tem a sua voz.** Os parciais não começam juntos, há o *chiff* do ataque, as misturas recuam de oitava ao subir pelo teclado (*break-back*), as palhetas têm formantes fixos em hertz, e os agudos têm a própria inclinação de timbre.',
+      '**Do teclado à sala.** Uma tecla é um único evento: o motor a transforma em uma voz para cada fileira puxada na divisão, mais as que os acoplamentos emprestam. Cada voz vai para o barramento do someiro da sua fileira, os someiros fechados passam pela caixa expressiva, e tudo se soma. Depois vêm o reverb (sala, câmara, salão, catedral ou placa) e um equalizador de cinco bandas, com oito temperamentos históricos em qualquer tom e a afinação do Lá à sua escolha.',
+      '**O que ainda vem.** O som continua em trabalho. Os próximos passos são a posição de cada tubo no espaço, as primeiras reflexões da igreja e um ataque mais realista.',
+    ],
+    devHeading: 'Como foi desenvolvida',
+    dev: [
+      'A primeira Caecilia foi escrita em C++ com o JUCE, com o console numa página web dentro de um WebView. A versão 2.0 é a reescrita completa em Rust: sem JUCE, sem WebView e sem JavaScript. O código antigo continua guardado na tag [v1-cpp-final](caecilia-v1).',
+      'O que a versão 1.x media foi congelado como referência, e os testes da 2.0 comparam o som e o comportamento com essa referência, para o porte não perder nada no caminho. A referência é o piso, não a meta: a meta é ir além dela.',
+      'Nada copia outros órgãos: nenhum código do JUCE nem de projetos GPL, como o GrandOrgue e o Aeolus, é lido. Os valores de voicing vêm da literatura pública de acústica de tubos e das nossas próprias medidas. E, no caminho do áudio, nada aloca memória, trava ou espera, inclusive durante a troca de órgão ou uma demonstração: testes com um alocador que conta chamadas provam isso.',
+    ],
+    frameworkHeading: 'Como usa o Manguebyte',
+    frameworkIntro: 'O que é de órgão fica na Caecilia: o vento, as vozes, o motor, os registros e o console. O que serviria a qualquer programa de áudio vem do Manguebyte, e o que faltava foi construído lá, onde outros projetos também podem usar.',
+    framework: [
+      { term: 'As vozes', body: 'O `PartialBank` do `manguebyte-dsp` calcula os parciais com instruções vetoriais do processador, com o mesmo resultado bit a bit em qualquer delas.' },
+      { term: 'Vários núcleos', body: 'O `RenderPool` do `manguebyte-core` divide as vozes entre os núcleos dentro do callback de áudio, sem mudar um bit do resultado.' },
+      { term: 'Som e afinação', body: 'O reverb, os filtros do equalizador, o limitador e os temperamentos, com escalas Scala, vêm do `manguebyte-dsp`.' },
+      { term: 'Plugin e programa', body: 'O mesmo código vira CLAP e VST3 com `manguebyte-plugin`, `manguebyte-clap` e `manguebyte-vst`, e programa próprio com `manguebyte-standalone`, que cuida da placa de som e dos aparelhos MIDI.' },
+      { term: 'O console', body: 'Tudo o que se vê é desenhado de forma nativa, com `manguebyte-gfx`, `manguebyte-ui`, `manguebyte-gui` e `manguebyte-window`. O instalador também é feito com esse mesmo kit.' },
+      { term: 'MIDI', body: 'O `manguebyte-midi` lê os arquivos MIDI das peças que o órgão toca sozinho.' },
+    ],
+    frameworkOutro: 'O caminho também é de volta: a Caecilia pede, e o framework ganha. O streaming de amostras do disco, os releases escolhidos pelo tempo segurado, a renderização em vários núcleos, a afinação e o governador de CPU nasceram de pedidos dela. Os blocos de espaço por tubo e de ar e ataque por parcial, em construção agora, também.',
+    contact: 'Para falar sobre ela, escreva para [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
   },
 
   parabolic: {

@@ -2319,6 +2319,12 @@ details.show-test .code {
   list-style: none;
 }
 
+/* One to a row, as wide as the page: an organ's console needs the room. */
+.videos {
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
 .videos p {
   margin: 0.5rem 0 0;
   font-weight: 650;

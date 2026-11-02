@@ -463,9 +463,36 @@ export default {
     videoTitles: ['Demonstration I', 'Demonstration II', 'Demonstration III', 'Demonstration IV'],
     whatHeading: 'What it is',
     what: [
-      "Caecilia runs as a program of its own, with the organ's console in its window, and as a VST3 and CLAP plugin inside a DAW. It is built on Manguebyte, from the sound to the interface.",
-      'It is developed by Alesson Queiroz, under the Apache-2.0 licence. To talk about it, write to [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
+      'Caecilia is a pipe organ you play on a computer, as a program of its own or as a VST3 and CLAP plugin inside a DAW. It is open source, under the Apache-2.0 licence, and developed by Alesson Queiroz.',
+      'It comes with a French-style demonstration organ of three divisions (Grand-Orgue, Récit and Pédale) and 32 stops. An organ is a JSON file of windchests, ranks, divisions, stops and couplers, so other organs can be loaded, and they change live, without a click.',
+      'Its console is drawn as an organ console: drawstops, manuals with pistons, swell and crescendo shoes, a pedalboard and wind gauges in millimetres of water. It also plays by itself, with pieces that draw their own stops, so you can hear the organ without a keyboard. And there is registration by a stop\'s nature (every string of the Récit, say), undo and redo with a history, combinations on the pistons, and MIDI learn: press a stop or a piston, then move a key, pedal or controller.',
     ],
+    soundHeading: 'How the sound works',
+    sound: [
+      '**No recorded samples.** Every pipe is computed in real time, as a sum of partials: sines that follow the wind, each with its own slow drift. With no recording, there is no loop for the ear to catch repeating.',
+      '**The wind is the heart of the model.** A reservoir, like an organ\'s bellows, has its pressure worked out every audio block under the air the sounding pipes draw, and each windchest follows it behind its own regulator. A full chord makes the wind give way, and the pipes answer in pitch, level and brightness. The tremulant shakes the wind\'s pressure, not the output\'s volume.',
+      '**Every rank has its own voice.** Partials do not start together, there is the *chiff* of the attack, mixtures break back an octave as they climb the keyboard, reeds have formants fixed in hertz, and the treble has its own tilt of timbre.',
+      '**From the key to the room.** A key is one event: the engine turns it into one voice for each rank drawn in the division, plus those the couplers lend. Each voice goes to the bus of its rank\'s windchest, enclosed chests pass through their swell box, and everything sums. Then come the reverb (room, chamber, hall, cathedral or plate) and a five-band equaliser, with eight historical temperaments on any key and the pitch of A of your choice.',
+      '**What is still to come.** The sound is still being worked on. Next are each pipe\'s place in space, a church\'s first reflections and a more realistic attack.',
+    ],
+    devHeading: 'How it was made',
+    dev: [
+      'The first Caecilia was written in C++ with JUCE, with its console as a web page inside a WebView. Version 2.0 is a full rewrite in Rust: no JUCE, no WebView and no JavaScript. The old code is kept at the tag [v1-cpp-final](caecilia-v1).',
+      'What version 1.x measured was frozen as a reference, and 2.0\'s tests compare its sound and behaviour with that reference, so the port loses nothing on the way. The reference is the floor, not the goal: the goal is to go past it.',
+      'Nothing is copied from other organs: no code from JUCE or from GPL projects such as GrandOrgue and Aeolus is read. Voicing values come from the public literature on pipe acoustics and from our own measurements. And on the audio path nothing allocates memory, locks or waits, even while an organ changes or a demonstration plays: tests with an allocator that counts calls prove it.',
+    ],
+    frameworkHeading: 'How it uses Manguebyte',
+    frameworkIntro: 'What is an organ\'s stays in Caecilia: the wind, the voices, the engine, the registration and the console. What would serve any audio program comes from Manguebyte, and what was missing was built there, where other projects can use it too.',
+    framework: [
+      { term: 'The voices', body: '`manguebyte-dsp`\'s `PartialBank` computes the partials with the processor\'s vector instructions, with the same result bit for bit on any of them.' },
+      { term: 'Several cores', body: '`manguebyte-core`\'s `RenderPool` shares the voices among the cores inside the audio callback, without changing a bit of the result.' },
+      { term: 'Sound and tuning', body: 'The reverb, the equaliser\'s filters, the limiter and the temperaments, with Scala scales, come from `manguebyte-dsp`.' },
+      { term: 'Plugin and program', body: 'The same code becomes CLAP and VST3 with `manguebyte-plugin`, `manguebyte-clap` and `manguebyte-vst`, and a program of its own with `manguebyte-standalone`, which looks after the sound card and the MIDI devices.' },
+      { term: 'The console', body: 'Everything you see is drawn natively, with `manguebyte-gfx`, `manguebyte-ui`, `manguebyte-gui` and `manguebyte-window`. The installer is made with the same toolkit.' },
+      { term: 'MIDI', body: '`manguebyte-midi` reads the MIDI files of the pieces the organ plays by itself.' },
+    ],
+    frameworkOutro: 'The road runs back too: Caecilia asks, and the framework gains. Streaming samples from disk, releases chosen by how long a note was held, rendering on several cores, tuning and the CPU governor were born of its requests. So were the blocks for a pipe\'s place in space and for air and attack per partial, being built now.',
+    contact: 'To talk about it, write to [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
   },
 
   parabolic: {
