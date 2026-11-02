@@ -295,10 +295,13 @@ svg {
   align-items: center;
   gap: 0.5rem 1.6rem;
   min-height: 4rem;
+  /* Wider than the pages' column: one row needs room for every link. */
+  max-width: max(var(--wrap), 102rem);
 }
 
 .brand {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
@@ -417,7 +420,7 @@ svg {
 
 /* Below this width the links do not fit beside the name and the tools, so
    they move to a row of their own. */
-@media (max-width: 74.99rem) {
+@media (max-width: 101.99rem) {
   .masthead {
     position: static;
   }
