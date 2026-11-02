@@ -455,9 +455,16 @@ export default {
     source: 'Código no GitHub',
     downloadHeading: 'Baixar',
     downloadBody: [
-      'A versão **2.0.0-alpha.0** tem um [instalador para Windows de 64 bits](caecilia-windows), que instala o programa e os plugins VST3 e CLAP. Linux e macOS ainda não têm versão publicada.',
+      'A versão **2.0.0-alpha.0** tem um [instalador para Windows de 64 bits](caecilia-windows), que instala o programa e os plugins VST3 e CLAP.',
       'O instalador ainda não é assinado digitalmente, então o Windows SmartScreen pode avisar: escolha **Mais informações** e depois **Executar assim mesmo**. Os limites conhecidos e o SHA-256 estão nas [notas da versão](caecilia-release).',
     ],
+    systems: [
+      { id: 'windows', name: 'Windows', detail: '64 bits' },
+      { id: 'linux', name: 'Linux', detail: '64 bits' },
+      { id: 'macos', name: 'macOS', detail: 'Apple Silicon' },
+    ],
+    get: 'Baixar a alfa',
+    soon: 'Em preparação',
     videosHeading: 'Ouça',
     videosIntro: 'Quatro demonstrações, [também em playlist no YouTube](caecilia-playlist). O vídeo só carrega quando você aperta o play.',
     videoTitles: ['Demonstração I', 'Demonstração II', 'Demonstração III', 'Demonstração IV'],

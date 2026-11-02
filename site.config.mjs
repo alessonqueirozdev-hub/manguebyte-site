@@ -52,6 +52,9 @@ export default {
       // page's text only once it has a file there.
       release: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases/tag/v2.0.0-alpha.0',
       windows: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases/download/v2.0.0-alpha.0/Caecilia-Setup-2.0.0-alpha.0-x64.exe',
+      // The address of each system's installer, once it has one.
+      linux: null,
+      macos: null,
       playlist: 'PLeH-pPhG59Eo',
       videos: ['inWo58q_7Nk', 'JHh-7zB8bJQ', 'mVf4Q_gmbrA', '2raCsKsKtAI'],
     },

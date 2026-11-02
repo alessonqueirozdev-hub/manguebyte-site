@@ -7,6 +7,18 @@ export function render(ctx) {
   const { t, text, asset, sectionHead, config } = ctx;
   const page = t.caecilia;
   const { release, windows, playlist, videos, repo } = config.related.caecilia;
+  const downloads = html`<ul class="downloads">
+    ${page.systems.map((system) => {
+      const address = config.related.caecilia[system.id];
+      return html`<li>
+        <h3>${escape(system.name)}</h3>
+        <p>${escape(system.detail)}</p>
+        ${address
+          ? `<a class="button button-primary" href="${escape(address)}">${escape(page.get)}${icon('out')}</a>`
+          : `<span class="downloads-soon">${escape(page.soon)}</span>`}
+      </li>`;
+    })}
+  </ul>`;
   const linked = (paragraph) =>
     text(
       paragraph
@@ -61,6 +73,7 @@ export function render(ctx) {
         <h2 id="what">${escape(page.whatHeading)}</h2>
         ${page.what.map((paragraph) => `<p>${text(paragraph)}</p>`)}
         <h2 id="download">${escape(page.downloadHeading)}</h2>
+        ${downloads}
         ${page.downloadBody.map((paragraph) => `<p>${linked(paragraph)}</p>`)}
       </div>
     </div>

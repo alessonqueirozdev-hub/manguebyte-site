@@ -2395,3 +2395,44 @@ details.show-test .code {
   margin-top: 0.5rem;
   font-size: 0.98rem;
 }
+
+/* One box for each system: its download, or that it is on its way. */
+.downloads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.downloads li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 1rem;
+  border: 2px solid var(--rule);
+  background: var(--paper);
+}
+
+.downloads h3,
+.downloads p {
+  margin: 0;
+}
+
+.downloads p {
+  font-size: 0.9rem;
+}
+
+.downloads .button {
+  margin-top: auto;
+}
+
+.downloads-soon {
+  margin-top: auto;
+  padding: 0.5rem 0;
+  font-weight: 650;
+  opacity: 0.75;
+}
