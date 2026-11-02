@@ -321,12 +321,15 @@ svg {
   text-transform: uppercase;
 }
 
+/* The links take the room between the name and the tools, centred in it. */
 .nav {
-  margin-left: auto;
+  flex: 1;
+  min-width: 0;
 }
 
 .nav ul {
   display: flex;
+  justify-content: center;
   gap: 0.2rem 1rem;
   margin: 0;
   padding: 0;
@@ -441,6 +444,7 @@ svg {
   }
 
   .nav {
+    flex: none;
     order: 3;
     width: calc(100% + 2 * var(--gutter));
     margin-inline: calc(-1 * var(--gutter));
