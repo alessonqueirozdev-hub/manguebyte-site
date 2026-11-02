@@ -2319,8 +2319,9 @@ details.show-test .code {
   list-style: none;
 }
 
-/* One to a row, as wide as the page: an organ's console needs the room. */
-.videos {
+/* One to a row, as wide as the page: a console or a screen needs the room. */
+.videos,
+.shots {
   grid-template-columns: 1fr;
   gap: 2.5rem;
 }

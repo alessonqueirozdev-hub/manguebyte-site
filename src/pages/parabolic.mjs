@@ -38,7 +38,33 @@ export function render(ctx) {
     </div>
   </section>`;
 
-  const ecosystem = html`<section class="section section-tint" aria-labelledby="ecosystem">
+  const about = html`<section class="section section-tint">
+    <div class="wrap">
+      <div class="prose">
+        <h2 id="what">${escape(page.whatHeading)}</h2>
+        ${page.what.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="does">${escape(page.doesHeading)}</h2>
+        <dl class="ways ways-stacked">
+          ${page.does.map((part) => `<div><dt>${escape(part.term)}</dt><dd>${text(part.body)}</dd></div>`).join('')}
+        </dl>
+      </div>
+    </div>
+  </section>`;
+
+  const inside = html`<section class="section section-tint">
+    <div class="wrap">
+      <div class="prose">
+        <h2 id="how">${escape(page.howHeading)}</h2>
+        ${page.how.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="manguebyte">${escape(page.frameworkHeading)}</h2>
+        ${page.framework.map((paragraph) => `<p>${text(paragraph)}</p>`)}
+        <h2 id="licence">${escape(page.licenceHeading)}</h2>
+        <p>${text(page.licence)}</p>
+      </div>
+    </div>
+  </section>`;
+
+  const ecosystem = html`<section class="section" aria-labelledby="ecosystem">
     <div class="wrap">
       ${sectionHead({ heading: t.home.ecosystem.heading, id: 'ecosystem' })}
       <p class="section-intro">${text(t.home.ecosystem.intro)}</p>
@@ -46,5 +72,5 @@ export function render(ctx) {
     </div>
   </section>`;
 
-  return { title: page.title, description: page.description, body: head + screens + ecosystem };
+  return { title: page.title, description: page.description, body: head + about + screens + inside + ecosystem };
 }
