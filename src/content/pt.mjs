@@ -24,6 +24,7 @@ export default {
     name: 'O nome',
     contribute: 'Contribuir',
     aratu: 'Aratu',
+    caecilia: 'Caecilia',
     github: 'GitHub',
     menu: 'Menu',
     skip: 'Ir para o conteúdo',
@@ -197,7 +198,7 @@ export default {
 
     ecosystem: {
       heading: 'O ecossistema Manguebyte',
-      intro: 'Mais três projetos do Recife crescem do mesmo mangue, feitos para rodar sobre o Manguebyte.',
+      intro: 'Mais quatro projetos do Recife crescem do mesmo mangue, feitos para rodar sobre o Manguebyte.',
       more: 'Mais sobre o Aratu',
     },
 
@@ -420,6 +421,12 @@ export default {
       body: 'Uma linguagem de live coding que se lê como música: compassos, tempos e figuras em primeiro lugar, em português, espanhol e inglês. O editor roda no navegador e toca sobre o Manguebyte.',
     },
     {
+      id: 'caecilia',
+      name: 'Caecilia',
+      status: 'Em desenvolvimento',
+      body: 'Um órgão de tubos virtual escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP.',
+    },
+    {
       id: 'parabolic',
       name: 'Parabolic',
       status: 'Planejado',
@@ -432,6 +439,29 @@ export default {
       body: 'Multi-device Audio Realtime Exchange: um protocolo aberto de áudio e MIDI de baixa latência, para substituir o ASIO. Vários programas num mesmo aparelho ao mesmo tempo, vários aparelhos como um só, MIDI 2.0 no mesmo relógio.',
     },
   ],
+
+  caecilia: {
+    title: 'Caecilia: um órgão de tubos virtual em Rust',
+    description:
+      'A Caecilia é um órgão de tubos virtual de código aberto, escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP. Os instaladores são publicados no GitHub.',
+    kicker: 'O ecossistema Manguebyte',
+    heading: 'Caecilia',
+    lede: 'Um órgão de tubos virtual de código aberto, escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP.',
+    status:
+      '**Em desenvolvimento.** O som ainda está sendo trabalhado, e nenhuma versão foi publicada ainda.',
+    logoAlt: 'O C dourado da Caecilia',
+    download: 'Baixar os instaladores',
+    source: 'Código no GitHub',
+    downloadHeading: 'Baixar',
+    downloadBody: [
+      'Os instaladores são publicados na [página de versões do repositório](caecilia-releases), que lista os sistemas que já têm arquivo. Ainda não há nenhuma versão lá: a do Windows vem primeiro, e Linux e macOS estão sendo preparados.',
+    ],
+    whatHeading: 'O que é',
+    what: [
+      'A Caecilia funciona como programa próprio, com o console do órgão na janela, e como plugin VST3 e CLAP dentro de uma DAW. Ela é construída sobre o Manguebyte, do som à interface.',
+      'É desenvolvida por Alesson Queiroz, sob a licença Apache-2.0. Para falar sobre ela, escreva para [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
+    ],
+  },
 
   aratu: {
     title: 'Aratu: uma linguagem de live coding que se lê como música',

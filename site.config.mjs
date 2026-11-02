@@ -45,6 +45,12 @@ export default {
       // <language>/manual/ and <language>/learn/.
       editor: 'https://aratu.live/',
     },
+    caecilia: {
+      repo: 'alessonqueirozdev-hub/Caecilia',
+      // Where the installers are published. Each system is listed in the
+      // page's text only once it has a file there.
+      releases: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases',
+    },
   },
 
   author: 'Alesson Queiroz',
