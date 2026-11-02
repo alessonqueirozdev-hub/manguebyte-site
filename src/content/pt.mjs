@@ -460,7 +460,7 @@ export default {
     ],
     systems: [
       { id: 'windows', name: 'Windows', detail: '64 bits' },
-      { id: 'linux', name: 'Linux', detail: '64 bits' },
+      { id: 'linux', name: 'Linux', detail: 'x86_64 (Intel/AMD)' },
       { id: 'macos', name: 'macOS', detail: 'Apple Silicon' },
     ],
     get: 'Baixar a alfa',
