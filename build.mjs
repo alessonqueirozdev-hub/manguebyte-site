@@ -29,6 +29,7 @@ import * as name from './src/pages/name.mjs';
 import * as contribute from './src/pages/contribute.mjs';
 import * as aratu from './src/pages/aratu.mjs';
 import * as caecilia from './src/pages/caecilia.mjs';
+import * as parabolic from './src/pages/parabolic.mjs';
 import * as notFound from './src/pages/not-found.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -45,6 +46,7 @@ const pages = [
   { id: 'contribute', path: '/contribute/', module: contribute, nav: true },
   { id: 'aratu', path: '/aratu/', module: aratu, nav: true },
   { id: 'caecilia', path: '/caecilia/', module: caecilia, nav: true },
+  { id: 'parabolic', path: '/parabolic/', module: parabolic, nav: true },
   { id: 'notFound', path: '/404.html', module: notFound, noindex: true },
 ];
 

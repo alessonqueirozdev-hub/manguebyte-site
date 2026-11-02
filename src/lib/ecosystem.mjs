@@ -5,9 +5,14 @@ import { dish } from './art.mjs';
 import { escape, html } from './html.mjs';
 
 export function projectCards(ctx, current) {
-  const { t, text, url, asset } = ctx;
-  // Parabolic and MARÉ have no page and no public repository yet, so no link.
-  const links = { manguebyte: url('/'), aratu: url('/aratu/'), caecilia: url('/caecilia/') };
+  const { t, text, url, asset, config } = ctx;
+  const links = {
+    manguebyte: url('/'),
+    aratu: url('/aratu/'),
+    caecilia: url('/caecilia/'),
+    parabolic: url('/parabolic/'),
+    mare: `https://github.com/${config.related.mare.repo}`,
+  };
   const images = {
     manguebyte: 'img/crab-360.webp',
     aratu: 'img/aratu-360.webp',

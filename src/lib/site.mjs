@@ -190,7 +190,7 @@ export function layout(ctx, { title, description, body, wide = false }) {
 <title>${escape(fullTitle)}</title>
 <meta name="description" content="${escape(description)}">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#f3ead7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f120e" media="(prefers-color-scheme: dark)">

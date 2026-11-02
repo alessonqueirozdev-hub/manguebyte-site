@@ -13,8 +13,8 @@ needs Node 20 or newer and nothing else: no `npm install`, no
 `node_modules`. Pages are drawn when the site is built, so a reader's
 browser runs one small script (the theme switch and the copy buttons), and
 the site works without it. There are no cookies, no trackers and no
-requests to anyone else's servers: the fonts are served from the site
-itself.
+requests to anyone else's servers until a reader presses play on a video:
+the fonts and the videos' posters are served from the site itself.
 
 ```text
 site.config.mjs        the address, the repository, the pinned framework commit

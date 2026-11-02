@@ -25,6 +25,7 @@ export default {
     contribute: 'Contribute',
     aratu: 'Aratu',
     caecilia: 'Caecilia',
+    parabolic: 'Parabolic',
     github: 'GitHub',
     menu: 'Menu',
     skip: 'Skip to content',
@@ -64,7 +65,7 @@ export default {
     licence: 'The framework is licensed under [MIT](proof:licence-mit) or [Apache-2.0](proof:licence-apache), at your option. The one exception is the opt-in ASIO crate, `manguebyte-pro-io`, which is under the [GPLv3](proof:pro-io-licence).',
     contactTitle: 'Contact',
     contact: 'Questions and bugs go to the [issue tracker]({issuesUrl}). To reach the author directly, write to [{email}](mailto:{email}).',
-    privacy: 'No cookies, no trackers, no requests to anyone else’s servers.',
+    privacy: 'No cookies, no trackers, no requests to anyone else’s servers until you play a video.',
     colophon:
       'Headings are set in Londrina Solid, drawn by Marcelo Magalhães from the hand-painted signs of Brazilian streets. Text and code are in Atkinson Hyperlegible Next and Mono, from the Braille Institute. All three are under the SIL Open Font License.',
     madeIn: 'Made in Recife, Brazil.',
@@ -423,13 +424,13 @@ export default {
     {
       id: 'caecilia',
       name: 'Caecilia',
-      status: 'In development',
+      status: 'Alpha',
       body: 'A virtual pipe organ written in Rust on Manguebyte: a program of its own and VST3 and CLAP plugins.',
     },
     {
       id: 'parabolic',
       name: 'Parabolic',
-      status: 'Planned',
+      status: 'In development',
       body: 'A tool for musicians to record their own instruments and turn them into plugins and samplers without writing code.',
     },
     {
@@ -443,23 +444,49 @@ export default {
   caecilia: {
     title: 'Caecilia: a virtual pipe organ in Rust',
     description:
-      'Caecilia is an open-source virtual pipe organ written in Rust on Manguebyte: a program of its own and VST3 and CLAP plugins. Its installers are published on GitHub.',
+      'Caecilia is an open-source virtual pipe organ written in Rust on Manguebyte: a program of its own and VST3 and CLAP plugins. Download the alpha for Windows and hear the demonstrations.',
     kicker: 'The Manguebyte ecosystem',
     heading: 'Caecilia',
     lede: 'An open-source virtual pipe organ written in Rust on Manguebyte: a program of its own and VST3 and CLAP plugins.',
     status:
-      '**In development.** The sound is still being worked on, and no version has been published yet.',
+      '**Alpha.** This is the first public build, still in active development, and the sound is still being worked on.',
     logoAlt: "Caecilia's golden C",
-    download: 'Download the installers',
+    download: 'Download for Windows (alpha)',
     source: 'Code on GitHub',
     downloadHeading: 'Download',
     downloadBody: [
-      "The installers are published on the [repository's releases page](caecilia-releases), which lists the systems that have a file. There is no version there yet: Windows comes first, and Linux and macOS are being prepared.",
+      'Version **2.0.0-alpha.0** has a [64-bit Windows installer](caecilia-windows), which installs the program and the VST3 and CLAP plugins. Linux and macOS have no published version yet.',
+      'The installer is not digitally signed yet, so Windows SmartScreen may warn you: choose **More info**, then **Run anyway**. The known limits and the SHA-256 are in the [release notes](caecilia-release).',
     ],
+    videosHeading: 'Hear it',
+    videosIntro: 'Four demonstrations, [also as a YouTube playlist](caecilia-playlist). A video loads only when you press play.',
+    videoTitles: ['Demonstration I', 'Demonstration II', 'Demonstration III', 'Demonstration IV'],
     whatHeading: 'What it is',
     what: [
       "Caecilia runs as a program of its own, with the organ's console in its window, and as a VST3 and CLAP plugin inside a DAW. It is built on Manguebyte, from the sound to the interface.",
       'It is developed by Alesson Queiroz, under the Apache-2.0 licence. To talk about it, write to [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
+    ],
+  },
+
+  parabolic: {
+    title: 'Parabolic: build plugins and samplers without writing code',
+    description:
+      'Parabolic is a plugin and sampler generator for musicians, built on Manguebyte. It is in development, and here are its screens.',
+    kicker: 'The Manguebyte ecosystem',
+    heading: 'Parabolic',
+    lede: 'Build your own audio plugins and samplers without writing code: you shape a sound with the controls a musician already knows and press one button to get a real plugin.',
+    status:
+      '**In development.** There is no version to download yet, and the code is not public yet. The screen that exports a plugin is being built and is not shown here.',
+    logoAlt: 'The Parabolic logo: an orange crab wearing headphones at a pad controller, under a satellite dish sending out waves',
+    screensHeading: 'The screens',
+    screensIntro: 'Captures of the program as it is today, made by the program itself. The interface exists in English, Portuguese and Spanish, in a light and a dark mode.',
+    shots: [
+      { id: 'sampler-en', caption: 'Sampler: the samples, the loop and the key map' },
+      { id: 'synth', caption: 'Synthesiser' },
+      { id: 'effects', caption: 'Effects' },
+      { id: 'drums', caption: 'Drums: one pad for each piece' },
+      { id: 'presets', caption: 'Presets' },
+      { id: 'dark', caption: 'The dark mode' },
     ],
   },
 

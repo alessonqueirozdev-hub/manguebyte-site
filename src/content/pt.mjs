@@ -25,6 +25,7 @@ export default {
     contribute: 'Contribuir',
     aratu: 'Aratu',
     caecilia: 'Caecilia',
+    parabolic: 'Parabolic',
     github: 'GitHub',
     menu: 'Menu',
     skip: 'Ir para o conteúdo',
@@ -64,7 +65,7 @@ export default {
     licence: 'O framework é licenciado sob [MIT](proof:licence-mit) ou [Apache-2.0](proof:licence-apache), à sua escolha. A única exceção é o crate opcional de ASIO, o `manguebyte-pro-io`, que está sob a [GPLv3](proof:pro-io-licence).',
     contactTitle: 'Contato',
     contact: 'Dúvidas e bugs vão para as [issues]({issuesUrl}). Para falar direto com o autor, escreva para [{email}](mailto:{email}).',
-    privacy: 'Sem cookies, sem rastreadores, sem requisições a servidores de terceiros.',
+    privacy: 'Sem cookies, sem rastreadores, sem requisições a servidores de terceiros até você tocar um vídeo.',
     colophon:
       'Os títulos estão em Londrina Solid, desenhada por Marcelo Magalhães a partir dos letreiros pintados à mão das ruas brasileiras. O texto e o código estão em Atkinson Hyperlegible Next e Mono, do Braille Institute. As três estão sob a SIL Open Font License.',
     madeIn: 'Feito no Recife, Brasil.',
@@ -412,7 +413,7 @@ export default {
       id: 'manguebyte',
       name: 'Manguebyte',
       status: 'Este framework',
-      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0, publicado no crates.io. O Aratu já toca sobre o seu motor para o navegador, e o plugin Aratu Bridge toca essa mesma música numa DAW; o Parabolic será construído sobre ele.',
+      body: 'O framework de áudio de código aberto para Rust, sob MIT ou Apache-2.0, publicado no crates.io. O Aratu já toca sobre o seu motor para o navegador, e o plugin Aratu Bridge toca essa mesma música numa DAW; a Caecilia e o Parabolic são construídos sobre ele.',
     },
     {
       id: 'aratu',
@@ -423,13 +424,13 @@ export default {
     {
       id: 'caecilia',
       name: 'Caecilia',
-      status: 'Em desenvolvimento',
+      status: 'Alfa',
       body: 'Um órgão de tubos virtual escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP.',
     },
     {
       id: 'parabolic',
       name: 'Parabolic',
-      status: 'Planejado',
+      status: 'Em desenvolvimento',
       body: 'Uma ferramenta para músicos gravarem os próprios instrumentos e os transformarem em plugins e samplers sem escrever código.',
     },
     {
@@ -443,23 +444,49 @@ export default {
   caecilia: {
     title: 'Caecilia: um órgão de tubos virtual em Rust',
     description:
-      'A Caecilia é um órgão de tubos virtual de código aberto, escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP. Os instaladores são publicados no GitHub.',
+      'A Caecilia é um órgão de tubos virtual de código aberto, escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP. Baixe a versão alfa para Windows e ouça as demonstrações.',
     kicker: 'O ecossistema Manguebyte',
     heading: 'Caecilia',
     lede: 'Um órgão de tubos virtual de código aberto, escrito em Rust sobre o Manguebyte: programa próprio e plugins VST3 e CLAP.',
     status:
-      '**Em desenvolvimento.** O som ainda está sendo trabalhado, e nenhuma versão foi publicada ainda.',
+      '**Alfa.** Esta é a primeira versão pública, ainda em desenvolvimento ativo, e o som ainda está sendo trabalhado.',
     logoAlt: 'O C dourado da Caecilia',
-    download: 'Baixar os instaladores',
+    download: 'Baixar para Windows (alfa)',
     source: 'Código no GitHub',
     downloadHeading: 'Baixar',
     downloadBody: [
-      'Os instaladores são publicados na [página de versões do repositório](caecilia-releases), que lista os sistemas que já têm arquivo. Ainda não há nenhuma versão lá: a do Windows vem primeiro, e Linux e macOS estão sendo preparados.',
+      'A versão **2.0.0-alpha.0** tem um [instalador para Windows de 64 bits](caecilia-windows), que instala o programa e os plugins VST3 e CLAP. Linux e macOS ainda não têm versão publicada.',
+      'O instalador ainda não é assinado digitalmente, então o Windows SmartScreen pode avisar: escolha **Mais informações** e depois **Executar assim mesmo**. Os limites conhecidos e o SHA-256 estão nas [notas da versão](caecilia-release).',
     ],
+    videosHeading: 'Ouça',
+    videosIntro: 'Quatro demonstrações, [também em playlist no YouTube](caecilia-playlist). O vídeo só carrega quando você aperta o play.',
+    videoTitles: ['Demonstração I', 'Demonstração II', 'Demonstração III', 'Demonstração IV'],
     whatHeading: 'O que é',
     what: [
       'A Caecilia funciona como programa próprio, com o console do órgão na janela, e como plugin VST3 e CLAP dentro de uma DAW. Ela é construída sobre o Manguebyte, do som à interface.',
       'É desenvolvida por Alesson Queiroz, sob a licença Apache-2.0. Para falar sobre ela, escreva para [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
+    ],
+  },
+
+  parabolic: {
+    title: 'Parabolic: crie plugins e samplers sem escrever código',
+    description:
+      'O Parabolic é um gerador de plugins e samplers para músicos, construído sobre o Manguebyte. Está em desenvolvimento, e aqui estão as telas dele.',
+    kicker: 'O ecossistema Manguebyte',
+    heading: 'Parabolic',
+    lede: 'Crie seus próprios plugins e samplers sem escrever código: você molda o som com os controles que um músico já conhece e aperta um botão para ter um plugin de verdade.',
+    status:
+      '**Em desenvolvimento.** Ainda não há versão para baixar, e o código ainda não é público. A tela de exportar o plugin está sendo construída e não aparece aqui.',
+    logoAlt: 'A logo do Parabolic: um caranguejo laranja de fones de ouvido numa mesa de pads, sob uma antena parabólica que envia ondas',
+    screensHeading: 'As telas',
+    screensIntro: 'Capturas do programa como ele está hoje, geradas pelo próprio programa. A interface existe em português, inglês e espanhol, no modo claro e no escuro.',
+    shots: [
+      { id: 'sampler', caption: 'Sampler: as amostras, o loop e o mapa de teclas' },
+      { id: 'synth', caption: 'Sintetizador' },
+      { id: 'effects', caption: 'Efeitos' },
+      { id: 'drums', caption: 'Bateria: um pad para cada peça' },
+      { id: 'presets', caption: 'Presets' },
+      { id: 'dark', caption: 'O modo escuro' },
     ],
   },
 

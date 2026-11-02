@@ -45,11 +45,15 @@ export default {
       // <language>/manual/ and <language>/learn/.
       editor: 'https://aratu.live/',
     },
+    mare: { repo: 'alessonqueirozdev-hub/mare' },
     caecilia: {
       repo: 'alessonqueirozdev-hub/Caecilia',
       // Where the installers are published. Each system is listed in the
       // page's text only once it has a file there.
-      releases: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases',
+      release: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases/tag/v2.0.0-alpha.0',
+      windows: 'https://github.com/alessonqueirozdev-hub/Caecilia/releases/download/v2.0.0-alpha.0/Caecilia-Setup-2.0.0-alpha.0-x64.exe',
+      playlist: 'PLeH-pPhG59Eo',
+      videos: ['inWo58q_7Nk', 'JHh-7zB8bJQ', 'mVf4Q_gmbrA', '2raCsKsKtAI'],
     },
   },
 

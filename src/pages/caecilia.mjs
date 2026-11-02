@@ -6,8 +6,14 @@ import { icon } from '../lib/site.mjs';
 export function render(ctx) {
   const { t, text, asset, sectionHead, config } = ctx;
   const page = t.caecilia;
-  const { releases, repo } = config.related.caecilia;
-  const linked = (paragraph) => text(paragraph.replace('(caecilia-releases)', `(${releases})`));
+  const { release, windows, playlist, videos, repo } = config.related.caecilia;
+  const linked = (paragraph) =>
+    text(
+      paragraph
+        .replace('(caecilia-windows)', `(${windows})`)
+        .replace('(caecilia-release)', `(${release})`)
+        .replace('(caecilia-playlist)', `(https://www.youtube.com/playlist?list=${playlist})`),
+    );
 
   const head = html`<section class="page-head aratu-head">
     <div class="wrap aratu-grid">
@@ -16,7 +22,7 @@ export function render(ctx) {
         <h1>${escape(page.heading)}</h1>
         <p class="lede">${text(page.lede)}</p>
         <p class="actions">
-          <a class="button button-primary" href="${escape(releases)}">${escape(page.download)}${icon('out')}</a>
+          <a class="button button-primary" href="${escape(windows)}">${escape(page.download)}${icon('out')}</a>
           <a class="button" href="https://github.com/${escape(repo)}">${escape(page.source)}${icon('out')}</a>
         </p>
         <p class="young">${text(page.status)}</p>
@@ -28,7 +34,27 @@ export function render(ctx) {
     ${signal({ seed: 73 })}
   </section>`;
 
-  const body = html`<section class="section">
+  const listen = html`<section class="section" aria-labelledby="videos">
+    <div class="wrap">
+      <h2 id="videos">${escape(page.videosHeading)}</h2>
+      <p class="section-intro">${linked(page.videosIntro)}</p>
+      <ul class="videos">
+        ${videos.map((id, at) => {
+          const title = `Caecilia Pipe Organ: ${page.videoTitles[at]}`;
+          return html`<li>
+            <a class="video-poster" href="https://www.youtube.com/watch?v=${escape(id)}&amp;list=${escape(playlist)}" data-video="${escape(id)}" data-title="${escape(title)}">
+              <img src="${asset(`img/video-${id}.webp`)}" width="960" height="540" alt="" loading="lazy">
+              <span class="video-play" aria-hidden="true"></span>
+              <span class="sr-only">${escape(title)}</span>
+            </a>
+            <p>${escape(page.videoTitles[at])}</p>
+          </li>`;
+        })}
+      </ul>
+    </div>
+  </section>`;
+
+  const body = html`<section class="section section-tint">
     <div class="wrap">
       <div class="prose">
         <h2 id="download">${escape(page.downloadHeading)}</h2>
@@ -39,7 +65,7 @@ export function render(ctx) {
     </div>
   </section>`;
 
-  const ecosystem = html`<section class="section section-tint" aria-labelledby="ecosystem">
+  const ecosystem = html`<section class="section" aria-labelledby="ecosystem">
     <div class="wrap">
       ${sectionHead({ heading: t.home.ecosystem.heading, id: 'ecosystem' })}
       <p class="section-intro">${text(t.home.ecosystem.intro)}</p>
@@ -47,5 +73,5 @@ export function render(ctx) {
     </div>
   </section>`;
 
-  return { title: page.title, description: page.description, body: head + body + ecosystem };
+  return { title: page.title, description: page.description, body: head + listen + body + ecosystem };
 }
