@@ -293,10 +293,10 @@ svg {
 .masthead-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem 1.6rem;
+  gap: 0.5rem 1.25rem;
   min-height: 4rem;
   /* Wider than the pages' column: one row needs room for every link. */
-  max-width: max(var(--wrap), 102rem);
+  max-width: max(var(--wrap), 96rem);
 }
 
 .brand {
@@ -327,7 +327,7 @@ svg {
 
 .nav ul {
   display: flex;
-  gap: 0.2rem 1.25rem;
+  gap: 0.2rem 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -340,7 +340,7 @@ svg {
 .nav a {
   display: block;
   padding: 0.5rem 0;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 650;
   text-decoration-color: transparent;
   white-space: nowrap;
@@ -420,7 +420,13 @@ svg {
 
 /* Below this width the links do not fit beside the name and the tools, so
    they move to a row of their own. */
-@media (max-width: 101.99rem) {
+@media (max-width: 87.99rem) {
+  .tool-repo {
+    display: none;
+  }
+}
+
+@media (max-width: 74.99rem) {
   .masthead {
     position: static;
   }
@@ -449,10 +455,6 @@ svg {
     width: max-content;
     padding: 0.15rem var(--gutter);
     padding-right: 3rem;
-  }
-
-  .tool-repo {
-    display: none;
   }
 }
 
