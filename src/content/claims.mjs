@@ -669,7 +669,7 @@ export const juceAhead = {
   en: [
     'a complete GUI toolkit, with plugin editor windows on macOS and Linux as well as Windows (Manguebyte’s editors open on Windows only so far, and only one has been opened by hand in a DAW);',
     'the AUv3 and AAX plugin formats, and Audio Units checked in real hosts (Manguebyte’s AUv2 wrapper has only its own tests and `auval` in CI);',
-    'the editors of hosted plugins (Manguebyte hosts CLAP, VST 3, LV2 and Audio Unit plugins, without their editors, and scans for them);',
+    'the editors of hosted plugins on every system (Manguebyte hosts CLAP, VST 3, LV2 and Audio Unit plugins and scans for them; the editors of hosted CLAP and VST 3 plugins open in tests on Windows only, and no LV2 or AU editor is hosted);',
     'SIMD wrappers and lookup tables among its DSP utilities;',
     'iOS and Android (Manguebyte’s audio and device crates are built for both in CI, but not run on a device);',
     'documentation, tutorials and a large community.',
@@ -677,7 +677,7 @@ export const juceAhead = {
   pt: [
     'um toolkit de interface gráfica completo, com janelas de editor de plugin no macOS e no Linux além do Windows (os editores do Manguebyte só abrem no Windows por enquanto, e só um foi aberto à mão numa DAW);',
     'os formatos de plugin AUv3 e AAX, e Audio Units conferidos em hosts de verdade (o wrapper AUv2 do Manguebyte só tem os próprios testes e o `auval` no CI);',
-    'os editores dos plugins hospedados (o Manguebyte hospeda plugins CLAP, VST 3, LV2 e Audio Unit, sem os editores, e faz a varredura deles);',
+    'os editores de plugins hospedados em todos os sistemas (o Manguebyte hospeda plugins CLAP, VST 3, LV2 e Audio Unit e procura por eles; os editores de plugins CLAP e VST 3 hospedados abrem em testes só no Windows, e nenhum editor LV2 ou AU é hospedado);',
     'wrappers de SIMD e tabelas de consulta entre os utilitários de DSP;',
     'iOS e Android (os crates de áudio e de dispositivos do Manguebyte são compilados para os dois no CI, mas não rodaram num aparelho);',
     'documentação, tutoriais e uma comunidade grande.',

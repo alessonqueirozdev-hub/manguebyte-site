@@ -491,14 +491,14 @@ export default {
     frameworkHeading: 'Como usa o Manguebyte',
     frameworkIntro: 'O que é de órgão fica na Caecilia: o vento, as vozes, o motor, os registros e o console. O que serviria a qualquer programa de áudio vem do Manguebyte, e o que faltava foi construído lá, onde outros projetos também podem usar.',
     framework: [
-      { term: 'As vozes', body: 'O `PartialBank` do `manguebyte-dsp` calcula os parciais com instruções vetoriais do processador, com o mesmo resultado bit a bit em qualquer delas.' },
+      { term: 'As vozes', body: 'O `PartialBank` do `manguebyte-dsp` calcula os parciais com instruções vetoriais do processador, com o mesmo resultado bit a bit nas que já rodaram: SSE2, AVX e AVX2.' },
       { term: 'Vários núcleos', body: 'O `RenderPool` do `manguebyte-core` divide as vozes entre os núcleos dentro do callback de áudio, sem mudar um bit do resultado.' },
       { term: 'Som e afinação', body: 'O reverb, os filtros do equalizador, o limitador e os temperamentos, com escalas Scala, vêm do `manguebyte-dsp`.' },
       { term: 'Plugin e programa', body: 'O mesmo código vira CLAP e VST3 com `manguebyte-plugin`, `manguebyte-clap` e `manguebyte-vst3`, e programa próprio com `manguebyte-standalone`, que cuida da placa de som e dos aparelhos MIDI.' },
       { term: 'O console', body: 'Tudo o que se vê é desenhado de forma nativa, com `manguebyte-gfx`, `manguebyte-ui`, `manguebyte-gui` e `manguebyte-window`. O instalador também é feito com esse mesmo kit.' },
       { term: 'MIDI', body: 'O `manguebyte-midi` lê os arquivos MIDI das peças que o órgão toca sozinho.' },
     ],
-    frameworkOutro: 'O caminho também é de volta: a renderização em vários núcleos, a afinação, o streaming de amostras e o governador de CPU foram pensados também para ela; os dois primeiros já tocam na alfa, os outros ainda não. Os blocos de espaço por tubo e de ar e ataque por parcial, em construção agora, nasceram de pedidos dela.',
+    frameworkOutro: 'O caminho também é de volta: a renderização em vários núcleos, a afinação, o streaming de amostras e o governador de CPU foram pensados também para ela; os dois primeiros já tocam na alfa, os outros ainda não. Os blocos de espaço por tubo e de ar e ataque por parcial nasceram de pedidos dela; estão prontos e testados, e já no código da Caecilia, mas ainda em nenhuma versão publicada.',
     contact: 'Para falar sobre ela, escreva para [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
   },
 

@@ -491,14 +491,14 @@ export default {
     frameworkHeading: 'How it uses Manguebyte',
     frameworkIntro: 'What is an organ\'s stays in Caecilia: the wind, the voices, the engine, the registration and the console. What would serve any audio program comes from Manguebyte, and what was missing was built there, where other projects can use it too.',
     framework: [
-      { term: 'The voices', body: '`manguebyte-dsp`\'s `PartialBank` computes the partials with the processor\'s vector instructions, with the same result bit for bit on any of them.' },
+      { term: 'The voices', body: '`manguebyte-dsp`\'s `PartialBank` computes the partials with the processor\'s vector instructions, with the same result bit for bit on those it has run on so far: SSE2, AVX and AVX2.' },
       { term: 'Several cores', body: '`manguebyte-core`\'s `RenderPool` shares the voices among the cores inside the audio callback, without changing a bit of the result.' },
       { term: 'Sound and tuning', body: 'The reverb, the equaliser\'s filters, the limiter and the temperaments, with Scala scales, come from `manguebyte-dsp`.' },
       { term: 'Plugin and program', body: 'The same code becomes CLAP and VST3 with `manguebyte-plugin`, `manguebyte-clap` and `manguebyte-vst3`, and a program of its own with `manguebyte-standalone`, which looks after the sound card and the MIDI devices.' },
       { term: 'The console', body: 'Everything you see is drawn natively, with `manguebyte-gfx`, `manguebyte-ui`, `manguebyte-gui` and `manguebyte-window`. The installer is made with the same toolkit.' },
       { term: 'MIDI', body: '`manguebyte-midi` reads the MIDI files of the pieces the organ plays by itself.' },
     ],
-    frameworkOutro: 'The road runs back too: rendering on several cores, tuning, streaming samples and the CPU governor were made with it in mind too; the first two already play in the alpha, the others do not yet. The blocks for a pipe\'s place in space and for air and attack per partial, being built now, were born of its requests.',
+    frameworkOutro: 'The road runs back too: rendering on several cores, tuning, streaming samples and the CPU governor were made with it in mind too; the first two already play in the alpha, the others do not yet. The blocks for a pipe\'s place in space and for air and attack per partial were born of its requests; they are built and tested, and in Caecilia\'s code, but not yet in a published version.',
     contact: 'To talk about it, write to [alessonqueiroz.dev@gmail.com](mailto:alessonqueiroz.dev@gmail.com).',
   },
 
