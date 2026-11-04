@@ -273,7 +273,7 @@ export default {
     kicker: 'Como começar',
     heading: 'Do zero a um plugin',
     intro: [
-      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`. Esse commit vem bem depois da [versão {version}]({releaseUrl}), mas os dois plugins e o início rápido do README são os mesmos da versão publicada.',
+      'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`. Esse commit vem bem depois da [versão {version}]({releaseUrl}). O início rápido do README é o mesmo da versão publicada; os dois plugins agora também declaram a sua cauda com `Plugin::tail_samples`, que a versão publicada não tem.',
       'Antes de construir em cima dele: o Manguebyte é jovem, a {version} é a primeira versão publicada, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI; à mão, por enquanto só o editor CLAP do Mangue Pluck foi aberto num host.',
     ],
     steps: {
@@ -318,7 +318,7 @@ export default {
           'Transforme qualquer um dos dois em algo que um host consiga carregar com a ferramenta de linha de comando do framework, o `cargo mangue`, que grava um `.clap` e um `.vst3` no layout de cada sistema (com `--format lv2`, um pacote `.lv2`, e num Mac, com `--format au`, um `.component`):',
         ],
         after:
-          '`cargo mangue new meu-synth --kind instrument` começa um plugin seu a partir de um modelo; `install` copia um plugin para as pastas de plugins do usuário, e `validate` roda nele os validadores do CLAP e do VST 3 (`validate --format au` roda o `auval` da Apple num `.component`). Os dois exemplos passam por esses validadores a cada commit, e [foram testados à mão no REAPER](proof:host-tests) como CLAP e VST 3 antes de terem editores; depois disso, [o editor CLAP do Mangue Pluck foi aberto lá](proof:host-tests-19).',
+          '`cargo mangue new meu-synth --kind instrument` começa um plugin seu a partir de um modelo; `install` copia um plugin para as pastas de plugins do usuário, e `validate` roda nele os validadores do CLAP e do VST 3 (`validate --format au` roda o `auval` da Apple num `.component`). Os dois exemplos passam por esses validadores a cada commit, e [foram testados à mão no REAPER](proof:host-tests) como CLAP e VST 3 antes de terem editores; depois disso, [o editor CLAP do Mangue Pluck foi aberto lá](proof:host-tests-19). [plugins/divisions](repo:plugins/divisions/src/lib.rs) é um instrumento com várias saídas: um pequeno órgão cujos Great, Swell, Choir e Pedal saem em quatro barramentos auxiliares estéreo e, juntos, na saída principal. Os mesmos validadores estão ligados a ele no CI, mas ainda não foi visto passando neles, e nenhuma DAW o carregou.',
       },
       standalone: {
         heading: 'Toque sem host',

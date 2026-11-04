@@ -273,7 +273,7 @@ export default {
     kicker: 'Get started',
     heading: 'From nothing to a plugin',
     intro: [
-      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit comes well after the [{version} release]({releaseUrl}), but the two plugins and the README’s quick start are the same as in the release.',
+      'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit comes well after the [{version} release]({releaseUrl}). The README’s quick start is the same as in the release; the two plugins now also state their tail with `Plugin::tail_samples`, which the release does not have.',
       'Before you build on it: Manguebyte is young, {version} is its first release, and **the API will change before 1.0**. Plugin editors exist and are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host so far.',
     ],
     steps: {
@@ -318,7 +318,7 @@ export default {
           'Build either one into something a host can load with the framework’s command-line tool, `cargo mangue`, which writes a `.clap` and a `.vst3` in each system’s layout (add `--format lv2` for an `.lv2` bundle, and on a Mac `--format au` for a `.component`):',
         ],
         after:
-          '`cargo mangue new my-synth --kind instrument` starts a plugin of your own from a template; `install` copies a plugin into the user’s plugin folders, and `validate` runs the CLAP and VST 3 validators on it (`validate --format au` runs Apple’s `auval` on a `.component`). Both examples go through those validators on every commit, and [were tested by hand in REAPER](proof:host-tests) as CLAP and VST 3 before they had editors; since then [Mangue Pluck’s CLAP editor has been opened there](proof:host-tests-19).',
+          '`cargo mangue new my-synth --kind instrument` starts a plugin of your own from a template; `install` copies a plugin into the user’s plugin folders, and `validate` runs the CLAP and VST 3 validators on it (`validate --format au` runs Apple’s `auval` on a `.component`). Both examples go through those validators on every commit, and [were tested by hand in REAPER](proof:host-tests) as CLAP and VST 3 before they had editors; since then [Mangue Pluck’s CLAP editor has been opened there](proof:host-tests-19). [plugins/divisions](repo:plugins/divisions/src/lib.rs) is an instrument with several outputs: a small organ whose Great, Swell, Choir and Pedal go out on four stereo auxiliary buses, and together on the main output. The same validators are wired in for it in CI, but it has not yet been seen to pass them, and no DAW has loaded it.',
       },
       standalone: {
         heading: 'Play it without a host',

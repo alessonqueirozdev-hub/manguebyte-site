@@ -460,6 +460,7 @@ export const snippets = {
       { fn: 'process', indent: 4, keepIndent: true },
       { gap: '    // ... reset' },
       { fn: 'editor', indent: 4, keepIndent: true },
+      { gap: '    // ... tail_samples' },
       { after: 'fn editor(&self)', from: /^\}$/, to: 'export_au!(Duck);' },
     ],
   },
