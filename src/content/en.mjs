@@ -527,7 +527,7 @@ export default {
       { term: 'Effects', body: 'A chain of effects you build and reorder, each with its own panel.' },
       { term: 'Drums', body: 'A grid of the 16 main pieces of the General MIDI map and any other key the kit uses: drop a sample on a pad and set its level, pan and tuning.' },
       { term: 'Presets', body: 'Ready sounds by category to start from. Your own stay in My sounds, with every control, and serve in every project.' },
-      { term: 'Export', body: 'Give a name, a maker, a version and a description and choose CLAP, VST 3 or SFZ, with no compiler on your machine and checks before it exports. For now, on 64-bit Windows only. SFZ carries the samples, the map, the tuning, the gain and the loops, without effects or the synthesiser.' },
+      { term: 'Export', body: 'Give a name, a maker, a version and a description and choose CLAP, VST 3 or SFZ, with no compiler on your machine and checks before it exports. The plugin has a panel of its own, made without programming, with the controls in use, an output meter and a light or dark theme. For now, on 64-bit Windows only. SFZ carries the samples, the map, the tuning, the gain and the loops, without effects or the synthesiser.' },
     ],
     howHeading: 'How it works',
     how: [

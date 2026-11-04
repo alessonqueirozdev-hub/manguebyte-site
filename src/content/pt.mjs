@@ -527,7 +527,7 @@ export default {
       { term: 'Efeitos', body: 'Uma cadeia de efeitos que você monta e reordena, cada um com o próprio painel.' },
       { term: 'Bateria', body: 'Uma grade com as 16 peças principais do mapa General MIDI e qualquer outra tecla que o kit use: solte uma amostra no pad e ajuste nível, pan e afinação.' },
       { term: 'Presets', body: 'Sons prontos por categoria para começar. Os seus ficam em Meus sons, com todos os controles, e valem em todos os projetos.' },
-      { term: 'Exportar', body: 'Dê nome, fabricante, versão e descrição e escolha CLAP, VST 3 ou SFZ, sem compilador na sua máquina, com verificações antes de exportar. Por enquanto, só no Windows de 64 bits. O SFZ leva as amostras, o mapa, a afinação, o ganho e os loops, sem efeitos nem sintetizador.' },
+      { term: 'Exportar', body: 'Dê nome, fabricante, versão e descrição e escolha CLAP, VST 3 ou SFZ, sem compilador na sua máquina, com verificações antes de exportar. O plugin tem painel próprio, gerado sem programar, com os controles ligados, um medidor de saída e tema claro ou escuro. Por enquanto, só no Windows de 64 bits. O SFZ leva as amostras, o mapa, a afinação, o ganho e os loops, sem efeitos nem sintetizador.' },
     ],
     howHeading: 'Como funciona',
     how: [
