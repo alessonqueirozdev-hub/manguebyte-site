@@ -1,5 +1,5 @@
 {
-  "commit": "d07b978ba7ab4f04bebf62eb9c07cdfba554307f",
+  "commit": "66ef3dc1a7828c0fadcc524a7a0d721fbab88617",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -574,21 +574,21 @@
     "hotswap-gap": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 755,
+      "line": 761,
       "name": "devices_that_cannot_overlap_hand_over_after_a_short_faded_gap",
       "test": true
     },
     "hotswap-rate": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 843,
+      "line": 849,
       "name": "a_device_at_another_rate_plays_the_same_whatever_its_blocks",
       "test": true
     },
     "hotswap-lost": {
       "repo": null,
       "file": "crates/manguebyte-devices/tests/hotswap.rs",
-      "line": 948,
+      "line": 954,
       "name": "a_lost_device_is_replaced_without_preparing_again",
       "test": true
     },
