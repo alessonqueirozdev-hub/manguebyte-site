@@ -2085,6 +2085,15 @@ details.show-test .code {
 
 /* --- The ecosystem -------------------------------------------------------- */
 
+.others-heading {
+  margin: 3.2rem 0 0;
+  font-size: 1.15rem;
+}
+
+.projects-others {
+  margin-top: 1.4rem;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));

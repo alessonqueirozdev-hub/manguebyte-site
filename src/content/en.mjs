@@ -201,6 +201,17 @@ export default {
       heading: 'The Manguebyte ecosystem',
       intro: 'Four more projects from Recife grow from the same mangue, built to run on Manguebyte.',
       more: 'More about Aratu',
+      others: {
+        heading: 'Built on it by others',
+        items: [
+          {
+            name: 'muser',
+            by: 'By cloudbeer · Apache-2.0',
+            url: 'https://github.com/claw-works/muser',
+            body: 'A headless music-arrangement engine built for AI agents. An agent writes the project as JSON, through a command-line tool or an MCP server, and muser turns it into audio on Manguebyte, which synthesizes its more than 100 built-in instruments. Playing live and rendering to a WAV file share the same code and come out sample for sample the same.',
+          },
+        ],
+      },
     },
 
     start: {

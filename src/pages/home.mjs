@@ -1,7 +1,7 @@
 import { areas } from '../content/features.mjs';
 import { projectCards } from '../lib/ecosystem.mjs';
 import { juceAhead } from '../content/claims.mjs';
-import { mangrove, signal } from '../lib/art.mjs';
+import { dish, mangrove, signal } from '../lib/art.mjs';
 import { escape, html } from '../lib/html.mjs';
 import { icon, repoFile, repoUrl } from '../lib/site.mjs';
 
@@ -156,6 +156,19 @@ export function render(ctx) {
       ${sectionHead({ number: '05', heading: home.ecosystem.heading, id: 'ecosystem' })}
       <p class="section-intro">${text(home.ecosystem.intro)}</p>
       ${projectCards(ctx, 'manguebyte')}
+      <h3 class="others-heading">${escape(home.ecosystem.others.heading)}</h3>
+      <ul class="projects projects-others">
+        ${home.ecosystem.others.items.map(
+          (item) => html`<li class="project">
+            <div class="project-mark">${dish()}</div>
+            <div class="project-text">
+              <p class="project-status">${escape(item.by)}</p>
+              <h3><a href="${item.url}" rel="noopener">${escape(item.name)}</a></h3>
+              <p>${text(item.body)}</p>
+            </div>
+          </li>`,
+        )}
+      </ul>
       <p class="more"><a class="button" href="${url('/aratu/')}">${escape(home.ecosystem.more)}${icon('arrow')}</a></p>
     </div>
   </section>`;
