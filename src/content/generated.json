@@ -1,5 +1,5 @@
 {
-  "commit": "66ef3dc1a7828c0fadcc524a7a0d721fbab88617",
+  "commit": "46ec338afa0316908bd47653b823a3d939d83dd0",
   "related": {
     "aratu": "0822eee795128d42af1cde3ef1aa17366aabe8cf"
   },
@@ -1342,7 +1342,7 @@
           "text": "[dependencies]"
         },
         {
-          "text": "manguebyte = \"0.1\""
+          "text": "manguebyte = \"0.2\""
         }
       ]
     },

@@ -53,10 +53,10 @@ export default {
   footer: {
     statusTitle: 'Where the project stands',
     status:
-      'Manguebyte is young. Version {version} is its first release on crates.io. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and of its plugin editors only one has been opened in a host by hand.',
+      'Manguebyte is young. Version {version} is its second release on crates.io. What exists is tested and usable, but it covers a small part of the road ahead, the API will change before 1.0, and of its plugin editors only one has been opened in a host by hand.',
     sourceTitle: 'Where this site gets its facts',
     source:
-      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). That commit comes well after the [{version} release]({releaseUrl}), commit `{releaseCommit}`, so not everything described here is on crates.io yet: hosting Audio Units, MIDI 2.0 through the systems’ own output, Opus encoding, spectral processing, the vector operations, the tempo map, the newer plugin extensions and the crates `manguebyte-state` and `manguebyte-ump-io`, among others, are only in the repository so far, listed under “Unreleased” in its [changelog](repo:CHANGELOG.md). The repository is the authority; if the two disagree, the site is out of date.',
+      'Every statement, proof link and code sample here was read from the framework’s repository at commit [{commit}]({commitUrl}) ({date}), where [all {ciJobs} CI jobs passed]({ciUrl}). That commit is the [{version} release]({releaseUrl}), so what is described here is what is on crates.io. The repository is the authority; if the two disagree, the site is out of date.',
     legalTitle: 'Names and marks',
     legal:
       'Manguebyte is an independent project. It is not affiliated with, sponsored by or endorsed by the makers of JUCE, by Steinberg, by Apple, by Avid, by Cockos or by the CLAP project. JUCE is a trademark of its respective owner and CLAP is the name of its own project; both are mentioned only to describe what this framework aims to be and what it works with. VST is a trademark of Steinberg Media Technologies GmbH. ASIO is a trademark of Steinberg Media Technologies GmbH, registered in Europe and other countries. Audio Units, Mac and macOS are trademarks of Apple Inc. AAX and Pro Tools are trademarks of Avid Technology, Inc. REAPER is a trademark of Cockos Incorporated.',
@@ -87,7 +87,7 @@ export default {
     ctaStart: 'Get started',
     ctaSource: 'Read the source',
     young:
-      '**Version {version}, the first on [crates.io]({crateUrl}).** The project is young and the API will change before 1.0. Plugin editors open in Win32 windows and are tested in CI; by hand, one has been opened in a host so far, Mangue Pluck’s in REAPER. [See what is missing](/features/#missing).',
+      '**Version {version}, on [crates.io]({crateUrl}).** The project is young and the API will change before 1.0. Plugin editors open in Win32 windows and are tested in CI; by hand, one has been opened in a host so far, Mangue Pluck’s in REAPER. [See what is missing](/features/#missing).',
     ring: 'Crabs with brains · Caranguejos com cérebro · ',
 
     proof: {
@@ -177,7 +177,7 @@ export default {
 
     today: {
       heading: 'What you get today',
-      intro: 'Twenty-seven crates that work together, each usable on its own, one of them a command-line tool. Twenty-five are on crates.io, with their documentation on docs.rs; `manguebyte-state` and `manguebyte-ump-io` came after the {version} release and are in the repository only. `manguebyte-core` has no dependencies at all.',
+      intro: 'Twenty-seven crates that work together, each usable on its own, one of them a command-line tool. All of them are on crates.io as version {version}, with their documentation on docs.rs. `manguebyte-core` has no dependencies at all.',
       more: 'Every feature, by area',
     },
 
@@ -268,7 +268,7 @@ export default {
     kicker: 'Features',
     heading: 'What exists today',
     intro: [
-      'Twenty-seven crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. Everything listed here is in the repository at commit `{commit}` and covered by its tests, but not all of it is released: twenty-five of the crates are on [crates.io]({crateUrl}) as version {version}, with their documentation on [docs.rs]({docsUrl}), and what came after that release, two crates among it, is listed under “Unreleased” in the [changelog](repo:CHANGELOG.md). To use it now, depend on the repository.',
+      'Twenty-seven crates, designed to work together and each usable on its own: take the whole framework, or only the buffer type. Everything listed here is in the repository at commit `{commit}`, covered by its tests, and released: all twenty-seven crates are on [crates.io]({crateUrl}) as version {version}, with their documentation on [docs.rs]({docsUrl}).',
       'This is a small part of the road ahead. [What is missing](#missing) is listed just as plainly.',
     ],
     cratesLabel: 'Crates',
@@ -286,7 +286,7 @@ export default {
     heading: 'From nothing to a plugin',
     intro: [
       'Everything on this page comes from the repository’s README and its two example plugins, as they are at commit `{commit}`. That commit comes well after the [{version} release]({releaseUrl}). The README’s quick start is the same as in the release; the two plugins now also state their tail with `Plugin::tail_samples`, which the release does not have.',
-      'Before you build on it: Manguebyte is young, {version} is its first release, and **the API will change before 1.0**. Plugin editors exist and are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host so far.',
+      'Before you build on it: Manguebyte is young, {version} is its second release, and **the API will change before 1.0**. Plugin editors exist and are tested in CI; by hand, only Mangue Pluck’s CLAP editor has been opened in a host so far.',
     ],
     steps: {
       before: {

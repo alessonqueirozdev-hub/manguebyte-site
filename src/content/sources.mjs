@@ -496,7 +496,7 @@ export const snippets = {
   'readme-dependency': {
     file: 'README.md',
     lang: 'toml',
-    parts: [{ from: '[dependencies]', to: 'manguebyte = "0.1"' }],
+    parts: [{ from: '[dependencies]', to: 'manguebyte = "0.2"' }],
   },
   'readme-new-plugin': {
     file: 'README.md',

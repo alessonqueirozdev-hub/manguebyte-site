@@ -53,10 +53,10 @@ export default {
   footer: {
     statusTitle: 'Em que pé está o projeto',
     status:
-      'O Manguebyte é jovem. A versão {version} é a primeira publicada no crates.io. O que existe está testado e dá para usar, mas cobre uma parte pequena do caminho, a API vai mudar antes da versão 1.0, e dos editores de plugin só um foi aberto num host à mão.',
+      'O Manguebyte é jovem. A versão {version} é a segunda publicada no crates.io. O que existe está testado e dá para usar, mas cobre uma parte pequena do caminho, a API vai mudar antes da versão 1.0, e dos editores de plugin só um foi aberto num host à mão.',
     sourceTitle: 'De onde este site tira os fatos',
     source:
-      'Cada afirmação, cada link de prova e cada trecho de código daqui foi lido do repositório do framework no commit [{commit}]({commitUrl}) ({date}), em que [os {ciJobs} jobs de CI passaram]({ciUrl}). Esse commit vem bem depois da [versão {version}]({releaseUrl}), no commit `{releaseCommit}`, então nem tudo o que se descreve aqui já está no crates.io: a hospedagem de Audio Units, o MIDI 2.0 pela saída dos próprios sistemas, a codificação de Opus, o processamento espectral, as operações vetoriais, o mapa de andamento, as extensões de plugin mais novas e os crates `manguebyte-state` e `manguebyte-ump-io`, entre outras coisas, por enquanto só estão no repositório, listados em “Unreleased” no [changelog](repo:CHANGELOG.md) dele. O repositório é a autoridade; se os dois divergirem, é o site que está desatualizado.',
+      'Cada afirmação, cada link de prova e cada trecho de código daqui foi lido do repositório do framework no commit [{commit}]({commitUrl}) ({date}), em que [os {ciJobs} jobs de CI passaram]({ciUrl}). Esse commit é o da [versão {version}]({releaseUrl}), então o que se descreve aqui é o que está no crates.io. O repositório é a autoridade; se os dois divergirem, é o site que está desatualizado.',
     legalTitle: 'Nomes e marcas',
     legal:
       'O Manguebyte é um projeto independente. Não é afiliado, patrocinado nem endossado pelos criadores do JUCE, pela Steinberg, pela Apple, pela Avid, pela Cockos ou pelo projeto CLAP. JUCE é marca do seu respectivo dono e CLAP é o nome do seu próprio projeto; os dois são citados apenas para descrever o que este framework pretende ser e com o que ele trabalha. VST é marca registrada da Steinberg Media Technologies GmbH. ASIO é marca da Steinberg Media Technologies GmbH, registrada na Europa e em outros países. Audio Units, Mac e macOS são marcas da Apple Inc. AAX e Pro Tools são marcas da Avid Technology, Inc. REAPER é marca da Cockos Incorporated.',
@@ -87,7 +87,7 @@ export default {
     ctaStart: 'Como começar',
     ctaSource: 'Ler o código',
     young:
-      '**Versão {version}, a primeira no [crates.io]({crateUrl}).** O projeto é jovem e a API vai mudar antes da versão 1.0. Os editores de plugin abrem em janelas Win32 e são testados no CI; à mão, até agora só um foi aberto num host: o do Mangue Pluck, no REAPER. [Veja o que falta](/features/#missing).',
+      '**Versão {version}, no [crates.io]({crateUrl}).** O projeto é jovem e a API vai mudar antes da versão 1.0. Os editores de plugin abrem em janelas Win32 e são testados no CI; à mão, até agora só um foi aberto num host: o do Mangue Pluck, no REAPER. [Veja o que falta](/features/#missing).',
     ring: 'Caranguejos com cérebro · Crabs with brains · ',
 
     proof: {
@@ -177,7 +177,7 @@ export default {
 
     today: {
       heading: 'O que já existe',
-      intro: 'Vinte e sete crates que funcionam juntos, cada um utilizável sozinho, um deles uma ferramenta de linha de comando. Vinte e cinco estão no crates.io, com a documentação no docs.rs; o `manguebyte-state` e o `manguebyte-ump-io` vieram depois da versão {version} e só estão no repositório. O `manguebyte-core` não tem nenhuma dependência.',
+      intro: 'Vinte e sete crates que funcionam juntos, cada um utilizável sozinho, um deles uma ferramenta de linha de comando. Todos estão no crates.io na versão {version}, com a documentação no docs.rs. O `manguebyte-core` não tem nenhuma dependência.',
       more: 'Todos os recursos, por área',
     },
 
@@ -268,7 +268,7 @@ export default {
     kicker: 'Recursos',
     heading: 'O que existe hoje',
     intro: [
-      'Vinte e sete crates, projetados para funcionar juntos e utilizáveis cada um por si: use o framework inteiro, ou só o tipo de buffer. Tudo o que está listado aqui está no repositório no commit `{commit}` e coberto pelos testes dele, mas nem tudo foi publicado: vinte e cinco dos crates estão no [crates.io]({crateUrl}) na versão {version}, com a documentação no [docs.rs]({docsUrl}), e o que veio depois dessa versão, inclusive dois crates, está listado em “Unreleased” no [changelog](repo:CHANGELOG.md). Para usar isso agora, dependa do repositório.',
+      'Vinte e sete crates, projetados para funcionar juntos e utilizáveis cada um por si: use o framework inteiro, ou só o tipo de buffer. Tudo o que está listado aqui está no repositório no commit `{commit}`, coberto pelos testes dele, e publicado: os vinte e sete crates estão no [crates.io]({crateUrl}) na versão {version}, com a documentação no [docs.rs]({docsUrl}).',
       'Isso é uma parte pequena do caminho. [O que falta](#missing) está listado com a mesma clareza.',
     ],
     cratesLabel: 'Crates',
@@ -286,7 +286,7 @@ export default {
     heading: 'Do zero a um plugin',
     intro: [
       'Tudo nesta página vem do README do repositório e dos seus dois plugins de exemplo, como estão no commit `{commit}`. Esse commit vem bem depois da [versão {version}]({releaseUrl}). O início rápido do README é o mesmo da versão publicada; os dois plugins agora também declaram a sua cauda com `Plugin::tail_samples`, que a versão publicada não tem.',
-      'Antes de construir em cima dele: o Manguebyte é jovem, a {version} é a primeira versão publicada, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI; à mão, por enquanto só o editor CLAP do Mangue Pluck foi aberto num host.',
+      'Antes de construir em cima dele: o Manguebyte é jovem, a {version} é a segunda versão publicada, e **a API vai mudar antes da versão 1.0**. Os editores de plugin existem e são testados no CI; à mão, por enquanto só o editor CLAP do Mangue Pluck foi aberto num host.',
     ],
     steps: {
       before: {

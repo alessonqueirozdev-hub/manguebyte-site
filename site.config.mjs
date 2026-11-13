@@ -13,22 +13,20 @@ export default {
   // and, at a release, `release`; run
   // `node tools/sync.mjs`, review the content files, then build.
   source: {
-    commit: '66ef3dc1a7828c0fadcc524a7a0d721fbab88617',
-    date: '2026-11-04',
+    commit: '46ec338afa0316908bd47653b823a3d939d83dd0',
+    date: '2026-11-12',
     // The GitHub Actions run of that commit, for the "green in CI" links.
-    ciRun: '41767436618',
+    ciRun: '43251697233',
     // How many jobs that run has, all of which passed.
     ciJobs: 29,
-    // The latest release, and where it was published. Its tag can be an
-    // earlier commit than `commit`: today v0.1.0 is 9daba9d, and the pinned
-    // commit comes well after it, with new features and two new crates
-    // (see the "Unreleased" section of the framework's CHANGELOG.md). What
-    // the site says is true at the pinned commit; some of it is not in the
-    // release on crates.io yet, and the pages that name the release say so.
+    // The latest release, and where it was published. Today the pinned
+    // commit is the release itself, v0.2.0, and the pages that name the
+    // release say that what they describe is on crates.io. If the pin moves
+    // past a release, those pages must say again what is not released yet.
     release: {
-      version: '0.1.0',
-      tag: 'v0.1.0',
-      commit: '9daba9d020872d0fd98f291ddb225f2b505cb6ed',
+      version: '0.2.0',
+      tag: 'v0.2.0',
+      commit: '46ec338afa0316908bd47653b823a3d939d83dd0',
       crate: 'https://crates.io/crates/manguebyte',
       docs: 'https://docs.rs/manguebyte',
     },
