@@ -2135,6 +2135,10 @@ details.show-test .code {
   height: auto;
 }
 
+.project-mark .project-logo {
+  width: 84%;
+}
+
 .project-mark .dish {
   width: 78%;
   color: #f3ead7;

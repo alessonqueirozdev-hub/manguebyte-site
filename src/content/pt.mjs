@@ -208,6 +208,7 @@ export default {
             name: 'muser',
             by: 'De cloudbeer · Apache-2.0',
             url: 'https://github.com/claw-works/muser',
+            logo: 'img/muser.svg',
             body: 'Um motor de arranjo musical sem interface, feito para agentes de IA. O agente escreve o projeto em JSON, por uma ferramenta de linha de comando ou por um servidor MCP, e o muser o transforma em áudio com o Manguebyte, que sintetiza os seus mais de 100 instrumentos embutidos. Tocar ao vivo e renderizar num arquivo WAV usam o mesmo código e saem iguais amostra por amostra.',
           },
         ],

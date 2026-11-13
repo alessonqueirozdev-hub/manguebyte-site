@@ -160,7 +160,11 @@ export function render(ctx) {
       <ul class="projects projects-others">
         ${home.ecosystem.others.items.map(
           (item) => html`<li class="project">
-            <div class="project-mark">${dish()}</div>
+            <div class="project-mark">${
+              item.logo
+                ? `<img class="project-logo" src="${asset(item.logo)}" alt="" width="256" height="256" loading="lazy">`
+                : dish()
+            }</div>
             <div class="project-text">
               <p class="project-status">${escape(item.by)}</p>
               <h3><a href="${item.url}" rel="noopener">${escape(item.name)}</a></h3>
