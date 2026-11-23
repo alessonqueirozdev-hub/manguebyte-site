@@ -15,10 +15,8 @@ The Manguebyte website. Public: `alessonqueirozdev-hub/manguebyte-site`.
 
 ## How to test
 
-```
-bash scripts/cloud-setup.sh --test
-node serve.mjs     # preview
-```
+`pages.yml` builds the site on every push to `main` and deploys it. With a
+clone: `node build.mjs`, then `node serve.mjs` to preview.
 
 ## Environment variables
 
